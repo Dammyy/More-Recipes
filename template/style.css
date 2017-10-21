@@ -1,0 +1,39 @@
+.recipe-display{height:300px;}
+.latest-recipes {margin-bottom:70px;}
+.g3{background:red;}
+.col-md-10,.col-md-2  {min-height:200px;height:auto;}
+.navbar-brand {font-size:25px;line-height:40px;letter-spacing:1px;}
+.navbar img{border-radius:10px;}
+.navbar{background:#ccc;}
+.btn-outline-success {color:#202020;border-color:#202020;}
+.btn-outline-success:hover {color:#fff;background:#202020;}
+.container-fluid {margin:0 auto;padding:0;}
+.carousel{width:100%;}
+.carousel img{width:100%;}
+.col-md-4{margin:0;padding:0;}
+.col-md-4 img{width:100%;height:100%;z-index:0;position:relative;}
+.row {margin:0;}
+#latest-h3{width:100%;padding:2%;background:#ccc;}
+#recipe-title{background:url(img/background.png);width:100%;min-height:50px;height:auto;z-index:10;position:relative;bottom:50px;padding-top:5px;margin:0 auto;}
+#recipe-title h2 {font-size:100%;text-align:center;color:#f8f8f8;letter-spacing:1px;}
+.welcome-msg{padding:15px 0px;}
+.welcome-msg h1{text-align:center;text-transform:capitalize;}
+.footer {position: fixed;bottom: 0;width: 100%;height: 60px;line-height: 60px;background-color: #ccc;z-index:100;color:#202020;}
+
+@media (max-width: 767px) { 
+.recipe-display{height:auto;}
+.footer {position: relative;}
+.latest-recipes {margin-bottom:10px;}
+}
+.form-signin {max-width: 350px;padding: 15px;margin: 25px auto;}
+.form-signin input[type="email"] {margin-bottom: -1px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border:1px solid #ccc;}
+.form-signin input[type="password"] {border-top-left-radius: 0;border-top-right-radius: 0;border:1px solid #ccc;}
+.form-signin button {background:#fff;border:1px solid #202020;color:#202020;}
+.form-signin button:hover {background:#202020;border:none;color:#fff;}
+.form-horizontal button {background:#fff;border:1px solid #202020;color:#202020;}
+.form-horizontal button:hover {background:#202020;border:none;color:#fff;}
+.form-horizontal{max-width: 350px;padding: 15px;margin: 25px auto;}
+.form-signin .col-md-12 {padding:0;margin-bottom:5px;}
+.form-horizontal .col-md-12 {padding:0;margin-bottom:5px;}
+.form-group {margin-bottom: 10px;}
+.form-signin-heading {margin-bottom:5px;}
