@@ -57,6 +57,18 @@
 #recipe-content  button {background:#fff;border:1px solid #202020;color:#202020;}
 #recipe-content  button:hover {background:#202020;border:none;color:#fff;}
 #recipe-reviews {padding:15px;background:#f8f8f8;}
+.profile-display img {width:100%;}
+.profile-display {font-weight:500;}
+#recipes-manage {width:100%;height:auto;}
+#recipes-name {font-size:20px;font-weight:500;}
+#action-options li {float:left;margin-right:10px;list-style-type:none;}
+#action-options {height:25px;}
+#action-options li a{font-weight:500;font-size:14px;}
+#action-options li a:hover{font-weight:bold;text-decoration:none;}
+.fa-circle {font-size:14px;color:#ccc;}
+.add-recipe {height:35px;margin:15px 10px;}
+.add-recipe a{text-decoration:none;font-weight:500;color:#202020;padding:5px 6px;border:1px solid #202020;background:#fff;border-radius:5px;}
+.add-recipe a:hover{color:#fff;background:#202020;}
 @media (max-width: 575px) { 
 .recipe-display{height:auto;}
 .footer {position: relative;}
