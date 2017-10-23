@@ -52,6 +52,10 @@
 #recipe-content {padding:20px 10px;font-weight:500;line-height:25px;margin-bottom:50px;}
 #recipe-content p{margin:15px 0px;}
 #recipe-content img{width:50%;margin:15px 0px;}
+#up-down-vote{padding:10px;}
+#recipe-review {margin:15px 0px;}
+#recipe-content  button {background:#fff;border:1px solid #202020;color:#202020;}
+#recipe-content  button:hover {background:#202020;border:none;color:#fff;}
 
 @media (max-width: 575px) { 
 .recipe-display{height:auto;}
@@ -61,6 +65,8 @@
 .header-links li{float:left; }
 .catalog-left .recipe-display {height:auto;}
 .catalog-right #latest-h3{margin-top:10px;}
+#recipe-content {margin-bottom:10px;}
+
 }
 
 
