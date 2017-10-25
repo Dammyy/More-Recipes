@@ -9,7 +9,7 @@
 .carousel{width:100%;}
 .carousel img{width:100%;}
 .col-md-4{margin:0;padding:0;}
-.recipe-display{height:300px;margin-bottom:10px;}
+.recipe-display{height:300px;padding:5px;}
 #recipe-title{color:#f8f8f8;}
 #recipe-title a{text-decoration:none;color:#f8f8f8;letter-spacing:1px;}
 #recipe-title a:hover{font-size:105%;color:#007bff;}
