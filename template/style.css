@@ -73,6 +73,7 @@
 .add-recipe a:hover{color:#fff;background:#202020;}
 .background .col-md-12 {padding:0;margin:0;}
 .background ..form-signin{padding:50px 0px;margin:0 auto;}
+.header-logo {margin-right:450px;}
 @media (max-width: 575px) { 
 .recipe-display{height:auto;}
 .footer {position: relative;}
@@ -84,7 +85,7 @@
 .catalog-left .recipe-display {height:auto;}
 .catalog-right #latest-h3{margin-top:10px;}
 #recipe-content {margin-bottom:0px;}
-
+.header-logo {margin-right:0px;}
 }
 
 
