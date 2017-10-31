@@ -17,34 +17,11 @@ class Recipe {
     });
   }
   /**
-   * @returns {Object} createRecipes
-   * @param {param} req
-   * @param {param} res
-   */
-  static createRecipes(req, res) {
-    recipes.push({
-      id: recipes.length + 1,
-      title: req.body.title,
-	    details: req.body.details,
-      ingredients: req.body.ingredients,
-      upvotes: 0,
-      downvotes: 0,
-      favorited: 0,
-      views: 0,
-    });
-    return res.json({
-      message: 'success',
-      error: false
-    });
-  }
-
-
-  /**
    * @returns {Object} createRecipe
    * @param {param} req
    * @param {param} res
    */
-  static createRecipe(req, res) {
+  static createRecipes(req, res) {
     RecipeModel.create({
       title: req.body.title,
       details: req.body.details,
