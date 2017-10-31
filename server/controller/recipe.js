@@ -25,6 +25,11 @@ class Recipe {
     RecipeModel.create({
       title: req.body.title,
       details: req.body.details,
+      ingredients: req.body.ingredients,
+      upvotes: 0,
+      downvotes: 0,
+      favorited: 0,
+      views: 0,
     })
       .then(recipe => res.status(201).send(recipe))
       .catch(error => res.status(400).send(error));
