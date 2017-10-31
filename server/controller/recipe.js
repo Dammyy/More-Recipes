@@ -12,10 +12,11 @@ class Recipe {
    * @param {*} res
    */
   static getRecipe(req, res) {
-    return res.json({
-      recipes
-    });
+    return RecipeModel.all()
+      .then(recipe => res.status(200).send(recipe))
+      .catch(error => res.status(400).send(error));
   }
+
   /**
    * @returns {Object} createRecipe
    * @param {param} req
