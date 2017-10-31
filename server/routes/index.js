@@ -1,11 +1,16 @@
 import Recipes from '../controller/recipe';
-import recipes from '../model/recipe';
+
+import users from '../controller/user';
+
+
 
 export default (app) => {
-  app.get('/api/recipes', Recipes.getRecipe);
-  app.post('/api/recipes/:recipeId/reviews', Recipes.addReview);
-  app.post('/api/recipes', Recipes.createRecipes);
-  app.put('/api/recipes/:recipeId', Recipes.updateRecipes);
-  app.delete('/api/recipes/:recipeId', Recipes.removeRecipes);
-  app.get('/api/recipes/:recipeId', Recipes.retrieveRecipes);
+  app.get('/api/v1/recipes', Recipes.getRecipe);
+  app.post('/api/v1/recipes/:recipeId/reviews', Recipes.addReview);
+  app.post('/api/v1/recipes', Recipes.createRecipes);
+  app.put('/api/v1/recipes/:recipeId', Recipes.updateRecipes);
+  app.delete('/api/v1/recipes/:recipeId', Recipes.removeRecipes);
+  app.get('/api/v1/recipes/:recipeId', Recipes.retrieveRecipes);
+  app.post('/api/v1/users/signup', users.signUp);
+  app.post('/api/v1/users/signin', users.signIn);
 };
