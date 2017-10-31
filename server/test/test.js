@@ -18,7 +18,7 @@ describe('Test API', () => {
         });
     });
 
-    it('Undefined Routes Should Return 404', (done) => {
+    it('Undefined routes should Return 404', (done) => {
       chai.request(app)
         .post('/another/undefined/route')
         .send({ random: 'random' })
