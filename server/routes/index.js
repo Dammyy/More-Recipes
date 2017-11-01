@@ -9,7 +9,7 @@ export default (app) => {
   app.post('/api/v1/recipes/:recipeId/reviews', Recipes.addReview);
   app.post('/api/v1/recipes', Recipes.createRecipes);
   app.put('/api/v1/recipes/:recipeId', Recipes.updateRecipes);
-  app.delete('/api/v1/recipes/:recipeId', Recipes.removeRecipes);
+  app.delete('/api/v1/recipes/:recipeId', Recipes.deleteRecipes);
   app.get('/api/v1/recipes/:recipeId', Recipes.retrieveRecipes);
   app.post('/api/v1/users/signup', users.signUp);
   app.post('/api/v1/users/signin', users.signIn);
