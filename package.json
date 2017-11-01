@@ -8,6 +8,7 @@
     "test": "mocha server/test/*.js --exit --require babel-register --reporter spec"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
@@ -23,7 +24,8 @@
     "nodemon": "^1.12.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.20.1"
+    "sequelize": "^4.20.1",
+    "sequelize-cli": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
