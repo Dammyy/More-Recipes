@@ -9,12 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     views: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
   return Recipe;
 };
