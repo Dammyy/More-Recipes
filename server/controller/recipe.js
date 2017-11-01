@@ -43,42 +43,45 @@ class Recipe {
    * @param {*} res
    */
   static updateRecipes(req, res) {
-    for (let i = 0; i < recipes.length; i += 1) {
-      if (recipes[i].id === parseInt(req.params.recipeId, 10)) {
-        recipes[i].title = req.body.title;
-        recipes[i].details = req.body.details;
-        recipes[i].ingredients = req.body.ingredients;
-        return res.json({
-          recipes,
-          message: 'success',
-          error: false
+    RecipeModel.findOne({
+      where: {
+        id: req.params.recipeId
+      }
+    }).then((recipe) => {
+      if (!recipe) {
+        return res.status(404).send({
+          message: 'Recipe Not Found',
         });
       }
-    }
-    return res.status(404).json({
-      message: 'recipe not found',
-      error: true
-    });
+      recipe.updateAttributes({
+        title: req.body.title || recipe.title,
+        ingredients: req.body.ingredients || recipe.ingredients,
+        details: req.body.details || recipe.details,
+      })
+        .then(() => res.status(200).send(recipe))
+        .catch(error => res.status(400).send(error));
+    })
+      .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} removeRecipes
    * @param {param} req
    * @param {param} res
    */
-  static removeRecipes(req, res) {
-    for (let i = 0; i < recipes.length; i += 1) {
-      if (recipes[i].id === parseInt(req.params.recipeId, 10)) {
-        recipes.splice(i, 1);
-        return res.json({
-          message: 'success',
-          error: false
+  static deleteRecipes(req, res) {
+    RecipeModel.destroy({
+      where: {
+        id: req.params.recipeId
+      }
+    }).then((recipe) => {
+      if (!recipe) {
+        return res.status(404).send({
+          message: 'Recipe Not Found',
         });
       }
-    }
-    return res.status(404).json({
-      message: 'recipe not found',
-      error: true
-    });
+      res.status(204).send();
+    })
+      .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} retrieveRecipes
@@ -86,19 +89,19 @@ class Recipe {
    * @param {param} res
    */
   static retrieveRecipes(req, res) {
-    for (let i = 0; i < recipes.length; i += 1) {
-      if (recipes[i].id === parseInt(req.params.recipeId, 10)) {
-        return res.json({
-          recipes: recipes[i],
-          message: 'success',
-          error: false
+    RecipeModel.findOne({
+      where: {
+        id: req.params.recipeId
+      }
+    }).then((recipe) => {
+      if (!recipe) {
+        return res.status(404).send({
+          message: 'Recipe Not Found',
         });
       }
-    }
-    return res.status(404).json({
-      message: 'recipe not found',
-      error: true
-    });
+      return res.status(200).send(recipe);
+    })
+      .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} addReview
