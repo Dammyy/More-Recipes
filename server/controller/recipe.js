@@ -1,14 +1,16 @@
 import models from '../models/index';
 
 const RecipeModel = models.recipes;
+const ReviewsModel = models.reviews;
+const FavoritesModel = models.favorites;
 /**
  * @class Recipe
  */
 class Recipe {
   /**
    * @returns {Object} recipes
-   * @param {*} req
-   * @param {*} res
+   * @param {req} req
+   * @param {res} res
    */
   static getRecipe(req, res) {
     return RecipeModel.all()
@@ -18,8 +20,8 @@ class Recipe {
 
   /**
    * @returns {Object} createRecipe
-   * @param {param} req
-   * @param {param} res
+   * @param {req} req
+   * @param {res} res
    */
   static createRecipes(req, res) {
     RecipeModel.create({
@@ -35,8 +37,8 @@ class Recipe {
 
   /**
    * @returns {Object} updateRecipes
-   * @param {*} req
-   * @param {*} res
+   * @param {req} req
+   * @param {res} res
    */
   static updateRecipes(req, res) {
     RecipeModel.findOne({
@@ -68,11 +70,11 @@ class Recipe {
   }
   /**
    * @returns {Object} removeRecipes
-   * @param {param} req
-   * @param {param} res
+   * @param {req} req
+   * @param {res} res
    */
   static deleteRecipes(req, res) {
-    RecipeModel.destroy({
+    RecipeModel.findOne({
       where: {
         id: req.params.recipeId
       }
@@ -82,14 +84,26 @@ class Recipe {
           message: 'Recipe Not Found',
         });
       }
-      res.status(204).send('content deleted successfully');
+      if (req.decoded.id !== recipe.userId) {
+        return res.status(403).send({
+          message: 'You are not authorised to delete this recipe !',
+        });
+      }
+      RecipeModel.destroy({
+        where: {
+          id: req.params.recipeId
+        }
+      }).then(() => {
+        res.status(204).send('content deleted successfully');
+      })
+        .catch(error => res.status(400).send(error));
     })
       .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} retrieveRecipes
-   * @param {param} req
-   * @param {param} res
+   * @param {req} req
+   * @param {res} res
    */
   static retrieveRecipes(req, res) {
     RecipeModel.findOne({
@@ -104,6 +118,40 @@ class Recipe {
       }
       return res.status(200).send(recipe);
     })
+      .catch(error => res.status(400).send(error));
+  }
+
+  /**
+   * @returns {Object} postReview
+   * @param {req} req
+   * @param {res} res
+   */
+  static postReview(req, res) {
+    ReviewsModel.create({
+      review: req.body.review,
+      userId: req.decoded.id,
+      recipeId: req.params.recipeId,
+    })
+      .then(() => {
+        res.status(201).send('Review added successfully');
+      })
+      .catch(error => res.status(400).send(error));
+  }
+
+  /**
+   * @returns {Object} postReview
+   * @param {req} req
+   * @param {res} res
+   */
+  static favoriteRecipe(req, res) {
+    FavoritesModel.create({
+      flag: true,
+      userId: req.decoded.id,
+      recipeId: req.params.recipeId,
+    })
+      .then(() => {
+        res.status(201).send('Favorite added successfully');
+      })
       .catch(error => res.status(400).send(error));
   }
 }
