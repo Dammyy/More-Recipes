@@ -1,7 +1,6 @@
-import recipes from '../model/recipe';
 import models from '../models/index';
 
-const RecipeModel = models.recipe;
+const RecipeModel = models.recipes;
 /**
  * @class Recipe
  */
@@ -27,10 +26,7 @@ class Recipe {
       title: req.body.title,
       details: req.body.details,
       ingredients: req.body.ingredients,
-      upvotes: 0,
-      downvotes: 0,
-      favorited: 0,
-      views: 0,
+      userId: req.decoded.id,
     })
       .then(recipe => res.status(201).send(recipe))
       .catch(error => res.status(400).send(error));
@@ -53,6 +49,13 @@ class Recipe {
           message: 'Recipe Not Found',
         });
       }
+
+      if (req.decoded.id !== recipe.userId) {
+        return res.status(403).send({
+          message: 'You are not authorised to edit this recipe !',
+        });
+      }
+
       recipe.updateAttributes({
         title: req.body.title || recipe.title,
         ingredients: req.body.ingredients || recipe.ingredients,
@@ -79,7 +82,7 @@ class Recipe {
           message: 'Recipe Not Found',
         });
       }
-      res.status(204).send();
+      res.status(204).send('content deleted successfully');
     })
       .catch(error => res.status(400).send(error));
   }
@@ -102,28 +105,6 @@ class Recipe {
       return res.status(200).send(recipe);
     })
       .catch(error => res.status(400).send(error));
-  }
-  /**
-   * @returns {Object} addReview
-   * @param {param} req
-   * @param {param} res
-   */
-  static addReview(req, res) {
-    for (let i = 0; i < recipes.length; i += 1) {
-      if (recipes[i].id === parseInt(req.params.recipeId, 10)) {
-        console.log(recipes);
-        recipes[i].reviews.push(req.body.reviews);
-        return res.json({
-          recipes,
-          message: 'success',
-          error: false
-        });
-      }
-    }
-    return res.status(404).json({
-      message: 'recipe not found',
-      error: true
-    });
   }
 }
 
