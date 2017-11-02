@@ -9,7 +9,7 @@ import models from '../models/index';
 import config from '../../config';
 
 const saltRounds = 10;
-const usersModel = models.user;
+const usersModel = models.users;
 let password = '';
 /**
  * @class User
@@ -56,7 +56,8 @@ class User {
       if (password) {
         res.json({
           jwt: jwt.sign(
-            { firstName: user.firstName, lastName: user.lastName, email: user.email }, config.JWT_SECRET,
+            {
+              id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email }, config.JWT_SECRET,
             { expiresIn: 60 * 60 }
           )
         });
