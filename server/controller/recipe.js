@@ -69,7 +69,7 @@ class Recipe {
       .catch(error => res.status(400).send(error));
   }
   /**
-   * @returns {Object} removeRecipes
+   * @returns {Object} deleteRecipes
    * @param {req} req
    * @param {res} res
    */
@@ -139,7 +139,7 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} postReview
+   * @returns {Object} favoriteRecipe
    * @param {req} req
    * @param {res} res
    */
