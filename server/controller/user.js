@@ -2,14 +2,13 @@ import jwt from 'jsonwebtoken';
 
 import bcrypt from 'bcrypt';
 
-import users from '../models/user';
-
 import models from '../models/index';
 
 import config from '../../config';
 
 const saltRounds = 10;
 const usersModel = models.users;
+const FavoritesModel = models.favorites;
 let password = '';
 /**
  * @class User
@@ -67,6 +66,33 @@ class User {
       }
     })
       .catch(error => res.status(401).send(error));
+  }
+  /**
+   * @returns {Object} getFavorites
+   * @param {req} req
+   * @param {res} res
+   */
+  static getFavorites(req, res) {
+    FavoritesModel.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    }).then((favorites) => {
+      if (favorites.length < 1) {
+        return res.status(404).send({
+          message: 'No Favorite recipes found',
+        });
+      }
+      console.log(req.decoded.id);
+      console.log(req.params.userId);
+      if (req.decoded.id !== parseFloat(req.params.userId)) {
+        return res.status(403).send({
+          message: 'You are not authorised to view other users favorites',
+        });
+      }
+      return res.status(200).send(favorites);
+    })
+      .catch(error => res.status(400).send(error));
   }
 }
 export default User;
