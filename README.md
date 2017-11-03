@@ -13,3 +13,6 @@ npm install
 npm run test
 ```
 
+## Travis CI 
+https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master
+
