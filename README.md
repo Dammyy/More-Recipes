@@ -14,5 +14,5 @@ npm run test
 ```
 
 ## Travis CI 
-https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master
+<img src="https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master"></img>
 
