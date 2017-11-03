@@ -11,8 +11,7 @@
      "migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "heroku-postbuild": "npm run build && npm run migrate",
-    "start": "node ./dist/bin/www.js",
+    "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
     "test": "mocha server/test/*.js --exit --require babel-register --reporter spec"
   },
   "dependencies": {
