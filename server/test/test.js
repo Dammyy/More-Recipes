@@ -26,6 +26,6 @@ describe('Test API', () => {
           expect(res).to.have.status(404);
           done();
         });
-    }); 
+    });
   });
 });
