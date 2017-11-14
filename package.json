@@ -1,13 +1,17 @@
 {
   "name": "server",
   "version": "1.0.0",
+   "engines": {
+    "node": "6.11.4"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build": "node ./node_modules/babel-cli/bin/babel.js ./server/ -d  dist",
+     "migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "heroku-postbuild": "npm run migrate",
-    "start": "babel-node server/bin/www",
-    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
     "test": "mocha server/test/*.js --exit --require babel-register --reporter spec"
   },
   "dependencies": {
@@ -41,6 +45,6 @@
     "morgan": "^1.9.0",
     "sequelize-cli": "^3.0.0"
   },
-  "author": "",
+  "author": "Damilare Olatubosun",
   "license": "ISC"
 }
