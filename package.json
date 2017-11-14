@@ -12,7 +12,8 @@
     "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
     "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
-    "test": "mocha server/test/*.js --exit --require babel-register --reporter spec"
+    "test": "mocha server/test/*.js --exit --require babel-register --reporter spec",
+    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
