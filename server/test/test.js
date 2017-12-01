@@ -27,14 +27,5 @@ describe('Test API', () => {
           done();
         });
     });
-    // Test for index route
-    it('It should return all recipes', (done) => {
-      chai.request(app)
-        .get('/api/v1/recipes')
-        .end((err, res) => {
-          expect(res.status).to.equal(200);
-          done();
-        });
-    });
   });
 });
