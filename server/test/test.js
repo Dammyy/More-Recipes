@@ -5,7 +5,7 @@ import app from '../app';
 const { expect } = chai;
 
 chai.use(chaiHttp);
-const should = chai.should();
+
 describe('Test API', () => {
   describe('GET /', () => {
     // Test for index route
@@ -33,7 +33,6 @@ describe('Test API', () => {
         .get('/api/v1/recipes')
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          res.body.should.be.a('array');
           done();
         });
     });
