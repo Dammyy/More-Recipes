@@ -16,6 +16,15 @@ module.exports = {
       details: {
         type: Sequelize.TEXT
       },
+      reviews: {
+        type: Sequelize.INTEGER
+      },
+      upvotes: {
+        type: Sequelize.INTEGER
+      },
+      downvotes: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
