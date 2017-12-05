@@ -26,7 +26,9 @@ class User {
       email: req.body.email,
       hashPassword: bcrypt.hashSync(req.body.password, saltRounds),
     })
-      .then(res.status(201).send('successful'))
+      .then(res.status(201).send({
+        message: 'Registration Successful',
+      }))
       .catch(error => res.status(400).send(error));
   }
   /**

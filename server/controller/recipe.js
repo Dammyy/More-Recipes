@@ -28,6 +28,9 @@ class Recipe {
       title: req.body.title,
       details: req.body.details,
       ingredients: req.body.ingredients,
+      reviews: 0,
+      upvotes: 0,
+      downvotes: 0,
       userId: req.decoded.id,
     })
       .then(recipe => res.status(201).send(recipe))
@@ -94,7 +97,9 @@ class Recipe {
           id: req.params.recipeId
         }
       }).then(() => {
-        res.status(204).send('content deleted successfully');
+        return res.status(403).send({
+          message: 'Recipe deleted successfully !',
+        });
       })
         .catch(error => res.status(400).send(error));
     })
@@ -134,6 +139,23 @@ class Recipe {
     })
       .then(() => {
         res.status(201).send('Review added successfully');
+        RecipeModel.findOne({
+          where: {
+            id: req.params.recipeId
+          }
+        }).then((recipe) => {
+          recipe.updateAttributes({
+            title: recipe.title,
+            ingredients: recipe.ingredients,
+            details: recipe.details,
+            reviews: recipe.reviews + 1,
+            upvotes: recipe.upvotes,
+            downvotes: recipe.downvotes,
+          })
+            .then(() => res.status(200).send(recipe))
+            .catch(error => res.status(400).send(error));
+        })
+          .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
   }
