@@ -38,10 +38,14 @@ class User {
    */
   static signIn(req, res) {
     if (!req.body.email) {
-      res.status(400).send('Email is required');
+      res.status(400).send({
+        message: 'Email is Required',
+      });
     }
     if (!req.body.password) {
-      res.status(400).send('Password is required');
+      res.status(400).send({
+        message: 'Password is required',
+      });
     }
     usersModel.findOne({
       where: {
@@ -64,7 +68,9 @@ class User {
         });
       }
       else {
-        res.status(401).send('Invalid Password');
+        res.status(401).send({
+          message: 'Invalid Password',
+        });
       }
     })
       .catch(error => res.status(401).send(error));
