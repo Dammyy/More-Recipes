@@ -4,8 +4,8 @@ console.log(process.env.DATABASE_URL);
 
 module.exports = {
   development: {
-    username: 'root',
-    password: 'rootpass',
+    username: 'postgres',
+    password: 'andela',
     database: 'More-Recipes',
     host: '127.0.0.1',
     dialect: 'postgres',

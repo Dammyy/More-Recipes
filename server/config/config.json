@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "rootpass",
+    "username": "postgres",
+    "password": "andela",
    "database": "More-Recipes",
     "host": "127.0.0.1",
     "port": 5432,
