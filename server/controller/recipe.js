@@ -5,6 +5,7 @@ const ReviewsModel = models.reviews;
 const FavoritesModel = models.favorites;
 const UpvotesModel = models.upvotes;
 const DownvotesModel = models.downvotes;
+let minusOne = 0;
 /**
  * @class Recipe
  */
@@ -184,45 +185,61 @@ class Recipe {
    * @param {res} res
    */
   static upvoteRecipe(req, res) {
-    UpvotesModel.find({
+    DownvotesModel.find({
       where: {
         userId: req.decoded.id,
         recipeId: req.params.recipeId
       }
-    }).then((upvotes) => {
-      if (upvotes) {
-        return res.status(404).send({
-          message: 'Recipe Already Upvoted',
+    }).then((downvotes) => {
+      if (downvotes) {
+        minusOne = 1;
+        DownvotesModel.destroy({
+          where: {
+            userId: req.decoded.id,
+            recipeId: req.params.recipeId
+          }
         });
       }
-
-      UpvotesModel.create({
-        upvote: 1,
-        userId: req.decoded.id,
-        recipeId: req.params.recipeId,
-      })
-        .then(() => {
-          res.status(201).send({
-            message: 'Recipe Upvoted!',
+      UpvotesModel.find({
+        where: {
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId
+        }
+      }).then((upvotes) => {
+        if (upvotes) {
+          return res.status(404).send({
+            message: 'Recipe Already Upvoted',
           });
-          RecipeModel.findOne({
-            where: {
-              id: req.params.recipeId
-            }
-          }).then((recipe) => {
-            recipe.updateAttributes({
-              title: recipe.title,
-              ingredients: recipe.ingredients,
-              details: recipe.details,
-              reviews: recipe.reviews,
-              upvotes: recipe.upvotes + 1,
-              downvotes: recipe.downvotes,
+        }
+        UpvotesModel.create({
+          upvote: 1,
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId,
+        })
+          .then(() => {
+            res.status(201).send({
+              message: 'Recipe Upvoted!',
+            });
+            RecipeModel.findOne({
+              where: {
+                id: req.params.recipeId
+              }
+            }).then((recipe) => {
+              recipe.updateAttributes({
+                title: recipe.title,
+                ingredients: recipe.ingredients,
+                details: recipe.details,
+                reviews: recipe.reviews,
+                upvotes: recipe.upvotes + 1,
+                downvotes: recipe.downvotes - 1,
+              })
+                .then(() => res.status(200).send(recipe))
+                .catch(error => res.status(400).send(error));
             })
-              .then(() => res.status(200).send(recipe))
               .catch(error => res.status(400).send(error));
           })
-            .catch(error => res.status(400).send(error));
-        })
+          .catch(error => res.status(400).send(error));
+      })
         .catch(error => res.status(400).send(error));
     })
       .catch(error => res.status(400).send(error));
@@ -233,45 +250,61 @@ class Recipe {
    * @param {res} res
    */
   static downvoteRecipe(req, res) {
-    DownvotesModel.find({
+    UpvotesModel.find({
       where: {
         userId: req.decoded.id,
         recipeId: req.params.recipeId
       }
-    }).then((downvotes) => {
-      if (downvotes) {
-        return res.status(404).send({
-          message: 'Recipe Already Downvoted',
+    }).then((upvotes) => {
+      if (upvotes) {
+        minusOne = 1;
+        UpvotesModel.destroy({
+          where: {
+            userId: req.decoded.id,
+            recipeId: req.params.recipeId
+          }
         });
       }
-
-      DownvotesModel.create({
-        downvote: 1,
-        userId: req.decoded.id,
-        recipeId: req.params.recipeId,
-      })
-        .then(() => {
-          res.status(201).send({
-            message: 'Recipe Downvoted!',
+      DownvotesModel.find({
+        where: {
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId
+        }
+      }).then((downvotes) => {
+        if (downvotes) {
+          return res.status(404).send({
+            message: 'Recipe Already Downvoted',
           });
-          RecipeModel.findOne({
-            where: {
-              id: req.params.recipeId
-            }
-          }).then((recipe) => {
-            recipe.updateAttributes({
-              title: recipe.title,
-              ingredients: recipe.ingredients,
-              details: recipe.details,
-              reviews: recipe.reviews,
-              upvotes: recipe.upvotes + 1,
-              downvotes: recipe.downvotes,
+        }
+        DownvotesModel.create({
+          downvote: 1,
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId,
+        })
+          .then(() => {
+            res.status(201).send({
+              message: 'Recipe Downvoted!',
+            });
+            RecipeModel.findOne({
+              where: {
+                id: req.params.recipeId
+              }
+            }).then((recipe) => {
+              recipe.updateAttributes({
+                title: recipe.title,
+                ingredients: recipe.ingredients,
+                details: recipe.details,
+                reviews: recipe.reviews,
+                upvotes: recipe.upvotes - minusOne,
+                downvotes: recipe.downvotes + 1,
+              })
+                .then(() => res.status(200).send(recipe))
+                .catch(error => res.status(400).send(error));
             })
-              .then(() => res.status(200).send(recipe))
               .catch(error => res.status(400).send(error));
           })
-            .catch(error => res.status(400).send(error));
-        })
+          .catch(error => res.status(400).send(error));
+      })
         .catch(error => res.status(400).send(error));
     })
       .catch(error => res.status(400).send(error));
