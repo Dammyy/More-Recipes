@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const upvotes = sequelize.define('upvotes', {
     upvote: DataTypes.INTEGER
-   });
-   upvotes.associate = (models) => {
-    downvotes.belongsTo(models.users, {
+  });
+  upvotes.associate = (models) => {
+    upvotes.belongsTo(models.users, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
@@ -11,5 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'recipeId',
       onDelete: 'CASCADE',
     });
-  return downvotes;
+  };
+  return upvotes;
 };
