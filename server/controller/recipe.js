@@ -27,6 +27,21 @@ class Recipe {
    * @param {res} res
    */
   static createRecipes(req, res) {
+    if (!req.body.title) {
+      return res.status(400).send({
+        message: 'Title is required',
+      });
+    }
+    if (!req.body.details) {
+      return res.status(400).send({
+        message: 'Details is required',
+      });
+    }
+    if (!req.body.ingredients) {
+      return res.status(400).send({
+        message: 'Ingredients is required',
+      });
+    }
     RecipeModel.create({
       title: req.body.title,
       details: req.body.details,
@@ -47,6 +62,9 @@ class Recipe {
    * @param {res} res
    */
   static updateRecipes(req, res) {
+    if (!req.params.recipeId) {
+      return res.status(404);
+    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -60,7 +78,7 @@ class Recipe {
 
       if (req.decoded.id !== recipe.userId) {
         return res.status(403).send({
-          message: 'You are not authorised to edit this recipe !',
+          message: 'You are not authorised to edit this recipe',
         });
       }
 
@@ -92,7 +110,7 @@ class Recipe {
       }
       if (req.decoded.id !== recipe.userId) {
         return res.status(403).send({
-          message: 'You are not authorised to delete this recipe !',
+          message: 'You are not authorised to delete this recipe',
         });
       }
       RecipeModel.destroy({
@@ -100,8 +118,8 @@ class Recipe {
           id: req.params.recipeId
         }
       }).then(() => {
-        return res.status(403).send({
-          message: 'Recipe deleted successfully !',
+        return res.status(200).send({
+          message: 'Recipe deleted successfully',
         });
       })
         .catch(error => res.status(400).send(error));
@@ -135,13 +153,20 @@ class Recipe {
    * @param {res} res
    */
   static postReview(req, res) {
+    if (!req.body.review) {
+      return res.status(400).send({
+        message: 'Review cannot be empty',
+      });
+    }
     ReviewsModel.create({
       review: req.body.review,
       userId: req.decoded.id,
       recipeId: req.params.recipeId,
     })
       .then(() => {
-        res.status(201).send('Review added successfully');
+        res.status(201).send({
+          message: 'Review added successfully'
+        });
         RecipeModel.findOne({
           where: {
             id: req.params.recipeId

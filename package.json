@@ -8,12 +8,12 @@
   "main": "app.js",
   "scripts": {
     "build": "node ./node_modules/babel-cli/bin/babel.js ./server/ -d  dist",
-    "migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate": "cross-env NODE_ENV=test ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "start-dev": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
-    "test": "mocha server/test/*.js --exit --require babel-register --reporter spec",
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
+    "start": "cross-env NODE_ENV=production npm run build && npm run migrate && node ./dist/bin/www.js",
+    "test": "cross-env NODE_ENV=test mocha server/test/*.js --exit --require babel-register --reporter spec",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -24,6 +24,7 @@
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
     "dotenv": "^4.0.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",

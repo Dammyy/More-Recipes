@@ -20,6 +20,26 @@ class User {
  * @param {param} res
  */
   static signUp(req, res) {
+    if (!req.body.email) {
+      return res.status(400).send({
+        message: 'Email is required',
+      });
+    }
+    if (!req.body.password) {
+      return res.status(400).send({
+        message: 'Password is required',
+      });
+    }
+    if (!req.body.firstName) {
+      return res.status(400).send({
+        message: 'First name is required',
+      });
+    }
+    if (!req.body.lastName) {
+      return res.status(400).send({
+        message: 'Last name is required',
+      });
+    }
     usersModel.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -38,12 +58,12 @@ class User {
    */
   static signIn(req, res) {
     if (!req.body.email) {
-      res.status(400).send({
-        message: 'Email is Required',
+      return res.status(400).send({
+        message: 'Email is required',
       });
     }
     if (!req.body.password) {
-      res.status(400).send({
+      return res.status(400).send({
         message: 'Password is required',
       });
     }
@@ -62,9 +82,15 @@ class User {
         res.json({
           jwt: jwt.sign(
             {
-              id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email }, config.JWT_SECRET,
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email
+            }, config.JWT_SECRET,
             { expiresIn: 60 * 60 }
-          )
+          ),
+          email: user.email,
+          id: user.id,
         });
       }
       else {
