@@ -23,6 +23,7 @@ describe('Recipe controller', () => {
   describe('Recipe', () => {
     // Empty database tables
     before(async () => {
+      await models.sequelize.sync();
       await RecipeModel.destroy({ where: {}});
       await ReviewModel.destroy({ where: {}});
       testUser.user1 = await UserModel.create({

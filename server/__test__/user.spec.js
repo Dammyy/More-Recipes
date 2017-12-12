@@ -13,6 +13,7 @@ chai.use(chaiHttp);
 describe('User controller', () => {
   // Empty database tables
   before(async () => {
+    await models.sequelize.sync();
     await UserModel.destroy({ where: {}});
   });
 
