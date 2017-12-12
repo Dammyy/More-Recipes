@@ -24,8 +24,16 @@ describe('Recipe controller', () => {
     // Empty database tables
     before(async () => {
       await models.sequelize.sync();
+      await UserModel.destroy({ where: {}});
       await RecipeModel.destroy({ where: {}});
       await ReviewModel.destroy({ where: {}});
+      await UserModel.create({
+        firstName: 'Damilare',
+        lastName: 'Olatubosun',
+        email: 'damilareolatubosun@yahoo.com',
+        hashPassword: bcrypt.hashSync('password', 10),
+      });
+
       testUser.user1 = await UserModel.create({
         firstName: 'Damilare',
         lastName: 'Olatubosun',
@@ -328,7 +336,7 @@ describe('Recipe controller', () => {
         });
     });
     // Retrieve Single  recipe
-    it('Retrieving recipes should return 200', (done) => {
+    it('Retrieving recipe should return 200', (done) => {
       request
         .get(`/api/v1/recipes/${testUser.recipe1.id}`)
         .end((err, res) => {
@@ -337,7 +345,7 @@ describe('Recipe controller', () => {
         });
     });
     // Retrieve Single  recipe  - Recipe doesn't exist
-    it('Retrieving recipes should return 200', (done) => {
+    it('Retrieving recipe that does not exist should return 404', (done) => {
       request
         .get(`/api/v1/recipes/${testUser.recipe2.id}`)
         .end((err, res) => {
