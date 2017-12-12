@@ -2,11 +2,17 @@ language: node_js
 
 node_js:
   - stable
+services:
+  - postgresql
 
 install:
   - npm install
+before_script:
+  - psql -c 'drop database if exists more-recipes-test;' -U postgres
+  - psql -c 'create database travis;' -U postgres
 
 script:
   - npm test
+
 
 after_success: npm run coveralls
