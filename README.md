@@ -13,11 +13,11 @@ Not ready for release yet, still in development mode
 <h2>Getting Started</h2>
 Before installing, download and install Node.js.<br>
 Installation is done using the npm install command:
-<h3> Install<h3>
+## Install
 ```bash
 npm install 
 ```
-<h2>Features</h2>
+## Features
 ***
 + Users can view recipes
 + Users can post recipes
