@@ -62,6 +62,11 @@ class Recipe {
    * @param {res} res
    */
   static updateRecipes(req, res) {
+    if ((!req.params.recipeId.match('\\d+'))) {
+      return res.status(400).send({
+        message: 'Invalid Request',
+      });
+    }
     if (!req.params.recipeId) {
       return res.status(404);
     }
@@ -98,6 +103,11 @@ class Recipe {
    * @param {res} res
    */
   static deleteRecipes(req, res) {
+    if ((!req.params.recipeId.match('\\d+'))) {
+      return res.status(400).send({
+        message: 'Invalid Request',
+      });
+    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -124,7 +134,7 @@ class Recipe {
       })
         .catch(error => res.status(400).send(error));
     })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send({ error: error.errors[0].message || error.message }));
   }
   /**
    * @returns {Object} retrieveRecipes
@@ -132,6 +142,11 @@ class Recipe {
    * @param {res} res
    */
   static retrieveRecipes(req, res) {
+    if ((!req.params.recipeId.match('\\d+'))) {
+      return res.status(400).send({
+        message: 'Invalid Request',
+      });
+    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -180,10 +195,8 @@ class Recipe {
             upvotes: recipe.upvotes,
             downvotes: recipe.downvotes,
           })
-            .then(() => res.status(200).send(recipe))
-            .catch(error => res.status(400).send(error));
-        })
-          .catch(error => res.status(400).send(error));
+            .then(() => res.status(200).send(recipe));
+        });
       })
       .catch(error => res.status(400).send(error));
   }
@@ -232,7 +245,7 @@ class Recipe {
         }
       }).then((upvotes) => {
         if (upvotes) {
-          return res.status(404).send({
+          return res.status(400).send({
             message: 'Recipe Already Upvoted',
           });
         }
@@ -256,21 +269,17 @@ class Recipe {
                 details: recipe.details,
                 reviews: recipe.reviews,
                 upvotes: recipe.upvotes + 1,
-                downvotes: recipe.downvotes - 1,
+                downvotes: recipe.downvotes,
               })
-                .then(() => res.status(200).send(recipe))
-                .catch(error => res.status(400).send(error));
-            })
-              .catch(error => res.status(400).send(error));
-          })
-          .catch(error => res.status(400).send(error));
-      })
-        .catch(error => res.status(400).send(error));
+                .then(() => res.status(200).send(recipe));
+            });
+          });
+      });
     })
       .catch(error => res.status(400).send(error));
   }
   /**
-   * @returns {Object} postReview
+   * @returns {Object} downvote recipe
    * @param {req} req
    * @param {res} res
    */
@@ -297,7 +306,7 @@ class Recipe {
         }
       }).then((downvotes) => {
         if (downvotes) {
-          return res.status(404).send({
+          return res.status(400).send({
             message: 'Recipe Already Downvoted',
           });
         }
@@ -323,16 +332,27 @@ class Recipe {
                 upvotes: recipe.upvotes - minusOne,
                 downvotes: recipe.downvotes + 1,
               })
-                .then(() => res.status(200).send(recipe))
-                .catch(error => res.status(400).send(error));
-            })
-              .catch(error => res.status(400).send(error));
-          })
-          .catch(error => res.status(400).send(error));
-      })
-        .catch(error => res.status(400).send(error));
+                .then(() => res.status(200).send(recipe));
+            });
+          });
+      });
     })
       .catch(error => res.status(400).send(error));
+  }
+  /**
+   * @returns {Object} get most upvotes
+   * @param {req} req
+   * @param {res} res
+   */
+  static getMostUpvotes(req, res) {
+    if (req.query.sort && req.query.order) {
+      RecipeModel.Recipes.findAll({
+        group: 'id',
+        order: RecipeModel.sequelize.literal(`max(${req.query.sort}) ${req.query.order.toUpperCase()}`)
+      })
+        .then(recipes => res.status(200).send(recipes))
+        .catch(error => res.status(400).send(error));
+    }
   }
 }
 

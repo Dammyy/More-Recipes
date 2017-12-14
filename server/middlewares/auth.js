@@ -4,7 +4,7 @@ import jwtSecret from '../../config';
 
 const secret = jwtSecret.JWT_SECRET;
 /**
-   * @returns {Object} recipes
+   * @returns {Object}
    * @param {*} req
    * @param {*} res
    */
@@ -14,10 +14,9 @@ const verifyToken = (req, res, next) => {
     jwt.verify(token, secret, (err, decoded) => {
       if (err) {
         return res.status(401).send({ error: 'Token has expired. Please sign in' });
-      } else {
-        req.decoded = decoded;
-        next();
       }
+      req.decoded = decoded;
+      next();
     });
   } else {
     return res.status(401).send({ error: 'Access Denied! Login required' });

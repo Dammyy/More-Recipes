@@ -15,6 +15,7 @@ export default (app) => {
   app.post('/api/v1/recipes/:recipeId/downvote', auth, Recipes.downvoteRecipe);
   app.get('/api/v1/users/:userId/recipes', auth, users.getFavorites);
   app.post('/api/v1/recipes/:recipeId/favorites', auth, Recipes.favoriteRecipe);
+  app.get('/api/v1/recipes?sort=upvotes&order=desc', auth, Recipes.getMostUpvotes);
   app.post('/api/v1/users/signup', users.signUp);
   app.post('/api/v1/users/signin', users.signIn);
 };

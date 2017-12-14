@@ -1,4 +1,5 @@
 import chaiHttp from 'chai-http';
+import bcrypt from 'bcrypt';
 import chai from 'chai';
 import supertest from 'supertest';
 import app from '../app';
@@ -15,8 +16,13 @@ describe('User controller', () => {
   before(async () => {
     await models.sequelize.sync();
     await UserModel.destroy({ where: {}});
+    await UserModel.create({
+      firstName: 'Damilare',
+      lastName: 'Olatubosun',
+      email: 'damilare@yahoo.com',
+      hashPassword: bcrypt.hashSync('password', 10),
+    });
   });
-
   describe('User Sign up', () => {
     // Test Sign up - email not provided
     it('should return email is required if no email is provided', (done) => {
@@ -32,6 +38,74 @@ describe('User controller', () => {
           console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Email is required');
+          done();
+        });
+    });
+    // Test Sign up - email not valid
+    it('should return email invalid if invalid email is provided', (done) => {
+      request
+        .post('/api/v1/users/signup')
+        .send({
+          firstName: 'Damilare',
+          lastName: 'Olatubosun',
+          email: 'damilareolatubosun',
+          password: 'password',
+        })
+        .end((err, res) => {
+          console.log(res.body);
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal('Email Invalid');
+          done();
+        });
+    });
+    // Test Sign up - non letters characters provided as first name
+    it('should return Only alphabets allowed in first name if non letter characters are entered', (done) => {
+      request
+        .post('/api/v1/users/signup')
+        .send({
+          firstName: 'Damilare5',
+          lastName: 'Olatubosun',
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password',
+        })
+        .end((err, res) => {
+          console.log(res.body);
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal('Only alphabets allowed in first name');
+          done();
+        });
+    });
+    // Test Sign up - non letters characters provided as last name
+    it('should return Only alphabets allowed in  last name if non letter characters are entered', (done) => {
+      request
+        .post('/api/v1/users/signup')
+        .send({
+          firstName: 'Damilare',
+          lastName: 'Olatubosun5',
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password',
+        })
+        .end((err, res) => {
+          console.log(res.body);
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal('Only alphabets allowed in last name');
+          done();
+        });
+    });
+    // Test Sign up - user trying to register with an exisiting email
+    it('should return user trying to register with an exisiting email', (done) => {
+      request
+        .post('/api/v1/users/signup')
+        .send({
+          firstName: 'Damilare',
+          lastName: 'Olatubosun',
+          email: 'damilare@yahoo.com',
+          password: 'password',
+        })
+        .end((err, res) => {
+          console.log(res.body);
+          expect(res).to.have.status(404);
+          expect(res.body.message).to.equal('Email Already Exists');
           done();
         });
     });
@@ -113,12 +187,12 @@ describe('User controller', () => {
           });
       });
   });
-  // Test Sign in - email not existing
+  // Test Sign in - user not existing
   describe('Sign in test', () => {
     it('should return user not found if email does not exist', (done) => {
       request
         .post('/api/v1/users/signin')
-        .send({ email: 'email@noUser.com', password: 'no_password'})
+        .send({ email: 'email@noUser.com', password: 'no_password' })
         .end((err, res) => {
           if (!err) {
             console.log(res.body);
@@ -128,11 +202,25 @@ describe('User controller', () => {
           }
         });
     });
+    // Test Sign in - email not valid
+    it('should return email inavlid if email entered is invalid', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({ email: 'email@noUser', password: 'no_password' })
+        .end((err, res) => {
+          if (!err) {
+            console.log(res.body);
+            expect(res).to.have.status(400);
+            expect(res.body.message).to.equal('Email Invalid');
+            done();
+          }
+        });
+    });
     // Test Sign in - password dont match
     it('should return invalid password if password does not match', (done) => {
       request
         .post('/api/v1/users/signin')
-        .send({ email: 'damilareolatubosun@yahoo.com', password: 'no_password'})
+        .send({ email: 'damilareolatubosun@yahoo.com', password: 'no_password' })
         .end((err, res) => {
           console.log(res.body);
           expect(res).to.have.status(401);
@@ -156,7 +244,7 @@ describe('User controller', () => {
     it('should return email is required if no email is provided', (done) => {
       request
         .post('/api/v1/users/signin')
-        .send({ email: '', password: 'password'})
+        .send({ email: '', password: 'password' })
         .end((err, res) => {
           console.log(res.body);
           expect(res).to.have.status(400);

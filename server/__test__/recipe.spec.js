@@ -226,6 +226,32 @@ describe('Recipe controller', () => {
             });
         });
     });
+    // Test Update Recipe - recipeID passed isnt a number
+    it('Should return invalid request if recipeid passed is not a number', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .put('/api/v1/recipes/r')
+            .set('auth', auth)
+            .send({
+              title: 'Recipe',
+              details: '',
+              ingredients: '',
+            })
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.message).to.equal('Invalid Request');
+              done();
+            });
+        });
+    });
     // Test Update recipe - user trying update recipe he did not create
     it('Should return You are not authorised if user trying to update a recipe he did not create', (done) => {
       request
@@ -293,6 +319,32 @@ describe('Recipe controller', () => {
             });
         });
     });
+    // Test Delete Recipe - invalid recipeID provided
+    it('Should return invalid request recipeID is provided to be deleted', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .delete('/api/v1/recipes/r')
+            .set('auth', auth)
+            .send({
+              title: 'Recipe',
+              details: '',
+              ingredients: '',
+            })
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.message).to.equal('Invalid Request');
+              done();
+            });
+        });
+    });
     // Test Delete Recipe - User Trying to delete recipe he did not create
     it('Should return 403 if user Trying to delete recipe he did not create', (done) => {
       request
@@ -341,6 +393,16 @@ describe('Recipe controller', () => {
         .get(`/api/v1/recipes/${testUser.recipe1.id}`)
         .end((err, res) => {
           expect(res).to.have.status(200);
+          done();
+        });
+    });
+    // Test Retrieve single recipe - invalid recipeID provided
+    it('Should return invalid request if invalid recipeID is provided', (done) => {
+      request
+        .get('/api/v1/recipes/t')
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal('Invalid Request');
           done();
         });
     });
