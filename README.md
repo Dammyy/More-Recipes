@@ -10,10 +10,19 @@ More Recipe allows users to post amazing recipes online. Users can view, post, c
 The gh-pages branch contains the template UI for the More-Recipe-App
 ### App Status
 Not ready for release yet, still in development mode
-## Install Dependencies
+<h2>Getting Started</h2>
+Before installing, download and install Node.js.<br>
+Installation is done using the npm install command:
+<h3> Install<h3>
 ```bash
 npm install 
 ```
+<h2>Features</h2>
+***
++ Users can view recipes
++ Users can post recipes
++ Users can review recipes
+
 ## Run Test
 ```bash
 npm run test
