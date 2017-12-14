@@ -8,10 +8,10 @@
   "main": "app.js",
   "scripts": {
     "build": "node ./node_modules/babel-cli/bin/babel.js ./server/ -d  dist",
-    "migrate": "cross-env NODE_ENV=test ./node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "start-dev": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "start": "cross-env NODE_ENV=production npm run build && npm run migrate && node ./dist/bin/www.js",
+    "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
     "test": "cross-env NODE_ENV=test mocha server/__test__/*.spec.js --exit --require babel-register --reporter spec",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls"
   },
