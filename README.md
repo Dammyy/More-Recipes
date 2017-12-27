@@ -17,5 +17,6 @@ npm run test
 <img src="https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master"></img>
 
 ## Coveralls 
-<a href='https://coveralls.io/github/Dammyy/More-Recipes?branch=master'><img src='https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=master' alt='Coverage Status' /></a>
+<a href='https://coveralls.io/github/Dammyy/More-Recipes?branch=server-side'><img src='https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=server-side' alt='Coverage Status' /></a>
+
 
