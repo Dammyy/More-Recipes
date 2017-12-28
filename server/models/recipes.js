@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     ingredients: DataTypes.TEXT,
     details: DataTypes.TEXT,
+    image: DataTypes.TEXT,
+    reviews: DataTypes.INTEGER,
+    upvotes: DataTypes.INTEGER,
+    downvotes: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
