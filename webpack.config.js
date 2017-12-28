@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const PATHS = require('./webpack-paths');
 const loaders = require('./webpack-loaders');
 
+process.env.NODE_ENV = 'development';
 const common = {
   entry: { // The entry file is index.js in /client/src
     app: PATHS.src
