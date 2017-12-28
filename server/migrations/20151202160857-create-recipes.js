@@ -16,6 +16,9 @@ module.exports = {
       details: {
         type: Sequelize.TEXT
       },
+      image: {
+        type: Sequelize.TEXT
+      },
       reviews: {
         type: Sequelize.INTEGER
       },
@@ -49,3 +52,4 @@ module.exports = {
     return queryInterface.dropTable('recipes');
   }
 };
+
