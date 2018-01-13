@@ -24,7 +24,7 @@ export default class RecipesContainer extends Component {
   }
 
   getRecipes () {
-    fetch('http://localhost:8000/api/v1/recipes', {
+    fetch('http://localhost:3000/api/v1/recipes', {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
@@ -34,7 +34,7 @@ export default class RecipesContainer extends Component {
   }
 
   deleteRecipe (id) {
-    fetch(`htp://localhost:8000/api/v1/recipes/${id}`, {
+    fetch(`htp://localhost:3000/api/v1/recipes/${id}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
