@@ -34,7 +34,7 @@ export default class RecipesContainer extends Component {
   }
 
   deleteRecipe (id) {
-    fetch(`htp://localhost:3000/api/v1/recipes/${id}`, {
+    fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
@@ -43,7 +43,7 @@ export default class RecipesContainer extends Component {
     .then(response => response.json())
     .then(response => {
       // The game is also removed from the state thanks to the filter function
-      this.setState({ games: this.state.games.filter(game => game._id !== id) }); 
+      this.setState({ recipes: this.state.recipes.filter(recipe => recipe._id !== id) }); 
       console.log(response.message);
     });
   }
@@ -57,7 +57,7 @@ export default class RecipesContainer extends Component {
     const { recipes, selectedRecipe, searchBar } = this.state;
     return (
       <div>
-        <Modal game={selectedRecipe} />
+        <Modal recipe={selectedRecipe} />
         <RecipesListManager
           recipes={recipes}
           searchBar={searchBar}
