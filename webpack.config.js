@@ -6,7 +6,7 @@ const loaders = require('./webpack-loaders');
 process.env.NODE_ENV = 'development';
 const common = {
   entry: { // The entry file is index.js in /client/src
-    app: PATHS.src
+    app: ['babel-polyfill', PATHS.src]
   },
   output: { // The output defines where the bundle output gets created
     path: PATHS.dist,

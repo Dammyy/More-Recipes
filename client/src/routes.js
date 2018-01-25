@@ -7,6 +7,7 @@ const routes = (
   <Router history={hashHistory}>
     <Route path="/" component={Home}>
       <IndexRoute component={Welcome} />
+      <Route component={RecipesContainer} />
       <Route path="/manage" component={Mrecipes} />
     </Route>
      <Route path="/catalog" component={Archive}>

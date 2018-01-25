@@ -36,3 +36,11 @@ export default class RecipesListManager extends PureComponent {
     );
   }
 }
+
+const recipeListManager2 = ({ recipes, i, searchBar, setSearchBar, toggleModal, deleteRecipe }) => {
+  return (
+    <div>
+      {recipes}
+    </div>
+  )
+};
