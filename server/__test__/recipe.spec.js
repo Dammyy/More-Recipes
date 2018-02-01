@@ -1,4 +1,3 @@
-// /*eslint-disable*/
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import jwt from 'jsonwebtoken';
@@ -9,18 +8,16 @@ import models from '../models';
 import config from '../../config';
 
 const request = supertest.agent(app);
-
 const UserModel = models.users;
 const RecipeModel = models.recipes;
 const ReviewModel = models.reviews;
+const VotesModel = models.votes;
 
 const { expect } = chai;
 let auth = '';
 chai.use(chaiHttp);
 const testUser = {};
-
-// Test is failing because i separated the valiodators from the controler - ask Idris or Kati
-
+const fakeAuth = 'xes4u6545if567675';
 describe('Recipe controller', () => {
   describe('Recipe', () => {
     // Empty database tables
@@ -29,6 +26,7 @@ describe('Recipe controller', () => {
       await UserModel.destroy({ where: {} });
       await RecipeModel.destroy({ where: {} });
       await ReviewModel.destroy({ where: {} });
+      await VotesModel.destroy({ where: {} });
       await UserModel.create({
         firstName: 'Damilare',
         lastName: 'Olatubosun',
@@ -63,6 +61,58 @@ describe('Recipe controller', () => {
         ingredients: 'rice and water',
         userId: testUser.user1.id
       });
+      testUser.recipe3 = await RecipeModel.create({
+        title: 'Rice and beans',
+        details: 'boil for one hour.',
+        ingredients: 'rice and water',
+        userId: testUser.user1.id
+      });
+    });
+    // Test for undefined route
+    it('Undefined routes should Return 404', (done) => {
+      request
+        .post('/another/undefined/route')
+        .send({ random: 'random' })
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          done();
+        });
+    });
+    // Test protected routes
+    it('Protected routes should return please sign in if user not logged in', (done) => {
+      request
+        .post('/api/v1/recipes')
+        .send({
+          title: 'Rice and beans',
+          details: 'boil for one hour.',
+          ingredients: 'rice and water',
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(401);
+          expect(res.body.error).to.equal('Access Denied! Login required');
+          done();
+        });
+    });
+    // Test expired or invalid token
+    it('Should return  if token is invalid', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post('/api/v1/recipes')
+            .set('auth', fakeAuth)
+            .end((err, res) => {
+              expect(res.status).to.equal(401);
+              expect(res.body.error).to.equal('Token has expired. Please sign in');
+              done();
+            });
+        });
     });
     // Test Get Recipes
     it('Retrieving recipes should return 200', (done) => {
@@ -465,29 +515,127 @@ describe('Recipe controller', () => {
             });
         });
     });
-    // Test for undefined route
-    it('Undefined routes should Return 404', (done) => {
+    // Test get recipes with most upvotes
+    it('Should return recipes with most upvotes', (done) => {
       request
-        .post('/another/undefined/route')
-        .send({ random: 'random' })
-        .end((err, res) => {
-          expect(res).to.have.status(404);
-          done();
-        });
-    });
-    // tesst protected routes
-    it('Protected routes should return please sign in if user not logged in', (done) => {
-      request
-        .post('/api/v1/recipes')
+        .post('/api/v1/users/signin')
         .send({
-          title: 'Rice and beans',
-          details: 'boil for one hour.',
-          ingredients: 'rice and water',
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
         })
         .end((err, res) => {
-          expect(res).to.have.status(401);
-          expect(res.body.error).to.equal('Access Denied! Login required');
-          done();
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .get('/api/v1/recipes?sort=upvotes&order=desc')
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              done();
+            });
+        });
+    });
+    // Test upvote a recipe
+    it('Should upvote a recipe', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              done();
+            });
+        });
+    });
+    // Test upvote a recipe that has already been upvoted
+    it('Should return recipe already upvoted', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.message).to.equal('Recipe Already Upvoted');
+              done();
+            });
+        });
+    });
+    // Test downvote a recipe that was previously upvoted
+    it('Should downvote a recipe that was previously upvoted', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/false`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(201);
+              expect(res.body.message).to.equal('Recipe Downvoted');
+              done();
+            });
+        });
+    });
+    // Test downvote recipe that has already been downvoted
+    it('Should return recipe already downvoted', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/false`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.message).to.equal('Recipe Already Downvoted');
+              done();
+            });
+        });
+    });
+    // Test downvote recipe
+    it('Should downvote a recipe', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe3.id}/vote/false`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              done();
+            });
         });
     });
   });

@@ -236,7 +236,7 @@ class Recipe {
               } else {
                 if (prevVote === true && req.params.type === 'true') {
                   return res.status(400).send({
-                    message: 'Recipe Already upvoted',
+                    message: 'Recipe Already Upvoted',
                   });
                 }
                 if (prevVote === false && req.params.type === 'false') {
@@ -256,7 +256,7 @@ class Recipe {
           .then(() => {
             if (req.params.type === true) {
               return res.status(201).send({
-                message: 'Recipe upvoted',
+                message: 'Recipe Upvoted',
               });
             }
             if (req.params.type === false) {
