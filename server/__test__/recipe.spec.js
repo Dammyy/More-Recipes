@@ -19,14 +19,16 @@ let auth = '';
 chai.use(chaiHttp);
 const testUser = {};
 
+// Test is failing because i separated the valiodators from the controler - ask Idris or Kati
+
 describe('Recipe controller', () => {
   describe('Recipe', () => {
     // Empty database tables
     before(async () => {
       await models.sequelize.sync();
-      await UserModel.destroy({ where: {}});
-      await RecipeModel.destroy({ where: {}});
-      await ReviewModel.destroy({ where: {}});
+      await UserModel.destroy({ where: {} });
+      await RecipeModel.destroy({ where: {} });
+      await ReviewModel.destroy({ where: {} });
       await UserModel.create({
         firstName: 'Damilare',
         lastName: 'Olatubosun',
@@ -88,8 +90,7 @@ describe('Recipe controller', () => {
             .send({
               title: 'A new Recipe',
               details: 'Put on fire and cook',
-              ingredients: 'salt,pepper,sugar',
-              token: auth,
+              ingredients: 'salt,pepper,sugar'
             })
             .end((err, res) => {
               expect(res.status).to.equal(201);
@@ -216,8 +217,8 @@ describe('Recipe controller', () => {
             .set('auth', auth)
             .send({
               title: 'Recipe',
-              details: '',
-              ingredients: '',
+              details: 'This and that',
+              ingredients: 'All the stuff',
             })
             .end((err, res) => {
               expect(res.status).to.equal(404);
@@ -268,8 +269,8 @@ describe('Recipe controller', () => {
             .set('auth', auth)
             .send({
               title: 'Recipe',
-              details: '',
-              ingredients: '',
+              details: 'This and that',
+              ingredients: 'All the stuff',
             })
             .end((err, res) => {
               expect(res.status).to.equal(403);
