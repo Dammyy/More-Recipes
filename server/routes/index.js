@@ -11,8 +11,7 @@ export default (app) => {
   app.put('/api/v1/recipes/:recipeId', auth, Recipes.updateRecipes);
   app.delete('/api/v1/recipes/:recipeId', auth, Recipes.deleteRecipes);
   app.get('/api/v1/recipes/:recipeId', Recipes.retrieveRecipes);
-  app.post('/api/v1/recipes/:recipeId/upvote', auth, Recipes.upvoteRecipe);
-  app.post('/api/v1/recipes/:recipeId/downvote', auth, Recipes.downvoteRecipe);
+  app.post('/api/v1/recipes/:recipeId/vote/:type', auth, Recipes.voteRecipe);
   app.get('/api/v1/users/:userId/recipes', auth, users.getFavorites);
   app.post('/api/v1/recipes/:recipeId/favorites', auth, Recipes.favoriteRecipe);
   app.get('/api/v1/recipes?sort=upvotes&order=desc', auth, Recipes.getMostUpvotes);

@@ -3,9 +3,7 @@ import models from '../models/index';
 const RecipeModel = models.recipes;
 const ReviewsModel = models.reviews;
 const FavoritesModel = models.favorites;
-const UpvotesModel = models.upvotes;
-const DownvotesModel = models.downvotes;
-let minusOne = 0;
+const votesModel = models.votes;
 /**
  * @class Recipe
  */
@@ -217,128 +215,126 @@ class Recipe {
       })
       .catch(error => res.status(400).send(error));
   }
+
   /**
-   * @returns {Object} postReview
+   * @returns {Object} vote
    * @param {req} req
    * @param {res} res
    */
-  static upvoteRecipe(req, res) {
-    DownvotesModel.find({
+  static voteRecipe(req, res) {
+    votesModel.find({
       where: {
         userId: req.decoded.id,
         recipeId: req.params.recipeId
       }
-    }).then((downvotes) => {
-      if (downvotes) {
-        minusOne = 1;
-        DownvotesModel.destroy({
-          where: {
-            userId: req.decoded.id,
-            recipeId: req.params.recipeId
-          }
-        });
-      }
-      UpvotesModel.find({
-        where: {
-          userId: req.decoded.id,
-          recipeId: req.params.recipeId
-        }
-      }).then((upvotes) => {
-        if (upvotes) {
-          return res.status(400).send({
-            message: 'Recipe Already Upvoted',
-          });
-        }
-        UpvotesModel.create({
-          upvote: 1,
-          userId: req.decoded.id,
-          recipeId: req.params.recipeId,
+    }).then((votes) => {
+      if (votes) {
+        const prevVote = votes.vote;
+        votes.updateAttributes({
+          vote: req.params.type,
+          userId: votesModel.userId,
+          recipeId: votesModel.recipeId
         })
           .then(() => {
-            res.status(201).send({
-              message: 'Recipe Upvoted!',
-            });
             RecipeModel.findOne({
               where: {
                 id: req.params.recipeId
               }
             }).then((recipe) => {
-              recipe.updateAttributes({
-                title: recipe.title,
-                ingredients: recipe.ingredients,
-                details: recipe.details,
-                reviews: recipe.reviews,
-                upvotes: recipe.upvotes + 1,
-                downvotes: recipe.downvotes,
-              })
-                .then(() => res.status(200).send(recipe));
+              if (req.params.type === 'true' && prevVote === false) {
+                recipe.update({
+                  title: recipe.title,
+                  ingredients: recipe.ingredients,
+                  details: recipe.details,
+                  reviews: recipe.reviews,
+                  upvotes: recipe.upvotes + 1,
+                  downvotes: recipe.downvotes - 1,
+                })
+                  .then(() => {
+                    return res.status(201).send({
+                      message: 'Recipe upvoted',
+                    });
+                  });
+              } else if (req.params.type === 'false' && prevVote === true) {
+                recipe.update({
+                  title: recipe.title,
+                  ingredients: recipe.ingredients,
+                  details: recipe.details,
+                  reviews: recipe.reviews,
+                  upvotes: recipe.upvotes - 1,
+                  downvotes: recipe.downvotes + 1,
+                })
+                  .then(() => {
+                    return res.status(201).send({
+                      message: 'Recipe Downvoted',
+                    });
+                  });
+              } else {
+                console.log(prevVote);
+                console.log(req.params.type);
+                if (prevVote === true && req.params.type === 'true') {
+                  return res.status(400).send({
+                    message: 'Recipe Already upvoted',
+                  });
+                }
+                if (prevVote === false && req.params.type === 'false') {
+                  return res.status(400).send({
+                    message: 'Recipe Already Downvoted',
+                  });
+                }
+              }
             });
           });
-      });
-    })
-      .catch(error => res.status(400).send(error));
-  }
-  /**
-   * @returns {Object} downvote recipe
-   * @param {req} req
-   * @param {res} res
-   */
-  static downvoteRecipe(req, res) {
-    UpvotesModel.find({
-      where: {
-        userId: req.decoded.id,
-        recipeId: req.params.recipeId
-      }
-    }).then((upvotes) => {
-      if (upvotes) {
-        minusOne = 1;
-        UpvotesModel.destroy({
-          where: {
-            userId: req.decoded.id,
-            recipeId: req.params.recipeId
-          }
-        });
-      }
-      DownvotesModel.find({
-        where: {
-          userId: req.decoded.id,
-          recipeId: req.params.recipeId
-        }
-      }).then((downvotes) => {
-        if (downvotes) {
-          return res.status(400).send({
-            message: 'Recipe Already Downvoted',
-          });
-        }
-        DownvotesModel.create({
-          downvote: 1,
+      } else {
+        votesModel.create({
+          vote: req.params.type,
           userId: req.decoded.id,
           recipeId: req.params.recipeId,
         })
           .then(() => {
-            res.status(201).send({
-              message: 'Recipe Downvoted!',
-            });
+            if (req.params.type === true) {
+              return res.status(201).send({
+                message: 'Recipe upvoted',
+              });
+            }
+            if (req.params.type === false) {
+              return res.status(201).send({
+                message: 'Recipe Downvoted',
+              });
+            }
             RecipeModel.findOne({
               where: {
                 id: req.params.recipeId
               }
             }).then((recipe) => {
-              recipe.updateAttributes({
-                title: recipe.title,
-                ingredients: recipe.ingredients,
-                details: recipe.details,
-                reviews: recipe.reviews,
-                upvotes: recipe.upvotes - minusOne,
-                downvotes: recipe.downvotes + 1,
-              })
-                .then(() => res.status(200).send(recipe));
+              if (req.params.type === 'true') {
+                recipe.update({
+                  title: recipe.title,
+                  ingredients: recipe.ingredients,
+                  details: recipe.details,
+                  reviews: recipe.reviews,
+                  upvotes: recipe.upvotes + 1,
+                  downvotes: recipe.downvotes,
+                })
+                  .then(() => res.status(200).send(recipe));
+              }
+              if (req.params.type === 'false') {
+                recipe.update({
+                  title: recipe.title,
+                  ingredients: recipe.ingredients,
+                  details: recipe.details,
+                  reviews: recipe.reviews,
+                  upvotes: recipe.upvotes,
+                  downvotes: recipe.downvotes + 1,
+                })
+                  .then(() => res.status(200).send(recipe));
+              }
             });
           });
-      });
-    })
-      .catch(error => res.status(400).send(error));
+      }
+    });
   }
+
   /**
    * @returns {Object} get most upvotes
    * @param {req} req
@@ -355,5 +351,4 @@ class Recipe {
     }
   }
 }
-
 export default Recipe;
