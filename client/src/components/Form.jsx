@@ -7,27 +7,27 @@ export default class Form extends PureComponent {
       <div className="row scrollable">
     <div className="col-md-offset-2 col-md-8">
         <div className="text-left">
-        <Link to="/games" className="btn btn-info">Back</Link>
+        <Link to="/catalog" className="btn btn-info">Back</Link>
         </div>
         <div className="panel panel-default">
             <div className="panel-heading">
                 <h2 className="panel-title text-center">
-                Add a Game!
+                Add a Recipe!
                 </h2>
             </div>
             <div className="panel-body">
                 <form name="product-form" action="" onSubmit={() => this.props.submit()} noValidate>
                 <div className="form-group text-left">
-                      <label htmlFor="caption">Name</label>
-                      <input id="name" type="text" className="form-control" placeholder="Enter the title" onChange={() => this.props.setGame()} />
+                      <label htmlFor="caption">Title</label>
+                      <input id="name" type="text" className="form-control" placeholder="Enter the title" onChange={() => this.props.setRecipe()} />
                 </div>
                 <div className="form-group text-left">
-                      <label htmlFor="description">Description</label>
-                      <textarea id="description" type="text" className="form-control" placeholder="Enter the description" rows="5" onChange={() => this.props.setGame()} ></textarea>
+                      <label htmlFor="ingredients">Ingredients</label>
+                      <textarea id="description" type="text" className="form-control" placeholder="Enter the description" rows="5" onChange={() => this.props.setRecipe()} ></textarea>
                 </div>
                 <div className="form-group text-left">
                     <label htmlFor="price">Year</label>
-                    <input id="year" type="number" className="form-control" placeholder="Enter the year" onChange={() => this.props.setGame()} />
+                    <input id="year" type="number" className="form-control" placeholder="Enter the year" onChange={() => this.props.setRecipe()} />
                 </div>
                 <div className="form-group text-left">
                     <label htmlFor="picture">Picture</label>

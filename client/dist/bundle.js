@@ -3697,7 +3697,7 @@ var Recipe = function (_PureComponent) {
           title = _props.title,
           details = _props.details,
           toggleModal = _props.toggleModal,
-          deleteGame = _props.deleteGame;
+          deleteRecipe = _props.deleteRecipe;
 
       return _react2.default.createElement(
         'div',
@@ -3748,6 +3748,13 @@ var Recipe = function (_PureComponent) {
               return toggleModal(i);
             } },
           'View'
+        ),
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-danger', role: 'button', onClick: function onClick() {
+              return deleteRecipe(id);
+            } },
+          'Delete'
         )
       );
     }
@@ -3795,9 +3802,9 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Don't forget to add your API key
+// filestack API key
 
-
+filepicker.setKey("AKhWMjchRIqDoR1hKB30gz");
 // Our views are rendered inside the #content div
 _reactDom2.default.render(_routes2.default, document.getElementById('content'));
 ;
@@ -26784,12 +26791,12 @@ var Modal = function (_PureComponent) {
   _createClass(Modal, [{
     key: "render",
     value: function render() {
-      var _props$game = this.props.game,
-          id = _props$game.id,
-          title = _props$game.title,
-          details = _props$game.details,
-          year = _props$game.year,
-          picture = _props$game.picture;
+      var _props$recipe = this.props.recipe,
+          id = _props$recipe.id,
+          title = _props$recipe.title,
+          details = _props$recipe.details,
+          year = _props$recipe.year,
+          picture = _props$recipe.picture;
 
       return _react2.default.createElement(
         "div",
@@ -26919,7 +26926,7 @@ var Form = function (_PureComponent) {
                         { className: 'text-left' },
                         _react2.default.createElement(
                             _reactRouter.Link,
-                            { to: '/games', className: 'btn btn-info' },
+                            { to: '/catalog', className: 'btn btn-info' },
                             'Back'
                         )
                     ),
@@ -26932,7 +26939,7 @@ var Form = function (_PureComponent) {
                             _react2.default.createElement(
                                 'h2',
                                 { className: 'panel-title text-center' },
-                                'Add a Game!'
+                                'Add a Recipe!'
                             )
                         ),
                         _react2.default.createElement(
@@ -26949,10 +26956,10 @@ var Form = function (_PureComponent) {
                                     _react2.default.createElement(
                                         'label',
                                         { htmlFor: 'caption' },
-                                        'Name'
+                                        'Title'
                                     ),
                                     _react2.default.createElement('input', { id: 'name', type: 'text', className: 'form-control', placeholder: 'Enter the title', onChange: function onChange() {
-                                            return _this2.props.setGame();
+                                            return _this2.props.setRecipe();
                                         } })
                                 ),
                                 _react2.default.createElement(
@@ -26960,11 +26967,11 @@ var Form = function (_PureComponent) {
                                     { className: 'form-group text-left' },
                                     _react2.default.createElement(
                                         'label',
-                                        { htmlFor: 'description' },
-                                        'Description'
+                                        { htmlFor: 'ingredients' },
+                                        'Ingredients'
                                     ),
                                     _react2.default.createElement('textarea', { id: 'description', type: 'text', className: 'form-control', placeholder: 'Enter the description', rows: '5', onChange: function onChange() {
-                                            return _this2.props.setGame();
+                                            return _this2.props.setRecipe();
                                         } })
                                 ),
                                 _react2.default.createElement(
@@ -26976,7 +26983,7 @@ var Form = function (_PureComponent) {
                                         'Year'
                                     ),
                                     _react2.default.createElement('input', { id: 'year', type: 'number', className: 'form-control', placeholder: 'Enter the year', onChange: function onChange() {
-                                            return _this2.props.setGame();
+                                            return _this2.props.setRecipe();
                                         } })
                                 ),
                                 _react2.default.createElement(
@@ -27088,7 +27095,7 @@ var RecipesListManager = function (_PureComponent) {
           searchBar = _props.searchBar,
           setSearchBar = _props.setSearchBar,
           toggleModal = _props.toggleModal,
-          deleteGame = _props.deleteGame;
+          deleteRecipe = _props.deleteRecipe;
 
       return _react2.default.createElement(
         'div',
@@ -27098,8 +27105,8 @@ var RecipesListManager = function (_PureComponent) {
           { className: 'row text-left' },
           _react2.default.createElement(
             _reactRouter.Link,
-            { to: '/games/add', className: 'btn btn-danger' },
-            'Add a new Game!'
+            { to: '/catalog/add', className: 'btn btn-danger' },
+            'Add a new Recipe!'
           )
         ),
         _react2.default.createElement(
@@ -27112,13 +27119,13 @@ var RecipesListManager = function (_PureComponent) {
           'div',
           { className: 'row' },
           recipes.filter(function (recipe) {
-            return recipe.title;
+            return recipe.title.toLowerCase().includes(searchBar);
           }).map(function (recipe, i) {
             return _react2.default.createElement(_Recipe2.default, _extends({}, recipe, {
               key: recipe.id,
               i: i,
               toggleModal: toggleModal,
-              deleteGame: deleteGame
+              deleteRecipe: deleteRecipe
             }));
           })
         ),
@@ -27219,31 +27226,31 @@ var AddRecipeContainer = function (_Component) {
     // Initial state
     var _this = _possibleConstructorReturn(this, (AddRecipeContainer.__proto__ || Object.getPrototypeOf(AddRecipeContainer)).call(this, props));
 
-    _this.state = { newGame: {} };
+    _this.state = { newRecipe: {} };
     // Bind this (context) to the functions to be passed down to the children components
     _this.submit = _this.submit.bind(_this);
     _this.uploadPicture = _this.uploadPicture.bind(_this);
-    _this.setGame = _this.setGame.bind(_this);
+    _this.setRecipe = _this.setRecipe.bind(_this);
     return _this;
   }
 
   _createClass(AddRecipeContainer, [{
     key: 'submit',
     value: function submit() {
-      // We create the newGame object to be posted to the server
-      var newGame = Object.assign({}, { picture: $('#picture').attr('src') }, this.state.newGame);
-      fetch('http://localhost:8080/games', {
+      // We create the newRecipe object to be posted to the server
+      var newRecipe = Object.assign({}, { picture: $('#picture').attr('src') }, this.state.newRecipe);
+      fetch('http://localhost:3000/api/v1/recipes', {
         headers: new Headers({
           'Content-Type': 'application/json'
         }),
         method: 'POST',
-        body: JSON.stringify(newGame)
+        body: JSON.stringify(newRecipe)
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
         console.log(data.message);
-        // We go back to the games list view
-        _reactRouter.hashHistory.push('/games');
+        // We go back to the Recipes list view
+        _reactRouter.hashHistory.push('/catalog');
       });
     }
   }, {
@@ -27264,20 +27271,20 @@ var AddRecipeContainer = function (_Component) {
     // We make sure to keep the state up-to-date to the latest input values
 
   }, {
-    key: 'setGame',
-    value: function setGame() {
-      var newGame = {
-        name: document.getElementById('name').value,
-        description: document.getElementById('description').value,
-        year: document.getElementById('year').value,
-        picture: $('#picture').attr('src')
+    key: 'setRecipe',
+    value: function setRecipe() {
+      var newRecipe = {
+        title: document.getElementById('title').value,
+        ingredients: document.getElementById('ingredients').value,
+        details: document.getElementById('details').value,
+        image: $('#picture').attr('src')
       };
-      this.setState({ newGame: newGame });
+      this.setState({ newRecipe: newRecipe });
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_components.Form, { submit: this.submit, uploadPicture: this.uploadPicture, setGame: this.setGame });
+      return _react2.default.createElement(_components.Form, { submit: this.submit, uploadPicture: this.uploadPicture, setRecipe: this.setRecipe });
     }
   }]);
 
@@ -27379,7 +27386,7 @@ var RecipesContainer = function (_Component) {
     value: function deleteRecipe(id) {
       var _this3 = this;
 
-      fetch('htp://localhost:3000/api/v1/recipes/' + id, {
+      fetch('http://localhost:3000/api/v1/recipes/' + id, {
         headers: new Headers({
           'Content-Type': 'application/json'
         }),
@@ -27388,8 +27395,8 @@ var RecipesContainer = function (_Component) {
         return response.json();
       }).then(function (response) {
         // The game is also removed from the state thanks to the filter function
-        _this3.setState({ games: _this3.state.games.filter(function (game) {
-            return game._id !== id;
+        _this3.setState({ recipes: _this3.state.recipes.filter(function (recipe) {
+            return recipe._id !== id;
           }) });
         console.log(response.message);
       });
@@ -27411,7 +27418,7 @@ var RecipesContainer = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_components.Modal, { game: selectedRecipe }),
+        _react2.default.createElement(_components.Modal, { recipe: selectedRecipe }),
         _react2.default.createElement(_components.RecipesListManager, {
           recipes: recipes,
           searchBar: searchBar,

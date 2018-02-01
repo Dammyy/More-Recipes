@@ -4,11 +4,11 @@ import Recipe from './Recipe';
 
 export default class RecipesListManager extends PureComponent {
   render () {
-    const { recipes, i, searchBar, setSearchBar, toggleModal, deleteGame } = this.props;
+    const { recipes, i, searchBar, setSearchBar, toggleModal, deleteRecipe } = this.props;
     return (
       <div className="container scrollable">
         <div className="row text-left">
-          <Link to="/games/add" className="btn btn-danger">Add a new Game!</Link>
+          <Link to="/catalog/add" className="btn btn-danger">Add a new Recipe!</Link>
         </div>
         <div className="row">
           <input
@@ -17,14 +17,14 @@ export default class RecipesListManager extends PureComponent {
         <div className="row">
         {
           recipes
-            .filter(recipe => recipe.title)
+            .filter(recipe => recipe.title.toLowerCase().includes(searchBar))
             .map((recipe, i) => {
               return (
                 <Recipe  {...recipe}
                   key={recipe.id}
                   i={i}
                   toggleModal={toggleModal}
-                  deleteGame={deleteGame}
+                  deleteRecipe={deleteRecipe}
                 />
               );
             })
@@ -36,3 +36,11 @@ export default class RecipesListManager extends PureComponent {
     );
   }
 }
+
+const recipeListManager2 = ({ recipes, i, searchBar, setSearchBar, toggleModal, deleteRecipe }) => {
+  return (
+    <div>
+      {recipes}
+    </div>
+  )
+};

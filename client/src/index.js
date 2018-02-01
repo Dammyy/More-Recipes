@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import '../dist/css/style.css';
 import Routes from './routes';
 
-// Don't forget to add your API key
+// filestack API key
 
-
+filepicker.setKey("AKhWMjchRIqDoR1hKB30gz");
 // Our views are rendered inside the #content div
 ReactDOM.render(
   Routes,
