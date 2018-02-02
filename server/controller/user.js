@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken';
 
-import isEmail from 'validator/lib/isEmail';
-
 import bcrypt from 'bcrypt';
 
 import models from '../models/index';
@@ -23,41 +21,6 @@ class User {
  * @param {param} res
  */
   static signUp(req, res) {
-    if (!req.body.email) {
-      return res.status(400).send({
-        message: 'Email is required',
-      });
-    }
-    if (!isEmail(req.body.email)) {
-      return res.status(400).send({
-        message: 'Email Invalid',
-      });
-    }
-    if (!req.body.password) {
-      return res.status(400).send({
-        message: 'Password is required',
-      });
-    }
-    if (!req.body.firstName) {
-      return res.status(400).send({
-        message: 'First name is required',
-      });
-    }
-    if (!req.body.firstName.match('[a-zA-Z]+$')) {
-      return res.status(400).send({
-        message: 'Only alphabets allowed in first name',
-      });
-    }
-    if (!req.body.lastName) {
-      return res.status(400).send({
-        message: 'Last name is required',
-      });
-    }
-    if (!req.body.lastName.match('[a-zA-Z]+$')) {
-      return res.status(400).send({
-        message: 'Only alphabets allowed in last name',
-      });
-    }
     usersModel.findOne({
       where: {
         email: req.body.email
@@ -86,21 +49,6 @@ class User {
    * @param {param} res
    */
   static signIn(req, res) {
-    if (!req.body.email) {
-      return res.status(400).send({
-        message: 'Email is required',
-      });
-    }
-    if (!isEmail(req.body.email)) {
-      return res.status(400).send({
-        message: 'Email Invalid',
-      });
-    }
-    if (!req.body.password) {
-      return res.status(400).send({
-        message: 'Password is required',
-      });
-    }
     usersModel.findOne({
       where: {
         email: req.body.email

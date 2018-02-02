@@ -18,32 +18,17 @@ class Recipe {
       .then(recipe => res.status(200).send(recipe))
       .catch(error => res.status(400).send(error));
   }
-
   /**
    * @returns {Object} createRecipe
    * @param {req} req
    * @param {res} res
    */
   static createRecipes(req, res) {
-    if (!req.body.title) {
-      return res.status(400).send({
-        message: 'Title is required',
-      });
-    }
-    if (!req.body.details) {
-      return res.status(400).send({
-        message: 'Details is required',
-      });
-    }
-    if (!req.body.ingredients) {
-      return res.status(400).send({
-        message: 'Ingredients is required',
-      });
-    }
     RecipeModel.create({
       title: req.body.title,
       details: req.body.details,
       ingredients: req.body.ingredients,
+      image: req.body.image,
       reviews: 0,
       upvotes: 0,
       downvotes: 0,
@@ -60,14 +45,6 @@ class Recipe {
    * @param {res} res
    */
   static updateRecipes(req, res) {
-    if ((!req.params.recipeId.match('\\d+'))) {
-      return res.status(400).send({
-        message: 'Invalid Request',
-      });
-    }
-    if (!req.params.recipeId) {
-      return res.status(404);
-    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -78,17 +55,19 @@ class Recipe {
           message: 'Recipe Not Found',
         });
       }
-
       if (req.decoded.id !== recipe.userId) {
         return res.status(403).send({
           message: 'You are not authorised to edit this recipe',
         });
       }
-
       recipe.updateAttributes({
         title: req.body.title || recipe.title,
         ingredients: req.body.ingredients || recipe.ingredients,
         details: req.body.details || recipe.details,
+        image: req.body.image || recipe.image,
+        reviews: recipe.reviews,
+        upvotes: recipe.upvotes,
+        downvotes: recipe.downvotes,
       })
         .then(() => res.status(200).send(recipe))
         .catch(error => res.status(400).send(error));
@@ -101,11 +80,6 @@ class Recipe {
    * @param {res} res
    */
   static deleteRecipes(req, res) {
-    if ((!req.params.recipeId.match('\\d+'))) {
-      return res.status(400).send({
-        message: 'Invalid Request',
-      });
-    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -132,7 +106,7 @@ class Recipe {
       })
         .catch(error => res.status(400).send(error));
     })
-      .catch(error => res.status(400).send({ error: error.errors[0].message || error.message }));
+      .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} retrieveRecipes
@@ -140,11 +114,6 @@ class Recipe {
    * @param {res} res
    */
   static retrieveRecipes(req, res) {
-    if ((!req.params.recipeId.match('\\d+'))) {
-      return res.status(400).send({
-        message: 'Invalid Request',
-      });
-    }
     RecipeModel.findOne({
       where: {
         id: req.params.recipeId
@@ -157,7 +126,7 @@ class Recipe {
       }
       return res.status(200).send(recipe);
     })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(404).send(error));
   }
 
   /**
@@ -166,11 +135,6 @@ class Recipe {
    * @param {res} res
    */
   static postReview(req, res) {
-    if (!req.body.review) {
-      return res.status(400).send({
-        message: 'Review cannot be empty',
-      });
-    }
     ReviewsModel.create({
       review: req.body.review,
       userId: req.decoded.id,
@@ -270,11 +234,9 @@ class Recipe {
                     });
                   });
               } else {
-                console.log(prevVote);
-                console.log(req.params.type);
                 if (prevVote === true && req.params.type === 'true') {
                   return res.status(400).send({
-                    message: 'Recipe Already upvoted',
+                    message: 'Recipe Already Upvoted',
                   });
                 }
                 if (prevVote === false && req.params.type === 'false') {
@@ -294,7 +256,7 @@ class Recipe {
           .then(() => {
             if (req.params.type === true) {
               return res.status(201).send({
-                message: 'Recipe upvoted',
+                message: 'Recipe Upvoted',
               });
             }
             if (req.params.type === false) {
@@ -308,25 +270,11 @@ class Recipe {
               }
             }).then((recipe) => {
               if (req.params.type === 'true') {
-                recipe.update({
-                  title: recipe.title,
-                  ingredients: recipe.ingredients,
-                  details: recipe.details,
-                  reviews: recipe.reviews,
-                  upvotes: recipe.upvotes + 1,
-                  downvotes: recipe.downvotes,
-                })
+                recipe.increment('upvotes')
                   .then(() => res.status(200).send(recipe));
               }
               if (req.params.type === 'false') {
-                recipe.update({
-                  title: recipe.title,
-                  ingredients: recipe.ingredients,
-                  details: recipe.details,
-                  reviews: recipe.reviews,
-                  upvotes: recipe.upvotes,
-                  downvotes: recipe.downvotes + 1,
-                })
+                recipe.increment('downvotes')
                   .then(() => res.status(200).send(recipe));
               }
             });

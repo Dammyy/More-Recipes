@@ -15,7 +15,7 @@ describe('User controller', () => {
   // Empty database tables
   before(async () => {
     await models.sequelize.sync();
-    await UserModel.destroy({ where: {}});
+    await UserModel.destroy({ where: {} });
     await UserModel.create({
       firstName: 'Damilare',
       lastName: 'Olatubosun',
