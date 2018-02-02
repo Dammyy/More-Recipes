@@ -1,7 +1,7 @@
 # <h1>More Recipes App</h1>
 <div class="badges">
-<img src="https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master"></img>
-<a href='https://coveralls.io/github/Dammyy/More-Recipes?branch=server-side'><img src='https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=server-side' alt='Coverage Status' /></a>
+<img src="https://travis-ci.org/Dammyy/More-Recipes.svg?branch=develop"></img>
+<a href='https://coveralls.io/github/Dammyy/More-Recipes?branch=develop'><img src='https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=develop' alt='Coverage Status' /></a>
 <a href="https://codeclimate.com/github/Dammyy/More-Recipes/maintainability"><img src="https://api.codeclimate.com/v1/badges/37905cc8d0d99859c45a/maintainability" /></a>
 </div>
 
