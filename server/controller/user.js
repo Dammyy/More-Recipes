@@ -1,13 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-import isEmail from 'validator/lib/isEmail';
-
 import bcrypt from 'bcrypt';
 
 import models from '../models/index';
 
 import config from '../../config';
-
 
 const saltRounds = 10;
 const usersModel = models.users;
@@ -23,62 +20,14 @@ class User {
  * @param {param} res
  */
   static signUp(req, res) {
-    if (!req.body.email) {
-      return res.status(400).send({
-        message: 'Email is required',
-      });
-    }
-    if (!isEmail(req.body.email)) {
-      return res.status(400).send({
-        message: 'Email Invalid',
-      });
-    }
-    if (!req.body.password) {
-      return res.status(400).send({
-        message: 'Password is required',
-      });
-    }
-    if (!req.body.firstName) {
-      return res.status(400).send({
-        message: 'First name is required',
-      });
-    }
-    if (!req.body.firstName.match('[a-zA-Z]+$')) {
-      return res.status(400).send({
-        message: 'Only alphabets allowed in first name',
-      });
-    }
-    if (!req.body.lastName) {
-      return res.status(400).send({
-        message: 'Last name is required',
-      });
-    }
-    if (!req.body.lastName.match('[a-zA-Z]+$')) {
-      return res.status(400).send({
-        message: 'Only alphabets allowed in last name',
-      });
-    }
-    usersModel.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then((user) => {
-      if (user) {
-        return res.status(404).send({
-          message: 'Email Already Exists',
-        });
-      }
-      usersModel.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        hashPassword: bcrypt.hashSync(req.body.password, saltRounds),
-      })
-        .then(res.status(201).send({
-          message: 'Registration Successful',
-        }))
-        .catch(error => res.status(400).send(error));
-    });
+    usersModel.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      hashPassword: bcrypt.hashSync(req.body.password, saltRounds),
+    })
+      .then(res.status(201).send('successful'))
+      .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} signIn
@@ -87,19 +36,10 @@ class User {
    */
   static signIn(req, res) {
     if (!req.body.email) {
-      return res.status(400).send({
-        message: 'Email is required',
-      });
-    }
-    if (!isEmail(req.body.email)) {
-      return res.status(400).send({
-        message: 'Email Invalid',
-      });
+      res.status(400).send('Email is required');
     }
     if (!req.body.password) {
-      return res.status(400).send({
-        message: 'Password is required',
-      });
+      res.status(400).send('Password is required');
     }
     usersModel.findOne({
       where: {
@@ -116,21 +56,13 @@ class User {
         res.json({
           jwt: jwt.sign(
             {
-              id: user.id,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email
-            }, config.JWT_SECRET,
+              id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email }, config.JWT_SECRET,
             { expiresIn: 60 * 60 }
-          ),
-          email: user.email,
-          id: user.id,
+          )
         });
       }
       else {
-        res.status(401).send({
-          message: 'Invalid Password',
-        });
+        res.status(401).send('Invalid Password');
       }
     })
       .catch(error => res.status(401).send(error));

@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "andela",
+    "username": "root",
+    "password": "rootpass",
    "database": "More-Recipes",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "andela",
-    "database": "travis",
+    "username": "root",
+    "password": "rootpass",
+    "database": "More-Recipes-dev",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
