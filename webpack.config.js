@@ -16,7 +16,7 @@ const common = {
   module: {
     rules: [
       loaders.babel, // Transpiler
-      loaders.css, // Our bundle will contain the css 
+      loaders.css, // Our bundle will contain the css
       loaders.font, // Load fonts
     ]
   },

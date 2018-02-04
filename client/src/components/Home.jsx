@@ -1,4 +1,4 @@
- import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 
 export default class Home extends PureComponent {
@@ -10,7 +10,7 @@ export default class Home extends PureComponent {
   }
   render () {
     return (
- <div>
+<div>
         <nav className="navbar navbar-toggleable-md navbar-expand-md navbar-light bg-faded">
           <div className="header-logo">
             <a className="navbar-brand" href="index.html">
@@ -30,10 +30,10 @@ export default class Home extends PureComponent {
                     <a className="nav-link" href="fav.html">Favorites</a>
                   </li>
                   <li className="nav-item" className={this.active('/manage')}>
-                   <Link to="/manage">Manage recipes</Link>
+                    <Link to="/manage">Manage recipes</Link>
                   </li>
                   <li className="nav-item" className={this.active('/catalog')}>
-                   <Link to="/catalog">Catalog</Link>
+                    <Link to="/catalog">Catalog</Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="profile.html">Profile</a>
@@ -48,7 +48,7 @@ export default class Home extends PureComponent {
 				
               </div>
             </b></b></nav><b><b>
-           {this.props.children}
+              {this.props.children}
             <footer className="footer">
               <div className="container">
                 <div className="row">
