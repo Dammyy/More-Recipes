@@ -5,15 +5,12 @@ import { Form } from '../components';
 export default class AddRecipeContainer extends Component {
   constructor (props) {
     super(props);
-    // Initial state
     this.state = { newRecipe: {}};
-    // Bind this (context) to the functions to be passed down to the children components
     this.submit = this.submit.bind(this);
     this.uploadPicture = this.uploadPicture.bind(this);
     this.setRecipe = this.setRecipe.bind(this);
   }
   submit () {
-    // We create the newRecipe object to be posted to the server
     const newRecipe = Object.assign({}, { picture: $('#picture').attr('src') }, this.state.newRecipe);
     fetch('http://localhost:3000/api/v1/recipes', {
       headers: new Headers({
@@ -25,17 +22,16 @@ export default class AddRecipeContainer extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data.message);
-      // We go back to the Recipes list view
       hashHistory.push('/catalog');
     });
   }
   uploadPicture () {
     filepicker.pick (
       {
-        mimetype: 'image/*', // Cannot upload other files but images
+        mimetype: 'image/*',
         container: 'modal',
         services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'URL', 'IMGUR', 'PICASA'],
-        openTo: 'COMPUTER' // First choice to upload files from
+        openTo: 'COMPUTER' 
       },
       function (Blob) {
         console.log(JSON.stringify(Blob));
@@ -46,7 +42,6 @@ export default class AddRecipeContainer extends Component {
       }
     );
   }
-  // We make sure to keep the state up-to-date to the latest input values
   setRecipe () {
     const newRecipe = {
       title: document.getElementById('title').value,

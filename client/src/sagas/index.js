@@ -1,13 +1,14 @@
-// Import the watcher we have just created
 import {
   watchGetRecipes
 } from './recipes';
+
+import { watchLoginUser } from './auth';
 /**
-   * @returns {Object} fetch recipes
+   * @returns {Object} root saga
    */
 export default function* rootSaga() {
-// We start all the sagas in parallel
   yield [
-    watchGetRecipes()
+    watchGetRecipes(),
+    watchLoginUser()
   ];
 }

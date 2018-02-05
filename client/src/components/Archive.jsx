@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 export default class Home extends PureComponent {
   active (path) {
-    // Returns active when the path is equal to the current location
     if (this.props.location.pathname === path) {
       return 'active';
     }
@@ -30,10 +29,10 @@ export default class Home extends PureComponent {
                     <a className="nav-link" href="fav.html">Favorites</a>
                   </li>
                   <li className="nav-item" className={this.active('/manage')}>
-                    <Link to="/manage">Manage recipes</Link>
+                    <Link to="/manage" className="nav-link">Manage recipes</Link>
                   </li>
                   <li className="nav-item" className={this.active('/catalog')}>
-                    <Link to="/catalog">Catalog</Link>
+                    <Link to="/catalog" className="nav-link">Catalog</Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="profile.html">Profile</a>

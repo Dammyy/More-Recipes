@@ -1,9 +1,14 @@
-// Import the combineReducers function
+import { reducer as toastr } from 'react-redux-toastr';
 import { combineReducers } from 'redux-immutable';
-// Import our reducers function from here
+import { reducer as form } from 'redux-form/immutable';
 import recipes from './recipes';
+import auth from './auth';
+import routing from './routing';
 
-// combineReducers merges them all!
 export default combineReducers({
-  recipes
+  recipes,
+  routing,
+  form,
+  auth,
+  toastr
 });

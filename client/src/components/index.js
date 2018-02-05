@@ -6,6 +6,7 @@ import Modal from './Modal.jsx';
 import Form from './Form.jsx';
 import Recipe from './Recipe.jsx';
 import RecipesListManager from './RecipesListManager.jsx';
-// We export all the components at once
+import Login from './Login';
+
 export { Home, Welcome, Mrecipes, Form, Recipe,
-  RecipesListManager, Archive, Modal };
+  RecipesListManager, Archive, Modal, Login };
