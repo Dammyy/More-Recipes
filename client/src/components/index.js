@@ -1,12 +1,11 @@
-import Home from './Home.jsx';
-import Welcome from './Welcome.jsx';
-import Mrecipes from './Manage.jsx';
-import Archive from './Archive.jsx';
-import Modal from './Modal.jsx';
-import Form from './Form.jsx';
-import Recipe from './Recipe.jsx';
-import RecipesListManager from './RecipesListManager.jsx';
+import Home from './Home';
+import Welcome from './Welcome';
+import Archive from './Archive';
+import Modal from './RecipeModal';
+import Form from './AddRecipeForm';
+import Recipe from './Recipe';
+import RecipesList from './RecipesList';
 import Login from './Login';
 
-export { Home, Welcome, Mrecipes, Form, Recipe,
-  RecipesListManager, Archive, Modal, Login };
+export { Home, Welcome, Form, Recipe,
+  RecipesList, Archive, Modal, Login };

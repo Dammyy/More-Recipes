@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
-import { Modal, RecipesListManager } from '../components';
+import PropTypes from 'prop-types';
+import RecipeModal from '../components/RecipeModal';
+import RecipesList from '../components/RecipesList';
 import * as recipesActionCreators from '../actions/recipes';
 
-class RecipesContainer extends Component {
-  constructor (props) {
+/**
+ *
+ *
+ * @class Recipes
+ * @extends {Component}
+ */
+class Recipes extends Component {
+  /**
+   * Creates an instance of Recipes.
+   * @param {any} props
+   *
+   * @memberOf Recipes
+   */
+  constructor(props) {
     super();
     this.state = { selectedRecipe: {}, searchBar: '' };
     this.toggleModal = this.toggleModal.bind(this);
@@ -14,44 +28,50 @@ class RecipesContainer extends Component {
     this.setSearchBar = this.setSearchBar.bind(this);
   }
 
-  componentDidMount () {
+  /**
+   * 
+   * 
+   * 
+   * @memberOf Recipes
+   */
+  componentDidMount() {
     this.getRecipes();
   }
 
-  toggleModal (index) {
+  toggleModal(index) {
     this.setState({ selectedRecipe: this.state.recipes[index] });
     $('#recipe-modal').modal();
   }
-  getRecipes () {
+  getRecipes() {
     this.props.recipesActions.getRecipes();
   }
 
-  deleteRecipe (id) {
+  deleteRecipe(id) {
     fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
       method: 'DELETE',
     })
-    .then(response => response.json())
-    .then(response => {
-    this.setState({ recipes: this.state.recipes.filter(recipe => recipe.id !== id) });
-    console.log(response.message);
-    });
+      .then(response => response.json())
+      .then((response) => {
+        this.setState({ recipes: this.state.recipes.filter(recipe => recipe.id !== id) });
+        console.log(response.message);
+      });
   }
 
-  setSearchBar (event) {
+  setSearchBar(event) {
     this.setState({ searchBar: event.target.value.toLowerCase() });
   }
 
-  render () {
+  render() {
     const { selectedRecipe, searchBar } = this.state;
-    const { recipes  } = this.props;
+    const { recipes } = this.props;
     console.log(recipes);
     return (
       <div>
-        <Modal recipe={selectedRecipe} />
-        <RecipesListManager
+        <RecipeModal recipe={selectedRecipe} />
+        <RecipesList
           recipes={recipes}
           searchBar={searchBar}
           setSearchBar={this.setSearchBar}
@@ -63,15 +83,19 @@ class RecipesContainer extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  return { 
+function mapStateToProps(state) {
+  return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
-  }
+  };
 }
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);
+Recipes.propTypes = {
+  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

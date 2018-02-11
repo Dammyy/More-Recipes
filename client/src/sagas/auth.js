@@ -41,7 +41,6 @@ const sendCredentials = (route, credentials) => {
    * @returns {*} res
    */
 function* loginUser(action) {
-  console.log(action);
   const { redirection } = action;
   try {
     const credentials = yield select(getForm, 'login');

@@ -1,41 +1,40 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import configureStore from './store';
-import { Router, Route, hashHistory, IndexRoute} from 'react-router';
-import { Home, Welcome, Mrecipes, Archive, Login } from './components';
-import { AddRecipeContainer, RecipesContainer } from './containers';
 import { syncHistoryWithStore } from 'react-router-redux';
 import ReduxToastr from 'react-redux-toastr';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Provider } from 'react-redux';
+import configureStore from './store';
+import Home from './components/Home';
+import Welcome from './components/Welcome';
+import Archive from './components/Archive';
+import Login from './components/Login';
+import { AddRecipe, Recipes } from './containers';
 
 const store = configureStore();
 
 const history = syncHistoryWithStore(hashHistory, store, {
-  selectLocationState (state) {
+  selectLocationState(state) {
     return state.get('routing').toObject();
   }
 });
 
 const routes = (
   <Provider store={store}>
-  <div className="wrapper">
-    <Router history={hashHistory}>
-      <Route path="/" component={Home}>
-        <IndexRoute component={Welcome} />
-      <Route component={RecipesContainer} />
-      <Route path="/manage" component={Mrecipes} />
-    </Route>
-    <Route path="/catalog" component={Archive}>
-      <IndexRoute component={RecipesContainer} />
-      <Route path="add" component={AddRecipeContainer} />
-    </Route>
-    <Route component={Home}>
-        <Route path="/login" component={Login} />
-      </Route>
-    </Router>
-    <ReduxToastr
+    <div className="wrapper">
+      <Router history={hashHistory}>
+        <Route path="/" component={Home}>
+          <IndexRoute component={Welcome} />
+          <Route path="/login" component={Login} />
+        </Route>
+        <Route path="/catalog" component={Archive}>
+          <IndexRoute component={Recipes} />
+          <Route path="add" component={AddRecipe} />
+        </Route>
+      </Router>
+      <ReduxToastr
         timeOut={2000}
         newestOnTop={false}
-        preventDuplicates={true}
+        preventDuplicates
         position="top-right"
         transitionIn="fadeIn"
         transitionOut="fadeOut"

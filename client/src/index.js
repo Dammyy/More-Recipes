@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import '../dist/css/style.css';
 import Routes from './routes';

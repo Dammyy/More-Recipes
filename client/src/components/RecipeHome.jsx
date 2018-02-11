@@ -6,20 +6,20 @@ import PropTypes from 'prop-types';
  *
  *
  * @export
- * @class Recipe
+ * @class RecipeHome
  * @extends {PureComponent}
  */
-class Recipe extends PureComponent {
+class RecipeHome extends PureComponent {
   /**
    *
    *
    * @returns {void}
    *
-   * @memberOf Recipe
+   * @memberOf RecipeHome
    */
   render() {
     const {
-      id, i, title, toggleModal, deleteRecipe
+      i, title, toggleModal
     } = this.props;
     return (
       <div className="col-md-4 recipe-display">
@@ -37,12 +37,6 @@ class Recipe extends PureComponent {
               </i>
             </li>
           </div>
-          <button
-            className="btn btn-danger btn-del"
-            onClick={() => deleteRecipe(id)}
-          >
-          Delete
-          </button>
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
         <button
@@ -55,12 +49,9 @@ class Recipe extends PureComponent {
     );
   }
 }
-Recipe.propTypes = {
-  id: PropTypes.number.isRequired,
+RecipeHome.propTypes = {
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  toggleModal: PropTypes.number.isRequired,
-  deleteRecipe: PropTypes.number.isRequired
-
+  toggleModal: PropTypes.func.isRequired,
 };
-export default Recipe;
+export default RecipeHome;
