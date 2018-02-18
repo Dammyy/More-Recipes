@@ -1,7 +1,22 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import UserIsAuthenticated from '../utils/authWrapper';
 
+const options = {
+  authSelector: state => state.get('auth'),
+  predicate: auth => auth.get('Authenticated'),
+  wrapperDisplayName: 'authDeleteRecipe',
+  FailureComponent: null
+};
+
+const BtnDelete = UserIsAuthenticated(options)(props => (
+  <button
+    className="btn btn-danger btn-del"
+    onClick={() => props.deleteRecipe(props.id)}
+  >
+  Delete
+  </button>));
 /**
  *
  *
@@ -37,12 +52,7 @@ class Recipe extends PureComponent {
               </i>
             </li>
           </div>
-          <button
-            className="btn btn-danger btn-del"
-            onClick={() => deleteRecipe(id)}
-          >
-          Delete
-          </button>
+          <BtnDelete deleteRecipe={deleteRecipe} id={id} />
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
         <button

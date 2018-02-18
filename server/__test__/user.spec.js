@@ -33,9 +33,9 @@ describe('User controller', () => {
           lastName: 'Olatubosun',
           email: '',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Email is required');
           done();
@@ -50,16 +50,16 @@ describe('User controller', () => {
           lastName: 'Olatubosun',
           email: 'damilareolatubosun',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Email Invalid');
           done();
         });
     });
     // Test Sign up - non letters characters provided as first name
-    it('should return Only alphabets allowed in first name if non letter characters are entered', (done) => {
+    it('should return Only alphabets allowed in first name', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -67,16 +67,17 @@ describe('User controller', () => {
           lastName: 'Olatubosun',
           email: 'damilareolatubosun@yahoo.com',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
-          expect(res.body.message).to.equal('Only alphabets allowed in first name');
+          expect(res.body.message)
+            .to.equal('Only alphabets allowed in first name');
           done();
         });
     });
     // Test Sign up - non letters characters provided as last name
-    it('should return Only alphabets allowed in  last name if non letter characters are entered', (done) => {
+    it('should return Only alphabets allowed in last name', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -84,16 +85,17 @@ describe('User controller', () => {
           lastName: 'Olatubosun5',
           email: 'damilareolatubosun@yahoo.com',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
-          expect(res.body.message).to.equal('Only alphabets allowed in last name');
+          expect(res.body.message)
+            .to.equal('Only alphabets allowed in last name');
           done();
         });
     });
     // Test Sign up - user trying to register with an exisiting email
-    it('should return user trying to register with an exisiting email', (done) => {
+    it('should return Email Already Exists', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -101,16 +103,16 @@ describe('User controller', () => {
           lastName: 'Olatubosun',
           email: 'damilare@yahoo.com',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
-          expect(res).to.have.status(404);
+          expect(res).to.have.status(409);
           expect(res.body.message).to.equal('Email Already Exists');
           done();
         });
     });
     // Test Sign up - password not provided
-    it('should return password is required if no password is provided', (done) => {
+    it('should return password is required', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -120,14 +122,13 @@ describe('User controller', () => {
           password: '',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Password is required');
           done();
         });
     });
     // Test Sign up - first name not provided
-    it('should return first name is required if no first name is provided', (done) => {
+    it('should return first name is required', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -135,16 +136,16 @@ describe('User controller', () => {
           lastName: 'Olatubosun',
           email: 'damilareolatubosun@yahoo.com',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('First name is required');
           done();
         });
     });
     // Test Sign up - last name not provided
-    it('should return last name is required if no last name is provided', (done) => {
+    it('should return last name is required', (done) => {
       request
         .post('/api/v1/users/signup')
         .send({
@@ -152,15 +153,33 @@ describe('User controller', () => {
           lastName: '',
           email: 'damilareolatubosun@yahoo.com',
           password: 'password',
+          password2: 'password',
         })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Last name is required');
           done();
         });
     });
+    // Test Sign up - suopplied passwords do not match
+    it('should return passwords do not match', (done) => {
+      request
+        .post('/api/v1/users/signup')
+        .send({
+          firstName: 'Damilare',
+          lastName: 'Olatubosun',
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password',
+          password2: 'passwor',
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal('Passwords do not match');
+          done();
+        });
+    });
   });
+
   // Test Sign in
   it('Should sign in a user', (done) => {
     request
@@ -169,7 +188,8 @@ describe('User controller', () => {
         firstName: 'Damilare',
         lastName: 'Olatubosun',
         email: 'damilareolatubosun@yahoo.com',
-        password: 'password'
+        password: 'password',
+        password2: 'password',
       })
       .end((err, res) => {
         expect(res.status).to.equal(201);
@@ -182,7 +202,7 @@ describe('User controller', () => {
           })
           .end((err, res) => {
             expect(res).to.have.status(200);
-            expect(res.body.jwt).to.not.be.undefined;
+            expect(res.body.message).to.equal('Login Successful');
             done();
           });
       });
@@ -195,7 +215,6 @@ describe('User controller', () => {
         .send({ email: 'email@noUser.com', password: 'no_password' })
         .end((err, res) => {
           if (!err) {
-            console.log(res.body);
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal('User Not Found');
             done();
@@ -209,7 +228,6 @@ describe('User controller', () => {
         .send({ email: 'email@noUser', password: 'no_password' })
         .end((err, res) => {
           if (!err) {
-            console.log(res.body);
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal('Email Invalid');
             done();
@@ -220,21 +238,22 @@ describe('User controller', () => {
     it('should return invalid password if password does not match', (done) => {
       request
         .post('/api/v1/users/signin')
-        .send({ email: 'damilareolatubosun@yahoo.com', password: 'no_password' })
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'no_password'
+        })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(401);
           expect(res.body.message).to.equal('Invalid Password');
           done();
         });
     });
     // Test Sign in - password not provided
-    it('should return password is required if no password is provided', (done) => {
+    it('should return password is required', (done) => {
       request
         .post('/api/v1/users/signin')
-        .send({ email: 'damilareolatubosun@yahoo.com', password: ''})
+        .send({ email: 'damilareolatubosun@yahoo.com', password: '' })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Password is required');
           done();
@@ -246,7 +265,6 @@ describe('User controller', () => {
         .post('/api/v1/users/signin')
         .send({ email: '', password: 'password' })
         .end((err, res) => {
-          console.log(res.body);
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Email is required');
           done();

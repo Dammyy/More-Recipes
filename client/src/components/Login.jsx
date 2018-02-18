@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form/immutable';
@@ -34,6 +35,7 @@ class Login extends PureComponent {
    */
   render() {
     return (
+
       <div className="col-md-12">
         <form className="form-signin" onSubmit={this.handleSubmit.bind(this)}>
           <div className="row">
@@ -54,7 +56,7 @@ class Login extends PureComponent {
                   <Field
                     name="email"
                     className="form-control"
-                    value="pass@"
+                    value=""
                     component="input"
                     type="email"
                     placeholder="E-Mail Address"
@@ -90,7 +92,11 @@ class Login extends PureComponent {
           >
           Sign in
           </button>
+          <div className="text-left">
+            <Link to="/" className="btn btn-info">Back</Link>
+          </div>
         </form>
+
       </div>
     );
   }

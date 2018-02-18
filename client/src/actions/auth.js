@@ -1,8 +1,12 @@
 
 import {
-  LOGIN_USER,
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAILURE,
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  SIGNUP,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  LOGOUT
 } from '../constants/auth';
 
 /**
@@ -11,7 +15,7 @@ import {
    */
 function loginUser(redirection) {
   return {
-    type: LOGIN_USER,
+    type: LOGIN,
     redirection
   };
 }
@@ -20,23 +24,73 @@ function loginUser(redirection) {
    * @param {Object} token
    * @returns {Object} token
    */
-function loginUserSuccess(token) {
+function loginSuccess(token) {
   return {
-    type: LOGIN_USER_SUCCESS,
+    type: LOGIN_SUCCESS,
     token
   };
 }
 /**
    * @returns {Object} failure
    */
-function loginUserFailure() {
+function loginFailure() {
   return {
-    type: LOGIN_USER_FAILURE
+    type: LOGIN_FAILURE
   };
 }
 
+/**
+ *
+ * @param {Object} redirection
+ * @returns {object} signup
+ */
+function signupUser(redirection) {
+  return {
+    type: SIGNUP,
+    redirection
+  };
+}
+
+/**
+ *
+ *
+ * @param {any} token
+ * @returns {object} token
+ */
+function signupSuccess(token) { // It carries the token!
+  return {
+    type: SIGNUP_SUCCESS,
+    token
+  };
+}
+
+/**
+ *
+ *
+ * @returns {object} sign up faqilure
+ */
+function signupFailure() {
+  return {
+    type: SIGNUP_FAILURE
+  };
+}
+
+/**
+ *
+ *
+ * @returns {object} logout
+ */
+function logout() {
+  return {
+    type: LOGOUT
+  };
+}
 export {
   loginUser,
-  loginUserSuccess,
-  loginUserFailure
+  loginSuccess,
+  loginFailure,
+  signupUser,
+  signupSuccess,
+  signupFailure,
+  logout
 };

@@ -44,7 +44,6 @@
 .catalog-left {padding:0px;}
 .catalog-left .recipe-display {height:295px;}
 #catalog-search-form {margin:10px 5px;}
-.catalog-right {}
 .catalog-right #latest-h3{margin-top:58px;}
 #popular {height:auto;margin-bottom:10px;border-bottom:1px solid #ccc;}
 #popular-title {min-height:20px;height:auto;padding:5px;}
@@ -73,8 +72,17 @@
 .add-recipe a{text-decoration:none;font-weight:500;color:#202020;padding:5px 6px;border:1px solid #202020;background:#fff;border-radius:5px;}
 .add-recipe a:hover{color:#fff;background:#202020;}
 .background .col-md-12 {padding:0;margin:0;}
-.background ..form-signin{padding:50px 0px;margin:0 auto;}
-.header-logo {margin-right:450px;}
+.background .form-signin{padding:50px 0px;margin:0 auto;}
+.header-logo {color:#202020;}
+.add-recipe {width:auto;min-height:80px;height:auto;}
+.home-logged-in {text-align:center;height:100%;margin-bottom:10px;}
+.btn-signin {background:#505050;color:#fff;}
+.btn-signup {background:#808080;color:#fff;}
+.btn-signin:hover {font-weight:bold;color:red;background:#fff;color:#505050;border:1px solid #505050;}
+.btn-signup:hover {font-weight:bold;color:red;background:#fff;color:#808080;border:1px solid #808080;}
+.btn-publish {background:#808080;color:#fff;}
+.btn-publish:hover {font-weight:bold;color:red;background:#fff;color:#808080;border:1px solid #808080;}
+.nav-link-c {color:#202020!important;}
 @media (max-width: 575px) { 
 .recipe-display{height:auto;}
 .footer {position: relative;}

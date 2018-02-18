@@ -2,13 +2,14 @@ import {
   watchGetRecipes
 } from './recipes';
 
-import { watchLoginUser } from './auth';
+import { watchLoginUser, watchSignupUser } from './auth';
 /**
    * @returns {Object} root saga
    */
 export default function* rootSaga() {
   yield [
     watchGetRecipes(),
-    watchLoginUser()
+    watchLoginUser(),
+    watchSignupUser()
   ];
 }

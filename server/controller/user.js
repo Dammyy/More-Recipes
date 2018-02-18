@@ -1,11 +1,7 @@
 import jwt from 'jsonwebtoken';
-
 import bcrypt from 'bcrypt';
-
 import models from '../models/index';
-
 import config from '../../config';
-
 
 const saltRounds = 10;
 const usersModel = models.users;
@@ -27,10 +23,11 @@ class User {
       }
     }).then((user) => {
       if (user) {
-        return res.status(404).send({
+        return res.status(409).send({
           message: 'Email Already Exists',
         });
       }
+
       usersModel.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -39,6 +36,14 @@ class User {
       })
         .then(res.status(201).send({
           message: 'Registration Successful',
+          jwt: jwt.sign(
+            {
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              email: req.body.email,
+            }, config.JWT_SECRET,
+            { expiresIn: 60 * 60 }
+          ),
         }))
         .catch(error => res.status(400).send(error));
     });
@@ -62,6 +67,7 @@ class User {
       password = bcrypt.compareSync(req.body.password, user.hashPassword);
       if (password) {
         res.json({
+          message: 'Login Successful',
           jwt: jwt.sign(
             {
               id: user.id,
@@ -74,8 +80,7 @@ class User {
           email: user.email,
           id: user.id,
         });
-      }
-      else {
+      } else {
         res.status(401).send({
           message: 'Invalid Password',
         });
@@ -99,8 +104,6 @@ class User {
           message: 'No Favorite recipes found',
         });
       }
-      console.log(req.decoded.id);
-      console.log(req.params.userId);
       if (req.decoded.id !== parseFloat(req.params.userId)) {
         return res.status(403).send({
           message: 'You are not authorised to view other users favorites',
