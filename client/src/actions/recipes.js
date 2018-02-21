@@ -3,7 +3,10 @@ import {
   GET_RECIPES_SUCCESS,
   GET_RECIPES_FAILURE
 } from '../constants/recipes';
+<<<<<<< HEAD
 
+=======
+>>>>>>> b011d55da38b00d516147b716f5608f74950885c
   /**
    * @returns {Object} Get recipes
    */
@@ -12,7 +15,10 @@ function getRecipes() {
     type: GET_RECIPES
   };
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b011d55da38b00d516147b716f5608f74950885c
 /**
    * @returns {Object} recipes
    * @param {recipes} recipes

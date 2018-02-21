@@ -20,7 +20,6 @@ const testUser = {};
 const fakeAuth = 'xes4u6545if567675';
 describe('Recipe controller', () => {
   describe('Recipe', () => {
-    // Empty database tables
     before(async () => {
       await models.sequelize.sync();
       await UserModel.destroy({ where: {} });
