@@ -4,7 +4,7 @@ export default class Modal extends PureComponent {
   render () {
     const { id, title, details, year, picture } = this.props.recipe;
     return(
-      <div className="modal fade" id="game-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div className="modal fade" id="recipe-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

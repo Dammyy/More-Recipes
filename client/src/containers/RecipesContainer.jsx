@@ -8,7 +8,6 @@ import * as recipesActionCreators from '../actions/recipes';
 class RecipesContainer extends Component {
   constructor (props) {
     super();
-    // For now we still initialize the state
     this.state = { selectedRecipe: {}, searchBar: '' };
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
@@ -23,7 +22,6 @@ class RecipesContainer extends Component {
     this.setState({ selectedRecipe: this.state.recipes[index] });
     $('#recipe-modal').modal();
   }
-  // GET_RECIPES is now dispatched and intercepted by the saga watcher 
   getRecipes () {
     this.props.recipesActions.getRecipes();
   }
@@ -65,17 +63,16 @@ class RecipesContainer extends Component {
   }
 }
 
-// read values from the state using mapStateToProps
 function mapStateToProps (state) {
-  return { // We get all the recipes to list in the page
+  return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
   }
 }
-// dispatch actions to the reducer and sagas
+
 function mapDispatchToProps (dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
   };
 }
-// export the connected RecipesContainer
+
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);
