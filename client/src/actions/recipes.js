@@ -1,7 +1,11 @@
 import {
   GET_RECIPES,
   GET_RECIPES_SUCCESS,
-  GET_RECIPES_FAILURE
+  GET_RECIPES_FAILURE,
+  VIEW_RECIPE,
+  ADD_RECIPE,
+  ADD_RECIPE_SUCCESS,
+  ADD_RECIPE_FAILURE
 } from '../constants/recipes';
 
   /**
@@ -33,8 +37,59 @@ function getRecipesFailure() {
   };
 }
 
+/**
+ *
+ *
+ * @param {any} recipe
+ * @returns {Object} recipes
+ */
+function viewRecipe(recipe) {
+  return {
+    type: VIEW_RECIPE,
+    recipe
+  };
+}
+
+/**
+ *
+ *
+ * @returns {void}
+ */
+function addRecipe() {
+  return {
+    type: ADD_RECIPE
+  };
+}
+
+/**
+ *
+ *
+ * @returns {void}
+ */
+function addRecipeSuccess() {
+  return {
+    type: ADD_RECIPE_SUCCESS
+  };
+}
+
+/**
+ *
+ *
+ * @returns {void}
+ */
+function addRecipeFailure() {
+  return {
+    type: ADD_RECIPE_FAILURE
+  };
+}
+
+
 export {
   getRecipes,
   getRecipesSuccess,
-  getRecipesFailure
+  getRecipesFailure,
+  viewRecipe,
+  addRecipe,
+  addRecipeSuccess,
+  addRecipeFailure
 };

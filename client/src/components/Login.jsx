@@ -25,7 +25,6 @@ class Login extends PureComponent {
     this.props.authActions.loginUser(this.props.location.query.next ||
     '/catalog');
   }
-
   /**
    *
    *
@@ -35,7 +34,6 @@ class Login extends PureComponent {
    */
   render() {
     return (
-
       <div className="col-md-12">
         <form className="form-signin" onSubmit={this.handleSubmit.bind(this)}>
           <div className="row">

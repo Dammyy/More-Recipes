@@ -1,7 +1,8 @@
 import Immutable from 'immutable';
 import {
   GET_RECIPES_SUCCESS,
-  GET_RECIPES_FAILURE
+  GET_RECIPES_FAILURE,
+  VIEW_RECIPE
 } from '../constants/recipes';
 
 const initialState = Immutable.Map();
@@ -13,6 +14,9 @@ export default (state = initialState, action) => {
     }
     case GET_RECIPES_FAILURE: {
       return state.clear();
+    }
+    case VIEW_RECIPE: {
+      return state.merge({ sRecipe: action.recipe });
     }
     default:
       return state;

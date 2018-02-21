@@ -16,7 +16,7 @@ class RecipeModal extends PureComponent {
    */
   render() {
     const {
-      title, details, picture
+      title, details, image
     } = this.props.recipe;
     return (
       <div
@@ -43,7 +43,7 @@ class RecipeModal extends PureComponent {
             </div>
             <div className="modal-body">
               <div>
-                <img src={picture} className="img-responsive img-big" alt="" />
+                <img src={image} className="img-responsive img-big" alt="" />
               </div>
               <hr />
               <p>{details}</p>
@@ -66,7 +66,7 @@ class RecipeModal extends PureComponent {
 RecipeModal.propTypes = {
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   recipe: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 

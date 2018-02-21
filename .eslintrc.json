@@ -6,15 +6,13 @@
       "node": true,
       "browser": true,
       "es6": true,
-      "mocha": true,
-      "commonjs": true,
-      "jquery": true
+      "mocha": true
     },
     "globals": {
       "jest": true,
       "localStorage": true,
       "$": true,
-      "Materialize": true
+      "filepicker": true
     },
     "rules": {
       "one-var": 0,

@@ -83,6 +83,10 @@
 .btn-publish {background:#808080;color:#fff;}
 .btn-publish:hover {font-weight:bold;color:red;background:#fff;color:#808080;border:1px solid #808080;}
 .nav-link-c {color:#202020!important;}
+.redux-toastr {bottom: 70%;margin-left: 20px;}
+.redux-toastr .toastr{background-color:#ccc!important;padding:10px 0px;}
+.rrt-left-container {text-align:center;}
+.rrt-middle-container {text-align:center;}
 @media (max-width: 575px) { 
 .recipe-display{height:auto;}
 .footer {position: relative;}

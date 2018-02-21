@@ -2,7 +2,24 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Recipe from './Recipe';
+import UserIsAuthenticated from '../utils/authWrapper';
 
+const options = {
+  authSelector: state => state.get('auth'),
+  predicate: auth => auth.get('Authenticated'),
+  wrapperDisplayName: 'authDeleteRecipe',
+  FailureComponent: null
+};
+
+const BtnAdd = UserIsAuthenticated(options)(() => (
+  <div className="row text-left">
+    <Link
+      to="/catalog/add"
+      className="btn btn-danger"
+    >
+  Add a new Recipe!
+    </Link>
+  </div>));
 /**
  *
  *
@@ -19,31 +36,16 @@ class RecipesList extends PureComponent {
    */
   render() {
     const {
-      recipes, i, searchBar, setSearchBar, toggleModal, deleteRecipe
+      recipes, toggleModal, deleteRecipe
     } = this.props;
     return (
       <div className="container scrollable">
-        <div className="row text-left">
-          <Link
-            to="/catalog/add"
-            className="btn btn-danger"
-          >
-          Add a new Recipe!
-          </Link>
-        </div>
-        <div className="row">
-          <input
-            type="search"
-            placeholder="Search by Name"
-            className="form-control search-bar"
-            onKeyUp={setSearchBar}
-          />
-        </div>
+        <BtnAdd />
         <div className="row">
           {
           recipes
-            .filter(recipe => recipe.title.toLowerCase().includes(searchBar))
-            .map((recipe) => {
+            .filter(recipe => recipe.title.toLowerCase())
+            .map((recipe, i) => {
               return (
                 <Recipe
                   {...recipe}
@@ -58,14 +60,11 @@ class RecipesList extends PureComponent {
         </div>
         <hr />
       </div>
-
     );
   }
 }
 RecipesList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  searchBar: PropTypes.string.isRequired,
-  setSearchBar: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   i: PropTypes.number.isRequired

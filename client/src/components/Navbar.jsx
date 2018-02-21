@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-light">
@@ -14,7 +13,15 @@ const Navbar = () => {
           alt="logo"
         />
       </Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -31,7 +38,6 @@ const Navbar = () => {
         </ul>
       </div>
     </nav>
-
   );
 };
 

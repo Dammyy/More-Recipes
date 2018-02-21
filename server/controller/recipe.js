@@ -34,7 +34,12 @@ class Recipe {
       downvotes: 0,
       userId: req.decoded.id,
     })
-      .then(recipe => res.status(201).send(recipe))
+      .then(() => {
+        res.status(201).send({
+          message: 'Recipe published successfully',
+          statusCode: '201'
+        });
+      })
       .catch(error => res.status(400).send(error));
   }
 

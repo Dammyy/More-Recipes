@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { hashHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { AddRecipeForm } from '../components';
-
+import * as recipesActionCreators from '../actions/recipes';
+import * as filestackActions from '../actions/filestack';
 /**
  *
  *
@@ -9,7 +12,7 @@ import { AddRecipeForm } from '../components';
  * @class AddRecipe
  * @extends {Component}
  */
-export default class AddRecipe extends Component {
+class AddRecipe extends Component {
   /**
    * Creates an instance of AddRecipe.
    * @param {any} props
@@ -18,75 +21,32 @@ export default class AddRecipe extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { newRecipe: {} };
-    this.submit = this.submit.bind(this);
-    this.uploadPicture = this.uploadPicture.bind(this);
-    this.setRecipe = this.setRecipe.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
+  /**
+   *
+   *
+   *  @param {any} event
+   * @returns {string} redirect
+   * @memberOf AddRecipe
+   */
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.recipesActions.addRecipe();
+  }
 
   /**
+   *
    *
    *@returns {void}
-   *
    * @memberOf AddRecipe
    */
-  setRecipe() {
-    const newRecipe = {
-      title: document.getElementById('title').value,
-      ingredients: document.getElementById('ingredients').value,
-      details: document.getElementById('details').value,
-      image: $('#picture').attr('src')
-    };
-    this.setState({ newRecipe });
+  uploadImage() {
+    this.props.filestackActions.uploadImage();
   }
 
-  /**
-   *
-   *@returns {void}
-   *
-   * @memberOf AddRecipe
-   */
-  submit() {
-    const newRecipe = Object.assign({}, { picture: $('#picture').attr('src') }, this.state.newRecipe);
-    fetch('http://localhost:3000/api/v1/recipes', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      method: 'POST',
-      body: JSON.stringify(newRecipe)
-    })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data.message);
-        hashHistory.push('/catalog');
-      });
-  }
-
-
-  /**
-   * 
-   * 
-   * 
-   * @memberOf AddRecipe
-   */
-  uploadPicture() {
-    filepicker.pick(
-      {
-        mimetype: 'image/*',
-        container: 'modal',
-        services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'URL', 'IMGUR', 'PICASA'],
-        openTo: 'COMPUTER'
-      },
-      (Blob) => {
-        console.log(JSON.stringify(Blob));
-        $('#picture').attr('src', Blob.url);
-      },
-      (FPError) => {
-        console.log(FPError.toString());
-      }
-    );
-  }
   /**
    *
    *
@@ -95,10 +55,44 @@ export default class AddRecipe extends Component {
    * @memberOf AddRecipe
    */
   render() {
-    return (<AddRecipeForm
-      submit={this.submit}
-      uploadPicture={this.uploadPicture}
-      setRecipe={this.setRecipe}
-    />);
+    const { image } = this.props;
+    return (
+      <AddRecipeForm
+        handleSubmit={this.handleSubmit}
+        image={image}
+        uploadImage={this.uploadImage}
+      />);
   }
 }
+
+/**
+ *
+ *
+ * @param {any} state
+ * @returns {object} image
+ */
+function mapStateToProps(state) {
+  return {
+    image: state.getIn(['filestack', 'url'], '')
+  };
+}
+
+/**
+ *
+ *
+ * @param {any} dispatch
+ * @returns {void}
+ */
+function mapDispatchToProps(dispatch) {
+  return {
+    recipesActions: bindActionCreators(recipesActionCreators, dispatch),
+    filestackActions: bindActionCreators(filestackActions, dispatch)
+  };
+}
+AddRecipe.propTypes = {
+  filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  image: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddRecipe);

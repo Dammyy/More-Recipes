@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
+import Footer from './Footer';
 /**
  *
  *
@@ -108,20 +109,7 @@ class Home extends PureComponent {
             </div>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6">
-                <a href="https://github.com/Dammyy">
-                  <img src="img/github.png" alt="" />
-                </a>
-              </div>
-              <div className="col-md-6">
-                <span className="text-muted">Copyright © More Recipes!</span>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }

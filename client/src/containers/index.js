@@ -1,7 +1,9 @@
-import AddRecipeContainer from './AddRecipe';
+import AddRecipe from './AddRecipe';
 import Recipes from './Recipes';
+import HomeRecipes from './HomeRecipes';
 
 export {
-  AddRecipeContainer,
-  Recipes
+  AddRecipe,
+  Recipes,
+  HomeRecipes
 };

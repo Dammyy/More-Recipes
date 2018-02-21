@@ -34,11 +34,17 @@ class Recipe extends PureComponent {
    */
   render() {
     const {
-      id, i, title, toggleModal, deleteRecipe
+      id, i, title, image, toggleModal, deleteRecipe
     } = this.props;
+    let img;
+    if (image === '') {
+      img = 'img/chicken.jpg';
+    } else {
+      img = image;
+    }
     return (
       <div className="col-md-4 recipe-display">
-        <img src="img/chicken.jpg" alt="" />
+        <img src={img} alt="" />
         <div id="votes-del">
           <div id="recipe-votes">
             <li>
@@ -69,8 +75,8 @@ Recipe.propTypes = {
   id: PropTypes.number.isRequired,
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  toggleModal: PropTypes.number.isRequired,
-  deleteRecipe: PropTypes.number.isRequired
-
+  toggleModal: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired
 };
 export default Recipe;

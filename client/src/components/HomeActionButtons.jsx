@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
-import UserIsAuthenticated from '../utils/authWrapper';
+import PropTypes from 'prop-types';
+import AuthCheck from '../utils/authWrapper';
+
 /**
  *
  *
- * @class ActionButtons
+ * @class HomeActionButtons
  * @extends {PureComponent}
  */
-class ActionButtons extends PureComponent {
+class HomeActionButtons extends PureComponent {
   /**
    *
    *
@@ -19,13 +21,16 @@ class ActionButtons extends PureComponent {
     const { firstName, logout } = this.props;
     return (
       <div className="publish-recipe">
-        <h5>Howdy {firstName}, <span onClick={logout}>Logout</span></h5>
-        <Link
-          to="/catalog/add"
-          className="btn btn-publish"
-        >
+        <h3>Welcome {firstName}</h3>
+        <p>
+          <Link
+            to="/catalog/add"
+            className="btn btn-publish"
+          >
         Post a new recipe!
-        </Link>
+          </Link>
+          <button onClick={logout}>Logout</button>
+        </p>
       </div>
     );
   }
@@ -46,5 +51,8 @@ const options = {
   }
 };
 
-// We export it
-export default UserIsAuthenticated(options)(ActionButtons);
+HomeActionButtons.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
+};
+export default AuthCheck(options)(HomeActionButtons);

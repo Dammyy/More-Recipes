@@ -11,10 +11,9 @@ const authChecker = () => {
     initialState = {
       Authenticated: true,
       token,
-      firstName: jwtDecode(token).sub
+      firstName: jwtDecode(token).firstName
     };
   }
-
   return initialState;
 };
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RecipeHome from './RecipeHome';
-
+import ActionButtons from './HomeActionButtons';
 /**
  *
  *
@@ -18,14 +18,18 @@ class RecipesListHome extends PureComponent {
    */
   render() {
     const {
-      recipes, i, toggleModal,
+      recipes, toggleModal, firstName, logout
     } = this.props;
     return (
-      <div className="container scrollable">
-        <div className="row">
-          {
+      <div>
+        <div className="col-md-12 home-logged-in">
+          <ActionButtons logout={logout} firstName={firstName} />
+        </div>
+        <div className="container scrollable">
+          <div className="row">
+            {
           recipes
-            .map((recipe) => {
+            .map((recipe, i) => {
               return (
                 <RecipeHome
                   {...recipe}
@@ -36,16 +40,18 @@ class RecipesListHome extends PureComponent {
               );
             })
         }
+          </div>
+          <hr />
         </div>
-        <hr />
       </div>
-
     );
   }
 }
 RecipesListHome.propTypes = {
-  recipes: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
   toggleModal: PropTypes.func.isRequired,
-  i: PropTypes.number.isRequired
+  i: PropTypes.number.isRequired,
+  firstName: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 export default RecipesListHome;

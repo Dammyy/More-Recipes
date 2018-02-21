@@ -21,44 +21,43 @@ class Recipes extends Component {
    * @memberOf Recipes
    */
   constructor(props) {
-    super();
-    this.state = { selectedRecipe: {}, searchBar: '' };
+    super(props);
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
-    this.setSearchBar = this.setSearchBar.bind(this);
   }
-
-
   /**
-   * 
-   * 
-   * 
-   * @memberOf Recipes
-   */
+  *
+  *@returns {void}
+  *
+  * @memberOf Recipes
+  */
   componentDidMount() {
     this.getRecipes();
   }
-
-
+  /**
+   *
+   * @returns {void}
+   *
+   * @memberOf Recipes
+   */
+  getRecipes() {
+    this.props.recipesActions.getRecipes();
+  }
   /**
    *
    *
    * @param {any} index
-   *
+   *@returns {void}
    * @memberOf Recipes
    */
   toggleModal(index) {
-    this.setState({ selectedRecipe: this.state.recipes[index] });
+    this.props.recipesActions.viewRecipe(this.props.recipes[index]);
     $('#recipe-modal').modal();
   }
-  getRecipes() {
-    this.props.recipesActions.getRecipes();
-  }
-
 
   /**
    *
-   *
+   * @returns {void}
    * @param {any} id
    *
    * @memberOf Recipes
@@ -73,39 +72,22 @@ class Recipes extends Component {
       .then(response => response.json())
       .then((response) => {
         this.setState({ recipes: this.state.recipes.filter(recipe => recipe.id !== id) });
-        console.log(response.message);
       });
   }
-
-
   /**
    *
    *
-   * @param {any} event
-   *
-   * @memberOf Recipes
-   */
-  setSearchBar(event) {
-    this.setState({ searchBar: event.target.value.toLowerCase() });
-  }
-
-  /**
-   *
-   *
-   * @returns
+   * @returns {void}
    *
    * @memberOf Recipes
    */
   render() {
-    const { selectedRecipe, searchBar } = this.state;
-    const { recipes } = this.props;
+    const { recipes, sRecipe } = this.props;
     return (
       <div>
-        <RecipeModal recipe={selectedRecipe} />
+        <RecipeModal recipe={sRecipe} />
         <RecipesList
           recipes={recipes}
-          searchBar={searchBar}
-          setSearchBar={this.setSearchBar}
           toggleModal={this.toggleModal}
           deleteRecipe={this.deleteRecipe}
         />
@@ -114,11 +96,24 @@ class Recipes extends Component {
   }
 }
 
+/**
+ *
+ * @param {any} state
+ * @returns {void}
+ */
 function mapStateToProps(state) {
   return {
-    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
+    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+    sRecipe: state.getIn(['recipes', 'sRecipe'], Immutable.List()).toJS()
   };
 }
+
+/**
+ *
+ *
+ * @param {any} dispatch
+ * @returns {void}
+ */
 function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
@@ -126,7 +121,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 Recipes.propTypes = {
-  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired
+  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

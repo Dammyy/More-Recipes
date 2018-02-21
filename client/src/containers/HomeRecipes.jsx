@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import RecipeModal from '../components/RecipeModal';
 import RecipesListHome from '../components/RecipesListHome';
 import * as recipesActionCreators from '../actions/recipes';
+import * as authActionCreators from '../actions/auth';
+
 /**
  *
  *
@@ -21,14 +23,13 @@ class HomeRecipes extends Component {
    * @memberOf Recipes
    */
   constructor(props) {
-    super();
-    this.state = { selectedRecipe: {} };
+    super(props);
     this.toggleModal = this.toggleModal.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   /**
-   *
+   *@returns {void}
    *
    *
    * @memberOf Recipes
@@ -40,7 +41,7 @@ class HomeRecipes extends Component {
   /**
    *
    *
-   *
+   * @returns {void}
    * @memberOf HomeRecipes
    */
   getRecipes() {
@@ -50,38 +51,39 @@ class HomeRecipes extends Component {
    *
    *
    * @param {any} index
-   *
-   * @memberOf HomeRecipes
+   *@returns {void}
+   * @memberOf Recipes
    */
   toggleModal(index) {
-    this.setState({ selectedRecipe: this.state.recipes[index] });
+    this.props.recipesActions.viewRecipe(this.props.recipes[index]);
     $('#recipe-modal').modal();
   }
   /**
    *
    *
-   *
+   * @returns {void}
    * @memberOf HomeRecipes
    */
   logout() {
-    this.props.authActions.logoutUser();
-    toastr.success('More Recipes', 'Logout Scuccessful');
+    this.props.authActions.logout();
+    toastr.success('Logout Scuccessful');
     localStorage.removeItem('token');
   }
 
   /**
    *
    *
-   * @returns
+   * @returns {void}
    *
    * @memberOf HomeRecipes
    */
   render() {
-    const { selectedRecipe, } = this.state;
-    const { recipes, firstName, authActions } = this.props;
+    const {
+      recipes, sRecipe, firstName
+    } = this.props;
     return (
       <div>
-        <RecipeModal recipe={selectedRecipe} />
+        <RecipeModal recipe={sRecipe} />
         <RecipesListHome
           recipes={recipes}
           toggleModal={this.toggleModal}
@@ -93,17 +95,17 @@ class HomeRecipes extends Component {
   }
 }
 
-
 /**
  *
  *
  * @param {any} state
- * @returns
+ * @returns {void}
  */
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
-    firstName: state.getIn(['auth', 'firstName'])
+    firstName: state.getIn(['auth', 'firstName']),
+    sRecipe: state.getIn(['recipes', 'sRecipe'], Immutable.List()).toJS()
   };
 }
 
@@ -111,16 +113,21 @@ function mapStateToProps(state) {
  *
  *
  * @param {any} dispatch
- * @returns
+ * @returns {void}
  */
 function mapDispatchToProps(dispatch) {
   return {
-    recipesActions: bindActionCreators(recipesActionCreators, dispatch)
+    recipesActions: bindActionCreators(recipesActionCreators, dispatch),
+    authActions: bindActionCreators(authActionCreators, dispatch)
   };
 }
 
 HomeRecipes.propTypes = {
-  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired
+  recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  authActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired,
+  firstName: PropTypes.string.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeRecipes);

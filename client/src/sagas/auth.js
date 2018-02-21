@@ -17,7 +17,6 @@ import {
 const getForm = (state, form) => {
   return state.getIn(['form', form]).toJS();
 };
-
 /**
    * @param {*} route
    * @param {*} details
@@ -50,18 +49,16 @@ function* loginUser(action) {
     const result = yield call(sendDetails, 'signin', details.values);
     localStorage.setItem('token', result.jwt);
     yield put(loginSuccess(result.jwt));
-    yield put(push(redirection));
     yield put(toastrActions.add({
       type: 'success',
-      title: 'More Recipes',
       message: result.message
     }));
+    yield put(push(redirection));
   } catch (e) {
     const { message } = e;
     yield put(loginFailure());
     yield put(toastrActions.add({
       type: 'error',
-      title: 'More Recipes',
       message
     }));
   }
@@ -79,7 +76,6 @@ function* signupUser(action) {
     const result = yield call(sendDetails, 'signup', details.values);
     yield put(toastrActions.add({
       type: 'success',
-      title: 'More Recipes',
       message: result.message
     }));
     localStorage.setItem('token', result.jwt);
@@ -90,7 +86,6 @@ function* signupUser(action) {
     yield put(signupFailure());
     yield put(toastrActions.add({
       type: 'error',
-      title: 'More Recipes',
       message
     }));
   }
@@ -105,7 +100,7 @@ export function* watchLoginUser() {
 }
 /**
    *
-   * @returns {*} res
+   * @returns {void}
    */
 export function* watchSignupUser() {
   yield takeLatest(SIGNUP, signupUser);

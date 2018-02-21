@@ -58,7 +58,7 @@ class Signup extends PureComponent {
                     component="input"
                     name="firstName"
                     className="form-control"
-                    id="name"
+                    id="firstName"
                     placeholder="First Name"
                   />
                 </div>
@@ -80,7 +80,7 @@ class Signup extends PureComponent {
                     component="input"
                     name="lastName"
                     className="form-control"
-                    id="name"
+                    id="lastName"
                     placeholder="Last Name"
                   />
                 </div>

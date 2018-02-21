@@ -1,4 +1,3 @@
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
@@ -19,11 +18,17 @@ class RecipeHome extends PureComponent {
    */
   render() {
     const {
-      i, title, toggleModal
+      i, title, image, toggleModal
     } = this.props;
+    let img;
+    if (image === '') {
+      img = 'img/chicken.jpg';
+    } else {
+      img = image;
+    }
     return (
       <div className="col-md-4 recipe-display">
-        <img src="img/chicken.jpg" alt="" />
+        <img src={img} alt="" />
         <div id="votes-del">
           <div id="recipe-votes">
             <li>
@@ -53,5 +58,6 @@ RecipeHome.propTypes = {
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired
 };
 export default RecipeHome;

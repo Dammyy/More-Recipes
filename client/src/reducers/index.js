@@ -4,11 +4,13 @@ import { reducer as form } from 'redux-form/immutable';
 import recipes from './recipes';
 import auth from './auth';
 import routing from './routing';
+import filestack from './filestack';
 
 export default combineReducers({
   recipes,
   routing,
   form,
   auth,
-  toastr
+  toastr,
+  filestack
 });
