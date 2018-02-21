@@ -11,16 +11,16 @@
 .carousel img{width:100%;}
 .col-md-4{margin:0;padding:0;}
 .recipe-display{height:300px;padding:5px;}
-#recipe-title{color:#f8f8f8;}
-#recipe-title a{text-decoration:none;color:#f8f8f8;letter-spacing:1px;}
-#recipe-title a:hover{font-size:105%;color:#007bff;}
 .col-md-4 img{width:100%;height:100%;z-index:0;position:relative;}
 .row {margin:0;}
-.btn-success {bottom: 175px;position:relative;}
+.btn-view {bottom: 120px;position:relative;width:100%;background:#fff;color:#505050;border-color:#ccc;}
+.btn-view:hover {background:#ccc;color:#fff;font-weight:bold;border:none;color:#505050;}
 #latest-h3{width:100%;padding-right:2%;padding-left:2%;padding-top:15px;padding-bottom:15px;background:#ccc;}
-#recipe-title{background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);width:100%;min-height:50px;height:auto;z-index:10;position:relative;bottom:80px;padding-top:5px;margin:0 auto;}
-#recipe-votes {left:10px;background:#e8e8e8;min-width:80px;max-width:120px;width:auto;padding:5px;height:30px;position:relative;bottom:95%;z-index:10;color:#303030;}
+#recipe-title{background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);width:100%;min-height:50px;height:auto;z-index:10;position:relative;bottom:110px;padding-top:5px;margin:0 auto;color:#fff;letter-spacing:1px;}
+#recipe-votes {float:left;margin-left:10px;min-width:80px;max-width:120px;width:auto;padding:5px;height:30px;color:#303030;}
 #recipe-votes li{list-style-type:none;float:left;margin-right:8px;}
+#votes-del{height:30px;position:relative;bottom:95%;z-index:10;width:100%;}
+.btn-del{float:right;padding:2px 4px;font-size:12px;margin-right:10px;margin-top:6px;}
 #recipe-title h2 {font-size:100%;text-align:center;}
 .welcome-msg{padding:15px 0px;}
 .welcome-msg h1{text-align:center;text-transform:capitalize;}
@@ -42,7 +42,7 @@
 .header-links li a:hover{color:#fff;background:#202020;}
 .text-muted {float:right;}
 .catalog-left {padding:0px;}
-.catalog-left .recipe-display {height:270px;}
+.catalog-left .recipe-display {height:295px;}
 #catalog-search-form {margin:10px 5px;}
 .catalog-right {}
 .catalog-right #latest-h3{margin-top:58px;}

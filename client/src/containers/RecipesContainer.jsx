@@ -1,36 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Immutable from 'immutable';
 import { Modal, RecipesListManager } from '../components';
+import * as recipesActionCreators from '../actions/recipes';
 
-export default class RecipesContainer extends Component {
+class RecipesContainer extends Component {
   constructor (props) {
-    super(props);
-    // The initial state
-    this.state = { recipes: [], selectedRecipe: {}, searchBar: '' };
-    // Bind the functions to this (context) 
+    super();
+    this.state = { selectedRecipe: {}, searchBar: '' };
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
     this.setSearchBar = this.setSearchBar.bind(this);
   }
 
-  // Once the component mounted it fetches the data from the server
   componentDidMount () {
     this.getRecipes();
   }
 
   toggleModal (index) {
     this.setState({ selectedRecipe: this.state.recipes[index] });
-    // Since we included bootstrap we can show our modal through its syntax
-    $('#game-modal').modal();
+    $('#recipe-modal').modal();
   }
-
   getRecipes () {
-    fetch('http://localhost:3000/api/v1/recipes', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-    .then(response => response.json())
-    .then(data => this.setState({ recipes: data }));
+    this.props.recipesActions.getRecipes();
   }
 
   deleteRecipe (id) {
@@ -42,19 +35,19 @@ export default class RecipesContainer extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      // The game is also removed from the state thanks to the filter function
-      this.setState({ recipes: this.state.recipes.filter(recipe => recipe._id !== id) }); 
-      console.log(response.message);
+    this.setState({ recipes: this.state.recipes.filter(recipe => recipe._id !== id) });
+    console.log(response.message);
     });
   }
 
-  setSearchBar (event) { 
-    // Super still filters super mario thanks to toLowerCase
+  setSearchBar (event) {
     this.setState({ searchBar: event.target.value.toLowerCase() });
   }
 
   render () {
-    const { recipes, selectedRecipe, searchBar } = this.state;
+    const { selectedRecipe, searchBar } = this.state;
+    const { recipes  } = this.props;
+    console.log(recipes);
     return (
       <div>
         <Modal recipe={selectedRecipe} />
@@ -69,3 +62,17 @@ export default class RecipesContainer extends Component {
     );
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    recipesActions: bindActionCreators(recipesActionCreators, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);
