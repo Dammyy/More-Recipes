@@ -3,7 +3,6 @@ import {
   GET_RECIPES_SUCCESS,
   GET_RECIPES_FAILURE
 } from '../constants/recipes';
-
   /**
    * @returns {Object} Get recipes
    */
@@ -12,7 +11,6 @@ function getRecipes() {
     type: GET_RECIPES
   };
 }
-
 /**
    * @returns {Object} recipes
    * @param {recipes} recipes

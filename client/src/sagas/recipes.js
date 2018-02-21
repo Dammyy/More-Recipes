@@ -9,20 +9,17 @@ import {
 import {
   GET_RECIPES
 } from '../constants/recipes';
-
 import { getRecipesSuccess, getRecipesFailure } from '../actions/recipes';
 
 /**
    * @returns {Object} fetch recipes
    */
 const fetchRecipes = () => fetch('http://localhost:3000/api/v1/recipes', {
-
   headers: new Headers({
     'Content-Type': 'application/json'
   })
 })
   .then(response => response.json());
-
 
   /**
    * @returns {Object} Get recipes
@@ -35,7 +32,6 @@ function* getRecipes() {
     yield put(getRecipesFailure());
   }
 }
-
 
 /**
    * @returns {Object} Watch Get recipes
