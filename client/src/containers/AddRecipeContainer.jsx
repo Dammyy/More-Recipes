@@ -31,11 +31,7 @@ export default class AddRecipeContainer extends Component {
         mimetype: 'image/*',
         container: 'modal',
         services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'URL', 'IMGUR', 'PICASA'],
-<<<<<<< HEAD
         openTo: 'COMPUTER' 
-=======
-        openTo: 'COMPUTER'
->>>>>>> b011d55da38b00d516147b716f5608f74950885c
       },
       function (Blob) {
         console.log(JSON.stringify(Blob));
