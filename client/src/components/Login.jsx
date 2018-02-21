@@ -10,7 +10,7 @@ class Login extends PureComponent {
   handleSubmit (event) {
     event.preventDefault();
     console.log('somethis',this.props.location.query.next);
-    this.props.authActions.loginUser(this.props.location.query.next || '/catalog');
+    this.props.authActions.login(this.props.location.query.next || '/catalog');
   }
 
   render () {

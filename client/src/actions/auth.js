@@ -1,17 +1,17 @@
 
 import {
-  LOGIN_USER,
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAILURE,
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
 } from '../constants/auth';
 
 /**
    * @param {Object} redirection
    * @returns {Object} login
    */
-function loginUser(redirection) {
+function login(redirection) {
   return {
-    type: LOGIN_USER,
+    type: LOGIN,
     redirection
   };
 }
@@ -20,23 +20,23 @@ function loginUser(redirection) {
    * @param {Object} token
    * @returns {Object} token
    */
-function loginUserSuccess(token) {
+function loginSuccess(token) {
   return {
-    type: LOGIN_USER_SUCCESS,
+    type: LOGIN_SUCCESS,
     token
   };
 }
 /**
    * @returns {Object} failure
    */
-function loginUserFailure() {
+function loginFailure() {
   return {
-    type: LOGIN_USER_FAILURE
+    type: LOGIN_FAILURE
   };
 }
 
 export {
-  loginUser,
-  loginUserSuccess,
-  loginUserFailure
+  login,
+  loginSuccess,
+  loginFailure
 };

@@ -1,8 +1,8 @@
 import Immutable from 'immutable';
 import jwtDecode from 'jwt-decode';
 import {
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAILURE,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
 } from '../constants/auth';
 
 const initialState = Immutable.Map({
@@ -13,14 +13,14 @@ const initialState = Immutable.Map({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER_SUCCESS: {
+    case LOGIN_SUCCESS: {
       return state.merge({
         isAuthenticated: true,
         token: action.token,
         name: jwtDecode(action.token).sub
       });
     }
-    case LOGIN_USER_FAILURE: return state.merge(initialState);
+    case LOGIN_FAILURE: return state.merge(initialState);
     default: return state;
   }
 };
