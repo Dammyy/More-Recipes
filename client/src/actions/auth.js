@@ -57,7 +57,7 @@ function signupUser(redirection) {
  * @param {any} token
  * @returns {object} token
  */
-function signupSuccess(token) { // It carries the token!
+function signupSuccess(token) {
   return {
     type: SIGNUP_SUCCESS,
     token

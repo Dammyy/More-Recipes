@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { takeLatest } from 'redux-saga';
 import { put, call, select } from 'redux-saga/effects';
-import { actions as toastrActions } from 'react-redux-toastr';
+import { toastr } from 'react-redux-toastr';
 import { LOGIN, SIGNUP } from '../constants/auth';
 import {
   loginSuccess,
@@ -49,21 +49,14 @@ function* loginUser(action) {
     const result = yield call(sendDetails, 'signin', details.values);
     localStorage.setItem('token', result.jwt);
     yield put(loginSuccess(result.jwt));
-    yield put(toastrActions.add({
-      type: 'success',
-      message: result.message
-    }));
+    yield put(toastr.success(result.message));
     yield put(push(redirection));
   } catch (e) {
     const { message } = e;
     yield put(loginFailure());
-    yield put(toastrActions.add({
-      type: 'error',
-      message
-    }));
+    yield put(toastr.error(message));
   }
 }
-
 
 /**
    * @param {*} action
@@ -74,20 +67,14 @@ function* signupUser(action) {
   try {
     const details = yield select(getForm, 'signup');
     const result = yield call(sendDetails, 'signup', details.values);
-    yield put(toastrActions.add({
-      type: 'success',
-      message: result.message
-    }));
+    yield put(toastr.success(result.message));
     localStorage.setItem('token', result.jwt);
     yield put(signupSuccess(result.jwt));
     yield put(push(redirection));
   } catch (e) {
     const { message } = e;
     yield put(signupFailure());
-    yield put(toastrActions.add({
-      type: 'error',
-      message
-    }));
+    yield put(toastr.error(message));
   }
 }
 

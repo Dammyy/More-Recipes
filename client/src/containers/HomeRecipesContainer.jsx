@@ -15,7 +15,7 @@ import * as authActionCreators from '../actions/auth';
  * @class Recipes
  * @extends {Component}
  */
-class HomeRecipes extends Component {
+class HomeRecipesContainer extends Component {
   /**
    * Creates an instance of Recipes.
    * @param {any} props
@@ -122,7 +122,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-HomeRecipes.propTypes = {
+HomeRecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   authActions: PropTypes.objectOf(PropTypes.func).isRequired,
   sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -130,4 +130,7 @@ HomeRecipes.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeRecipes);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeRecipesContainer);

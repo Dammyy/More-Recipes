@@ -106,6 +106,7 @@ class Recipe {
       }).then(() => {
         return res.status(200).send({
           message: 'Recipe deleted successfully',
+          statusCode: '200'
         });
       })
         .catch(error => res.status(400).send(error));

@@ -1,4 +1,4 @@
-import { watchGetRecipes, watchAddRecipe } from './recipes';
+import { watchGetRecipes, watchAddRecipe, watchDeleteRecipe } from './recipes';
 import { watchLoginUser, watchSignupUser } from './auth';
 import { watchUploadImage } from './filestack';
 /**
@@ -10,6 +10,7 @@ export default function* rootSaga() {
     watchLoginUser(),
     watchSignupUser(),
     watchUploadImage(),
-    watchAddRecipe()
+    watchAddRecipe(),
+    watchDeleteRecipe()
   ];
 }

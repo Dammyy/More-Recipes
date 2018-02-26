@@ -9,7 +9,7 @@ import Footer from './Footer';
  * @class Home
  * @extends {PureComponent}
  */
-class Home extends PureComponent {
+class Archive extends PureComponent {
   /** html component to render
    *
    *
@@ -115,8 +115,8 @@ class Home extends PureComponent {
   }
 }
 
-Home.propTypes = {
+Archive.propTypes = {
   children: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-export default Home;
+export default Archive;

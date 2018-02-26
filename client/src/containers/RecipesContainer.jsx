@@ -13,7 +13,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class Recipes
  * @extends {Component}
  */
-class Recipes extends Component {
+class RecipesContainer extends Component {
   /**
    * Creates an instance of Recipes.
    * @param {any} props
@@ -63,16 +63,7 @@ class Recipes extends Component {
    * @memberOf Recipes
    */
   deleteRecipe(id) {
-    fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      method: 'DELETE',
-    })
-      .then(response => response.json())
-      .then((response) => {
-        this.setState({ recipes: this.state.recipes.filter(recipe => recipe.id !== id) });
-      });
+    this.props.recipesActions.deleteRecipe(id);
   }
   /**
    *
@@ -107,7 +98,6 @@ function mapStateToProps(state) {
     sRecipe: state.getIn(['recipes', 'sRecipe'], Immutable.List()).toJS()
   };
 }
-
 /**
  *
  *
@@ -120,9 +110,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Recipes.propTypes = {
+RecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired
+  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);

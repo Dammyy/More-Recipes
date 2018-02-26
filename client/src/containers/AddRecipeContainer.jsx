@@ -12,7 +12,7 @@ import * as filestackActions from '../actions/filestack';
  * @class AddRecipe
  * @extends {Component}
  */
-class AddRecipe extends Component {
+class AddRecipeContainer extends Component {
   /**
    * Creates an instance of AddRecipe.
    * @param {any} props
@@ -89,10 +89,10 @@ function mapDispatchToProps(dispatch) {
     filestackActions: bindActionCreators(filestackActions, dispatch)
   };
 }
-AddRecipe.propTypes = {
+AddRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(AddRecipeContainer);

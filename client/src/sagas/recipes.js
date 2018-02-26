@@ -1,16 +1,19 @@
 import { push } from 'react-router-redux';
 import { takeLatest } from 'redux-saga';
 import { put, call, select } from 'redux-saga/effects';
-import { actions as toastrActions } from 'react-redux-toastr';
+import { toastr } from 'react-redux-toastr';
 import {
   GET_RECIPES,
-  ADD_RECIPE
+  ADD_RECIPE,
+  DELETE_RECIPE
 } from '../constants/recipes';
 import {
   getRecipesSuccess,
   getRecipesFailure,
   addRecipeSuccess,
-  addRecipeFailure
+  addRecipeFailure,
+  deleteRecipeSuccess,
+  deleteRecipeFailure
 } from '../actions/recipes';
 
 const selectedImage = (state) => {
@@ -72,23 +75,53 @@ function* addRecipe() {
   try {
     yield call(publishRecipe, newRecipe);
     yield put(addRecipeSuccess());
-    yield put(toastrActions.add({
-      type: 'success',
-      message: newRecipe.message
-    }));
-    console.log(newRecipe.message);
+    yield put(toastr.success(newRecipe.message));
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
     yield put(addRecipeFailure());
-    yield put(toastrActions.add({
-      type: 'error',
-      message
-    }));
-    console.log(message);
+    yield put(toastr.error(message));
   }
 }
+const selectedRecipe = (state) => {
+  return state.getIn(['recipes', 'list']).toJS();
+};
+const removeRecipe = (id) => {
+  return fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      auth: localStorage.getItem('token')
+    }),
+    method: 'DELETE',
+  })
+    .then(response => response.json())
+    .then((response) => {
+      if (response.statusCode === '200') {
+        return response;
+      }
+      throw response;
+    });
+};
 
+/**
+ * @returns {void}
+ *
+ * @param {any} action
+ */
+function* deleteRecipee(action) {
+  const { id } = action;
+  const recipes = yield select(selectedRecipe);
+  try {
+    const delRecipe = yield call(removeRecipe, id);
+    yield put(deleteRecipeSuccess(recipes.filter(recipe => recipe.id !== id)));
+    yield put(toastr.success(delRecipe.message));
+    yield put(push('/catalog'));
+  } catch (e) {
+    const { message } = e;
+    yield put(deleteRecipeFailure());
+    yield put(toastr.error(message));
+  }
+}
 /**
    * @returns {Object} Watch Get recipes
    */
@@ -103,7 +136,17 @@ function* watchGetRecipes() {
 function* watchAddRecipe() {
   yield takeLatest(ADD_RECIPE, addRecipe);
 }
+
+/**
+ * @returns {void}
+ *
+ */
+function* watchDeleteRecipe() {
+  yield takeLatest(DELETE_RECIPE, deleteRecipee);
+}
+
 export {
   watchGetRecipes,
-  watchAddRecipe
+  watchAddRecipe,
+  watchDeleteRecipe
 };

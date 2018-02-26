@@ -10,13 +10,16 @@ const options = {
   FailureComponent: null
 };
 
-const BtnDelete = UserIsAuthenticated(options)(props => (
-  <button
-    className="btn btn-danger btn-del"
-    onClick={() => props.deleteRecipe(props.id)}
-  >
-  Delete
-  </button>));
+const BtnDelete = UserIsAuthenticated(options)((props) => {
+  console.log('btndelete props', props);
+  return (
+    <button
+      className="btn btn-danger btn-del"
+      onClick={() => props.deleteRecipe(props.id)}
+    >
+      Delete
+    </button>);
+});
 /**
  *
  *
@@ -36,6 +39,7 @@ class Recipe extends PureComponent {
     const {
       id, i, title, image, toggleModal, deleteRecipe
     } = this.props;
+    console.log('recipe id: ', id);
     let img;
     if (image === '') {
       img = 'img/chicken.jpg';
@@ -49,12 +53,12 @@ class Recipe extends PureComponent {
           <div id="recipe-votes">
             <li>
               <i className="fa fa-thumbs-o-up" aria-hidden="true">
-              200
+                200
               </i>
             </li>
             <li>
               <i className="fa fa-thumbs-o-down" aria-hidden="true">
-              505
+                505
               </i>
             </li>
           </div>
@@ -65,7 +69,7 @@ class Recipe extends PureComponent {
           className="btn btn-success btn-view"
           onClick={() => toggleModal(i)}
         >
-        View
+          View
         </button>
       </div>
     );
