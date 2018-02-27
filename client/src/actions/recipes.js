@@ -8,7 +8,10 @@ import {
   ADD_RECIPE_FAILURE,
   DELETE_RECIPE,
   DELETE_RECIPE_SUCCESS,
-  DELETE_RECIPE_FAILURE
+  DELETE_RECIPE_FAILURE,
+  UPDATE_RECIPE,
+  UPDATE_RECIPE_SUCCESS,
+  UPDATE_RECIPE_FAILURE
 } from '../constants/recipes';
 
 const getRecipes = () => {
@@ -74,7 +77,6 @@ const deleteRecipe = (id) => {
   };
 };
 
-
 const deleteRecipeSuccess = (recipes) => {
   return {
     type: DELETE_RECIPE_SUCCESS,
@@ -88,6 +90,25 @@ const deleteRecipeFailure = () => {
   };
 };
 
+const updateRecipe = (id) => {
+  return {
+    type: UPDATE_RECIPE,
+    id
+  };
+};
+const updateRecipeSuccess = (recipes) => {
+  return {
+    type: UPDATE_RECIPE_SUCCESS,
+    recipes
+  };
+};
+
+const updateRecipeFailure = () => {
+  return {
+    type: UPDATE_RECIPE_FAILURE
+  };
+};
+
 export {
   getRecipes,
   getRecipesSuccess,
@@ -98,5 +119,8 @@ export {
   addRecipeFailure,
   deleteRecipeSuccess,
   deleteRecipeFailure,
-  deleteRecipe
+  deleteRecipe,
+  updateRecipe,
+  updateRecipeSuccess,
+  updateRecipeFailure
 };

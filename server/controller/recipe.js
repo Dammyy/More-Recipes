@@ -73,8 +73,12 @@ class Recipe {
         upvotes: recipe.upvotes,
         downvotes: recipe.downvotes,
       })
-        .then(() => res.status(200).send(recipe))
-        .catch(error => res.status(400).send(error));
+        .then(() => {
+          return res.status(200).send({
+            message: 'Recipe updated successfully',
+            statusCode: '200'
+          });
+        });
     })
       .catch(error => res.status(400).send(error));
   }

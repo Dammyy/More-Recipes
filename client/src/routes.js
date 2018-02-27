@@ -5,7 +5,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import { Home, Welcome, Archive, Login, Signup } from './components';
-import { AddRecipeContainer, RecipesContainer } from './containers';
+import { AddRecipeContainer, RecipesContainer, EditRecipeFormContainer } from './containers';
 import UserIsAuthenticated from './utils/authWrapper';
 
 const settings = {
@@ -39,6 +39,7 @@ const routes = (
         <Route path="catalog" component={Archive}>
           <IndexRoute component={RecipesContainer} />
           <Route path="add" component={AuthCheck(AddRecipeContainer)} />
+          <Route path="/edit/:id" component={AuthCheck(EditRecipeFormContainer)} />
         </Route>
       </Router>
       <ReduxToastr

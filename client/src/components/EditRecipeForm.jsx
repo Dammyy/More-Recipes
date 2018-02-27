@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 /**
  *
  *
  * @export
- * @class AddRecipeForm
+ * @class EditRecipeForm
  * @extends {PureComponent}
  */
-class AddRecipeForm extends PureComponent {
+class EditRecipeForm extends PureComponent {
   /**
    *
    *
@@ -27,7 +28,6 @@ class AddRecipeForm extends PureComponent {
   render() {
     const { image, uploadImage } = this.props;
     return (
-
       <div className="col-md-9 catalog-left">
         <div className="text-left">
           <Link to="/catalog" className="btn btn-info">Back</Link>
@@ -35,7 +35,7 @@ class AddRecipeForm extends PureComponent {
         <div className="panel panel-default">
           <div className="panel-heading">
             <h2 className="panel-title text-center">
-              Add a Recipe!
+              Edit Recipe
             </h2>
           </div>
           <div className="panel-body">
@@ -110,10 +110,23 @@ class AddRecipeForm extends PureComponent {
   }
 }
 
-AddRecipeForm.propTypes = {
+EditRecipeForm.propTypes = {
   uploadImage: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired
 };
 
-export default reduxForm({ form: 'recipe' })(AddRecipeForm);
+const mapStateToProps = (state, ownProps) => {
+  const { recipes, id } = ownProps;
+  const recipe = recipes.filter(recp => recp.id === parseInt(id, 10))[0];
+  return {
+    initialValues: recipe,
+  };
+};
+
+const connectReduxForm = reduxForm({
+  form: 'updateRecipe',
+  enableReinitialize: true,
+})(EditRecipeForm);
+
+export default connect(mapStateToProps)(connectReduxForm);

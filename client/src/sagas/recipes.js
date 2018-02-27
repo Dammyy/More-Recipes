@@ -5,7 +5,8 @@ import { toastr } from 'react-redux-toastr';
 import {
   GET_RECIPES,
   ADD_RECIPE,
-  DELETE_RECIPE
+  DELETE_RECIPE,
+  UPDATE_RECIPE
 } from '../constants/recipes';
 import {
   getRecipesSuccess,
@@ -13,7 +14,9 @@ import {
   addRecipeSuccess,
   addRecipeFailure,
   deleteRecipeSuccess,
-  deleteRecipeFailure
+  deleteRecipeFailure,
+  updateRecipeSuccess,
+  updateRecipeFailure
 } from '../actions/recipes';
 
 const selectedImage = (state) => {
@@ -60,7 +63,7 @@ const publishRecipe = (recipe) => {
     });
 };
 
-const getRecipeForm = (state) => {
+const addRecipeForm = (state) => {
   return state.getIn(['form', 'recipe']).toJS();
 };
 /**
@@ -69,13 +72,13 @@ const getRecipeForm = (state) => {
  */
 function* addRecipe() {
   const image = yield select(selectedImage);
-  const recipe = yield select(getRecipeForm);
+  const recipe = yield select(addRecipeForm);
 
   const newRecipe = Object.assign({}, { image }, recipe.values);
   try {
-    yield call(publishRecipe, newRecipe);
+    const postRecipe = yield call(publishRecipe, newRecipe);
     yield put(addRecipeSuccess());
-    yield put(toastr.success(newRecipe.message));
+    yield put(toastr.success(postRecipe.message));
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
@@ -122,6 +125,51 @@ function* deleteRecipee(action) {
     yield put(toastr.error(message));
   }
 }
+
+const updateRecipeForm = (state) => {
+  return state.getIn(['form', 'updateRecipe']).toJS();
+};
+
+const editRecipe = (id, recipe) => {
+  return fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      auth: localStorage.getItem('token')
+    }),
+    method: 'PUT',
+    body: JSON.stringify(recipe)
+  })
+    .then(response => response.json())
+    .then((response) => {
+      if (response.statusCode === '200') {
+        return response;
+      }
+      throw response;
+    });
+};
+
+/**
+ * @param {any} action
+ * @returns {void}
+ */
+function* updateRecipe(action) {
+  const { id } = action;
+  const image = yield select(selectedImage);
+  const recipe = yield select(updateRecipeForm);
+  const recipes = yield select(selectedRecipe);
+  const newRecipe = Object.assign({}, { image }, recipe.values);
+  try {
+    const updRecipe = yield call(editRecipe, id, newRecipe);
+    yield put(updateRecipeSuccess(recipes.filter(recip => recip.id !== id)));
+    yield put(toastr.success(updRecipe.message));
+    yield put(push('/catalog'));
+  } catch (e) {
+    const { message } = e;
+    yield put(updateRecipeFailure());
+    yield put(toastr.error(message));
+  }
+}
+
 /**
    * @returns {Object} Watch Get recipes
    */
@@ -145,8 +193,15 @@ function* watchDeleteRecipe() {
   yield takeLatest(DELETE_RECIPE, deleteRecipee);
 }
 
+/**
+   * @returns {Object} Watch Update recipe
+   */
+function* watchUpdateRecipe() {
+  yield takeLatest(UPDATE_RECIPE, updateRecipe);
+}
 export {
   watchGetRecipes,
   watchAddRecipe,
-  watchDeleteRecipe
+  watchDeleteRecipe,
+  watchUpdateRecipe
 };

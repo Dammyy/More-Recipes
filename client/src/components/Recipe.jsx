@@ -1,5 +1,6 @@
 
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import UserIsAuthenticated from '../utils/authWrapper';
 
@@ -11,7 +12,6 @@ const options = {
 };
 
 const BtnDelete = UserIsAuthenticated(options)((props) => {
-  console.log('btndelete props', props);
   return (
     <button
       className="btn btn-danger btn-del"
@@ -20,6 +20,18 @@ const BtnDelete = UserIsAuthenticated(options)((props) => {
       Delete
     </button>);
 });
+const BtnEdit = UserIsAuthenticated(options)((props) => {
+  return (
+    <Link
+      class="btn btn-primary btn-del"
+      to={`edit/${props.id}`}
+      params={{ id: props.id }}
+    >
+      Edit
+    </Link >);
+});
+
+
 /**
  *
  *
@@ -39,7 +51,6 @@ class Recipe extends PureComponent {
     const {
       id, i, title, image, toggleModal, deleteRecipe
     } = this.props;
-    console.log('recipe id: ', id);
     let img;
     if (image === '') {
       img = 'img/chicken.jpg';
@@ -62,6 +73,7 @@ class Recipe extends PureComponent {
               </i>
             </li>
           </div>
+          <BtnEdit id={id} />
           <BtnDelete deleteRecipe={deleteRecipe} id={id} />
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
