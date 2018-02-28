@@ -36,7 +36,6 @@ class EditRecipeContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.recipesActions.updateRecipe(this.props.params.id);
-    console.log('here');
   }
 
   /**
@@ -75,12 +74,12 @@ class EditRecipeContainer extends Component {
  * @param {any} state
  * @returns {object} image
  */
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
   };
-}
+};
 
 /**
  *
@@ -98,6 +97,11 @@ EditRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  params: PropTypes.number.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditRecipeContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditRecipeContainer);

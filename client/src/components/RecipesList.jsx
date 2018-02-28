@@ -36,7 +36,7 @@ class RecipesList extends PureComponent {
    */
   render() {
     const {
-      recipes, toggleModal, deleteRecipe
+      recipes, displayRecipe, deleteRecipe
     } = this.props;
     return (
       <div className="container scrollable">
@@ -51,7 +51,7 @@ class RecipesList extends PureComponent {
                   {...recipe}
                   key={recipe.id}
                   i={i}
-                  toggleModal={toggleModal}
+                  displayRecipe={displayRecipe}
                   deleteRecipe={deleteRecipe}
                 />
               );
@@ -65,7 +65,7 @@ class RecipesList extends PureComponent {
 }
 RecipesList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  displayRecipe: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   i: PropTypes.number.isRequired
 };

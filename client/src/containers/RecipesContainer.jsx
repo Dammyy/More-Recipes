@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import RecipeModal from '../components/RecipeModal';
-import RecipesList from '../components/RecipesList';
+import { RecipesList } from '../components/';
 import * as recipesActionCreators from '../actions/recipes';
 
 /**
@@ -22,7 +21,6 @@ class RecipesContainer extends Component {
    */
   constructor(props) {
     super(props);
-    this.toggleModal = this.toggleModal.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
   /**
@@ -50,10 +48,6 @@ class RecipesContainer extends Component {
    *@returns {void}
    * @memberOf Recipes
    */
-  toggleModal(index) {
-    this.props.recipesActions.viewRecipe(this.props.recipes[index]);
-    $('#recipe-modal').modal();
-  }
 
   /**
    *
@@ -65,6 +59,7 @@ class RecipesContainer extends Component {
   deleteRecipe(id) {
     this.props.recipesActions.deleteRecipe(id);
   }
+
   /**
    *
    *
@@ -73,13 +68,11 @@ class RecipesContainer extends Component {
    * @memberOf Recipes
    */
   render() {
-    const { recipes, sRecipe } = this.props;
+    const { recipes } = this.props;
     return (
       <div>
-        <RecipeModal recipe={sRecipe} />
         <RecipesList
           recipes={recipes}
-          toggleModal={this.toggleModal}
           deleteRecipe={this.deleteRecipe}
         />
       </div>
@@ -95,7 +88,6 @@ class RecipesContainer extends Component {
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
-    sRecipe: state.getIn(['recipes', 'sRecipe'], Immutable.List()).toJS()
   };
 }
 /**
@@ -112,7 +104,6 @@ function mapDispatchToProps(dispatch) {
 
 RecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 

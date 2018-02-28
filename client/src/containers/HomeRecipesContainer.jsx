@@ -24,7 +24,6 @@ class HomeRecipesContainer extends Component {
    */
   constructor(props) {
     super(props);
-    this.toggleModal = this.toggleModal.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -54,10 +53,6 @@ class HomeRecipesContainer extends Component {
    *@returns {void}
    * @memberOf Recipes
    */
-  toggleModal(index) {
-    this.props.recipesActions.viewRecipe(this.props.recipes[index]);
-    $('#recipe-modal').modal();
-  }
   /**
    *
    *
@@ -86,7 +81,6 @@ class HomeRecipesContainer extends Component {
         <RecipeModal recipe={sRecipe} />
         <RecipesListHome
           recipes={recipes}
-          toggleModal={this.toggleModal}
           firstName={firstName}
           logout={this.logout}
         />

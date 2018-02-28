@@ -1,6 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
+const BtnView = ((props) => {
+  return (
+    <Link
+      className="btn btn-success btn-view"
+      to={`view/${props.id}`}
+      params={{ id: props.id }}
+    >
+      View
+    </Link >);
+});
 /**
  *
  *
@@ -18,7 +29,7 @@ class RecipeHome extends PureComponent {
    */
   render() {
     const {
-      i, title, image, toggleModal
+      i, id, title, image
     } = this.props;
     let img;
     if (image === '') {
@@ -44,20 +55,19 @@ class RecipeHome extends PureComponent {
           </div>
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
-        <button
-          className="btn btn-success btn-view"
-          onClick={() => toggleModal(i)}
-        >
-        View
-        </button>
+        <BtnView id={id} />
       </div>
     );
   }
 }
 RecipeHome.propTypes = {
   i: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  toggleModal: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired
+};
+
+BtnView.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 export default RecipeHome;

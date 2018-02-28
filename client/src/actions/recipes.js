@@ -40,6 +40,7 @@ const getRecipesFailure = () => {
  * @returns {Object} recipes
  */
 const viewRecipe = (recipe) => {
+  console.log(recipe);
   return {
     type: VIEW_RECIPE,
     recipe

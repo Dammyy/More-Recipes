@@ -8,6 +8,7 @@ import Recipe from './Recipe';
 import RecipesList from './RecipesList';
 import Login from './Login';
 import Signup from './Signup';
+import ViewRecipe from './ViewRecipe';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
-  RecipesList, Archive, Modal, Login, Signup, EditRecipeForm };
+  RecipesList, Archive, Modal, Login, Signup, EditRecipeForm, ViewRecipe };

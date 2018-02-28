@@ -23,7 +23,7 @@ const BtnDelete = UserIsAuthenticated(options)((props) => {
 const BtnEdit = UserIsAuthenticated(options)((props) => {
   return (
     <Link
-      class="btn btn-primary btn-del"
+      className="btn btn-primary btn-del"
       to={`edit/${props.id}`}
       params={{ id: props.id }}
     >
@@ -31,7 +31,16 @@ const BtnEdit = UserIsAuthenticated(options)((props) => {
     </Link >);
 });
 
-
+const BtnView = ((props) => {
+  return (
+    <Link
+      className="btn btn-success btn-view"
+      to={`view/${props.id}`}
+      params={{ id: props.id }}
+    >
+      View
+    </Link >);
+});
 /**
  *
  *
@@ -49,7 +58,7 @@ class Recipe extends PureComponent {
    */
   render() {
     const {
-      id, i, title, image, toggleModal, deleteRecipe
+      id, i, title, image, deleteRecipe
     } = this.props;
     let img;
     if (image === '') {
@@ -77,12 +86,7 @@ class Recipe extends PureComponent {
           <BtnDelete deleteRecipe={deleteRecipe} id={id} />
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
-        <button
-          className="btn btn-success btn-view"
-          onClick={() => toggleModal(i)}
-        >
-          View
-        </button>
+        <BtnView id={id} />
       </div>
     );
   }
@@ -91,8 +95,11 @@ Recipe.propTypes = {
   id: PropTypes.number.isRequired,
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  toggleModal: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired
 };
+BtnView.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
 export default Recipe;
