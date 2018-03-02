@@ -7,11 +7,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "babel ./server/ -d ./dist/ --copy-files && npm run build-client",
+    "build": "babel ./server/ -d ./production --copy-files && npm run build-client",
     "migrate": "sequelize db:migrate",
     "unmigrate": "sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
+    "start": "npm run build && npm run migrate && node ./production/bin/www.js",
     "test": "cross-env NODE_ENV=test mocha server/__test__/*.spec.js --exit --require babel-register --reporter spec",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls",
     "start-client": "NODE_ENV=development webpack-dev-server",
