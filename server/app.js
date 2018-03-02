@@ -18,7 +18,7 @@ app.use(cors());
 // }));
 
 routes(app);
-app.use(express.static(`${__dirname}/client/dist`));
+app.use(express.static(`${__dirname}/../client/dist`));
 
 console.log('__dirname', __dirname);
 app.get('*', (req, res) => {
