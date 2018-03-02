@@ -7,7 +7,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "rm -rf ./dist && babel ./server/ -d ./dist && npm run build-client",
+    "build": "rm -rf ./dist && mkdir ./dist && babel ./server/ -d ./dist --copy-files && npm run build-client",
     "migrate": "sequelize db:migrate",
     "unmigrate": "sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
