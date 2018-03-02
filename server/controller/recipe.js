@@ -133,7 +133,10 @@ class Recipe {
           message: 'Recipe Not Found',
         });
       }
-      return res.status(200).send(recipe);
+      return res.status(200).send({
+        statusCode: '200',
+        recipe
+      });
     })
       .catch(error => res.status(404).send(error));
   }
@@ -178,17 +181,80 @@ class Recipe {
    * @param {res} res
    */
   static favoriteRecipe(req, res) {
-    FavoritesModel.create({
-      flag: true,
-      userId: req.decoded.id,
-      recipeId: req.params.recipeId,
-    })
-      .then(() => {
-        res.status(201).send('Favorite added successfully');
-      })
-      .catch(error => res.status(400).send(error));
+    FavoritesModel.find({
+      where: {
+        userId: req.decoded.id,
+        recipeId: req.params.recipeId
+      }
+    }).then((favorite) => {
+      if (favorite) {
+        FavoritesModel.destroy({
+          where: {
+            recipeId: req.params.recipeId,
+            userId: req.decoded.id
+          }
+        }).then(() => {
+          RecipeModel.findOne({
+            where: {
+              id: req.params.recipeId
+            }
+          }).then((recipe) => {
+            return res.status(200).send({
+              message: 'Removed from favorites',
+              statusCode: '200',
+              recipe
+            });
+          });
+        })
+          .catch(error => res.status(400).send(error));
+      } else {
+        FavoritesModel.create({
+          flag: true,
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId
+        })
+          .then(() => {
+            RecipeModel.findOne({
+              where: {
+                id: req.params.recipeId
+              }
+            }).then((recipe) => {
+              return res.status(201).send({
+                message: 'Favorited',
+                statusCode: '201',
+                recipe
+              });
+            });
+          })
+          .catch(error => res.status(400).send(error));
+      }
+    });
   }
 
+  /**
+   * @returns {Object} favoriteRecipe
+   * @param {req} req
+   * @param {res} res
+   */
+  static getFavoriteRecipe(req, res) {
+    FavoritesModel.find({
+      where: {
+        userId: req.params.userId,
+        recipeId: req.params.recipeId
+      }
+    }).then((favorite) => {
+      if (favorite) {
+        return res.status(200).send({
+          message: 'true',
+          statusCode: '200'
+        });
+      }
+      return res.status(404).send({
+        message: 'false',
+        statusCode: '404'
+      });
+    });
+  }
   /**
    * @returns {Object} vote
    * @param {req} req

@@ -13,6 +13,17 @@ import PropTypes from 'prop-types';
 class EditRecipeForm extends PureComponent {
   /**
    *
+   * @returns {void}
+   *
+   * @memberOf EditRecipeForm
+   */
+  componentDidMount() {
+    if (this.props.recipes.length < 1) {
+      this.props.redirectUser('/catalog');
+    }
+  }
+  /**
+   *
    *
    *  @param {any} event
    * @returns {string} redirect
@@ -76,7 +87,7 @@ class EditRecipeForm extends PureComponent {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="picture">Picture</label>
+                <label htmlFor="image">Image</label>
                 <div className="text-center dropup">
                   <button
                     id="button-upload"

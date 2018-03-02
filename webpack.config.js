@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const PATHS = require('./webpack-paths');
 const loaders = require('./webpack-loaders');
 
-process.env.NODE_ENV = 'development';
+// process.env.NODE_ENV = 'development';
 // process.env.NODE_ENV = 'build';
 
 const common = {

@@ -31,6 +31,10 @@ export default (app) => {
   app.get('/api/v1/users/:userId/recipes', auth, users.getFavorites);
   app.post('/api/v1/recipes/:recipeId/favorites', auth, Recipes.favoriteRecipe);
   app.get(
+    '/api/v1/recipes/:userId/favorites/:recipeId',
+    auth, Recipes.getFavoriteRecipe
+  );
+  app.get(
     '/api/v1/recipes?sort=upvotes&order=desc',
     auth, Recipes.getMostUpvotes
   );

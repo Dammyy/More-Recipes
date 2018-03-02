@@ -9,6 +9,7 @@ import RecipesList from './RecipesList';
 import Login from './Login';
 import Signup from './Signup';
 import ViewRecipe from './ViewRecipe';
+import NotFoundPage from './NotFoundPage';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
-  RecipesList, Archive, Modal, Login, Signup, EditRecipeForm, ViewRecipe };
+  RecipesList, Archive, Modal, Login, Signup, EditRecipeForm, ViewRecipe, NotFoundPage };

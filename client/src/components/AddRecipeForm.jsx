@@ -76,7 +76,7 @@ class AddRecipeForm extends PureComponent {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="picture">Picture</label>
+                <label htmlFor="image">Image</label>
                 <div className="text-center dropup">
                   <button
                     id="button-upload"

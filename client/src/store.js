@@ -1,6 +1,7 @@
 import {
   createStore,
-  applyMiddleware
+  applyMiddleware,
+  compose
 } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { hashHistory } from 'react-router';
@@ -24,7 +25,10 @@ const configureStore = () => {
   const store = createStore(
     reducer,
     initialState,
-    applyMiddleware(sagaMiddleware, routeMiddleware, logger)
+    compose(
+      applyMiddleware(sagaMiddleware, routeMiddleware, logger),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
   );
   sagaMiddleware.run(rootSaga);
   return store;

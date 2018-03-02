@@ -52,4 +52,3 @@ module.exports = {
     return queryInterface.dropTable('recipes');
   }
 };
-

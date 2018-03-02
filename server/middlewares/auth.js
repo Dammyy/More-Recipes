@@ -10,17 +10,19 @@ const secret = jwtSecret.JWT_SECRET;
    * @param {*} next
    */
 const verifyToken = (req, res, next) => {
-  const token = req.headers.auth || req.headers['x-access-token'] || req.body.token;
+  const token =
+  req.headers.auth || req.headers['x-access-token'] || req.body.token;
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {
       if (err) {
-        return res.status(401).send({ error: 'Token has expired. Please sign in' });
+        return res.status(401)
+          .send({ message: 'Token has expired. Please sign in' });
       }
       req.decoded = decoded;
       next();
     });
   } else {
-    return res.status(401).send({ error: 'Access Denied! Login required' });
+    return res.status(401).send({ message: 'Access Denied! Login required' });
   }
 };
 

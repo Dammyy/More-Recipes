@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const PATHS = require('./webpack-paths');
 
-exports.devServer = function (options) {
+exports.devServer = (options) => {
   return {
     devServer: {
       historyApiFallback: true,

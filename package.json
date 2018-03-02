@@ -7,15 +7,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "node ./node_modules/babel-cli/bin/babel.js ./server/ -d  dist",
-    "migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
-    "unmigrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
+    "build": "babel ./server/ -d  dist && npm run build-client",
+    "migrate": "sequelize db:migrate",
+    "unmigrate": "sequelize db:migrate:undo:all",
     "start:dev": "nodemon --watch server --exec babel-node -- server/bin/www",
     "start": "npm run build && npm run migrate && node ./dist/bin/www.js",
     "test": "cross-env NODE_ENV=test mocha server/__test__/*.spec.js --exit --require babel-register --reporter spec",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls",
-    "start-client": "webpack-dev-server",
-    "build-client": "webpack"
+    "start-client": "NODE_ENV=development webpack-dev-server",
+    "build-client": "NODE_ENV=build webpack"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",

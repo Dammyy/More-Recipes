@@ -3,6 +3,8 @@ import {
   GET_RECIPES_SUCCESS,
   GET_RECIPES_FAILURE,
   VIEW_RECIPE,
+  VIEW_RECIPE_SUCCESS,
+  VIEW_RECIPE_FAILURE,
   ADD_RECIPE,
   ADD_RECIPE_SUCCESS,
   ADD_RECIPE_FAILURE,
@@ -11,7 +13,10 @@ import {
   DELETE_RECIPE_FAILURE,
   UPDATE_RECIPE,
   UPDATE_RECIPE_SUCCESS,
-  UPDATE_RECIPE_FAILURE
+  UPDATE_RECIPE_FAILURE,
+  FAVORITE_RECIPE,
+  FAVORITE_RECIPE_SUCCESS,
+  FAVORITE_RECIPE_FAILURE
 } from '../constants/recipes';
 
 const getRecipes = () => {
@@ -40,14 +45,28 @@ const getRecipesFailure = () => {
  * @returns {Object} recipes
  */
 const viewRecipe = (recipe) => {
-  console.log(recipe);
   return {
     type: VIEW_RECIPE,
     recipe
   };
 };
-
-
+const getRecipe = (id, userId) => {
+  return {
+    type: VIEW_RECIPE,
+    id,
+    userId
+  };
+};
+const viewRecipeSuccess = () => {
+  return {
+    type: VIEW_RECIPE_SUCCESS
+  };
+};
+const viewRecipeFailure = () => {
+  return {
+    type: VIEW_RECIPE_FAILURE
+  };
+};
 const addRecipe = () => {
   return {
     type: ADD_RECIPE
@@ -110,11 +129,30 @@ const updateRecipeFailure = () => {
   };
 };
 
+const favoriteRecipe = (id) => {
+  return {
+    type: FAVORITE_RECIPE,
+    id
+  };
+};
+const favoriteRecipeSuccess = () => {
+  return {
+    type: FAVORITE_RECIPE_SUCCESS
+  };
+};
+const favoriteRecipeFailure = () => {
+  return {
+    type: FAVORITE_RECIPE_FAILURE
+  };
+};
+
 export {
   getRecipes,
   getRecipesSuccess,
   getRecipesFailure,
   viewRecipe,
+  viewRecipeSuccess,
+  viewRecipeFailure,
   addRecipe,
   addRecipeSuccess,
   addRecipeFailure,
@@ -123,5 +161,9 @@ export {
   deleteRecipe,
   updateRecipe,
   updateRecipeSuccess,
-  updateRecipeFailure
+  updateRecipeFailure,
+  favoriteRecipe,
+  favoriteRecipeSuccess,
+  favoriteRecipeFailure,
+  getRecipe
 };

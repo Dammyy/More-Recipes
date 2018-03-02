@@ -2,6 +2,53 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import UserIsAuthenticated from '../utils/authWrapper';
+
+const options = {
+  authSelector: state => state.get('auth'),
+  predicate: auth => auth.get('Authenticated'),
+  wrapperDisplayName: 'authDeleteRecipe',
+  FailureComponent: null
+};
+
+const Favorite = UserIsAuthenticated(options)((props) => {
+  if (props.favorited === 'true') {
+    return (
+      <button
+        className="btn btn-favorited"
+        params={{ id: props.id }}
+        onClick={() => props.favoriteRecipe(props.id, props.userId)}
+      >
+        <i className="favorited fa fa-heart" /> Favorited
+      </button >
+    );
+  }
+  if (props.favorited === 'false') {
+    return (
+      <button
+        className="btn btn-favorited"
+        params={{ id: props.id }}
+        onClick={() => {
+        props.favoriteRecipe(props.id, props.userId);
+      }}
+      >
+        <i className="fa fa-heart" /> Add to favorites
+      </button >
+    );
+  }
+  return (
+    <button
+      className="btn btn-favorited"
+      params={{ id: props.id }}
+      onClick={() => {
+      props.favoriteRecipe(props.id, props.userId);
+    }}
+    >
+      <i className="fa fa-heart" /> Add to favorites
+    </button >
+  );
+});
+
 /**
  *
  *
@@ -17,6 +64,9 @@ class ViewRecipe extends PureComponent {
    * @memberOf ViewRecipe
    */
   render() {
+    if (!this.props.recipe) {
+      return <h1>Loading...</h1>;
+    }
     const {
       title, details, image
     } = this.props.recipe;
@@ -33,7 +83,13 @@ class ViewRecipe extends PureComponent {
               <p>{details}</p>
               <div id="up-down-vote">
                 <div id="popular-votes">
-                  <li><i className="fa fa-heart" />
+                  <li>
+                    <Favorite
+                      id={this.props.id}
+                      favoriteRecipe={this.props.favoriteRecipe}
+                      userId={this.props.userId}
+                      favorited={this.props.recipe.favorited}
+                    />
                   </li><li>Rate:</li>
                   <li>
                     <i className="fa fa-thumbs-up" aria-hidden="true"> 200</i>
@@ -43,9 +99,7 @@ class ViewRecipe extends PureComponent {
                   </li>
                 </div>
               </div>
-              <i clasName="fas fa-thumbs-up" />
-
-
+              <i className="fas fa-thumbs-up" />
               <div id="recipe-reviews">
                 <label><b>Reviews</b></label>
                 <div id="review">
@@ -80,17 +134,29 @@ class ViewRecipe extends PureComponent {
 }
 
 ViewRecipe.propTypes = {
-  title: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  recipe: PropTypes.arrayOf(PropTypes.any).isRequired
+  title: PropTypes.string,
+  details: PropTypes.string,
+  image: PropTypes.string,
+  recipe: PropTypes.objectOf(PropTypes.any)
+};
+
+ViewRecipe.defaultProps = {
+  title: 'stuff',
+  details: 'fsfsg',
+  image: 'http://',
+  recipe: { }
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { recipes, id } = ownProps;
+  const {
+    recipes, id, userId, favoriteRecipe
+  } = ownProps;
   const recipe = recipes.filter(recp => recp.id === parseInt(id, 10))[0];
   return {
+    id,
+    userId,
     recipe,
+    favoriteRecipe
   };
 };
 

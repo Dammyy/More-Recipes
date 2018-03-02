@@ -4,7 +4,8 @@ import ReduxToastr from 'react-redux-toastr';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store';
-import { Home, Welcome, Archive, Login, Signup } from './components';
+import { Home, Welcome,
+  Archive, Login, Signup, NotFoundPage } from './components';
 import { AddRecipeContainer, RecipesContainer,
   EditRecipeFormContainer, ViewRecipeContainer } from './containers';
 import UserIsAuthenticated from './utils/authWrapper';
@@ -36,6 +37,7 @@ const routes = (
           <IndexRoute component={Welcome} />
           <Route path="login" component={Login} />
           <Route path="signup" component={Signup} />
+          <Route path="error" component={NotFoundPage} />
         </Route>
         <Route path="catalog" component={Archive}>
           <IndexRoute component={RecipesContainer} />

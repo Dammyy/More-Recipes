@@ -64,6 +64,7 @@ class EditRecipeContainer extends Component {
         uploadImage={this.uploadImage}
         recipes={recipes}
         id={id}
+        redirectUser={this.props.router.push}
       />);
   }
 }
@@ -98,7 +99,7 @@ EditRecipeContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  params: PropTypes.number.isRequired
+  params: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default connect(

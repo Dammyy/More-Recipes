@@ -24,7 +24,7 @@ class RecipesListHome extends PureComponent {
     return (
       <div>
         <div className="col-md-12 home-logged-in">
-          <ActionButtons logout={logout} firstName={firstName} />
+          <ActionButtons logout={logout} firstName={firstName} /> 
         </div>
         <div className="container scrollable">
           <div className="row">
