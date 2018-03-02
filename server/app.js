@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import cors from 'cors';
+import path from 'path';
 import routes from './routes/index';
 
 
@@ -19,8 +20,8 @@ app.use(cors());
 routes(app);
 app.use(express.static(`${__dirname}/client/dist`));
 
-app.route('*').get((req, res) => {
-  res.sendFile('client/dist/index.html', { root: __dirname });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'dist'));
 });
 
 export default app;
