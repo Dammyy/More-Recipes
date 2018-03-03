@@ -36,7 +36,7 @@ class RecipesList extends PureComponent {
    */
   render() {
     const {
-      recipes, displayRecipe, deleteRecipe
+      recipes, deleteRecipe
     } = this.props;
     return (
       <div className="container scrollable">
@@ -45,13 +45,11 @@ class RecipesList extends PureComponent {
           {
           recipes
             .filter(recipe => recipe.title.toLowerCase())
-            .map((recipe, i) => {
+            .map((recipe) => {
               return (
                 <Recipe
                   {...recipe}
                   key={recipe.id}
-                  i={i}
-                  displayRecipe={displayRecipe}
                   deleteRecipe={deleteRecipe}
                 />
               );
@@ -65,8 +63,6 @@ class RecipesList extends PureComponent {
 }
 RecipesList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  displayRecipe: PropTypes.func.isRequired,
-  deleteRecipe: PropTypes.func.isRequired,
-  i: PropTypes.number.isRequired
+  deleteRecipe: PropTypes.func.isRequired
 };
 export default RecipesList;

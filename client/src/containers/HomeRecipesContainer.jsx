@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import RecipeModal from '../components/RecipeModal';
 import RecipesListHome from '../components/RecipesListHome';
 import * as recipesActionCreators from '../actions/recipes';
 import * as authActionCreators from '../actions/auth';
@@ -74,11 +73,10 @@ class HomeRecipesContainer extends Component {
    */
   render() {
     const {
-      recipes, sRecipe, firstName
+      recipes, firstName
     } = this.props;
     return (
       <div>
-        <RecipeModal recipe={sRecipe} />
         <RecipesListHome
           recipes={recipes}
           firstName={firstName}
@@ -98,8 +96,7 @@ class HomeRecipesContainer extends Component {
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
-    firstName: state.getIn(['auth', 'firstName']),
-    sRecipe: state.getIn(['recipes', 'sRecipe'], Immutable.List()).toJS()
+    firstName: state.getIn(['auth', 'firstName'])
   };
 }
 
@@ -119,9 +116,12 @@ function mapDispatchToProps(dispatch) {
 HomeRecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   authActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  sRecipe: PropTypes.arrayOf(PropTypes.any).isRequired,
-  firstName: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired
+};
+
+HomeRecipesContainer.defaultProps = {
+  firstName: 'stuff'
 };
 
 export default connect(

@@ -2,7 +2,7 @@ import { watchGetRecipes, watchAddRecipe,
   watchDeleteRecipe, watchUpdateRecipe,
   watchGetRecipe, watchFavoriteRecipe } from './recipes';
 import { watchLoginUser, watchSignupUser } from './auth';
-import { watchUploadImage } from './filestack';
+import watchUploadImage from './filestack';
 /**
    * @returns {Object} root saga
    */

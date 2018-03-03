@@ -124,7 +124,9 @@ class EditRecipeForm extends PureComponent {
 EditRecipeForm.propTypes = {
   uploadImage: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  redirectUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

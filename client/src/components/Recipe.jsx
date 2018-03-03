@@ -58,7 +58,7 @@ class Recipe extends PureComponent {
    */
   render() {
     const {
-      id, i, title, image, deleteRecipe
+      id, title, image, deleteRecipe
     } = this.props;
     let img;
     if (image === '') {
@@ -93,7 +93,6 @@ class Recipe extends PureComponent {
 }
 Recipe.propTypes = {
   id: PropTypes.number.isRequired,
-  i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired

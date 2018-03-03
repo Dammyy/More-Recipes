@@ -45,6 +45,7 @@ function* uploadImage() {
  *
  * @returns {void}
  */
-export function* watchUploadImage() {
+function* watchUploadImage() {
   yield takeLatest(UPLOAD_IMAGE, uploadImage);
 }
+export default watchUploadImage;

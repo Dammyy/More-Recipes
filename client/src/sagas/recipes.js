@@ -2,27 +2,8 @@ import { push } from 'react-router-redux';
 import { takeLatest } from 'redux-saga';
 import { put, call, select } from 'redux-saga/effects';
 import { toastr } from 'react-redux-toastr';
-import {
-  GET_RECIPES,
-  ADD_RECIPE,
-  DELETE_RECIPE,
-  UPDATE_RECIPE,
-  VIEW_RECIPE,
-  FAVORITE_RECIPE
-} from '../constants/recipes';
-import {
-  getRecipesSuccess,
-  getRecipesFailure,
-  viewRecipeFailure,
-  addRecipeSuccess,
-  addRecipeFailure,
-  deleteRecipeSuccess,
-  deleteRecipeFailure,
-  updateRecipeSuccess,
-  updateRecipeFailure,
-  favoriteRecipeSuccess,
-  favoriteRecipeFailure
-} from '../actions/recipes';
+import * as recipeConstants from '../constants/recipes';
+import * as recipeActions from '../actions/recipes';
 
 const selectedImage = (state) => {
   return state.getIn(['filestack', 'url'], '');
@@ -44,9 +25,9 @@ const fetchRecipes = () => fetch('http://localhost:3000/api/v1/recipes', {
 function* getRecipes() {
   try {
     const recipes = yield call(fetchRecipes);
-    yield put(getRecipesSuccess(recipes));
+    yield put(recipeActions.getRecipesSuccess(recipes));
   } catch (err) {
-    yield put(getRecipesFailure());
+    yield put(recipeActions.getRecipesFailure());
   }
 }
 
@@ -94,12 +75,12 @@ function* getRecipe(action) {
     const { recipe } = recipes;
     const fav = yield call(checkFavorite, id, userId);
     recipe.favorited = fav.message;
-    yield put(getRecipesSuccess([recipe]));
+    yield put(recipeActions.getRecipesSuccess([recipe]));
   } catch (e) {
     const { message } = e;
-    yield put(viewRecipeFailure());
+    yield put(recipeActions.viewRecipeFailure());
     yield put(toastr.error(message));
-    //  yield put(push('/error'));
+    yield put(push('/error'));
   }
 }
 
@@ -135,12 +116,12 @@ function* addRecipe() {
   const newRecipe = Object.assign({}, { image }, recipe.values);
   try {
     const postRecipe = yield call(publishRecipe, newRecipe);
-    yield put(addRecipeSuccess());
+    yield put(recipeActions.addRecipeSuccess());
     yield put(toastr.success(postRecipe.message));
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
-    yield put(addRecipeFailure());
+    yield put(recipeActions.addRecipeFailure());
     yield put(toastr.error(message));
   }
 }
@@ -174,12 +155,13 @@ function* deleteRecipe(action) {
   const recipes = yield select(selectedRecipe);
   try {
     const delRecipe = yield call(removeRecipe, id);
-    yield put(deleteRecipeSuccess(recipes.filter(recipe => recipe.id !== id)));
+    yield put(recipeActions.deleteRecipeSuccess(recipes.filter(recipe =>
+      recipe.id !== id)));
     yield put(toastr.success(delRecipe.message));
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
-    yield put(deleteRecipeFailure());
+    yield put(recipeActions.deleteRecipeFailure());
     yield put(toastr.error(message));
   }
 }
@@ -219,12 +201,13 @@ function* updateRecipe(action) {
   newRecipe.image = image;
   try {
     const updRecipe = yield call(editRecipe, id, newRecipe);
-    yield put(updateRecipeSuccess(recipes.filter(recip => recip.id !== id)));
+    yield put(recipeActions.updateRecipeSuccess(recipes.filter(recip =>
+      recip.id !== id)));
     yield put(toastr.success(updRecipe.message));
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
-    yield put(updateRecipeFailure());
+    yield put(recipeActions.updateRecipeFailure());
     yield put(toastr.error(message));
   }
 }
@@ -263,12 +246,12 @@ function* favoriteRecipe(action) {
     if (favorite.message === 'Favorited') {
       recipe.favorited = 'true';
     }
-    yield put(getRecipesSuccess([recipe]));
-    yield put(favoriteRecipeSuccess());
+    yield put(recipeActions.getRecipesSuccess([recipe]));
+    yield put(recipeActions.favoriteRecipeSuccess());
     yield put(toastr.success(favorite.message));
   } catch (e) {
     const { message } = e;
-    yield put(favoriteRecipeFailure());
+    yield put(recipeActions.favoriteRecipeFailure());
     yield put(toastr.error(message));
   }
 }
@@ -278,21 +261,21 @@ function* favoriteRecipe(action) {
    * @returns {Object} Watch Get recipes
    */
 function* watchGetRecipes() {
-  yield takeLatest(GET_RECIPES, getRecipes);
+  yield takeLatest(recipeConstants.GET_RECIPES, getRecipes);
 }
 
 /**
    * @returns {Object} Watch Get recipe
    */
 function* watchGetRecipe() {
-  yield takeLatest(VIEW_RECIPE, getRecipe);
+  yield takeLatest(recipeConstants.VIEW_RECIPE, getRecipe);
 }
 /**
  *
  *@return {void}
  */
 function* watchAddRecipe() {
-  yield takeLatest(ADD_RECIPE, addRecipe);
+  yield takeLatest(recipeConstants.ADD_RECIPE, addRecipe);
 }
 
 /**
@@ -300,20 +283,20 @@ function* watchAddRecipe() {
  *
  */
 function* watchDeleteRecipe() {
-  yield takeLatest(DELETE_RECIPE, deleteRecipe);
+  yield takeLatest(recipeConstants.DELETE_RECIPE, deleteRecipe);
 }
 
 /**
    * @returns {Object} Watch Update recipe
    */
 function* watchUpdateRecipe() {
-  yield takeLatest(UPDATE_RECIPE, updateRecipe);
+  yield takeLatest(recipeConstants.UPDATE_RECIPE, updateRecipe);
 }
 /**
    * @returns {Object} Watch favorite recipe
    */
 function* watchFavoriteRecipe() {
-  yield takeLatest(FAVORITE_RECIPE, favoriteRecipe);
+  yield takeLatest(recipeConstants.FAVORITE_RECIPE, favoriteRecipe);
 }
 
 export {

@@ -19,24 +19,22 @@ class RecipesListHome extends PureComponent {
    */
   render() {
     const {
-      recipes, toggleModal, firstName, logout
+      recipes, firstName, logout
     } = this.props;
     return (
       <div>
         <div className="col-md-12 home-logged-in">
-          <ActionButtons logout={logout} firstName={firstName} /> 
+          <ActionButtons logout={logout} firstName={firstName} />
         </div>
         <div className="container scrollable">
           <div className="row">
             {
           recipes
-            .map((recipe, i) => {
+            .map((recipe) => {
               return (
                 <RecipeHome
                   {...recipe}
                   key={recipe.id}
-                  i={i}
-                  toggleModal={toggleModal}
                 />
               );
             })
@@ -50,9 +48,11 @@ class RecipesListHome extends PureComponent {
 }
 RecipesListHome.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  i: PropTypes.number.isRequired,
-  firstName: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
   logout: PropTypes.func.isRequired,
 };
+RecipesListHome.defaultProps = {
+  firstName: 'stuff'
+};
+
 export default RecipesListHome;

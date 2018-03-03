@@ -99,7 +99,8 @@ EditRecipeContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  params: PropTypes.objectOf(PropTypes.any).isRequired
+  params: PropTypes.objectOf(PropTypes.any).isRequired,
+  router: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default connect(

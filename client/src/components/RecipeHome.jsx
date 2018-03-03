@@ -29,7 +29,7 @@ class RecipeHome extends PureComponent {
    */
   render() {
     const {
-      i, id, title, image
+      id, title, image
     } = this.props;
     let img;
     if (image === '') {
@@ -61,7 +61,6 @@ class RecipeHome extends PureComponent {
   }
 }
 RecipeHome.propTypes = {
-  i: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired

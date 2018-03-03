@@ -96,7 +96,8 @@ ViewRecipeContainer.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
-  params: PropTypes.objectOf(PropTypes.any).isRequired
+  params: PropTypes.objectOf(PropTypes.any).isRequired,
+  userId: PropTypes.number.isRequired
 };
 
 export default connect(

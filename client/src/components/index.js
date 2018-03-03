@@ -1,7 +1,6 @@
 import Home from './Home';
 import Welcome from './Welcome';
 import Archive from './Archive';
-import Modal from './RecipeModal';
 import AddRecipeForm from './AddRecipeForm';
 import EditRecipeForm from './EditRecipeForm';
 import Recipe from './Recipe';
@@ -12,4 +11,4 @@ import ViewRecipe from './ViewRecipe';
 import NotFoundPage from './NotFoundPage';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
-  RecipesList, Archive, Modal, Login, Signup, EditRecipeForm, ViewRecipe, NotFoundPage };
+  RecipesList, Archive, Login, Signup, EditRecipeForm, ViewRecipe, NotFoundPage };

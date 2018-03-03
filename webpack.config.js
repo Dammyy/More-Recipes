@@ -3,9 +3,6 @@ const merge = require('webpack-merge');
 const PATHS = require('./webpack-paths');
 const loaders = require('./webpack-loaders');
 
-// process.env.NODE_ENV = 'development';
-// process.env.NODE_ENV = 'build';
-
 const common = {
   entry: {
     app: ['babel-polyfill', PATHS.src]
@@ -29,7 +26,7 @@ const common = {
 
 let config;
 switch (process.env.NODE_ENV) {
-  case 'build':
+  case 'production':
     config = merge(
       common,
       { devtool: 'source-map' }

@@ -137,14 +137,17 @@ ViewRecipe.propTypes = {
   title: PropTypes.string,
   details: PropTypes.string,
   image: PropTypes.string,
-  recipe: PropTypes.objectOf(PropTypes.any)
+  recipe: PropTypes.objectOf(PropTypes.any),
+  favoriteRecipe: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 ViewRecipe.defaultProps = {
   title: 'stuff',
   details: 'fsfsg',
   image: 'http://',
-  recipe: { }
+  recipe: { },
 };
 
 const mapStateToProps = (state, ownProps) => {
