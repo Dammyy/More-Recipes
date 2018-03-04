@@ -255,6 +255,7 @@ class Recipe {
       });
     });
   }
+
   /**
    * @returns {Object} vote
    * @param {req} req
@@ -367,7 +368,9 @@ class Recipe {
     if (req.query.sort && req.query.order) {
       RecipeModel.Recipes.findAll({
         group: 'id',
-        order: RecipeModel.sequelize.literal(`max(${req.query.sort}) ${req.query.order.toUpperCase()}`)
+        order:
+        RecipeModel.sequelize
+          .literal(`max(${req.query.sort}) ${req.query.order.toUpperCase()}`)
       })
         .then(recipes => res.status(200).send(recipes))
         .catch(error => res.status(400).send(error));

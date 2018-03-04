@@ -68,18 +68,18 @@ class RecipesContainer extends Component {
    * @memberOf Recipes
    */
   render() {
-    const { recipes } = this.props;
+    const { recipes, userId } = this.props;
     return (
       <div>
         <RecipesList
           recipes={recipes}
           deleteRecipe={this.deleteRecipe}
+          userId={userId}
         />
       </div>
     );
   }
 }
-
 /**
  *
  * @param {any} state
@@ -88,6 +88,7 @@ class RecipesContainer extends Component {
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+    userId: state.getIn(['auth', 'userId']),
   };
 }
 /**
@@ -98,13 +99,14 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    recipesActions: bindActionCreators(recipesActionCreators, dispatch)
+    recipesActions: bindActionCreators(recipesActionCreators, dispatch),
   };
 }
 
 RecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  userId: PropTypes.number.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);

@@ -134,20 +134,13 @@ class ViewRecipe extends PureComponent {
 }
 
 ViewRecipe.propTypes = {
-  title: PropTypes.string,
-  details: PropTypes.string,
-  image: PropTypes.string,
-  recipe: PropTypes.objectOf(PropTypes.any),
+  title: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired
-};
-
-ViewRecipe.defaultProps = {
-  title: 'stuff',
-  details: 'fsfsg',
-  image: 'http://',
-  recipe: { },
 };
 
 const mapStateToProps = (state, ownProps) => {

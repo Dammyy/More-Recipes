@@ -25,15 +25,27 @@ class ViewRecipeContainer extends Component {
   }
 
   /**
+   *
+   *
+   * @returns {void}
+   *
+   * @memberOf ViewRecipeContainer
+   */
+  componentWillMount() {
+    if (!this.props.userId) {
+      return this.props.recipesActions.getRecipeNoUserId(this.props.params.id);
+    }
+    if (this.props.userId) {
+      this.props.recipesActions
+        .getRecipe(this.props.params.id, this.props.userId);
+    }
+  }
+  /**
    *@returns {void}
    *
    *
    * @memberOf ViewRecipeContainer
    */
-  componentWillMount() {
-    this.props.recipesActions
-      .getRecipe(this.props.params.id, this.props.userId);
-  }
 
   /**
    *@returns {void}

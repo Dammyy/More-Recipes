@@ -7,7 +7,8 @@ import configureStore from './store';
 import { Home, Welcome,
   Archive, Login, Signup, NotFoundPage } from './components';
 import { AddRecipeContainer, RecipesContainer,
-  EditRecipeFormContainer, ViewRecipeContainer } from './containers';
+  EditRecipeFormContainer, ViewRecipeContainer,
+  AllRecipesContainer, MyFavoriteRecipesContainer } from './containers';
 import UserIsAuthenticated from './utils/authWrapper';
 
 const settings = {
@@ -40,8 +41,13 @@ const routes = (
           <Route path="error" component={NotFoundPage} />
         </Route>
         <Route path="catalog" component={Archive}>
-          <IndexRoute component={RecipesContainer} />
+          <IndexRoute component={AllRecipesContainer} />
           <Route path="add" component={AuthCheck(AddRecipeContainer)} />
+          <Route path="manage" component={AuthCheck(RecipesContainer)} />
+          <Route
+            path="favorites"
+            component={AuthCheck(MyFavoriteRecipesContainer)}
+          />
           <Route
             path="/edit/:id"
             component={AuthCheck(EditRecipeFormContainer)}

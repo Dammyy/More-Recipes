@@ -1,40 +1,21 @@
-import {
-  GET_RECIPES,
-  GET_RECIPES_SUCCESS,
-  GET_RECIPES_FAILURE,
-  VIEW_RECIPE,
-  VIEW_RECIPE_SUCCESS,
-  VIEW_RECIPE_FAILURE,
-  ADD_RECIPE,
-  ADD_RECIPE_SUCCESS,
-  ADD_RECIPE_FAILURE,
-  DELETE_RECIPE,
-  DELETE_RECIPE_SUCCESS,
-  DELETE_RECIPE_FAILURE,
-  UPDATE_RECIPE,
-  UPDATE_RECIPE_SUCCESS,
-  UPDATE_RECIPE_FAILURE,
-  FAVORITE_RECIPE,
-  FAVORITE_RECIPE_SUCCESS,
-  FAVORITE_RECIPE_FAILURE
-} from '../constants/recipes';
+import * as recipeConstants from '../constants/recipes';
 
 const getRecipes = () => {
   return {
-    type: GET_RECIPES
+    type: recipeConstants.GET_RECIPES
   };
 };
 
 const getRecipesSuccess = (recipes) => {
   return {
-    type: GET_RECIPES_SUCCESS,
+    type: recipeConstants.GET_RECIPES_SUCCESS,
     recipes
   };
 };
 
 const getRecipesFailure = () => {
   return {
-    type: GET_RECIPES_FAILURE
+    type: recipeConstants.GET_RECIPES_FAILURE
   };
 };
 
@@ -46,36 +27,44 @@ const getRecipesFailure = () => {
  */
 const viewRecipe = (recipe) => {
   return {
-    type: VIEW_RECIPE,
+    type: recipeConstants.VIEW_RECIPE,
     recipe
   };
 };
 const getRecipe = (id, userId) => {
   return {
-    type: VIEW_RECIPE,
+    type: recipeConstants.VIEW_RECIPE,
     id,
     userId
   };
 };
+
+const getRecipeNoUserId = (id) => {
+  return {
+    type: recipeConstants.VIEW_RECIPE_NO_USER_ID,
+    id
+  };
+};
+
 const viewRecipeSuccess = () => {
   return {
-    type: VIEW_RECIPE_SUCCESS
+    type: recipeConstants.VIEW_RECIPE_SUCCESS
   };
 };
 const viewRecipeFailure = () => {
   return {
-    type: VIEW_RECIPE_FAILURE
+    type: recipeConstants.VIEW_RECIPE_FAILURE
   };
 };
 const addRecipe = () => {
   return {
-    type: ADD_RECIPE
+    type: recipeConstants.ADD_RECIPE
   };
 };
 
 const addRecipeSuccess = () => {
   return {
-    type: ADD_RECIPE_SUCCESS
+    type: recipeConstants.ADD_RECIPE_SUCCESS
   };
 };
 
@@ -86,63 +75,82 @@ const addRecipeSuccess = () => {
  */
 function addRecipeFailure() {
   return {
-    type: ADD_RECIPE_FAILURE
+    type: recipeConstants.ADD_RECIPE_FAILURE
   };
 }
 
 const deleteRecipe = (id) => {
   return {
-    type: DELETE_RECIPE,
+    type: recipeConstants.DELETE_RECIPE,
     id
   };
 };
 
 const deleteRecipeSuccess = (recipes) => {
   return {
-    type: DELETE_RECIPE_SUCCESS,
+    type: recipeConstants.DELETE_RECIPE_SUCCESS,
     recipes
   };
 };
 
 const deleteRecipeFailure = () => {
   return {
-    type: DELETE_RECIPE_FAILURE
+    type: recipeConstants.DELETE_RECIPE_FAILURE
   };
 };
 
 const updateRecipe = (id) => {
   return {
-    type: UPDATE_RECIPE,
+    type: recipeConstants.UPDATE_RECIPE,
     id
   };
 };
 const updateRecipeSuccess = (recipes) => {
   return {
-    type: UPDATE_RECIPE_SUCCESS,
+    type: recipeConstants.UPDATE_RECIPE_SUCCESS,
     recipes
   };
 };
 
 const updateRecipeFailure = () => {
   return {
-    type: UPDATE_RECIPE_FAILURE
+    type: recipeConstants.UPDATE_RECIPE_FAILURE
   };
 };
 
 const favoriteRecipe = (id) => {
   return {
-    type: FAVORITE_RECIPE,
+    type: recipeConstants.FAVORITE_RECIPE,
     id
   };
 };
 const favoriteRecipeSuccess = () => {
   return {
-    type: FAVORITE_RECIPE_SUCCESS
+    type: recipeConstants.FAVORITE_RECIPE_SUCCESS
   };
 };
 const favoriteRecipeFailure = () => {
   return {
-    type: FAVORITE_RECIPE_FAILURE
+    type: recipeConstants.FAVORITE_RECIPE_FAILURE
+  };
+};
+
+const getFavoritedRecipes = (userId) => {
+  return {
+    type: recipeConstants.RETRIEVE_FAVORITE_RECIPES,
+    userId
+  };
+};
+
+const getFavoritedRecipesSuccess = () => {
+  return {
+    type: recipeConstants.RETRIEVE_FAVORITE_RECIPES_SUCCESS,
+  };
+};
+
+const getFavoritedRecipesFailure = () => {
+  return {
+    type: recipeConstants.RETRIEVE_FAVORITE_RECIPES_FAILURE,
   };
 };
 
@@ -165,5 +173,9 @@ export {
   favoriteRecipe,
   favoriteRecipeSuccess,
   favoriteRecipeFailure,
-  getRecipe
+  getRecipe,
+  getRecipeNoUserId,
+  getFavoritedRecipes,
+  getFavoritedRecipesSuccess,
+  getFavoritedRecipesFailure
 };

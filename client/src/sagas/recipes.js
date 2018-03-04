@@ -5,9 +5,6 @@ import { toastr } from 'react-redux-toastr';
 import * as recipeConstants from '../constants/recipes';
 import * as recipeActions from '../actions/recipes';
 
-const selectedImage = (state) => {
-  return state.getIn(['filestack', 'url'], '');
-};
 /**
    * @returns {Object} fetch recipes
    */
@@ -84,6 +81,33 @@ function* getRecipe(action) {
   }
 }
 
+
+/**
+ * @returns {void}
+ *
+ * @param {any} action
+ */
+function* getRecipeNoUserId(action) {
+  const { id } = action;
+  try {
+    const recipes = yield call(fetchSingleRecipe, id);
+    const { recipe } = recipes;
+    yield put(recipeActions.getRecipesSuccess([recipe]));
+  } catch (e) {
+    const { message } = e;
+    yield put(recipeActions.viewRecipeFailure());
+    yield put(toastr.error(message));
+    yield put(push('/error'));
+  }
+}
+const selectedImage = (state) => {
+  return state.getIn(['filestack', 'url'], '');
+};
+
+const addRecipeForm = (state) => {
+  return state.getIn(['form', 'recipe']).toJS();
+};
+
 const publishRecipe = (recipe) => {
   return fetch('http://localhost:3000/api/v1/recipes', {
     headers: new Headers({
@@ -102,9 +126,6 @@ const publishRecipe = (recipe) => {
     });
 };
 
-const addRecipeForm = (state) => {
-  return state.getIn(['form', 'recipe']).toJS();
-};
 /**
  *
  *@returns {void}
@@ -128,6 +149,7 @@ function* addRecipe() {
 const selectedRecipe = (state) => {
   return state.getIn(['recipes', 'list']).toJS();
 };
+
 const removeRecipe = (id) => {
   return fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
     headers: new Headers({
@@ -256,6 +278,40 @@ function* favoriteRecipe(action) {
   }
 }
 
+const getFavRecipes = (userId) => {
+  return fetch(`http://localhost:3000/api/v1/users/${userId}/recipes/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      auth: localStorage.getItem('token')
+    }),
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then((response) => {
+      if (response.statusCode === '200') {
+        return response;
+      }
+      throw response;
+    });
+};
+
+/**
+ * @returns {void}
+ *
+ * @param {any} action
+ */
+function* usersFavorites(action) {
+  const { userId } = action;
+  try {
+    const recipes = yield call(getFavRecipes, userId);
+    const { favorites } = recipes;
+    yield put(recipeActions.getRecipesSuccess(favorites.map(fa => fa.recipe)));
+  } catch (e) {
+    const { message } = e;
+    yield put(recipeActions.getFavoritedRecipesFailure());
+    yield put(toastr.error(message));
+  }
+}
 
 /**
    * @returns {Object} Watch Get recipes
@@ -269,6 +325,14 @@ function* watchGetRecipes() {
    */
 function* watchGetRecipe() {
   yield takeLatest(recipeConstants.VIEW_RECIPE, getRecipe);
+}
+
+/**
+ *@returns {Object} Watch Get recipe no use id
+ *
+ */
+function* watchGetRecipeNoUserId() {
+  yield takeLatest(recipeConstants.VIEW_RECIPE_NO_USER_ID, getRecipeNoUserId);
 }
 /**
  *
@@ -299,11 +363,20 @@ function* watchFavoriteRecipe() {
   yield takeLatest(recipeConstants.FAVORITE_RECIPE, favoriteRecipe);
 }
 
+/**
+   * @returns {Object} Watch Get Users favorite recipes
+   */
+function* watchGetUsersFavorites() {
+  yield takeLatest(recipeConstants.RETRIEVE_FAVORITE_RECIPES, usersFavorites);
+}
+
 export {
   watchGetRecipes,
   watchAddRecipe,
   watchDeleteRecipe,
   watchUpdateRecipe,
   watchGetRecipe,
-  watchFavoriteRecipe
+  watchFavoriteRecipe,
+  watchGetUsersFavorites,
+  watchGetRecipeNoUserId
 };

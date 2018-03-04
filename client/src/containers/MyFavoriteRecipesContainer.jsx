@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toastr } from 'react-redux-toastr';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import RecipesListHome from '../components/RecipesListHome';
+import { MyFavoriteRecipes } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
-import * as authActionCreators from '../actions/auth';
 
 /**
  *
@@ -14,18 +12,7 @@ import * as authActionCreators from '../actions/auth';
  * @class Recipes
  * @extends {Component}
  */
-class HomeRecipesContainer extends Component {
-  /**
-   * Creates an instance of Recipes.
-   * @param {any} props
-   *
-   * @memberOf Recipes
-   */
-  constructor(props) {
-    super(props);
-    this.logout = this.logout.bind(this);
-  }
-
+class MyFavoriteRecipesContainer extends Component {
   /**
    *@returns {void}
    *
@@ -33,7 +20,7 @@ class HomeRecipesContainer extends Component {
    * @memberOf Recipes
    */
   componentDidMount() {
-    this.getRecipes();
+    this.getMyFavorites();
   }
 
   /**
@@ -42,8 +29,8 @@ class HomeRecipesContainer extends Component {
    * @returns {void}
    * @memberOf HomeRecipes
    */
-  getRecipes() {
-    this.props.recipesActions.getRecipes();
+  getMyFavorites() {
+    this.props.recipesActions.getFavoritedRecipes(this.props.userId);
   }
   /**
    *
@@ -52,17 +39,6 @@ class HomeRecipesContainer extends Component {
    *@returns {void}
    * @memberOf Recipes
    */
-  /**
-   *
-   *
-   * @returns {void}
-   * @memberOf HomeRecipes
-   */
-  logout() {
-    this.props.authActions.logout();
-    toastr.success('Logout Successful');
-    localStorage.removeItem('token');
-  }
 
   /**
    *
@@ -73,14 +49,12 @@ class HomeRecipesContainer extends Component {
    */
   render() {
     const {
-      recipes, firstName
+      recipes
     } = this.props;
     return (
       <div>
-        <RecipesListHome
+        <MyFavoriteRecipes
           recipes={recipes}
-          firstName={firstName}
-          logout={this.logout}
         />
       </div>
     );
@@ -96,7 +70,7 @@ class HomeRecipesContainer extends Component {
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
-    firstName: state.getIn(['auth', 'firstName'])
+    userId: state.getIn(['auth', 'userId']),
   };
 }
 
@@ -109,22 +83,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch),
-    authActions: bindActionCreators(authActionCreators, dispatch)
   };
 }
 
-HomeRecipesContainer.propTypes = {
+MyFavoriteRecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  authActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  firstName: PropTypes.string,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
-};
-
-HomeRecipesContainer.defaultProps = {
-  firstName: 'stuff'
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  userId: PropTypes.number.isRequired
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeRecipesContainer);
+)(MyFavoriteRecipesContainer);

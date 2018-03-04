@@ -2,22 +2,23 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Recipe from './Recipe';
-import UserIsAuthenticated from '../utils/authWrapper';
 
-const options = {
-  authSelector: state => state.get('auth'),
-  predicate: auth => auth.get('Authenticated'),
-  wrapperDisplayName: 'authDeleteRecipe',
-  FailureComponent: null
-};
-
-const BtnAdd = UserIsAuthenticated(options)(() => (
+const BtnAdd = (() => (
   <div className="row text-left">
     <Link
       to="/catalog/add"
       className="btn btn-danger"
     >
   Add a new Recipe!
+    </Link>
+  </div>));
+const BtnFavorites = (() => (
+  <div className="row text-left">
+    <Link
+      to="/catalog/favorites"
+      className="btn btn-publish"
+    >
+        My Favorites
     </Link>
   </div>));
 /**
@@ -36,33 +37,38 @@ class RecipesList extends PureComponent {
    */
   render() {
     const {
-      recipes, deleteRecipe
+      recipes, userId, deleteRecipe
     } = this.props;
     return (
       <div className="container scrollable">
-        <BtnAdd />
+        <p>
+          <Link to="/catalog" className="btn btn-info">Back to Catalog</Link>
+          <BtnAdd />
+          <BtnFavorites />
+        </p>
         <div className="row">
           {
-          recipes
-            .filter(recipe => recipe.title.toLowerCase())
-            .map((recipe) => {
-              return (
-                <Recipe
-                  {...recipe}
-                  key={recipe.id}
-                  deleteRecipe={deleteRecipe}
-                />
-              );
-            })
-        }
+                recipes.filter(recipe => recipe.userId === parseInt(userId, 10))
+                .map((recipe) => {
+                  return (
+                    <Recipe
+                      {...recipe}
+                      key={recipe.id}
+                      deleteRecipe={deleteRecipe}
+                    />
+        );
+      })
+    }
         </div>
         <hr />
       </div>
     );
   }
 }
+
 RecipesList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  deleteRecipe: PropTypes.func.isRequired
+  deleteRecipe: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired
 };
 export default RecipesList;

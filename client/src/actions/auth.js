@@ -13,43 +13,43 @@ import {
    * @param {Object} redirection
    * @returns {Object} login
    */
-function loginUser(redirection) {
+const loginUser = (redirection) => {
   return {
     type: LOGIN,
     redirection
   };
-}
+};
 
 /**
    * @param {Object} token
    * @returns {Object} token
    */
-function loginSuccess(token) {
+const loginSuccess = (token) => {
   return {
     type: LOGIN_SUCCESS,
     token
   };
-}
+};
 /**
    * @returns {Object} failure
    */
-function loginFailure() {
+const loginFailure = () => {
   return {
     type: LOGIN_FAILURE
   };
-}
+};
 
 /**
  *
  * @param {Object} redirection
  * @returns {object} signup
  */
-function signupUser(redirection) {
+const signupUser = (redirection) => {
   return {
     type: SIGNUP,
     redirection
   };
-}
+};
 
 /**
  *
@@ -57,34 +57,35 @@ function signupUser(redirection) {
  * @param {any} token
  * @returns {object} token
  */
-function signupSuccess(token) {
+const signupSuccess = (token) => {
   return {
     type: SIGNUP_SUCCESS,
     token
   };
-}
+};
 
 /**
  *
  *
  * @returns {object} sign up faqilure
  */
-function signupFailure() {
+const signupFailure = () => {
   return {
     type: SIGNUP_FAILURE
   };
-}
+};
 
 /**
  *
  *
  * @returns {object} logout
  */
-function logout() {
+const logout = () => {
   return {
     type: LOGOUT
   };
-}
+};
+
 export {
   loginUser,
   loginSuccess,
