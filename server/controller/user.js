@@ -35,13 +35,14 @@ class User {
         email: req.body.email,
         hashPassword: bcrypt.hashSync(req.body.password, saltRounds),
       })
-        .then(res.status(201).send({
+        .then(createdUser => res.status(201).send({
           message: 'Registration Successful',
           jwt: jwt.sign(
             {
               firstName: req.body.firstName,
               lastName: req.body.lastName,
               email: req.body.email,
+              id: createdUser.id,
             }, config.JWT_SECRET,
             { expiresIn: 60 * 60 }
           ),
