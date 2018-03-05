@@ -23,7 +23,7 @@ const getForm = (state, form) => {
    * @returns {*} response
    */
 const sendDetails = (route, details) => {
-  return fetch(`http://localhost:3000/api/v1/users/${route}`, {
+  return fetch(`/api/v1/users/${route}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
     }),

@@ -11,6 +11,9 @@ exports.devServer = (options) => {
       host: options.host,
       port: options.port,
       contentBase: './client/dist',
+      proxy: {
+        '/api': 'http://localhost:3000'
+      }
     },
 
     plugins: [

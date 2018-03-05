@@ -13,7 +13,7 @@ const addReviewForm = (state) => {
 };
 
 const publishReview = (id, newReview) => {
-  return fetch(`http://localhost:3000/api/v1/recipes/${id}/reviews`, {
+  return fetch(`/api/v1/recipes/${id}/reviews`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -52,7 +52,7 @@ function* addReview(action) {
   }
 }
 
-const fetchReviews = id => fetch(`http://localhost:3000/api/v1/reviews/${id}`, {
+const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   headers: new Headers({
     'Content-Type': 'application/json'
   })

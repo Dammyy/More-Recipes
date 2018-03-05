@@ -26,7 +26,7 @@ const common = {
 
 let config;
 switch (process.env.NODE_ENV) {
-  case 'production':
+  case 'build':
     config = merge(
       common,
       { devtool: 'source-map' }
@@ -38,7 +38,7 @@ switch (process.env.NODE_ENV) {
       { devtool: 'eval-source-map' },
       loaders.devServer({
         host: process.env.HOST,
-        port: process.env.PORT
+        port: process.env.PORT,
       })
     );
     break;
