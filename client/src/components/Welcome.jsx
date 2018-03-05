@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from './Slider';
-import { HomeRecipesContainer } from '../containers';
+import {
+  HomeRecipesContainer,
+  MostPopularRecipesContainer } from '../containers';
 
 const Welcome = () => (
   <div>
@@ -9,6 +11,7 @@ const Welcome = () => (
       <i><h1>Welcome to more recipes!</h1></i>
     </div>
     <HomeRecipesContainer />
+    <MostPopularRecipesContainer />
   </div>
 );
 

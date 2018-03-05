@@ -6,6 +6,7 @@ import ViewRecipeContainer from './ViewRecipeContainer';
 import AllRecipesContainer from './AllRecipesContainer';
 import MyFavoriteRecipesContainer from './MyFavoriteRecipesContainer';
 import AddReviewFormContainer from './AddReviewFormContainer';
+import MostPopularRecipesContainer from './MostPopularRecipesContainer';
 
 export {
   AddRecipeContainer,
@@ -15,5 +16,6 @@ export {
   ViewRecipeContainer,
   AllRecipesContainer,
   MyFavoriteRecipesContainer,
-  AddReviewFormContainer
+  AddReviewFormContainer,
+  MostPopularRecipesContainer
 };

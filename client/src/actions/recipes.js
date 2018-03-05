@@ -154,6 +154,18 @@ const getFavoritedRecipesFailure = () => {
   };
 };
 
+const mostFavoritedRecipes = () => {
+  return {
+    type: recipeConstants.GET_MOST_FAVORITED
+  };
+};
+const getMostFavoritedRecipesSuccess = (recipes) => {
+  return {
+    type: recipeConstants.GET_MOST_FAVORITED_SUCCESS,
+    recipes
+  };
+};
+
 export {
   getRecipes,
   getRecipesSuccess,
@@ -177,5 +189,7 @@ export {
   getRecipeNoUserId,
   getFavoritedRecipes,
   getFavoritedRecipesSuccess,
-  getFavoritedRecipesFailure
+  getFavoritedRecipesFailure,
+  mostFavoritedRecipes,
+  getMostFavoritedRecipesSuccess
 };

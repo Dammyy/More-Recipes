@@ -16,6 +16,7 @@ export default (app) => {
   app.get('/api/v1/reviews/:recipeId/', Recipes.getReviews);
   app.post('/api/v1/recipes', auth, validateRecipe, Recipes.createRecipes);
   app.get('/api/v1/recipes', Recipes.getRecipe);
+  app.get('/api/v1/recipes/popular', Recipes.getMostFavorited);
   app.put(
     '/api/v1/recipes/:recipeId', auth,
     validateGetRequest, validateRecipe, Recipes.updateRecipes

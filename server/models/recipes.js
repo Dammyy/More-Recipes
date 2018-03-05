@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     reviews: DataTypes.INTEGER,
     upvotes: DataTypes.INTEGER,
     downvotes: DataTypes.INTEGER,
+    favorited: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });

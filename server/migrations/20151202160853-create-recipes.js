@@ -28,10 +28,12 @@ module.exports = {
       downvotes: {
         type: Sequelize.INTEGER
       },
+      favorited: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-
       },
       updatedAt: {
         allowNull: false,

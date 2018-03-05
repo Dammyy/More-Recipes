@@ -13,8 +13,9 @@ import AllRecipesList from './AllRecipesList';
 import MyFavoriteRecipes from './MyFavoriteRecipes';
 import AddReviewForm from './AddReviewForm';
 import Reviews from './Reviews';
+import MostPopularRecipesList from './MostPopularRecipesList';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
   RecipesList, Archive, Login, Signup, EditRecipeForm,
   ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes,
-  AddReviewForm, Reviews };
+  AddReviewForm, Reviews, MostPopularRecipesList };

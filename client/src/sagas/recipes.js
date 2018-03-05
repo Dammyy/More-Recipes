@@ -314,6 +314,30 @@ function* usersFavorites(action) {
   }
 }
 
+
+/**
+   * @returns {Object} fetch most favorited recipes
+   */
+const
+  fetchMostFavoritedRecipes = () =>
+    fetch('http://localhost:3000/api/v1/recipes/popular')
+      .then(response => response.json())
+      .then((response) => {
+        return response;
+      });
+
+/**
+     * @returns {Object} Get Most Favorited recipes
+     */
+function* getMostFavoritedRecipes() {
+  try {
+    const recipes = yield call(fetchMostFavoritedRecipes);
+    yield put(recipeActions.getMostFavoritedRecipesSuccess(recipes));
+  } catch (err) {
+    yield put(recipeActions.getRecipesFailure());
+  }
+}
+
 /**
    * @returns {Object} Watch Get recipes
    */
@@ -371,6 +395,13 @@ function* watchGetUsersFavorites() {
   yield takeLatest(recipeConstants.RETRIEVE_FAVORITE_RECIPES, usersFavorites);
 }
 
+/**
+   * @returns {Object} Watch Get Most Favorited recipes
+   */
+function* watchGetMostFavoritedRecipes() {
+  yield takeLatest(recipeConstants.GET_MOST_FAVORITED, getMostFavoritedRecipes);
+}
+
 export {
   watchGetRecipes,
   watchAddRecipe,
@@ -379,5 +410,6 @@ export {
   watchGetRecipe,
   watchFavoriteRecipe,
   watchGetUsersFavorites,
-  watchGetRecipeNoUserId
+  watchGetRecipeNoUserId,
+  watchGetMostFavoritedRecipes
 };

@@ -34,6 +34,7 @@ class Recipe {
       reviews: 0,
       upvotes: 0,
       downvotes: 0,
+      favorited: 0,
       userId: req.decoded.id,
     })
       .then(() => {
@@ -74,6 +75,7 @@ class Recipe {
         reviews: recipe.reviews,
         upvotes: recipe.upvotes,
         downvotes: recipe.downvotes,
+        favorited: recipe.favorited
       })
         .then(() => {
           return res.status(200).send({
@@ -172,6 +174,7 @@ class Recipe {
             reviews: recipe.reviews + 1,
             upvotes: recipe.upvotes,
             downvotes: recipe.downvotes,
+            favorited: recipe.favorited
           });
         });
       })
@@ -226,6 +229,7 @@ class Recipe {
               id: req.params.recipeId
             }
           }).then((recipe) => {
+            recipe.decrement('favorited');
             return res.status(200).send({
               message: 'Removed from favorites',
               statusCode: '200',
@@ -246,6 +250,7 @@ class Recipe {
                 id: req.params.recipeId
               }
             }).then((recipe) => {
+              recipe.increment('favorited');
               return res.status(201).send({
                 message: 'Favorited',
                 statusCode: '201',
@@ -316,6 +321,7 @@ class Recipe {
                   reviews: recipe.reviews,
                   upvotes: recipe.upvotes + 1,
                   downvotes: recipe.downvotes - 1,
+                  favorited: recipe.favorited
                 })
                   .then(() => {
                     return res.status(201).send({
@@ -330,6 +336,7 @@ class Recipe {
                   reviews: recipe.reviews,
                   upvotes: recipe.upvotes - 1,
                   downvotes: recipe.downvotes + 1,
+                  favorited: recipe.favorited
                 })
                   .then(() => {
                     return res.status(201).send({
@@ -402,6 +409,27 @@ class Recipe {
         .then(recipes => res.status(200).send(recipes))
         .catch(error => res.status(400).send(error));
     }
+  }
+
+
+  /**
+   *
+   *
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {Obj} Most Favorited
+   *
+   * @memberOf Recipe
+   */
+  static getMostFavorited(req, res) {
+    return RecipeModel.all({
+      order: [['favorited', 'DESC']]
+    })
+      .then((recipe) => {
+        return res.status(200).json(recipe);
+      })
+      .catch(error => res.status(400).send(error));
   }
 }
 export default Recipe;
