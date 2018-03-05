@@ -29,7 +29,7 @@ class RecipeHome extends PureComponent {
    */
   render() {
     const {
-      id, title, image
+      id, title, image, upvotes, downvotes
     } = this.props;
     let img;
     if (image === '') {
@@ -44,12 +44,12 @@ class RecipeHome extends PureComponent {
           <div id="recipe-votes">
             <li>
               <i className="fa fa-thumbs-o-up" aria-hidden="true">
-              200
+                {upvotes}
               </i>
             </li>
             <li>
               <i className="fa fa-thumbs-o-down" aria-hidden="true">
-              505
+                {downvotes}
               </i>
             </li>
           </div>
@@ -63,7 +63,9 @@ class RecipeHome extends PureComponent {
 RecipeHome.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired
 };
 
 BtnView.propTypes = {

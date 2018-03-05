@@ -49,6 +49,81 @@ const Favorite = UserIsAuthenticated(options)((props) => {
   );
 });
 
+const Vote = UserIsAuthenticated(options)((props) => {
+  if (props.vote === 'true') {
+    return (
+      <button
+        className="btn btn-favorited"
+        params={{ id: props.id }}
+        onClick={() => props.favoriteRecipe(props.id, props.userId)}
+      >
+        <li>
+          <i
+            className="favorited
+            fa fa-thumbs-up"
+            aria-hidden="true"
+          >{this.props.upvotes}
+          </i>
+        </li>
+        <li>
+          <i
+            className="fa fa-thumbs-down"
+            aria-hidden="true"
+          >{this.props.downvotes}
+          </i>
+        </li>
+      </button >
+    );
+  }
+  if (props.vote === 'false') {
+    return (
+      <button
+        className="btn btn-favorited"
+        params={{ id: props.id }}
+        onClick={() => props.favoriteRecipe(props.id, props.userId)}
+      >
+        <li>
+          <i
+            className="fa fa-thumbs-up"
+            aria-hidden="true"
+          >
+            {this.props.upvotes}
+          </i>
+        </li>
+        <li>
+          <i
+            className="favorited fa fa-thumbs-down"
+            aria-hidden="true"
+          >{this.props.downvotes}
+          </i>
+        </li>
+      </button >
+    );
+  }
+  return (
+    <button
+      className="btn btn-favorited"
+      params={{ id: props.id }}
+      onClick={() => props.favoriteRecipe(props.id, props.userId)}
+    >
+      <li>
+        <i
+          className="fa fa-thumbs-up"
+          aria-hidden="true"
+        >
+          {this.props.upvotes}
+        </i>
+      </li>
+      <li>
+        <i
+          className="fa fa-thumbs-down"
+          aria-hidden="true"
+        >{this.props.downvotes}
+        </i>
+      </li>
+    </button >
+  );
+});
 /**
  *
  *
@@ -90,17 +165,11 @@ class ViewRecipe extends PureComponent {
                       userId={this.props.userId}
                       favorited={this.props.recipe.favorited}
                     />
-                  </li><li>Rate:</li>
-                  <li>
-                    <i className="fa fa-thumbs-up" aria-hidden="true"> 200</i>
-                  </li>
-                  <li>
-                    <i className="fa fa-thumbs-down" aria-hidden="true"> 50</i>
-                  </li>
+                  </li><li>Like: </li>
+                  {/* <Vote id={this.props.id} userId={this.props.userId} /> */}
                 </div>
               </div>
               <i className="fas fa-thumbs-up" />
-
             </div>
           </div>
         </div>

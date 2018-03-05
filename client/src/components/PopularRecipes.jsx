@@ -29,7 +29,7 @@ class PopularRecipes extends PureComponent {
    */
   render() {
     const {
-      id, title, image, favorited
+      id, title, image, favorited, upvotes, downvotes
     } = this.props;
     let img;
     if (image === '') {
@@ -39,18 +39,20 @@ class PopularRecipes extends PureComponent {
     }
     return (
       <div className="col-md-4 recipe-display-popular recipe-display">
-        <div className="n-of-favorites">Favorited by <b>{favorited}</b> user(s)</div>
+        <div className="n-of-favorites">
+        Favorited by <b>{favorited}</b> user(s)
+        </div>
         <img src={img} alt="" />
         <div id="votes-del">
           <div id="recipe-votes">
             <li>
               <i className="fa fa-thumbs-o-up" aria-hidden="true">
-              200
+                {upvotes}
               </i>
             </li>
             <li>
               <i className="fa fa-thumbs-o-down" aria-hidden="true">
-              505
+                {downvotes}
               </i>
             </li>
           </div>
@@ -65,7 +67,9 @@ PopularRecipes.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  favorited: PropTypes.number.isRequired
+  favorited: PropTypes.number.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired
 };
 
 BtnView.propTypes = {
