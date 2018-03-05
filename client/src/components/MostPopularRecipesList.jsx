@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import RecipeHome from './RecipeHome';
+import PopularRecipes from './PopularRecipes';
 /**
  *
  *
@@ -30,7 +30,7 @@ class MostPopularRecipesList extends PureComponent {
           recipes
             .map((recipe) => {
               return (
-                <RecipeHome
+                <PopularRecipes
                   {...recipe}
                   key={recipe.id}
                 />
