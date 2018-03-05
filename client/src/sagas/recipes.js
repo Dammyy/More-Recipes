@@ -42,6 +42,7 @@ const fetchSingleRecipe = id =>
       }
       throw response;
     });
+
 const checkFavorite = (id, userId) =>
   fetch(`http://localhost:3000/api/v1/recipes/${userId}/favorites/${id}`, {
     headers: new Headers({

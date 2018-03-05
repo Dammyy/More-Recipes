@@ -65,7 +65,7 @@ class ViewRecipe extends PureComponent {
    */
   render() {
     if (!this.props.recipe) {
-      return <h1>Loading...</h1>;
+      return <h1>Recipe Not Found</h1>;
     }
     const {
       title, details, image
@@ -100,31 +100,7 @@ class ViewRecipe extends PureComponent {
                 </div>
               </div>
               <i className="fas fa-thumbs-up" />
-              <div id="recipe-reviews">
-                <label><b>Reviews</b></label>
-                <div id="review">
-                This seems to be a good recipe.
-                Followed the instructions and
-                it turned out great.
-                </div>
-                <div id="review-author"><small>By Damilare</small></div>
-              </div>
-              <form id="recipe-review">
-                <div className="form-group">
-                  <label>Leave a review</label>
-                  <textarea
-                    className="form-control"
-                    id="exampleTextarea"
-                    rows="3"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                >
-                Submit
-                </button>
-              </form>
+
             </div>
           </div>
         </div>

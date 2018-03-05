@@ -11,7 +11,8 @@ import {
 const initialState = Immutable.Map({
   Authenticated: false,
   token: null,
-  firstName: null
+  firstName: null,
+  userId: null
 });
 
 export default (state = initialState, action) => {

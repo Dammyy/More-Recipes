@@ -1,4 +1,5 @@
 .favorited{color:red}
+#review-input-field {height:100px;}
 .btn-favorited:hover{background:none!important;border:1px solid #ccc!important;}
 .latest-recipes {margin-bottom:70px;}
 .g3{background:red;}

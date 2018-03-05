@@ -5,6 +5,7 @@ import EditRecipeFormContainer from './EditRecipeFormContainer';
 import ViewRecipeContainer from './ViewRecipeContainer';
 import AllRecipesContainer from './AllRecipesContainer';
 import MyFavoriteRecipesContainer from './MyFavoriteRecipesContainer';
+import AddReviewFormContainer from './AddReviewFormContainer';
 
 export {
   AddRecipeContainer,
@@ -13,5 +14,6 @@ export {
   EditRecipeFormContainer,
   ViewRecipeContainer,
   AllRecipesContainer,
-  MyFavoriteRecipesContainer
+  MyFavoriteRecipesContainer,
+  AddReviewFormContainer
 };

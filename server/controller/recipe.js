@@ -14,7 +14,9 @@ class Recipe {
    * @param {res} res
    */
   static getRecipe(req, res) {
-    return RecipeModel.all()
+    return RecipeModel.all({
+      order: [['createdAt', 'DESC']]
+    })
       .then(recipe => res.status(200).send(recipe))
       .catch(error => res.status(400).send(error));
   }
@@ -35,7 +37,7 @@ class Recipe {
       userId: req.decoded.id,
     })
       .then(() => {
-        res.status(201).send({
+        return res.status(201).send({
           message: 'Recipe published successfully',
           statusCode: '201'
         });
@@ -152,9 +154,11 @@ class Recipe {
       userId: req.decoded.id,
       recipeId: req.params.recipeId,
     })
-      .then(() => {
+      .then((review) => {
         res.status(201).send({
-          message: 'Review added successfully'
+          message: 'Review added successfully',
+          statusCode: '201',
+          review
         });
         RecipeModel.findOne({
           where: {
@@ -168,10 +172,33 @@ class Recipe {
             reviews: recipe.reviews + 1,
             upvotes: recipe.upvotes,
             downvotes: recipe.downvotes,
-          })
-            .then(() => res.status(200).send(recipe));
+          });
         });
       })
+      .catch(error => res.status(400).send(error));
+  }
+
+
+  /**
+   *
+   *@return {obj} reviews
+   * @static
+   * @param {any} req
+   * @param {any} res
+   *
+   * @memberOf Recipe
+   */
+  static getReviews(req, res) {
+    ReviewsModel.findAll({
+      where: {
+        recipeId: req.params.recipeId
+      }
+    }).then((reviews) => {
+      res.status(200).send({
+        statusCode: '200',
+        reviews
+      });
+    })
       .catch(error => res.status(400).send(error));
   }
 

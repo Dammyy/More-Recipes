@@ -11,7 +11,10 @@ import ViewRecipe from './ViewRecipe';
 import NotFoundPage from './NotFoundPage';
 import AllRecipesList from './AllRecipesList';
 import MyFavoriteRecipes from './MyFavoriteRecipes';
+import AddReviewForm from './AddReviewForm';
+import Reviews from './Reviews';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
   RecipesList, Archive, Login, Signup, EditRecipeForm,
-  ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes };
+  ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes,
+  AddReviewForm, Reviews };

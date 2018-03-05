@@ -3,6 +3,7 @@ import { watchGetRecipes, watchAddRecipe,
   watchGetRecipe, watchFavoriteRecipe,
   watchGetUsersFavorites, watchGetRecipeNoUserId } from './recipes';
 import { watchLoginUser, watchSignupUser } from './auth';
+import { watchAddReview, watchGetReviews } from './reviews';
 import watchUploadImage from './filestack';
 /**
    * @returns {Object} root saga
@@ -19,6 +20,8 @@ export default function* rootSaga() {
     watchGetRecipe(),
     watchFavoriteRecipe(),
     watchGetUsersFavorites(),
-    watchGetRecipeNoUserId()
+    watchGetRecipeNoUserId(),
+    watchAddReview(),
+    watchGetReviews()
   ];
 }

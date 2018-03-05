@@ -13,6 +13,7 @@ export default (app) => {
     '/api/v1/recipes/:recipeId/reviews',
     auth, validateReview, Recipes.postReview
   );
+  app.get('/api/v1/reviews/:recipeId/', Recipes.getReviews);
   app.post('/api/v1/recipes', auth, validateRecipe, Recipes.createRecipes);
   app.get('/api/v1/recipes', Recipes.getRecipe);
   app.put(

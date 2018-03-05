@@ -5,6 +5,7 @@ import recipes from './recipes';
 import auth from './auth';
 import routing from './routing';
 import filestack from './filestack';
+import reviews from './reviews';
 
 export default combineReducers({
   recipes,
@@ -12,5 +13,6 @@ export default combineReducers({
   form,
   auth,
   toastr,
-  filestack
+  filestack,
+  reviews
 });

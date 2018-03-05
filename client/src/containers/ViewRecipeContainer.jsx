@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import { ViewRecipe } from '../components';
+import { ViewRecipe, Reviews } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
-
+import { AddReviewFormContainer } from '../containers';
+import * as reviewsActionCreators from '../actions/reviews';
 /**
  *
  *
@@ -33,12 +34,22 @@ class ViewRecipeContainer extends Component {
    */
   componentWillMount() {
     if (!this.props.userId) {
-      return this.props.recipesActions.getRecipeNoUserId(this.props.params.id);
+      this.props.recipesActions.getRecipeNoUserId(this.props.params.id);
     }
     if (this.props.userId) {
       this.props.recipesActions
         .getRecipe(this.props.params.id, this.props.userId);
     }
+  }
+  /**
+   *
+   *
+   * @returns {void}
+   *
+   * @memberOf Reviews
+   */
+  componentDidMount() {
+    this.props.reviewsActions.getReviews(this.props.params.id);
   }
   /**
    *@returns {void}
@@ -65,7 +76,7 @@ class ViewRecipeContainer extends Component {
    * @memberOf Recipes
    */
   render() {
-    const { params: { id } } = this.props;
+    const { reviews, params: { id } } = this.props;
     return (
       <div>
         <ViewRecipe
@@ -74,6 +85,8 @@ class ViewRecipeContainer extends Component {
           favoriteRecipe={this.favoriteRecipe}
           userId={this.props.userId}
         />
+        <Reviews reviews={reviews} id={this.props.params.id} />
+        <AddReviewFormContainer id={this.props.params.id} />
       </div>
     );
   }
@@ -88,7 +101,8 @@ const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
     userId: state.getIn(['auth', 'userId']),
-    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
+    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+    reviews: state.getIn(['reviews', 'reviews'], Immutable.List()).toJS(),
   };
 };
 
@@ -100,7 +114,8 @@ const mapStateToProps = (state) => {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    recipesActions: bindActionCreators(recipesActionCreators, dispatch)
+    recipesActions: bindActionCreators(recipesActionCreators, dispatch),
+    reviewsActions: bindActionCreators(reviewsActionCreators, dispatch)
   };
 }
 
@@ -109,7 +124,9 @@ ViewRecipeContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
   params: PropTypes.objectOf(PropTypes.any).isRequired,
-  userId: PropTypes.number.isRequired
+  userId: PropTypes.number.isRequired,
+  reviewsActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default connect(
