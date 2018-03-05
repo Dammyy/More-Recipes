@@ -8,7 +8,7 @@ import * as recipeActions from '../actions/recipes';
 /**
    * @returns {Object} fetch recipes
    */
-const fetchRecipes = () => fetch('http://localhost:3000/api/v1/recipes', {
+const fetchRecipes = () => fetch('/api/v1/recipes', {
 
   headers: new Headers({
     'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ function* getRecipes() {
 }
 
 const fetchSingleRecipe = id =>
-  fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+  fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
     }),
@@ -44,7 +44,7 @@ const fetchSingleRecipe = id =>
     });
 
 const checkFavorite = (id, userId) =>
-  fetch(`http://localhost:3000/api/v1/recipes/${userId}/favorites/${id}`, {
+  fetch(`/api/v1/recipes/${userId}/favorites/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -110,7 +110,7 @@ const addRecipeForm = (state) => {
 };
 
 const publishRecipe = (recipe) => {
-  return fetch('http://localhost:3000/api/v1/recipes', {
+  return fetch('/api/v1/recipes', {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -152,7 +152,7 @@ const selectedRecipe = (state) => {
 };
 
 const removeRecipe = (id) => {
-  return fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+  return fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -194,7 +194,7 @@ const updateRecipeForm = (state) => {
 };
 
 const editRecipe = (id, recipe) => {
-  return fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+  return fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -236,7 +236,7 @@ function* updateRecipe(action) {
 }
 
 const favRecipe = (id) => {
-  return fetch(`http://localhost:3000/api/v1/recipes/${id}/favorites/`, {
+  return fetch(`/api/v1/recipes/${id}/favorites/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -280,7 +280,7 @@ function* favoriteRecipe(action) {
 }
 
 const getFavRecipes = (userId) => {
-  return fetch(`http://localhost:3000/api/v1/users/${userId}/recipes/`, {
+  return fetch(`/api/v1/users/${userId}/recipes/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
       auth: localStorage.getItem('token')
@@ -320,7 +320,7 @@ function* usersFavorites(action) {
    */
 const
   fetchMostFavoritedRecipes = () =>
-    fetch('http://localhost:3000/api/v1/recipes/popular')
+    fetch('/api/v1/recipes/popular')
       .then(response => response.json())
       .then((response) => {
         return response;

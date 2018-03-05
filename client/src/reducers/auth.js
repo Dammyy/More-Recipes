@@ -22,7 +22,8 @@ export default (state = initialState, action) => {
       return state.merge({
         Authenticated: true,
         token: action.token,
-        firstName: jwtDecode(action.token).firstName
+        firstName: jwtDecode(action.token).firstName,
+        userId: jwtDecode(action.token).id
       });
     }
     case LOGIN_FAILURE:
