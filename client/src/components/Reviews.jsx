@@ -20,11 +20,10 @@ class Reviews extends PureComponent {
         .map((review) => {
           return (
             <div key={review.id} id="recipe-reviews">
-              <label><b>Reviews</b></label>
               <div id="review">
                 {review.review}
               </div>
-              <div id="review-author"><small>By Damilare</small></div>
+              <div id="review-author"><small>By </small></div>
             </div>
           );
         })

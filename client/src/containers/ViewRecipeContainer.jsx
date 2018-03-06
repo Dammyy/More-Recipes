@@ -85,8 +85,12 @@ class ViewRecipeContainer extends Component {
           favoriteRecipe={this.favoriteRecipe}
           userId={this.props.userId}
         />
-        <Reviews reviews={reviews} id={this.props.params.id} />
-        <AddReviewFormContainer id={this.props.params.id} />
+        <div className="reviews">
+          <Reviews reviews={reviews} id={this.props.params.id} />
+        </div>
+        <div id="reviews-form">
+          <AddReviewFormContainer id={this.props.params.id} />
+        </div>
       </div>
     );
   }

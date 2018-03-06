@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RecipeHome from './RecipeHome';
-import ActionButtons from './HomeActionButtons';
+
 
 /**
  *
@@ -19,14 +19,12 @@ class RecipesListHome extends PureComponent {
    */
   render() {
     const {
-      recipes, firstName, logout
+      recipes
     } = this.props;
     return (
       <div>
-        <div className="col-md-12 home-logged-in">
-          <ActionButtons logout={logout} firstName={firstName} />
-        </div>
-        <div className="container scrollable">
+        <h3 className="latest-h3">Fresh Recipes</h3>
+        <div className="col-md-12 latest-recipes">
           <div className="row">
             {
           recipes
@@ -40,19 +38,13 @@ class RecipesListHome extends PureComponent {
             })
         }
           </div>
-          <hr />
         </div>
       </div>
     );
   }
 }
 RecipesListHome.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  firstName: PropTypes.string,
-  logout: PropTypes.func.isRequired,
-};
-RecipesListHome.defaultProps = {
-  firstName: 'stuff'
+  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default RecipesListHome;

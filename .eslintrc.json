@@ -12,7 +12,9 @@
       "jest": true,
       "localStorage": true,
       "$": true,
-      "filepicker": true
+      "filepicker": true,
+      "autoplay": true
+
     },
     "rules": {
       "one-var": 0,
@@ -27,6 +29,7 @@
       "no-restricted-globals": ["error", "isFinite"],
       "comma-dangle": 0,
       "react/jsx-no-bind": 0,
+      "jsx-a11y/media-has-caption": 0,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "curly": ["error", "multi-line"],
       "import/no-unresolved": [2, { "commonjs": true }],

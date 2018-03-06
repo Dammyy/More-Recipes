@@ -4,23 +4,20 @@ import { Link } from 'react-router';
 import RecipeHome from './RecipeHome';
 
 const BtnAdd = (() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/add"
-      className="btn btn-danger"
-    >
+  <Link
+    to="/catalog/add"
+    className="btn btn-danger btn-manage"
+  >
   Add a new Recipe!
-    </Link>
-  </div>));
+  </Link>));
 const BtnManageRecipes = (() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/manage"
-      className="btn btn-publish"
-    >
+  <Link
+    to="/catalog/manage"
+    className="btn btn-publish btn-manage"
+  >
     Manage Recipes
-    </Link>
-  </div>));
+  </Link>
+));
 /**
  *
  *
@@ -41,9 +38,17 @@ class MyFavoriteRecipes extends PureComponent {
     } = this.props;
     return (
       <div>
-        <BtnAdd />
-        <BtnManageRecipes />
-        <div className="container scrollable">
+        <div className="text-left-buttons btn-buttons">
+          <Link
+            to="/catalog"
+            className="btn btn-info btn-manage"
+          >
+          Back to Catalog
+          </Link>
+          <BtnAdd />
+          <BtnManageRecipes />
+        </div>
+        <div className="col-md-12 latest-recipes">
           <div className="row">
             {
               recipes.map(recipe => (<RecipeHome

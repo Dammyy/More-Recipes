@@ -33,14 +33,18 @@ class Signup extends PureComponent {
    */
   render() {
     return (
-      <div>
+      <div className="col-md-12  sign-in-page">
+        <div className="text-left-buttons">
+          <Link to="/" className="btn btn-signup">Back</Link>
+          <Link to="/login" className="btn btn-signup">Sign in</Link>
+        </div>
         <form
           className="form-horizontal"
           onSubmit={this.handleSubmit.bind(this)}
         >
           <div className="row">
             <div className="col-md-12">
-              <h2 className="form-signin-heading">Register</h2>
+              <h2 className="form-signin-heading">More Recipes</h2>
             </div>
           </div>
           <div className="row">
@@ -160,7 +164,6 @@ class Signup extends PureComponent {
             <i className="fa fa-user-plus" />
           Register
           </button>
-          <Link to="/" className="btn btn-info">Back</Link>
         </form>
       </div>
     );

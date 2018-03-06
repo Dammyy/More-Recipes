@@ -21,15 +21,19 @@ class HomeActionButtons extends PureComponent {
     const { firstName, logout } = this.props;
     return (
       <div className="publish-recipe">
-        <h3>Welcome {firstName}</h3>
+        <h6>You are logged in as {firstName}</h6>
         <p>
           <Link
             to="/catalog/add"
-            className="btn btn-publish"
+            className="btn btn-post-recipe"
           >
         Post a new recipe!
           </Link>
-          <button onClick={logout}>Logout</button>
+          <button
+            className="btn btn-logout"
+            onClick={logout}
+          >Logout
+          </button>
         </p>
       </div>
     );
@@ -43,7 +47,7 @@ const options = {
 
   FailureComponent: () => {
     return (
-      <div className="btn-group" role="group" aria-label="...">
+      <div className="publish-recipe" role="group" aria-label="...">
         <Link to="/signup" className="btn btn-signup">Sign Up</Link>
         <Link to="/login" className="btn btn-signin">Login</Link>
       </div>

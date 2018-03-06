@@ -23,7 +23,7 @@ class Login extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
     this.props.authActions.loginUser(this.props.location.query.next ||
-    '/catalog');
+    '/');
   }
   /**
    *
@@ -34,11 +34,15 @@ class Login extends PureComponent {
    */
   render() {
     return (
-      <div className="col-md-12">
+      <div className="col-md-12  sign-in-page">
+        <div className="text-left-buttons">
+          <Link to="/" className="btn btn-signup">Back</Link>
+          <Link to="/signup" className="btn btn-signup">Sign up</Link>
+        </div>
         <form className="form-signin" onSubmit={this.handleSubmit.bind(this)}>
           <div className="row">
             <div className="col-md-12">
-              <h2 className="form-signin-heading">Sign in</h2>
+              <h2 className="form-signin-heading">More Recipes</h2>
             </div>
           </div>
           <div className="row">
@@ -90,9 +94,6 @@ class Login extends PureComponent {
           >
           Sign in
           </button>
-          <div className="text-left">
-            <Link to="/" className="btn btn-info">Back</Link>
-          </div>
         </form>
 
       </div>

@@ -7,6 +7,7 @@ import AllRecipesContainer from './AllRecipesContainer';
 import MyFavoriteRecipesContainer from './MyFavoriteRecipesContainer';
 import AddReviewFormContainer from './AddReviewFormContainer';
 import MostPopularRecipesContainer from './MostPopularRecipesContainer';
+import WelcomeTopSectionContainer from './WelcomeTopSectionContainer';
 
 export {
   AddRecipeContainer,
@@ -17,5 +18,6 @@ export {
   AllRecipesContainer,
   MyFavoriteRecipesContainer,
   AddReviewFormContainer,
-  MostPopularRecipesContainer
+  MostPopularRecipesContainer,
+  WelcomeTopSectionContainer
 };

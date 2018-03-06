@@ -4,23 +4,22 @@ import PropTypes from 'prop-types';
 import Recipe from './Recipe';
 
 const BtnAdd = (() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/add"
-      className="btn btn-danger"
-    >
+  <Link
+    to="/catalog/add"
+    className="btn btn-publish btn-manage"
+  >
   Add a new Recipe!
-    </Link>
-  </div>));
+  </Link>
+));
 const BtnFavorites = (() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/favorites"
-      className="btn btn-publish"
-    >
+
+  <Link
+    to="/catalog/favorites"
+    className="btn btn-publish btn-manage"
+  >
         My Favorites
-    </Link>
-  </div>));
+  </Link>
+));
 /**
  *
  *
@@ -40,14 +39,20 @@ class RecipesList extends PureComponent {
       recipes, userId, deleteRecipe
     } = this.props;
     return (
-      <div className="container scrollable">
-        <p>
-          <Link to="/catalog" className="btn btn-info">Back to Catalog</Link>
+      <div>
+        <div className="text-left-buttons btn-buttons">
+          <Link
+            to="/catalog"
+            className="btn btn-info btn-manage"
+          >
+          Back to Catalog
+          </Link>
           <BtnAdd />
           <BtnFavorites />
-        </p>
-        <div className="row">
-          {
+        </div>
+        <div className="col-md-12 latest-recipes">
+          <div className="row">
+            {
                 recipes.filter(recipe => recipe.userId === parseInt(userId, 10))
                 .map((recipe) => {
                   return (
@@ -59,8 +64,8 @@ class RecipesList extends PureComponent {
         );
       })
     }
+          </div>
         </div>
-        <hr />
       </div>
     );
   }

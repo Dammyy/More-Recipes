@@ -17,17 +17,26 @@ Before installing, download and install Node.js.<br>
 Installation is done using the npm install command:
 
 ## Install
-```bash
-npm install 
-```
++ Clone the repository git clone https://github.com/Dammyy/More-Recipes.git
++ Enter directory cd more-recipes
++ Install by running npm install 
++ Migrate your database using sequelize db:migrate on the command line
++ Run npm run start-client to start the client side application
++ Run npm run start:dev to start the server side
+
 ## Features
-+ Users can view recipes
-+ Users can post recipes
-+ Users can review recipes
++ Signup and sign in to the application
++ Publish a recipe
++ Edit published recipes
++ Delete recipe
++ View the details of a recipe
++ View all recipes in the catalog
++ View the most popular recipes
++ Upvote or downvote a recipe
++ Favorite a recipe
++ Post Recipe Review
 
 ## Run Test
 ```bash
 npm run test
 ```
-
-

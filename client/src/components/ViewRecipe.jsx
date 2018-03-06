@@ -143,33 +143,41 @@ class ViewRecipe extends PureComponent {
       return <h1>Recipe Not Found</h1>;
     }
     const {
-      title, details, image
+      title, details, image, ingredients
     } = this.props.recipe;
     return (
       <div className="container-fluid">
-        <div className="text-left">
+        <div className="text-left-buttons btn-buttons ">
           <Link to="/catalog" className="btn btn-info">Back</Link>
         </div>
         <div className="row">
-          <div className="col-md-9 recipe-display-left">
-            <h3 id="latest-h3">{title}</h3>
-            <div id="recipe-content">
-              <img src={image} alt="" />
-              <p>{details}</p>
-              <div id="up-down-vote">
-                <div id="popular-votes">
-                  <li>
-                    <Favorite
-                      id={this.props.id}
-                      favoriteRecipe={this.props.favoriteRecipe}
-                      userId={this.props.userId}
-                      favorited={this.props.recipe.favorited}
-                    />
-                  </li><li>Like: </li>
-                  {/* <Vote id={this.props.id} userId={this.props.userId} /> */}
+          <div className="col-md-12 latest-recipes">
+            <div id="recipe-display">
+              <h2 className="recipe-title">{title}</h2>
+              <div id="recipe-content">
+                <img src={image} alt="" />
+                <div className="recipe-details">
+                  <b>Ingredients:</b>
+                  <p>{ingredients}</p>
+                  <b>Recipe Details:</b>
+                  <p>{details}</p>
+                </div>
+                <div id="up-down-vote">
+                  <div id="popular-votes">
+                    <li>
+                      <Favorite
+                        id={this.props.id}
+                        favoriteRecipe={this.props.favoriteRecipe}
+                        userId={this.props.userId}
+                        favorited={this.props.recipe.favorited}
+                      />
+                    </li>
+                    {/* <li>Like: </li> */}
+                    {/* <Vote id={this.props.id}
+                     userId={this.props.userId} /> */}
+                  </div>
                 </div>
               </div>
-              <i className="fas fa-thumbs-up" />
             </div>
           </div>
         </div>
@@ -177,6 +185,7 @@ class ViewRecipe extends PureComponent {
     );
   }
 }
+
 
 ViewRecipe.propTypes = {
   title: PropTypes.string.isRequired,

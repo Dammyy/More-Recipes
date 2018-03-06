@@ -21,10 +21,8 @@ class MostPopularRecipesList extends PureComponent {
     } = this.props;
     return (
       <div>
-        <div className="col-md-12 home-logged-in">
-          <h2>Most Popular Recipes</h2>
-        </div>
-        <div className="container scrollable">
+        <h3 className="latest-h3">Most Popular Recipes</h3>
+        <div className="col-md-12 latest-recipes">
           <div className="row">
             {
           recipes

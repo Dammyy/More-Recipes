@@ -12,33 +12,30 @@ const options = {
 };
 
 const BtnAdd = UserIsAuthenticated(options)(() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/add"
-      className="btn btn-danger"
-    >
+  <Link
+    to="/catalog/add"
+    className="btn btn-danger btn-manage"
+  >
   Add a new Recipe!
-    </Link>
-  </div>));
+  </Link>
+));
 const BtnManageRecipes = UserIsAuthenticated(options)(() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/manage"
-      className="btn btn-publish"
-    >
+  <Link
+    to="/catalog/manage"
+    className="btn btn-publish btn-manage"
+  >
     Manage Recipes
-    </Link>
-  </div>));
+  </Link>
+));
 
 const BtnFavorites = UserIsAuthenticated(options)(() => (
-  <div className="row text-left">
-    <Link
-      to="/catalog/favorites"
-      className="btn btn-publish"
-    >
+  <Link
+    to="/catalog/favorites"
+    className="btn btn-publish btn-manage"
+  >
       My Favorites
-    </Link>
-  </div>));
+  </Link>
+));
 /**
  *
  *
@@ -59,10 +56,12 @@ class AllRecipesList extends PureComponent {
     } = this.props;
     return (
       <div>
-        <BtnAdd />
-        <BtnManageRecipes />
-        <BtnFavorites />
-        <div className="container scrollable">
+        <div className="text-left-buttons btn-buttons">
+          <BtnAdd />
+          <BtnManageRecipes />
+          <BtnFavorites />
+        </div>
+        <div className="col-md-12 latest-recipes">
           <div className="row">
             {
           recipes
@@ -76,7 +75,6 @@ class AllRecipesList extends PureComponent {
             })
         }
           </div>
-          <hr />
         </div>
       </div>
     );
