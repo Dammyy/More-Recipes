@@ -23,7 +23,7 @@ class RecipesListHome extends PureComponent {
     } = this.props;
     return (
       <div>
-        <h3 className="latest-h3">Fresh Recipes</h3>
+        <h3 className="latest-h3">Latest Recipes</h3>
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {

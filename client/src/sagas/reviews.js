@@ -5,7 +5,8 @@ import { ADD_REVIEW, GET_REVIEWS } from '../constants/reviews';
 import {
   addReviewFailure,
   getReviewsSuccess,
-  getReviewsFailure
+  getReviewsFailure,
+  addReviewSuccess
 } from '../actions/reviews';
 
 const addReviewForm = (state) => {
@@ -43,7 +44,8 @@ function* addReview(action) {
   try {
     const postReview = yield call(publishReview, id, newReview);
     const { review } = postReview;
-    yield put(getReviewsSuccess([review]));
+    console.log('new review from add review', review);
+    yield put(addReviewSuccess(review));
     yield put(toastr.success(postReview.message));
   } catch (e) {
     const { message } = e;

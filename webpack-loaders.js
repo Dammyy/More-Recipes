@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const PATHS = require('./webpack-paths');
 
 exports.devServer = (options) => {
   return {
@@ -27,7 +26,6 @@ exports.devServer = (options) => {
 exports.css = {
   test: /\.css$/,
   use: ['style-loader', 'css-loader'],
-  include: PATHS.css
 };
 
 exports.font = {

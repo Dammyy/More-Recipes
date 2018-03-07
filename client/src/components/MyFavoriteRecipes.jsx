@@ -8,14 +8,14 @@ const BtnAdd = (() => (
     to="/catalog/add"
     className="btn btn-danger btn-manage"
   >
-  Add a new Recipe!
+    <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
   </Link>));
 const BtnManageRecipes = (() => (
   <Link
     to="/catalog/manage"
     className="btn btn-publish btn-manage"
   >
-    Manage Recipes
+    <i className="fa fa-list-alt" aria-hidden="true" /> Manage Recipes
   </Link>
 ));
 /**

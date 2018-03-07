@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Player, ControlBar, BigPlayButton } from 'video-react';
+import { DefaultPlayer as Video } from 'react-html5video';
+import 'react-html5video/dist/styles.css';
 import PropTypes from 'prop-types';
 import ActionButtons from './HomeActionButtons';
 /**
@@ -21,30 +22,40 @@ class WelcomeTopSetion extends PureComponent {
       firstName, logout
     } = this.props;
     return (
-      <div className="container-fluid welcome-section">
-        <div className="row">
-          <div className="welcome-video col-md-6">
-            <div className="col-md-12 welcome-msg">
-              <i><h1>Welcome to more recipes!</h1></i>
-              <div className="intro-msg">
-              Find and share everyday cooking inspiration on More Recipes.
-                Discover recipes,cooks and how-tos based on the food you love.
-              </div>
-              <div className="col-md-12 home-logged-in">
-                <ActionButtons logout={logout} firstName={firstName} />
-              </div>
-            </div>
+      <div>
+        <div className="col-md-12 welcome-msg-top">
+          <i><h1>Welcome to more recipes!</h1></i>
+          <div className="intro-msg">
+        Find and share everyday cooking inspiration on More Recipes.
+          Discover recipes,cooks and how-tos based on the food you love.
           </div>
-          <div className=" welcome-video-v welcome-video col-md-6">
-            <Player
+          <div className="col-md-12 home-logged-in">
+            <ActionButtons logout={logout} firstName={firstName} />
+          </div>
+        </div>
+        <div className="container-fluid welcome-section">
+          <div className="welcome-video col-md-12">
+            <Video
               autoPlay
+              loop
               muted
               poster="http://wyregate.com/wp-content/uploads/2018/03/img.png"
-              src="http://wyregate.com/wp-content/uploads/2018/03/video.mp4"
             >
-              <BigPlayButton position="center" />
-              <ControlBar autoHide />
-            </Player >
+              <source
+                src="http://wyregate.com/wp-content/uploads/2018/03/video.mp4"
+                type="video/webm"
+              />
+            </Video>
+          </div>
+          <div className="col-md-12 welcome-msg">
+            <i><h1>Welcome to more recipes!</h1></i>
+            <div className="intro-msg">
+              Find and share everyday cooking inspiration on More Recipes.
+                Discover recipes,cooks and how-tos based on the food you love.
+            </div>
+            <div className="col-md-12 home-logged-in">
+              <ActionButtons logout={logout} firstName={firstName} />
+            </div>
           </div>
         </div>
       </div>

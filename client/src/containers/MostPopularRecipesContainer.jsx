@@ -22,25 +22,6 @@ class MostPopularRecipesContainer extends Component {
   componentDidMount() {
     this.props.recipesActions.mostFavoritedRecipes();
   }
-
-  /**
-   *
-   *
-   * @returns {void}
-   * @memberOf HomeRecipes
-   */
-  // getPopularRecipes() {
-  //   console.log('Im being called');
-  //   this.props.recipesActions.mostFavoritedRecipes();
-  // }
-  /**
-   *
-   *
-   * @param {any} index
-   *@returns {void}
-   * @memberOf Recipes
-   */
-
   /**
    *
    *
@@ -52,7 +33,6 @@ class MostPopularRecipesContainer extends Component {
     const {
       recipes
     } = this.props;
-    console.log('The recipes', recipes);
     return (
       <div>
         <MostPopularRecipesList

@@ -14,9 +14,9 @@ const options = {
 const BtnAdd = UserIsAuthenticated(options)(() => (
   <Link
     to="/catalog/add"
-    className="btn btn-danger btn-manage"
+    className="btn btn-publish btn-manage"
   >
-  Add a new Recipe!
+    <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
   </Link>
 ));
 const BtnManageRecipes = UserIsAuthenticated(options)(() => (
@@ -24,7 +24,7 @@ const BtnManageRecipes = UserIsAuthenticated(options)(() => (
     to="/catalog/manage"
     className="btn btn-publish btn-manage"
   >
-    Manage Recipes
+    <i className="fa fa-list-alt" aria-hidden="true" /> Manage Recipes
   </Link>
 ));
 
@@ -33,7 +33,7 @@ const BtnFavorites = UserIsAuthenticated(options)(() => (
     to="/catalog/favorites"
     className="btn btn-publish btn-manage"
   >
-      My Favorites
+    <i className="fa fa-heart" /> My Favorites
   </Link>
 ));
 /**
@@ -57,6 +57,12 @@ class AllRecipesList extends PureComponent {
     return (
       <div>
         <div className="text-left-buttons btn-buttons">
+          <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+          Homepage
+          </Link>
           <BtnAdd />
           <BtnManageRecipes />
           <BtnFavorites />

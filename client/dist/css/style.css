@@ -2,14 +2,19 @@ html,body,div,article,ul,li,span, applet, object, iframe, h1, h2, h3, h4, h5, h6
 pre, a, abbr, acronym, address, big, cite, code, del, dfn,em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, dl, dt, dd, ul, li, fieldset, form, label, legend, table, caption,
 tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+html{position:relative; min-height: 100%;}
+body{margin-bottom: 100px}
 .add-recipe-page {height: 100%;margin-bottom: 150px;}
 .upload-image img{width:300px;height:300px;}
 .text-left-buttons {text-align: center;margin-top: 10px;}
 .btn-manage{margin-right:10px;}
 .btn-buttons{margin-top:20px;margin-bottom:10px;}
-.favorited{color:red}
-.welcome-video{padding:0;margin:0;min-height:385px;height:auto;overflow:hidden;background:url(https://dammyy.github.io/More-Recipes/template/img/slide1.jpg);}
-.welcome-section{overflow: hidden;}
+.favorited{color:red;}
+.welcome-video{padding:0px;margin:0px;min-height:150px;height:600px;overflow:hidden;z-index:0;}
+.welcome-section{overflow: hidden;height:600px;position:relative;}
+.welcome-msg{height:230px;;z-index:10;bottom:400px;}
+.welcome-msg h1{text-align:center;text-transform:capitalize;color:#fff;color: #e8e8e8;font-weight: bold;}
+.welcome-msg-top{display:none;}
 #review-input-field {height:100px;}
 .video-react .video-react-big-play-button.video-react-big-play-button-center{display:none;}
 .btn-favorited:hover{background:none!important;border:1px solid #ccc!important;}
@@ -39,15 +44,13 @@ tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 #votes-del{height:30px;position:relative;bottom:95%;z-index:10;width:100%;}
 .btn-del{float:right;padding:2px 4px;font-size:12px;margin-right:10px;margin-top:6px;}
 #recipe-title h2 {font-size:100%;text-align:center;}
-.welcome-msg{height: 100%; margin-top: 70px;}
-.welcome-msg h1{text-align:center;text-transform:capitalize;color:#fff;color: #e8e8e8;font-weight: bold;}
-.publish-recipe{height:100px;margin-top:50px;}
-.publish-recipe h6 {margin-bottom:10px;font-size:13px;color: #fff;font-weight:bold;}
-.btn-post-recipe {background: #666;color:#fff;padding: 5px 10px;border-radius: 0px;margin-right:10px;font-size:14px;}
-.btn-logout{padding-bottom: 5px;background:red;padding: 5px 10px;color:#fff;border-radius: 0px;font-size:14px;}
+.publish-recipe{height:60px;margin-top:50px;}
+.publish-recipe h6 {margin-bottom:10px;font-size:15px;color: #fff;font-weight:bold;}
+.btn-post-recipe {background: #666;color:#fff;padding: 5px 10px;border-radius: 0px;margin-right:10px;font-size:15px;}
+.btn-logout{padding-bottom: 5px;background:red;padding: 5px 10px;color:#fff;border-radius: 0px;font-size:15px;}
 .intro-msg {width:80%;text-align:center;margin:0 auto;margin-top:15px;color:#fff;letter-spacing:1px;font-weight:bold;}
 .btn-post-recipe:hover {background:#fff;color:#808080;border:1px solid #808080;}
-.footer {position: fixed;bottom: 0;width: 100%;height: 60px;line-height: 60px;background-color: #e8e8e8;z-index:100;color:#202020;}
+.footer {position: absolute;bottom: 0;width: 100%;height: 60px;line-height: 60px;background-color: #e8e8e8;z-index:100;color:#202020;}
 .sign-in-page{padding:0px;margin:0px;}
 .form-signin {max-width: 350px;padding: 15px;margin: 25px auto;}
 .form-signin input[type="email"] {margin-bottom: -1px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border:1px solid #ccc;}
@@ -65,8 +68,6 @@ tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 .header-links li a{text-decoration:none;font-weight:500;color:#202020;padding:5px 6px;border:1px solid #202020;background:#fff;border-radius:5px;}
 .header-links li a:hover{color:#fff;background:#202020;}
 .text-muted {float:right;}
-.catalog-left {padding:0px;}
-.catalog-left .recipe-display {height:295px;}
 #catalog-search-form {margin:10px 5px;}
 .catalog-right #latest-h3{margin-top:58px;}
 #popular {height:auto;margin-bottom:10px;border-bottom:1px solid #ccc;}
@@ -107,7 +108,7 @@ tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 .background .form-signin{padding:50px 0px;margin:0 auto;}
 .header-logo {color:#202020;}
 .add-recipe {width:auto;min-height:80px;height:auto;}
-.home-logged-in {text-align:center;height:100%;margin-bottom:10px;}
+.home-logged-in {text-align:center;height:60px;;margin-bottom:10px;}
 .btn-signin {background:#666;color:#fff;font-size:14px;}
 .btn-signup {background:#666;color:#fff;margin-right:5px;font-size:14px;}
 .btn-signin:hover {color:red;background:#fff;color:#505050;border:1px solid #505050;}
@@ -115,14 +116,12 @@ tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 .btn-publish {background:#808080;color:#fff;}
 .btn-publish:hover {font-weight:bold;color:red;background:#fff;color:#808080;border:1px solid #808080;}
 .nav-link-c {color:#000!important;}
-.redux-toastr {bottom: 70%;margin-left: 20px;}
-.redux-toastr .toastr{background-color:#ccc!important;padding:10px 0px;}
+/* .redux-toastr {bottom: 70%;margin-left: 20px;}
+.redux-toastr .toastr{background-color:#ccc!important;padding:10px 0px;} */
 .rrt-left-container {text-align:center;}
 .rrt-middle-container {text-align:center;}
 @media (max-width: 575px) { 
-.welcome-section{height: auto;overflow: unset}
-.welcome-video{min-height:150px;height:auto;}
-welcome-video-v {display:none;}
+.welcome-section{height: auto;position:relative;}
 .recipe-display{height:auto;}
 .footer {position: relative;}
 .footer {height:100%;}
@@ -134,4 +133,12 @@ welcome-video-v {display:none;}
 .catalog-right #latest-h3{margin-top:10px;}
 #recipe-content {margin-bottom:0px;}
 .header-logo {margin-right:0px;}
+}
+@media (max-width: 1070px) {
+  .welcome-msg{display:none;}
+  .welcome-video{height: auto;}
+  .welcome-section{height:auto;}
+  .welcome-msg-top{padding:50px 0px;display:block;height:auto;background:url(https://dammyy.github.io/More-Recipes/template/img/slide1.jpg)}
+  .welcome-msg-top h1{text-align:center;text-transform:capitalize;color:#fff;color: #fff;font-weight: bold;}
+  .welcome-video{display:none;}
 }

@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from './Navbar';
 import Footer from './Footer';
 /**
  *
@@ -20,7 +19,6 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div>
-        <Navbar />
         {this.props.children}
         <Footer />
       </div>

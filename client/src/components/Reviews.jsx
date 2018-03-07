@@ -30,6 +30,7 @@ class Reviews extends PureComponent {
     );
   }
 }
+
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.any).isRequired,
 };

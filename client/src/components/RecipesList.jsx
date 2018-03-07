@@ -8,7 +8,7 @@ const BtnAdd = (() => (
     to="/catalog/add"
     className="btn btn-publish btn-manage"
   >
-  Add a new Recipe!
+    <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
   </Link>
 ));
 const BtnFavorites = (() => (
@@ -17,7 +17,7 @@ const BtnFavorites = (() => (
     to="/catalog/favorites"
     className="btn btn-publish btn-manage"
   >
-        My Favorites
+    <i className="fa fa-heart" /> My Favorites
   </Link>
 ));
 /**

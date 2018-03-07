@@ -27,12 +27,16 @@ class HomeActionButtons extends PureComponent {
             to="/catalog/add"
             className="btn btn-post-recipe"
           >
-        Post a new recipe!
+            <i
+              className="fa fa-pencil-square-o"
+              aria-hidden="true"
+            /> Post a new recipe!
           </Link>
           <button
             className="btn btn-logout"
             onClick={logout}
-          >Logout
+          >
+            <i className="fa fa-power-off" aria-hidden="true" /> Logout
           </button>
         </p>
       </div>
