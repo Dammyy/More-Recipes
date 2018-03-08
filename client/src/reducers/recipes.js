@@ -6,7 +6,8 @@ import {
   DELETE_RECIPE_FAILURE,
   UPDATE_RECIPE_SUCCESS,
   FAVORITE_RECIPE_FAILURE,
-  GET_MOST_FAVORITED_SUCCESS
+  GET_MOST_FAVORITED_SUCCESS,
+  SEARCH_RECIPES_SUCCESS
 } from '../constants/recipes';
 
 const initialState = Immutable.Map();
@@ -14,6 +15,7 @@ const initialState = Immutable.Map();
 export default (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_RECIPE_SUCCESS:
+    case SEARCH_RECIPES_SUCCESS:
     case DELETE_RECIPE_SUCCESS:
     case GET_RECIPES_SUCCESS: {
       return state.merge({ list: action.recipes });

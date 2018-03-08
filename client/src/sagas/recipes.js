@@ -338,6 +338,38 @@ function* getMostFavoritedRecipes() {
   }
 }
 
+const searchForm = (state) => {
+  return state.getIn(['form', 'search']).toJS();
+};
+
+const searchRecipes = searchQuery =>
+  fetch(`/api/v1/recipes/search/${searchQuery}`)
+    .then(response => response.json())
+    .then((response) => {
+      if (response.statusCode === '200') {
+        return response;
+      }
+      throw response;
+    });
+
+/**
+     * @returns {Object} Get search Results
+     */
+function* getSearchResults() {
+  try {
+    const searchQuery = yield select(searchForm);
+    const queryValue = searchQuery.values;
+    const searchResult = yield call(searchRecipes, queryValue.search);
+    const { recipes } = searchResult;
+    yield put(recipeActions.searchRecipesSuccess(recipes));
+    yield put(push('/catalog/search'));
+  } catch (e) {
+    const { message } = e;
+    yield put(recipeActions.getRecipesFailure());
+    yield put(toastr.error(message));
+  }
+}
+
 /**
    * @returns {Object} Watch Get recipes
    */
@@ -402,6 +434,14 @@ function* watchGetMostFavoritedRecipes() {
   yield takeLatest(recipeConstants.GET_MOST_FAVORITED, getMostFavoritedRecipes);
 }
 
+/**
+ *@returns {void}
+ *
+ */
+function* watchSearchRecipes() {
+  yield takeLatest(recipeConstants.SEARCH_RECIPES, getSearchResults);
+}
+
 export {
   watchGetRecipes,
   watchAddRecipe,
@@ -411,5 +451,6 @@ export {
   watchFavoriteRecipe,
   watchGetUsersFavorites,
   watchGetRecipeNoUserId,
-  watchGetMostFavoritedRecipes
+  watchGetMostFavoritedRecipes,
+  watchSearchRecipes
 };

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Field, reduxForm } from 'redux-form/immutable';
+import { Field, reset, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 /**
  *
@@ -62,4 +62,10 @@ AddReviewForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-export default reduxForm({ form: 'review' })(AddReviewForm);
+const afterSubmit = (result, dispatch) =>
+  dispatch(reset('review'));
+
+export default reduxForm({
+  form: 'review',
+  onSubmit: afterSubmit,
+})(AddReviewForm);

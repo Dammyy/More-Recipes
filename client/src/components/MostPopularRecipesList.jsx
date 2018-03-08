@@ -36,7 +36,6 @@ class MostPopularRecipesList extends PureComponent {
             })
         }
           </div>
-          <hr />
         </div>
       </div>
     );

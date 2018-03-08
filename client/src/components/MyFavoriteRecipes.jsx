@@ -6,7 +6,7 @@ import RecipeHome from './RecipeHome';
 const BtnAdd = (() => (
   <Link
     to="/catalog/add"
-    className="btn btn-danger btn-manage"
+    className="btn btn-publish btn-manage"
   >
     <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
   </Link>));
@@ -40,10 +40,16 @@ class MyFavoriteRecipes extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+            <i className="fa fa-home" /> Home
+          </Link>
+          <Link
             to="/catalog"
             className="btn btn-info btn-manage"
           >
-          Back to Catalog
+            <i className="fa fa-list-alt" aria-hidden="true" /> Catalog
           </Link>
           <BtnAdd />
           <BtnManageRecipes />
@@ -57,7 +63,6 @@ class MyFavoriteRecipes extends PureComponent {
               />))
             }
           </div>
-          <hr />
         </div>
       </div>
     );

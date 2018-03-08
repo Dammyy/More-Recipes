@@ -21,8 +21,17 @@ class HomeActionButtons extends PureComponent {
     const { firstName, logout } = this.props;
     return (
       <div className="publish-recipe">
-        <h6>You are logged in as {firstName}</h6>
+        <h2>You are logged in as {firstName}</h2>
         <p>
+          <Link
+            to="/catalog"
+            className="btn btn-post-recipe"
+          >
+            <i
+              className="fa fa-eye"
+              aria-hidden="true"
+            /> Browse
+          </Link>
           <Link
             to="/catalog/add"
             className="btn btn-post-recipe"
@@ -30,7 +39,7 @@ class HomeActionButtons extends PureComponent {
             <i
               className="fa fa-pencil-square-o"
               aria-hidden="true"
-            /> Post a new recipe!
+            /> New Recipe
           </Link>
           <button
             className="btn btn-logout"

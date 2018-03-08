@@ -431,5 +431,48 @@ class Recipe {
       })
       .catch(error => res.status(400).send(error));
   }
+
+
+  /**
+   *
+   *@returns {void}
+   * @static
+   * @param {any} req
+   * @param {any} res
+   *
+   * @memberOf Recipe
+   */
+  static searchRecipes(req, res) {
+    const query = req.params.query.trim();
+    const op = models.Sequelize.Op;
+    const condition = {
+      [op.or]: {
+        title: {
+          [op.iLike]: `%${query}%`
+        },
+        details: {
+          [op.iLike]: `%${query}%`
+        },
+        ingredients: {
+          [op.iLike]: `%${query}%`
+        },
+      }
+    };
+    RecipeModel.findAll({
+      where: condition
+    })
+      .then((recipes) => {
+        if (recipes.length === 0) {
+          return res.status(404).send({
+            message: 'No Matches Found'
+          });
+        }
+        return res.status(200).send({
+          statusCode: '200',
+          recipes
+        });
+      })
+      .catch(error => res.status(400).send(error));
+  }
 }
 export default Recipe;

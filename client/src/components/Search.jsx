@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import Immutable from 'immutable';
 import RecipeHome from './RecipeHome';
 import UserIsAuthenticated from '../utils/authWrapper';
 
@@ -42,7 +44,7 @@ const BtnFavorites = UserIsAuthenticated(options)(() => (
  * @class RecipeListHome
  * @extends {PureComponent}
  */
-class AllRecipesList extends PureComponent {
+class Search extends PureComponent {
   /**
    *
    *
@@ -86,8 +88,20 @@ class AllRecipesList extends PureComponent {
     );
   }
 }
-AllRecipesList.propTypes = {
+
+/**
+ *
+ * @param {any} state
+ * @returns {void}
+ */
+function mapStateToProps(state) {
+  return {
+    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+  };
+}
+
+Search.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default AllRecipesList;
+export default connect(mapStateToProps)(Search);

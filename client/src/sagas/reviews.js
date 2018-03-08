@@ -44,7 +44,6 @@ function* addReview(action) {
   try {
     const postReview = yield call(publishReview, id, newReview);
     const { review } = postReview;
-    console.log('new review from add review', review);
     yield put(addReviewSuccess(review));
     yield put(toastr.success(postReview.message));
   } catch (e) {

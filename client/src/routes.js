@@ -5,7 +5,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import { Home, Welcome,
-  Archive, Login, Signup, NotFoundPage } from './components';
+  Archive, Login, Signup, NotFoundPage, Search } from './components';
 import { AddRecipeContainer, RecipesContainer,
   EditRecipeFormContainer, ViewRecipeContainer,
   AllRecipesContainer, MyFavoriteRecipesContainer } from './containers';
@@ -44,6 +44,7 @@ const routes = (
           <IndexRoute component={AllRecipesContainer} />
           <Route path="add" component={AuthCheck(AddRecipeContainer)} />
           <Route path="manage" component={AuthCheck(RecipesContainer)} />
+          <Route path="search" component={Search} />
           <Route
             path="favorites"
             component={AuthCheck(MyFavoriteRecipesContainer)}

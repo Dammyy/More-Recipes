@@ -3,7 +3,8 @@ pre, a, abbr, acronym, address, big, cite, code, del, dfn,em, font, img, ins, kb
 small, strike, strong, sub, sup, tt, var, dl, dt, dd, ul, li, fieldset, form, label, legend, table, caption,
 tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 html{position:relative; min-height: 100%;}
-body{margin-bottom: 100px}
+body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
+.btn{margin-bottom:5px;}
 .add-recipe-page {height: 100%;margin-bottom: 150px;}
 .upload-image img{width:300px;height:300px;}
 .text-left-buttons {text-align: center;margin-top: 10px;}
@@ -12,8 +13,8 @@ body{margin-bottom: 100px}
 .favorited{color:red;}
 .welcome-video{padding:0px;margin:0px;min-height:150px;height:600px;overflow:hidden;z-index:0;}
 .welcome-section{overflow: hidden;height:600px;position:relative;}
-.welcome-msg{height:230px;;z-index:10;bottom:400px;}
-.welcome-msg h1{text-align:center;text-transform:capitalize;color:#fff;color: #e8e8e8;font-weight: bold;}
+.welcome-msg{height:250px;;z-index:10;bottom:400px;}
+.welcome-msg h1{text-align:center;text-transform:capitalize;color:#fff;font-size:55px;font-weight: bold;}
 .welcome-msg-top{display:none;}
 #review-input-field {height:100px;}
 .video-react .video-react-big-play-button.video-react-big-play-button-center{display:none;}
@@ -22,6 +23,7 @@ body{margin-bottom: 100px}
 .g3{background:red;}
 .navbar-brand {font-size:25px;line-height:45px;letter-spacing:1px;}
 .navbar img{border-radius:10px;}
+.navbar-brand {margin-right:5px;}
 .navbar{background: #e8e8e8;}
 #navbarNav{float:right;}
 .btn-outline-success {color:#202020;border-color:#202020;}
@@ -45,10 +47,10 @@ body{margin-bottom: 100px}
 .btn-del{float:right;padding:2px 4px;font-size:12px;margin-right:10px;margin-top:6px;}
 #recipe-title h2 {font-size:100%;text-align:center;}
 .publish-recipe{height:60px;margin-top:50px;}
-.publish-recipe h6 {margin-bottom:10px;font-size:15px;color: #fff;font-weight:bold;}
+.publish-recipe h2 {margin-bottom:10px;font-size:15px;color: #fff;font-weight:bold;}
 .btn-post-recipe {background: #666;color:#fff;padding: 5px 10px;border-radius: 0px;margin-right:10px;font-size:15px;}
 .btn-logout{padding-bottom: 5px;background:red;padding: 5px 10px;color:#fff;border-radius: 0px;font-size:15px;}
-.intro-msg {width:80%;text-align:center;margin:0 auto;margin-top:15px;color:#fff;letter-spacing:1px;font-weight:bold;}
+.intro-msg {background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);width:80%;text-align:center;margin:0 auto;margin-top:15px;color:#fff;letter-spacing:1px;font-weight:bold;padding:10px 0px;border-radius:5px;}
 .btn-post-recipe:hover {background:#fff;color:#808080;border:1px solid #808080;}
 .footer {position: absolute;bottom: 0;width: 100%;height: 60px;line-height: 60px;background-color: #e8e8e8;z-index:100;color:#202020;}
 .sign-in-page{padding:0px;margin:0px;}
@@ -106,7 +108,8 @@ body{margin-bottom: 100px}
 .add-recipe a:hover{color:#fff;background:#202020;}
 .background .col-md-12 {padding:0;margin:0;}
 .background .form-signin{padding:50px 0px;margin:0 auto;}
-.header-logo {color:#202020;}
+.header-logo {color:#202020;font-size: 18px;}
+.logo-link-wrap{width:270px;}
 .add-recipe {width:auto;min-height:80px;height:auto;}
 .home-logged-in {text-align:center;height:60px;;margin-bottom:10px;}
 .btn-signin {background:#666;color:#fff;font-size:14px;}
@@ -135,6 +138,8 @@ body{margin-bottom: 100px}
 .header-logo {margin-right:0px;}
 }
 @media (max-width: 1070px) {
+  .header-logo {color:#202020;font-size: 15px;}
+.logo-link-wrap{width:250px;}
   .welcome-msg{display:none;}
   .welcome-video{height: auto;}
   .welcome-section{height:auto;}

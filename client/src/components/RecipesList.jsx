@@ -42,10 +42,16 @@ class RecipesList extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+            <i className="fa fa-home" /> Home
+          </Link>
+          <Link
             to="/catalog"
             className="btn btn-info btn-manage"
           >
-          Back to Catalog
+            <i className="fa fa-list-alt" aria-hidden="true" /> Catalog
           </Link>
           <BtnAdd />
           <BtnFavorites />

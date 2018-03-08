@@ -41,7 +41,16 @@ class EditRecipeForm extends PureComponent {
     return (
       <div className="col-md-9 catalog-left">
         <div className="text-left">
-          <Link to="/catalog" className="btn btn-info">Back to Catalog</Link>
+          <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+            <i className="fa fa-home" /> Home
+          </Link>
+          <Link to="/catalog" className="btn btn-info">
+            <i className="fa fa-home" />
+           Back to Catalog
+          </Link>
         </div>
         <div className="panel panel-default">
           <div className="panel-heading">

@@ -166,6 +166,19 @@ const getMostFavoritedRecipesSuccess = (recipes) => {
   };
 };
 
+const searchRecipes = () => {
+  return {
+    type: recipeConstants.SEARCH_RECIPES
+  };
+};
+
+const searchRecipesSuccess = (recipes) => {
+  return {
+    type: recipeConstants.SEARCH_RECIPES_SUCCESS,
+    recipes
+  };
+};
+
 export {
   getRecipes,
   getRecipesSuccess,
@@ -191,5 +204,7 @@ export {
   getFavoritedRecipesSuccess,
   getFavoritedRecipesFailure,
   mostFavoritedRecipes,
-  getMostFavoritedRecipesSuccess
+  getMostFavoritedRecipesSuccess,
+  searchRecipes,
+  searchRecipesSuccess
 };

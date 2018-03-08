@@ -9,6 +9,7 @@ import validateReview from '../middlewares/validate-review';
 
 
 export default (app) => {
+  app.get('/api/v1/recipes/search/:query', Recipes.searchRecipes);
   app.post(
     '/api/v1/recipes/:recipeId/reviews',
     auth, validateReview, Recipes.postReview
