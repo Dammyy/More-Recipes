@@ -40,19 +40,17 @@ class PopularRecipes extends PureComponent {
     return (
       <div className="col-md-4 recipe-display-popular recipe-display">
         <div className="n-of-favorites">
-        Favorited by <b>{favorited}</b> user(s)
+          <b>{favorited}</b> Fans <i className="favorited fa fa-heart" />
         </div>
         <img src={img} alt="" />
         <div id="votes-del">
           <div id="recipe-votes">
             <li>
-              <i className="fa fa-thumbs-o-up" aria-hidden="true">
-                {upvotes}
+              <i className="fa fa-thumbs-o-up" aria-hidden="true"> {upvotes}
               </i>
             </li>
             <li>
-              <i className="fa fa-thumbs-o-down" aria-hidden="true">
-                {downvotes}
+              <i className="fa fa-thumbs-o-down" aria-hidden="true"> {downvotes}
               </i>
             </li>
           </div>

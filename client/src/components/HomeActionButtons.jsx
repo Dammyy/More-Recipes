@@ -61,6 +61,15 @@ const options = {
   FailureComponent: () => {
     return (
       <div className="publish-recipe" role="group" aria-label="...">
+        <Link
+          to="/catalog"
+          className="btn btn-signup"
+        >
+          <i
+            className="fa fa-eye"
+            aria-hidden="true"
+          /> Browse
+        </Link>
         <Link to="/signup" className="btn btn-signup">Sign Up</Link>
         <Link to="/login" className="btn btn-signin">Login</Link>
       </div>

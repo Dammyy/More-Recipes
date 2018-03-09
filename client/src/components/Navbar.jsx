@@ -81,9 +81,9 @@ class Navbar extends Component {
               placeholder="Search"
             />
             <button
-              className="btn btn-publish my-2 my-sm-0"
+              className="btn btn-search my-2 my-sm-0"
               type="submit"
-            >Search
+            ><i className="fa fa-search" aria-hidden="true" /> Search
             </button>
           </form>
         </div>

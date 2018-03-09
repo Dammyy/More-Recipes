@@ -314,45 +314,59 @@ class Recipe {
               }
             }).then((recipe) => {
               if (req.params.type === 'true' && prevVote === false) {
-                recipe.update({
-                  title: recipe.title,
-                  ingredients: recipe.ingredients,
-                  details: recipe.details,
-                  reviews: recipe.reviews,
-                  upvotes: recipe.upvotes + 1,
-                  downvotes: recipe.downvotes - 1,
-                  favorited: recipe.favorited
-                })
+                recipe.decrement('downvotes');
+                recipe.increment('upvotes')
                   .then(() => {
                     return res.status(201).send({
+                      statusCode: '201',
+                      voteValue: 'true',
                       message: 'Recipe upvoted',
+                      recipe
                     });
                   });
               } else if (req.params.type === 'false' && prevVote === true) {
-                recipe.update({
-                  title: recipe.title,
-                  ingredients: recipe.ingredients,
-                  details: recipe.details,
-                  reviews: recipe.reviews,
-                  upvotes: recipe.upvotes - 1,
-                  downvotes: recipe.downvotes + 1,
-                  favorited: recipe.favorited
-                })
+                recipe.decrement('upvotes');
+                recipe.increment('downvotes')
                   .then(() => {
                     return res.status(201).send({
-                      message: 'Recipe Downvoted',
+                      statusCode: '201',
+                      voteValue: 'false',
+                      message: 'Recipe downvoted',
+                      recipe
                     });
                   });
               } else {
                 if (prevVote === true && req.params.type === 'true') {
-                  return res.status(400).send({
-                    message: 'Recipe Already Upvoted',
-                  });
+                  recipe.decrement('upvotes');
+                  votes.destroy({
+                    where: {
+                      userId: votesModel.userId,
+                      recipeId: votesModel.recipeId
+                    }
+                  })
+                    .then(() => {
+                      return res.status(200).send({
+                        statusCode: '200',
+                        message: 'Upvote removed',
+                        recipe
+                      });
+                    });
                 }
                 if (prevVote === false && req.params.type === 'false') {
-                  return res.status(400).send({
-                    message: 'Recipe Already Downvoted',
-                  });
+                  recipe.decrement('downvotes');
+                  votes.destroy({
+                    where: {
+                      userId: votesModel.userId,
+                      recipeId: votesModel.recipeId
+                    }
+                  })
+                    .then(() => {
+                      return res.status(200).send({
+                        statusCode: '200',
+                        message: 'Donvote removed',
+                        recipe
+                      });
+                    });
                 }
               }
             });
@@ -364,35 +378,39 @@ class Recipe {
           recipeId: req.params.recipeId,
         })
           .then(() => {
-            if (req.params.type === true) {
-              return res.status(201).send({
-                message: 'Recipe Upvoted',
-              });
-            }
-            if (req.params.type === false) {
-              return res.status(201).send({
-                message: 'Recipe Downvoted',
-              });
-            }
             RecipeModel.findOne({
               where: {
                 id: req.params.recipeId
               }
-            }).then((recipe) => {
-              if (req.params.type === 'true') {
-                recipe.increment('upvotes')
-                  .then(() => res.status(200).send(recipe));
-              }
-              if (req.params.type === 'false') {
-                recipe.increment('downvotes')
-                  .then(() => res.status(200).send(recipe));
-              }
-            });
+            })
+              .then((recipe) => {
+                if (req.params.type === 'true') {
+                  recipe.increment('upvotes')
+                    .then(() => {
+                      return res.status(201).send({
+                        statusCode: '201',
+                        voteValue: 'true',
+                        message: 'Recipe Upvoted',
+                        recipe
+                      });
+                    });
+                }
+                if (req.params.type === 'false') {
+                  recipe.increment('downvotes')
+                    .then(() => {
+                      return res.status(201).send({
+                        statusCode: '201',
+                        voteValue: 'false',
+                        message: 'Recipe Downvoted',
+                        recipe
+                      });
+                    });
+                }
+              });
           });
       }
     });
   }
-
   /**
    * @returns {Object} get most upvotes
    * @param {req} req
@@ -431,7 +449,6 @@ class Recipe {
       })
       .catch(error => res.status(400).send(error));
   }
-
 
   /**
    *

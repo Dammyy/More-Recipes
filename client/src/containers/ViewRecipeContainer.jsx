@@ -23,6 +23,7 @@ class ViewRecipeContainer extends Component {
   constructor(props) {
     super(props);
     this.favoriteRecipe = this.favoriteRecipe.bind(this);
+    this.voteRecipe = this.voteRecipe.bind(this);
   }
 
   /**
@@ -51,16 +52,9 @@ class ViewRecipeContainer extends Component {
   componentDidMount() {
     this.props.reviewsActions.getReviews(this.props.params.id);
   }
-  /**
-   *@returns {void}
-   *
-   *
-   * @memberOf ViewRecipeContainer
-   */
 
   /**
    *@returns {void}
-   *
    * @param {any} id
    *
    * @memberOf ViewRecipeContainer
@@ -68,6 +62,20 @@ class ViewRecipeContainer extends Component {
   favoriteRecipe(id) {
     this.props.recipesActions.favoriteRecipe(id);
   }
+
+
+  /**
+   *@returns {void}
+   *
+   * @param {any} id
+   * @param {any} voteType
+   *
+   * @memberOf ViewRecipeContainer
+   */
+  voteRecipe(id, voteType) {
+    this.props.recipesActions.voteRecipe(id, voteType);
+  }
+
   /**
    *
    *
@@ -84,12 +92,13 @@ class ViewRecipeContainer extends Component {
           id={id}
           favoriteRecipe={this.favoriteRecipe}
           userId={this.props.userId}
+          voteRecipe={this.voteRecipe}
         />
-        <div className="reviews">
-          <Reviews reviews={reviews} id={this.props.params.id} />
-        </div>
         <div id="reviews-form">
           <AddReviewFormContainer id={this.props.params.id} />
+        </div>
+        <div className="reviews">
+          <Reviews reviews={reviews} id={this.props.params.id} />
         </div>
       </div>
     );

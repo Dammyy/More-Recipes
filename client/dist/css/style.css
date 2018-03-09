@@ -7,9 +7,9 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .btn{margin-bottom:5px;}
 .add-recipe-page {height: 100%;margin-bottom: 150px;}
 .upload-image img{width:300px;height:300px;}
-.text-left-buttons {text-align: center;margin-top: 10px;}
+.text-left-buttons {padding: 10px 20px;background:#A8A8A8;padding-top: 15px;}
 .btn-manage{margin-right:10px;}
-.btn-buttons{margin-top:20px;margin-bottom:10px;}
+.btn-buttons{margin-bottom:10px;}
 .favorited{color:red;}
 .welcome-video{padding:0px;margin:0px;min-height:150px;height:600px;overflow:hidden;z-index:0;}
 .welcome-section{overflow: hidden;height:600px;position:relative;}
@@ -19,6 +19,7 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 #review-input-field {height:100px;}
 .video-react .video-react-big-play-button.video-react-big-play-button-center{display:none;}
 .btn-favorited:hover{background:none!important;border:1px solid #ccc!important;}
+.btn-favorited{margin-right:5px;}
 .latest-recipes {margin-bottom:0px;}
 .g3{background:red;}
 .navbar-brand {font-size:25px;line-height:45px;letter-spacing:1px;}
@@ -39,9 +40,9 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .row {margin:0;}
 .btn-view {bottom: 115px;position:relative;width:100%;background:#fff;color:#505050;border-color:#ccc;border-radius: 0px;}
 .btn-view:hover {background:#ccc;color:#fff;font-weight:bold;border:none;color:#505050;}
-.latest-h3{width:100%;padding-right:2%;padding-left:2%;padding-top:15px;padding-bottom:15px;background:#e8e8e8;color:#202020;text-align:center;letter-spacing:1px;text-transform:uppercase;margin-top:10px;}
-#recipe-title{background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);width:100%;min-height:50px;height:auto;z-index:10;position:relative;bottom:110px;padding-top:5px;margin:0 auto;color:#fff;letter-spacing:1px;}
-#recipe-votes {float:left;margin-left:10px;min-width:80px;max-width:120px;width:auto;padding:5px;height:30px;color:#303030;}
+.latest-h3{width:100%;padding-right:2%;padding-left:2%;padding-top:15px;padding-bottom:15px;background:#A8A8A8;color:#fff;text-align:center;letter-spacing:1px;text-transform:uppercase;margin-top:10px;margin-bottom:10px;}
+#recipe-title{background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);width:100%;min-height:50px;height:auto;z-index:10;position:relative;bottom:110px;padding-top:5px;margin:0 auto;color:#fff;letter-spacing:1px;text-align:center;}
+#recipe-votes {background:url(https://dammyy.github.io/More-Recipes/template/img/background.png);float:left;margin-left:10px;min-width:80px;max-width:120px;width:auto;padding:5px;height:30px;color:#fff;padding-left:5px;border-radius:5px;}
 #recipe-votes li{list-style-type:none;float:left;margin-right:8px;}
 #votes-del{height:30px;position:relative;bottom:95%;z-index:10;width:100%;}
 .btn-del{float:right;padding:2px 4px;font-size:12px;margin-right:10px;margin-top:6px;}
@@ -79,21 +80,26 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .header-links{float:right;}
 
 /*Recipe Display Page*/
-#recipe-display{width:100%;height: 100%;;background:#f8f8f8; }
-.recipe-title{font-size:40px;text-transform:capitalize;background:#e8e8e8;color:#202020;padding:15px 10px 15px 30px;}
+#recipe-display .panel-title {border-top: 2px solid #666;}
+.wrapper .col-md-12 {padding:0px;margin:0px;}
+.r-d-titles{font-size:25px;letter-spacing:1px;text-transform:uppercase;}
+.ing-body{font-size:15px;text-transform:capitalize;}
+#recipe-display{width:90%;height: 100%;background:#f8f8f8;margin:0 auto;}
+.recipe-title{font-size:40px;background:#e8e8e8;color:#202020;padding:15px 10px 15px 30px;text-align:center;}
 #recipe-content {padding:50px;font-weight:500;line-height:25px;margin-bottom:50px;font-size:25px;text-align:left;}
 #recipe-content p{margin:15px 0px;}
 #recipe-content img{width:90%;margin:0px auto;}
 .recipe-details{margin:50px;}
+.details-recipe{margin-top:50px;text-align:center;}
 .recipe-details p{margin-bottom:15px;}
 #up-down-vote{padding:10px;}
-.reviews {margin:15px 0px;width:80%;margin:0 auto;}
+.reviews {margin:5px 0px;width:90%;margin:0 auto;}
 #review{margin:5px 0px;}
 #recipe-content button {border:1px solid #ccc;color:#202020;}
 #recipe-content button:hover {background:#ccc;border:none;color:#202020;}
-#recipe-reviews {background:#666;color:white;padding:10px;border-bottom:1px solid}
-#popular-votes{display:block;width:80%;height:80px;margin:0 auto;}
-#reviews-form{height:200px;margin-bottom:100px;margin-top:20px;padding-left:50px;}
+#recipe-reviews {background:#A8A8A8;color:white;padding:10px;border-bottom:1px solid}
+#popular-votes{display:block;width:100%;height:80px;margin:0 auto;font-size:14px;}
+#reviews-form{height:200px;}
 .profile-display img {width:100%;}
 .profile-display {font-weight:500;}
 #recipes-manage {width:100%;height:auto;}
@@ -108,7 +114,7 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .add-recipe a:hover{color:#fff;background:#202020;}
 .background .col-md-12 {padding:0;margin:0;}
 .background .form-signin{padding:50px 0px;margin:0 auto;}
-.header-logo {color:#202020;font-size: 18px;}
+.header-logo {color:#202020;font-size: 18px;font-weight: bold;}
 .logo-link-wrap{width:270px;}
 .add-recipe {width:auto;min-height:80px;height:auto;}
 .home-logged-in {text-align:center;height:60px;;margin-bottom:10px;}
@@ -119,10 +125,13 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .btn-publish {background:#808080;color:#fff;}
 .btn-publish:hover {font-weight:bold;color:red;background:#fff;color:#808080;border:1px solid #808080;}
 .nav-link-c {color:#000!important;}
-/* .redux-toastr {bottom: 70%;margin-left: 20px;}
-.redux-toastr .toastr{background-color:#ccc!important;padding:10px 0px;} */
 .rrt-left-container {text-align:center;}
 .rrt-middle-container {text-align:center;}
+.panel-heading{padding:10px 0px;}
+.panel-title{font-size:30px;font-weight:bold;padding:10px 0px;}
+.panel-body{font-size:20px;font-weight:bold;letter-spacing:1px;}
+.panel-body label{margin-top:10px;}
+.btn-search{background:#A8A8A8;color:#fff;font-weight:bold;}
 @media (max-width: 575px) { 
 .welcome-section{height: auto;position:relative;}
 .recipe-display{height:auto;}
@@ -135,7 +144,6 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .catalog-left .recipe-display {height:auto;}
 .catalog-right #latest-h3{margin-top:10px;}
 #recipe-content {margin-bottom:0px;}
-.header-logo {margin-right:0px;}
 }
 @media (max-width: 1070px) {
   .header-logo {color:#202020;font-size: 15px;}
@@ -146,4 +154,6 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
   .welcome-msg-top{padding:50px 0px;display:block;height:auto;background:url(https://dammyy.github.io/More-Recipes/template/img/slide1.jpg)}
   .welcome-msg-top h1{text-align:center;text-transform:capitalize;color:#fff;color: #fff;font-weight: bold;}
   .welcome-video{display:none;}
+  #recipe-display{width:98%;}
+  .col-md-12 {padding:0;margin:0;}
 }

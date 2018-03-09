@@ -179,6 +179,21 @@ const searchRecipesSuccess = (recipes) => {
   };
 };
 
+const voteRecipe = (id, voteType) => {
+  return {
+    type: recipeConstants.VOTE_RECIPE,
+    id,
+    voteType
+  };
+};
+
+const voteRecipeSuccess = (recipes) => {
+  return {
+    type: recipeConstants.VOTE_RECIPE_SUCCESS,
+    recipes
+  };
+};
+
 export {
   getRecipes,
   getRecipesSuccess,
@@ -206,5 +221,7 @@ export {
   mostFavoritedRecipes,
   getMostFavoritedRecipesSuccess,
   searchRecipes,
-  searchRecipesSuccess
+  searchRecipesSuccess,
+  voteRecipe,
+  voteRecipeSuccess
 };

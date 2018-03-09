@@ -267,10 +267,9 @@ function* favoriteRecipe(action) {
     const favorite = yield call(favRecipe, id);
     const { recipe } = favorite;
     if (favorite.message === 'Favorited') {
-      recipe.favorited = 'true';
+      recipe.fav = 'true';
     }
     yield put(recipeActions.getRecipesSuccess([recipe]));
-    yield put(recipeActions.favoriteRecipeSuccess());
     yield put(toastr.success(favorite.message));
   } catch (e) {
     const { message } = e;
@@ -313,7 +312,6 @@ function* usersFavorites(action) {
     yield put(toastr.error(message));
   }
 }
-
 
 /**
    * @returns {Object} fetch most favorited recipes
@@ -369,6 +367,54 @@ function* getSearchResults() {
     yield put(toastr.error(message));
   }
 }
+
+
+const vRecipe = (id, voteType) => {
+  return fetch(`/api/v1/recipes/${id}/vote/${voteType}`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      auth: localStorage.getItem('token')
+    }),
+    method: 'POST'
+  })
+    .then(response => response.json())
+    .then((response) => {
+      if (response.statusCode === '201') {
+        return response;
+      }
+      if (response.statusCode === '200') {
+        return response;
+      }
+      throw response;
+    });
+};
+
+
+/**
+ *@returns {void}
+ *
+ * @param {any} action
+ */
+function* voteRecipe(action) {
+  const { id } = action;
+  const { voteType } = action;
+  try {
+    const vote = yield call(vRecipe, id, voteType);
+    const { recipe } = vote;
+    if (vote.voteValue === 'true') {
+      recipe.vote = 'true';
+    }
+    if (vote.voteValue === 'false') {
+      recipe.vote = 'false';
+    }
+    yield put(recipeActions.voteRecipeSuccess([recipe]));
+    yield put(toastr.success(vote.message));
+  } catch (e) {
+    const { message } = e;
+    yield put(toastr.error(message));
+  }
+}
+
 
 /**
    * @returns {Object} Watch Get recipes
@@ -442,6 +488,15 @@ function* watchSearchRecipes() {
   yield takeLatest(recipeConstants.SEARCH_RECIPES, getSearchResults);
 }
 
+
+/**
+ *
+ *@returns {void}
+ */
+function* watchVoteRecipe() {
+  yield takeLatest(recipeConstants.VOTE_RECIPE, voteRecipe);
+}
+
 export {
   watchGetRecipes,
   watchAddRecipe,
@@ -452,5 +507,6 @@ export {
   watchGetUsersFavorites,
   watchGetRecipeNoUserId,
   watchGetMostFavoritedRecipes,
-  watchSearchRecipes
+  watchSearchRecipes,
+  watchVoteRecipe
 };

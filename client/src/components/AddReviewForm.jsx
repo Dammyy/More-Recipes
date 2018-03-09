@@ -19,39 +19,34 @@ class AddReviewForm extends PureComponent {
   render() {
     return (
 
-      <div className="col-md-9 catalog-left">
-        <div className="text-left" />
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <h2 className="panel-title text-center">
+      <div id="recipe-display" className="col-md-12">
+        <h2 className="panel-title text-center r-d-titles">
               Leave a review
-            </h2>
-          </div>
-          <div className="panel-body">
-            <form
-              name="form"
-              action=""
-              onSubmit={this.props.handleSubmit}
-              noValidate
+        </h2>
+        <div className="panel-body">
+          <form
+            name="form"
+            action=""
+            onSubmit={this.props.handleSubmit}
+            noValidate
+          >
+            <div className="form-group">
+              <Field
+                name="review"
+                type="text"
+                id="review-input-field"
+                component="textarea"
+                className="form-control"
+                placeholder="Leave a Review"
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary btn-block"
             >
-              <div className="form-group">
-                <Field
-                  name="review"
-                  type="text"
-                  id="review-input-field"
-                  component="textarea"
-                  className="form-control"
-                  placeholder="Leave a Review"
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-block"
-              >
                 Submit
-              </button>
-            </form>
-          </div>
+            </button>
+          </form>
         </div>
       </div>
     );

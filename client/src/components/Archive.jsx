@@ -21,10 +21,8 @@ class Archive extends PureComponent {
     return (
       <div>
         <Navbar />
-        <div className="col-md-12 latest-recipes">
-          <div className="row">
-            {this.props.children}
-          </div>
+        <div>
+          {this.props.children}
         </div>
         <Footer />
       </div>

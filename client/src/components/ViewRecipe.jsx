@@ -12,18 +12,18 @@ const options = {
 };
 
 const Favorite = UserIsAuthenticated(options)((props) => {
-  if (props.favorited === 'true') {
+  if (props.fav === 'true') {
     return (
       <button
         className="btn btn-favorited"
         params={{ id: props.id }}
         onClick={() => props.favoriteRecipe(props.id, props.userId)}
       >
-        <i className="favorited fa fa-heart" /> Favorited
+        {props.favorited} <i className="favorited fa fa-heart" /> Favorited
       </button >
     );
   }
-  if (props.favorited === 'false') {
+  if (props.fav === 'false') {
     return (
       <button
         className="btn btn-favorited"
@@ -50,78 +50,31 @@ const Favorite = UserIsAuthenticated(options)((props) => {
 });
 
 const Vote = UserIsAuthenticated(options)((props) => {
-  if (props.vote === 'true') {
-    return (
+  return (
+    <div>
       <button
         className="btn btn-favorited"
-        params={{ id: props.id }}
-        onClick={() => props.favoriteRecipe(props.id, props.userId)}
-      >
-        <li>
-          <i
-            className="favorited
-            fa fa-thumbs-up"
-            aria-hidden="true"
-          >{this.props.upvotes}
-          </i>
-        </li>
-        <li>
-          <i
-            className="fa fa-thumbs-down"
-            aria-hidden="true"
-          >{this.props.downvotes}
-          </i>
-        </li>
-      </button >
-    );
-  }
-  if (props.vote === 'false') {
-    return (
-      <button
-        className="btn btn-favorited"
-        params={{ id: props.id }}
-        onClick={() => props.favoriteRecipe(props.id, props.userId)}
+        onClick={() => props.voteRecipe(props.id, 'true')}
       >
         <li>
           <i
             className="fa fa-thumbs-up"
             aria-hidden="true"
-          >
-            {this.props.upvotes}
-          </i>
-        </li>
-        <li>
-          <i
-            className="favorited fa fa-thumbs-down"
-            aria-hidden="true"
-          >{this.props.downvotes}
-          </i>
+          /> {props.upvotes}
         </li>
       </button >
-    );
-  }
-  return (
-    <button
-      className="btn btn-favorited"
-      params={{ id: props.id }}
-      onClick={() => props.favoriteRecipe(props.id, props.userId)}
-    >
-      <li>
-        <i
-          className="fa fa-thumbs-up"
-          aria-hidden="true"
-        >
-          {this.props.upvotes}
-        </i>
-      </li>
-      <li>
-        <i
-          className="fa fa-thumbs-down"
-          aria-hidden="true"
-        >{this.props.downvotes}
-        </i>
-      </li>
-    </button >
+      <button
+        className="btn btn-favorited"
+        onClick={() => props.voteRecipe(props.id, 'false')}
+      >
+        <li>
+          <i
+            className="fa fa-thumbs-down"
+            aria-hidden="true"
+          /> {props.downvotes}
+        </li>
+      </button >
+    </div>
   );
 });
 /**
@@ -143,39 +96,67 @@ class ViewRecipe extends PureComponent {
       return <h1>Recipe Not Found</h1>;
     }
     const {
-      title, details, image, ingredients
+      title, details, image, ingredients, upvotes, downvotes, favorited
     } = this.props.recipe;
     return (
       <div className="container-fluid">
-        <div className="text-left-buttons btn-buttons ">
-          <Link to="/catalog" className="btn btn-info">Back</Link>
+        <div className="text-left-buttons btn-buttons">
+          <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+            <i className="fa fa-home" /> Home
+          </Link>
+          <Link
+            to="/catalog"
+            className="btn btn-info"
+          >
+            <i className="fa fa-list-alt" /> Catalog
+          </Link>
         </div>
         <div className="row">
           <div className="col-md-12 latest-recipes">
             <div id="recipe-display">
-              <h2 className="recipe-title">{title}</h2>
+              <h2 className="recipe-title r-d-titles">{title}</h2>
               <div id="recipe-content">
-                <img src={image} alt="" />
-                <div className="recipe-details">
-                  <b>Ingredients:</b>
-                  <p>{ingredients}</p>
-                  <b>Recipe Details:</b>
-                  <p>{details}</p>
-                </div>
-                <div id="up-down-vote">
-                  <div id="popular-votes">
-                    <li>
-                      <Favorite
-                        id={this.props.id}
-                        favoriteRecipe={this.props.favoriteRecipe}
-                        userId={this.props.userId}
-                        favorited={this.props.recipe.favorited}
-                      />
-                    </li>
-                    {/* <li>Like: </li> */}
-                    {/* <Vote id={this.props.id}
-                     userId={this.props.userId} /> */}
+                <div id="img-ing">
+                  <div className="row">
+                    <div className="col-md-8">
+                      <img src={image} alt="" />
+                    </div>
+                    <div className="col-md-4">
+                      <div className="r-d-titles">
+                        <b>Ingredients:</b>
+                      </div>
+                      <div className="ing-body">
+                        <p>{ingredients}</p>
+                      </div>
+                      <div id="popular-votes">
+                        <li>
+                          <Favorite
+                            id={this.props.id}
+                            favoriteRecipe={this.props.favoriteRecipe}
+                            userId={this.props.userId}
+                            fav={this.props.recipe.fav}
+                            favorited={favorited}
+                          />
+                        </li>
+                        <Vote
+                          id={this.props.id}
+                          voteRecipe={this.props.voteRecipe}
+                          vote={this.props.recipe.vote}
+                          upvotes={upvotes}
+                          downvotes={downvotes}
+                        />
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div className="details-recipe">
+                  <div className="r-d-titles">
+                    <b>Recipe Details</b>
+                  </div>
+                  <p>{details}</p>
                 </div>
               </div>
             </div>
@@ -193,8 +174,9 @@ ViewRecipe.propTypes = {
   image: PropTypes.string.isRequired,
   recipe: PropTypes.objectOf(PropTypes.any).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
+  voteRecipe: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

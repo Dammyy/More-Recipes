@@ -27,20 +27,26 @@ class AddRecipeForm extends PureComponent {
   render() {
     const { image, uploadImage } = this.props;
     return (
-      <div className="container add-recipe-page">
-        <div className="col-md-12 latest-recipes">
-          <div className="text-left btn-buttons">
-            <Link
-              to="/catalog/manage"
-              className="btn btn-info"
-            >
-              Back to My Recipes
-            </Link>
-          </div>
-          <div className="panel panel-default">
+      <div>
+        <div className="text-left-buttons btn-buttons">
+          <Link
+            to="/"
+            className="btn btn-info btn-manage"
+          >
+            <i className="fa fa-home" /> Home
+          </Link>
+          <Link
+            to="/catalog/manage"
+            className="btn btn-info"
+          >
+          Back to My Recipes
+          </Link>
+        </div>
+        <div className="container add-recipe-page">
+          <div className="col-md-12 latest-recipes">
             <div className="panel-heading">
               <h2 className="panel-title text-center">
-                Add a Recipe!
+                Publish a new recipe!
               </h2>
             </div>
             <div className="panel-body">
@@ -71,13 +77,14 @@ class AddRecipeForm extends PureComponent {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="price">Details</label>
+                  <label htmlFor="price">Cooking Instructions</label>
                   <Field
                     name="details"
                     component="textarea"
                     className="form-control"
+                    id="details-text-area"
                     rows="5"
-                    placeholder="Recipe details"
+                    placeholder="How to make this..."
                   />
                 </div>
                 <div className="form-group">

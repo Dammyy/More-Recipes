@@ -7,13 +7,15 @@ import {
   UPDATE_RECIPE_SUCCESS,
   FAVORITE_RECIPE_FAILURE,
   GET_MOST_FAVORITED_SUCCESS,
-  SEARCH_RECIPES_SUCCESS
+  SEARCH_RECIPES_SUCCESS,
+  VOTE_RECIPE_SUCCESS
 } from '../constants/recipes';
 
 const initialState = Immutable.Map();
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case VOTE_RECIPE_SUCCESS:
     case UPDATE_RECIPE_SUCCESS:
     case SEARCH_RECIPES_SUCCESS:
     case DELETE_RECIPE_SUCCESS:

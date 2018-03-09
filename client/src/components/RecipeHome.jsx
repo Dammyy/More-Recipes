@@ -43,13 +43,11 @@ class RecipeHome extends PureComponent {
         <div id="votes-del">
           <div id="recipe-votes">
             <li>
-              <i className="fa fa-thumbs-o-up" aria-hidden="true">
-                {upvotes}
+              <i className="fa fa-thumbs-o-up" aria-hidden="true"> {upvotes}
               </i>
             </li>
             <li>
-              <i className="fa fa-thumbs-o-down" aria-hidden="true">
-                {downvotes}
+              <i className="fa fa-thumbs-o-down" aria-hidden="true"> {downvotes}
               </i>
             </li>
           </div>

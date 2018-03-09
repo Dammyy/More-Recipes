@@ -37,15 +37,12 @@ class User {
       })
         .then(createdUser => res.status(201).send({
           message: 'Registration Successful',
-          jwt: jwt.sign(
-            {
-              firstName: req.body.firstName,
-              lastName: req.body.lastName,
-              email: req.body.email,
-              id: createdUser.id,
-            }, config.JWT_SECRET,
-            { expiresIn: 60 * 60 }
-          ),
+          jwt: jwt.sign({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            id: createdUser.id,
+          }, config.JWT_SECRET),
         }))
         .catch(error => res.status(400).send(error));
     });
@@ -70,15 +67,12 @@ class User {
       if (password) {
         res.json({
           message: 'Login Successful',
-          jwt: jwt.sign(
-            {
-              id: user.id,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email
-            }, config.JWT_SECRET,
-            { expiresIn: 60 * 60 }
-          ),
+          jwt: jwt.sign({
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email
+          }, config.JWT_SECRET),
           email: user.email,
           id: user.id,
         });

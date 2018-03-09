@@ -1,8 +1,4 @@
-import { watchGetRecipes, watchAddRecipe,
-  watchDeleteRecipe, watchUpdateRecipe,
-  watchGetRecipe, watchFavoriteRecipe,
-  watchGetUsersFavorites, watchGetRecipeNoUserId,
-  watchGetMostFavoritedRecipes, watchSearchRecipes } from './recipes';
+import * as recipeWatchers from './recipes';
 import { watchLoginUser, watchSignupUser } from './auth';
 import { watchAddReview, watchGetReviews } from './reviews';
 import watchUploadImage from './filestack';
@@ -11,20 +7,21 @@ import watchUploadImage from './filestack';
    */
 export default function* rootSaga() {
   yield [
-    watchGetRecipes(),
+    recipeWatchers.watchGetRecipes(),
     watchLoginUser(),
     watchSignupUser(),
     watchUploadImage(),
-    watchAddRecipe(),
-    watchDeleteRecipe(),
-    watchUpdateRecipe(),
-    watchGetRecipe(),
-    watchFavoriteRecipe(),
-    watchGetUsersFavorites(),
-    watchGetRecipeNoUserId(),
+    recipeWatchers.watchAddRecipe(),
+    recipeWatchers.watchDeleteRecipe(),
+    recipeWatchers.watchUpdateRecipe(),
+    recipeWatchers.watchGetRecipe(),
+    recipeWatchers.watchFavoriteRecipe(),
+    recipeWatchers.watchGetUsersFavorites(),
+    recipeWatchers.watchGetRecipeNoUserId(),
     watchAddReview(),
     watchGetReviews(),
-    watchGetMostFavoritedRecipes(),
-    watchSearchRecipes()
+    recipeWatchers.watchGetMostFavoritedRecipes(),
+    recipeWatchers.watchSearchRecipes(),
+    recipeWatchers.watchVoteRecipe()
   ];
 }
