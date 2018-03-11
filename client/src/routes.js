@@ -8,7 +8,7 @@ import { Home, Welcome,
   Archive, Login, Signup, NotFoundPage, Search } from './components';
 import { AddRecipeContainer, RecipesContainer,
   EditRecipeFormContainer, ViewRecipeContainer,
-  AllRecipesContainer, MyFavoriteRecipesContainer } from './containers';
+  AllRecipesContainer, MyFavoriteRecipesContainer, UserProfileContainer } from './containers';
 import UserIsAuthenticated from './utils/authWrapper';
 
 const settings = {
@@ -39,6 +39,7 @@ const routes = (
           <Route path="login" component={Login} />
           <Route path="signup" component={Signup} />
           <Route path="error" component={NotFoundPage} />
+          <Route path="profile" component={AuthCheck(UserProfileContainer)} />
         </Route>
         <Route path="catalog" component={Archive}>
           <IndexRoute component={AllRecipesContainer} />

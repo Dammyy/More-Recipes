@@ -13,6 +13,7 @@ const addReviewSuccess = (review) => {
     review
   };
 };
+
 const addReviewFailure = () => {
   return {
     type: reviewsConstants.ADD_REVIEW_FAILURE

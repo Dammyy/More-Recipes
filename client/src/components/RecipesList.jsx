@@ -1,25 +1,15 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Recipe from './Recipe';
+import {
+  BtnAdd,
+  BtnHome,
+  BtnCatalog,
+  BtnFavorites,
+  BtnProfile
+} from './Buttons';
 
-const BtnAdd = (() => (
-  <Link
-    to="/catalog/add"
-    className="btn btn-publish btn-manage"
-  >
-    <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
-  </Link>
-));
-const BtnFavorites = (() => (
 
-  <Link
-    to="/catalog/favorites"
-    className="btn btn-publish btn-manage"
-  >
-    <i className="fa fa-heart" /> My Favorites
-  </Link>
-));
 /**
  *
  *
@@ -41,20 +31,11 @@ class RecipesList extends PureComponent {
     return (
       <div>
         <div className="text-left-buttons btn-buttons">
-          <Link
-            to="/"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-home" /> Home
-          </Link>
-          <Link
-            to="/catalog"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-list-alt" aria-hidden="true" /> Catalog
-          </Link>
+          <BtnHome />
+          <BtnCatalog />
           <BtnAdd />
           <BtnFavorites />
+          <BtnProfile />
         </div>
         <div className="col-md-12 latest-recipes">
           <div className="row">

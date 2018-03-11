@@ -181,7 +181,7 @@ function* deleteRecipe(action) {
     yield put(recipeActions.deleteRecipeSuccess(recipes.filter(recipe =>
       recipe.id !== id)));
     yield put(toastr.success(delRecipe.message));
-    yield put(push('/catalog'));
+    yield put(push('/catalog/manage'));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.deleteRecipeFailure());

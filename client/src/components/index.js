@@ -15,8 +15,9 @@ import AddReviewForm from './AddReviewForm';
 import Reviews from './Reviews';
 import MostPopularRecipesList from './MostPopularRecipesList';
 import Search from './Search';
+import UserProfile from './UserProfile';
 
 export { Home, Welcome, AddRecipeForm, Recipe,
   RecipesList, Archive, Login, Signup, EditRecipeForm,
   ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes,
-  AddReviewForm, Reviews, MostPopularRecipesList, Search };
+  AddReviewForm, Reviews, MostPopularRecipesList, Search, UserProfile };

@@ -63,9 +63,8 @@ class ViewRecipeContainer extends Component {
     this.props.recipesActions.favoriteRecipe(id);
   }
 
-
   /**
-   *@returns {void}
+   * @returns {void}
    *
    * @param {any} id
    * @param {any} voteType

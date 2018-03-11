@@ -8,6 +8,7 @@ import MyFavoriteRecipesContainer from './MyFavoriteRecipesContainer';
 import AddReviewFormContainer from './AddReviewFormContainer';
 import MostPopularRecipesContainer from './MostPopularRecipesContainer';
 import WelcomeTopSectionContainer from './WelcomeTopSectionContainer';
+import UserProfileContainer from './UserProfileContainer';
 
 export {
   AddRecipeContainer,
@@ -19,5 +20,6 @@ export {
   MyFavoriteRecipesContainer,
   AddReviewFormContainer,
   MostPopularRecipesContainer,
-  WelcomeTopSectionContainer
+  WelcomeTopSectionContainer,
+  UserProfileContainer
 };

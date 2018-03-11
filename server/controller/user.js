@@ -102,5 +102,45 @@ class User {
       });
     });
   }
+
+
+  /**
+   *
+   * @returns {void}
+   * @static
+   * @param {any} req
+   * @param {any} res
+   *
+   * @memberOf User
+   */
+  static userDetails(req, res) {
+    usersModel.findOne({
+      where: {
+        id: req.decoded.id,
+      },
+      attributes: { exclude: ['hashPassword'] },
+    }).then((user) => {
+      RecipeModel.count({
+        where: {
+          userId: req.decoded.id
+        }
+      })
+        .then((recipeCount) => {
+          FavoritesModel.count({
+            where: {
+              userId: req.decoded.id
+            }
+          })
+            .then((favsCount) => {
+              return res.status(200).send({
+                statusCode: '200',
+                recipeCount,
+                favsCount,
+                user
+              });
+            });
+        });
+    });
+  }
 }
 export default User;

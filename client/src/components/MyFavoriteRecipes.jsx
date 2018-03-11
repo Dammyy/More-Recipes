@@ -1,27 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import RecipeHome from './RecipeHome';
+import {
+  BtnAdd,
+  BtnManageRecipes,
+  BtnHome,
+  BtnCatalog,
+  BtnProfile
+} from './Buttons';
 
-const BtnAdd = (() => (
-  <Link
-    to="/catalog/add"
-    className="btn btn-publish btn-manage"
-  >
-    <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
-  </Link>));
-const BtnManageRecipes = (() => (
-  <Link
-    to="/catalog/manage"
-    className="btn btn-publish btn-manage"
-  >
-    <i className="fa fa-list-alt" aria-hidden="true" /> Manage Recipes
-  </Link>
-));
 /**
  *
  *
- * @class RecipeListHome
+ * @class MyFavoriteRecipes
  * @extends {PureComponent}
  */
 class MyFavoriteRecipes extends PureComponent {
@@ -39,28 +30,20 @@ class MyFavoriteRecipes extends PureComponent {
     return (
       <div>
         <div className="text-left-buttons btn-buttons">
-          <Link
-            to="/"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-home" /> Home
-          </Link>
-          <Link
-            to="/catalog"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-list-alt" aria-hidden="true" /> Catalog
-          </Link>
+          <BtnHome />
+          <BtnCatalog />
           <BtnAdd />
           <BtnManageRecipes />
+          <BtnProfile />
         </div>
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
-              recipes.map(recipe => (<RecipeHome
-                {...recipe}
-                key={recipes.id}
-              />))
+              recipes.map(recipe => (
+                <RecipeHome
+                  {...recipe}
+                  key={recipes.id}
+                />))
             }
           </div>
         </div>

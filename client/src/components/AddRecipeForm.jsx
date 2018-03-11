@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
+import { BtnHome, BtnManageRecipes } from './Buttons';
 /**
  *
  *
@@ -29,18 +29,8 @@ class AddRecipeForm extends PureComponent {
     return (
       <div>
         <div className="text-left-buttons btn-buttons">
-          <Link
-            to="/"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-home" /> Home
-          </Link>
-          <Link
-            to="/catalog/manage"
-            className="btn btn-info"
-          >
-          Back to My Recipes
-          </Link>
+          <BtnHome />
+          <BtnManageRecipes />
         </div>
         <div className="container add-recipe-page">
           <div className="col-md-12 latest-recipes">
