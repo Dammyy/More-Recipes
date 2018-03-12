@@ -6,9 +6,12 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import { Home, Welcome,
   Archive, Login, Signup, NotFoundPage, Search } from './components';
-import { AddRecipeContainer, RecipesContainer,
+import {
+  AddRecipeContainer, RecipesContainer,
   EditRecipeFormContainer, ViewRecipeContainer,
-  AllRecipesContainer, MyFavoriteRecipesContainer, UserProfileContainer } from './containers';
+  AllRecipesContainer, MyFavoriteRecipesContainer,
+  UserProfileContainer
+} from './containers';
 import UserIsAuthenticated from './utils/authWrapper';
 
 const settings = {

@@ -1,57 +1,47 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Field, reset, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-/**
- *
- *
- * @export
- * @class AddRecipeForm
- * @extends {PureComponent}
- */
-class AddReviewForm extends PureComponent {
-  /** html component to render
-   *
-   *
-   * @returns {void}
-   *
-   * @memberOf AddReviewForm
-   */
-  render() {
-    return (
+import UserIsAuthenticated from '../utils/authWrapper';
 
-      <div id="recipe-display" className="col-md-12">
-        <h2 className="panel-title text-center r-d-titles">
+const options = {
+  authSelector: state => state.get('auth'),
+  predicate: auth => auth.get('Authenticated'),
+  wrapperDisplayName: 'authRecipeButtons',
+  FailureComponent: null
+};
+
+const AddReviewForm = UserIsAuthenticated(options)(props => (
+  <div id="recipe-display" className="col-md-12">
+    <h2 className="panel-title text-center r-d-titles">
               Leave a review
-        </h2>
-        <div className="panel-body">
-          <form
-            name="form"
-            action=""
-            onSubmit={this.props.handleSubmit}
-            noValidate
-          >
-            <div className="form-group">
-              <Field
-                name="review"
-                type="text"
-                id="review-input-field"
-                component="textarea"
-                className="form-control"
-                placeholder="Leave a Review"
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-primary btn-block"
-            >
-                Submit
-            </button>
-          </form>
+    </h2>
+    <div className="panel-body">
+      <form
+        name="form"
+        action=""
+        onSubmit={props.handleSubmit}
+        noValidate
+      >
+        <div className="form-group">
+          <Field
+            name="review"
+            type="text"
+            id="review-input-field"
+            component="textarea"
+            className="form-control"
+            placeholder="Leave a Review"
+          />
         </div>
-      </div>
-    );
-  }
-}
+        <button
+          type="submit"
+          className="btn btn-primary btn-block"
+        >
+                Submit
+        </button>
+      </form>
+    </div>
+  </div>
+));
 
 AddReviewForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired

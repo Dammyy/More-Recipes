@@ -3,7 +3,6 @@ import { GET_USER_DETAILS,
   GET_USER_DETAILS_FAILURE } from '../constants/user';
 
 const getUserDetails = (userId) => {
-  console.log('action from getUserDetails', userId);
   return {
     type: GET_USER_DETAILS,
     userId

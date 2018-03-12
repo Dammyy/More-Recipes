@@ -15,7 +15,7 @@ class Recipe {
    */
   static getRecipe(req, res) {
     return RecipeModel.all({
-      order: [['createdAt', 'DESC']]
+      order: [['createdAt', 'DESC']],
     })
       .then(recipe => res.status(200).send(recipe))
       .catch(error => res.status(400).send(error));
@@ -229,12 +229,14 @@ class Recipe {
               id: req.params.recipeId
             }
           }).then((recipe) => {
-            recipe.decrement('favorited');
-            return res.status(200).send({
-              message: 'Removed from favorites',
-              statusCode: '200',
-              recipe
-            });
+            recipe.decrement('favorited')
+              .then(() => {
+                return res.status(200).send({
+                  message: 'Removed from favorites',
+                  statusCode: '200',
+                  recipe
+                });
+              });
           });
         })
           .catch(error => res.status(400).send(error));
@@ -250,12 +252,14 @@ class Recipe {
                 id: req.params.recipeId
               }
             }).then((recipe) => {
-              recipe.increment('favorited');
-              return res.status(201).send({
-                message: 'Favorited',
-                statusCode: '201',
-                recipe
-              });
+              recipe.increment('favorited')
+                .then(() => {
+                  return res.status(201).send({
+                    message: 'Favorited',
+                    statusCode: '201',
+                    recipe
+                  });
+                });
             });
           })
           .catch(error => res.status(400).send(error));

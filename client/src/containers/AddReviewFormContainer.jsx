@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { reset } from 'redux-form';
 import PropTypes from 'prop-types';
 import { AddReviewForm } from '../components';
 import * as reviewsActionCreators from '../actions/reviews';
@@ -33,6 +34,7 @@ class AddReviewFormContainer extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.reviewsActions.addReview(this.props.id);
+    this.props.resetForm('review');
   }
 
   /**
@@ -65,11 +67,13 @@ class AddReviewFormContainer extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     reviewsActions: bindActionCreators(reviewsActionCreators, dispatch),
+    resetForm: bindActionCreators(reset, dispatch),
   };
 }
 AddReviewFormContainer.propTypes = {
   reviewsActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  resetForm: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(AddReviewFormContainer);

@@ -33,7 +33,7 @@ class PopularRecipes extends PureComponent {
     } = this.props;
     let img;
     if (image === '') {
-      img = 'img/chicken.jpg';
+      img = 'img/recipe.png';
     } else {
       img = image;
     }

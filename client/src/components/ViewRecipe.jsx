@@ -1,8 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import UserIsAuthenticated from '../utils/authWrapper';
+import {
+  BtnHome,
+  BtnAdd,
+  BtnManageRecipes,
+  BtnFavorites,
+  BtnProfile,
+  BtnCatalog,
+  BtnEdit
+} from './Buttons';
 
 const options = {
   authSelector: state => state.get('auth'),
@@ -16,10 +24,9 @@ const Favorite = UserIsAuthenticated(options)((props) => {
     return (
       <button
         className="btn btn-favorited"
-        params={{ id: props.id }}
         onClick={() => props.favoriteRecipe(props.id, props.userId)}
       >
-        {props.favorited} <i className="favorited fa fa-heart" /> Favorited
+        {props.favorited} <i className="fa fa-heart favorited" />
       </button >
     );
   }
@@ -27,24 +34,22 @@ const Favorite = UserIsAuthenticated(options)((props) => {
     return (
       <button
         className="btn btn-favorited"
-        params={{ id: props.id }}
         onClick={() => {
         props.favoriteRecipe(props.id, props.userId);
       }}
       >
-        <i className="fa fa-heart" /> Add to favorites
+        {props.favorited} <i className="fa fa-heart" />
       </button >
     );
   }
   return (
     <button
       className="btn btn-favorited"
-      params={{ id: props.id }}
       onClick={() => {
       props.favoriteRecipe(props.id, props.userId);
     }}
     >
-      <i className="fa fa-heart" /> Add to favorites
+      {props.favorited} <i className="fa fa-heart" />
     </button >
   );
 });
@@ -77,6 +82,7 @@ const Vote = UserIsAuthenticated(options)((props) => {
     </div>
   );
 });
+
 /**
  *
  *
@@ -93,26 +99,23 @@ class ViewRecipe extends PureComponent {
    */
   render() {
     if (!this.props.recipe) {
-      return <h1>Recipe Not Found</h1>;
+      return <h1>Loading...</h1>;
     }
     const {
-      title, details, image, ingredients, upvotes, downvotes, favorited
+      title, details, image, ingredients, upvotes, downvotes, favorited, userId
     } = this.props.recipe;
     return (
       <div className="container-fluid">
         <div className="text-left-buttons btn-buttons">
-          <Link
-            to="/"
-            className="btn btn-info btn-manage"
-          >
-            <i className="fa fa-home" /> Home
-          </Link>
-          <Link
-            to="/catalog"
-            className="btn btn-info"
-          >
-            <i className="fa fa-list-alt" /> Catalog
-          </Link>
+          <BtnHome />
+          <BtnAdd />
+          <BtnCatalog />
+          <BtnManageRecipes />
+          <BtnFavorites />
+          <BtnProfile />
+          {userId === this.props.userId && <BtnEdit
+            id={this.props.id}
+          />}
         </div>
         <div className="row">
           <div className="col-md-12 latest-recipes">
@@ -125,7 +128,7 @@ class ViewRecipe extends PureComponent {
                       <img src={image} alt="" />
                     </div>
                     <div className="col-md-4">
-                      <div className="r-d-titles">
+                      <div className="r-d-titles title-ing">
                         <b>Ingredients:</b>
                       </div>
                       <div className="ing-body">

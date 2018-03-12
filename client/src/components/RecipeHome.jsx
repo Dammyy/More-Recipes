@@ -29,11 +29,11 @@ class RecipeHome extends PureComponent {
    */
   render() {
     const {
-      id, title, image, upvotes, downvotes
+      id, title, image, upvotes, downvotes, favorited
     } = this.props;
     let img;
     if (image === '') {
-      img = 'img/chicken.jpg';
+      img = 'img/recipe.png';
     } else {
       img = image;
     }
@@ -42,6 +42,9 @@ class RecipeHome extends PureComponent {
         <img src={img} alt="" />
         <div id="votes-del">
           <div id="recipe-votes">
+            <li>
+              <i className="fa fa-heart" /> {favorited}
+            </li>
             <li>
               <i className="fa fa-thumbs-o-up" aria-hidden="true"> {upvotes}
               </i>
@@ -63,7 +66,8 @@ RecipeHome.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
-  downvotes: PropTypes.number.isRequired
+  downvotes: PropTypes.number.isRequired,
+  favorited: PropTypes.number.isRequired
 };
 
 BtnView.propTypes = {

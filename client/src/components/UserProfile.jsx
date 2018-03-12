@@ -60,7 +60,7 @@ class UserProfile extends PureComponent {
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.arrayOf(PropTypes.any).isRequired,
+  user: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
 export default (UserProfile);

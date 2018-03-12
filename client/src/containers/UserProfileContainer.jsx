@@ -41,7 +41,6 @@ class UserProfileContainer extends Component {
    */
   render() {
     const { user } = this.props;
-    console.log('the user from container', user);
     return (
       <div>
         <UserProfile
@@ -77,7 +76,7 @@ function mapDispatchToProps(dispatch) {
 UserProfileContainer.propTypes = {
   userActions: PropTypes.objectOf(PropTypes.func).isRequired,
   userId: PropTypes.number.isRequired,
-  user: PropTypes.arrayOf(PropTypes.any).isRequired,
+  user: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
 export

@@ -25,7 +25,7 @@ class MostPopularRecipesList extends PureComponent {
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
-          recipes
+          recipes.slice(0, 6)
             .map((recipe) => {
               return (
                 <PopularRecipes

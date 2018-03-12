@@ -49,12 +49,12 @@ function* loginUser(action) {
     const result = yield call(sendDetails, 'signin', details.values);
     localStorage.setItem('token', result.jwt);
     yield put(loginSuccess(result.jwt));
-    yield put(toastr.success(result.message));
+    toastr.success(result.message);
     yield put(push(redirection));
   } catch (e) {
     const { message } = e;
     yield put(loginFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -74,7 +74,7 @@ function* signupUser(action) {
   } catch (e) {
     const { message } = e;
     yield put(signupFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 

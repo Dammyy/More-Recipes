@@ -71,13 +71,13 @@ function* getRecipe(action) {
   try {
     const recipes = yield call(fetchSingleRecipe, id);
     const { recipe } = recipes;
-    const fav = yield call(checkFavorite, id, userId);
-    recipe.favorited = fav.message;
+    const checkFav = yield call(checkFavorite, id, userId);
+    recipe.fav = checkFav.message;
     yield put(recipeActions.getRecipesSuccess([recipe]));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.viewRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
     yield put(push('/error'));
   }
 }
@@ -97,7 +97,7 @@ function* getRecipeNoUserId(action) {
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.viewRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
     yield put(push('/error'));
   }
 }
@@ -139,12 +139,12 @@ function* addRecipe() {
   try {
     const postRecipe = yield call(publishRecipe, newRecipe);
     yield put(recipeActions.addRecipeSuccess());
-    yield put(toastr.success(postRecipe.message));
+    toastr.success(postRecipe.message);
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.addRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 const selectedRecipe = (state) => {
@@ -180,12 +180,12 @@ function* deleteRecipe(action) {
     const delRecipe = yield call(removeRecipe, id);
     yield put(recipeActions.deleteRecipeSuccess(recipes.filter(recipe =>
       recipe.id !== id)));
-    yield put(toastr.success(delRecipe.message));
+    toastr.success(delRecipe.message);
     yield put(push('/catalog/manage'));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.deleteRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -226,12 +226,12 @@ function* updateRecipe(action) {
     const updRecipe = yield call(editRecipe, id, newRecipe);
     yield put(recipeActions.updateRecipeSuccess(recipes.filter(recip =>
       recip.id !== id)));
-    yield put(toastr.success(updRecipe.message));
+    toastr.success(updRecipe.message);
     yield put(push('/catalog'));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.updateRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -274,7 +274,7 @@ function* favoriteRecipe(action) {
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.favoriteRecipeFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -309,7 +309,7 @@ function* usersFavorites(action) {
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.getFavoritedRecipesFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -364,7 +364,7 @@ function* getSearchResults() {
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.getRecipesFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 
@@ -408,10 +408,10 @@ function* voteRecipe(action) {
       recipe.vote = 'false';
     }
     yield put(recipeActions.voteRecipeSuccess([recipe]));
-    yield put(toastr.success(vote.message));
+    toastr.success(vote.message);
   } catch (e) {
     const { message } = e;
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 

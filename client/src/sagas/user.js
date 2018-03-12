@@ -5,7 +5,6 @@ import { GET_USER_DETAILS } from '../constants/user';
 import { getUserDetailsSuccess, getUserDetailsFailure } from '../actions/user';
 
 const getUserInfo = (userId) => {
-  console.log('action from getuserinfofects', userId);
   return fetch(`/api/v1/users/profile/${userId}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
@@ -28,7 +27,6 @@ const getUserInfo = (userId) => {
  *
  */
 function* usersDetails(action) {
-  console.log('action from saga', action);
   const { userId } = action;
   try {
     const userInfo = yield call(getUserInfo, userId);
@@ -37,7 +35,6 @@ function* usersDetails(action) {
     user.favsCount = userInfo.favsCount;
     yield put(getUserDetailsSuccess(user));
   } catch (e) {
-    console.log(e);
     const { message } = e;
     yield put(getUserDetailsFailure());
     yield put(toastr.error(message));

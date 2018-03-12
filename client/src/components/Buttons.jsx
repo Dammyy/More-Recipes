@@ -62,11 +62,23 @@ const BtnProfile = UserIsAuthenticated(options)(() => (
   </Link>
 ));
 
+const BtnEdit = UserIsAuthenticated(options)((props) => {
+  return (
+    <Link
+      className="btn btn-publish btn-manage"
+      to={`edit/${props.id}`}
+      params={{ id: props.id }}
+    >
+      Edit
+    </Link >);
+});
+
 export {
   BtnAdd,
   BtnManageRecipes,
   BtnHome,
   BtnCatalog,
   BtnFavorites,
-  BtnProfile
+  BtnProfile,
+  BtnEdit
 };

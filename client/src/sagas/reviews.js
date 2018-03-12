@@ -45,11 +45,11 @@ function* addReview(action) {
     const postReview = yield call(publishReview, id, newReview);
     const { review } = postReview;
     yield put(addReviewSuccess(review));
-    yield put(toastr.success(postReview.message));
+    toastr.success(postReview.message);
   } catch (e) {
     const { message } = e;
     yield put(addReviewFailure());
-    yield put(toastr.error(message));
+    toastr.error(message);
   }
 }
 

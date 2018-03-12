@@ -103,7 +103,6 @@ class User {
     });
   }
 
-
   /**
    *
    * @returns {void}
