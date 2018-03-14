@@ -14,7 +14,7 @@ import {
    * @param {*} form
    * @returns {*} state
    */
-const getForm = (state, form) => {
+export const getForm = (state, form) => {
   return state.getIn(['form', form]).toJS();
 };
 /**
@@ -22,7 +22,7 @@ const getForm = (state, form) => {
    * @param {*} details
    * @returns {*} response
    */
-const sendDetails = (route, details) => {
+export const sendDetails = (route, details) => {
   return fetch(`/api/v1/users/${route}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
@@ -42,20 +42,26 @@ const sendDetails = (route, details) => {
    * @param {*} action
    * @returns {*} res
    */
-function* loginUser(action) {
+export function* loginUser(action) {
   const { redirection } = action;
+  const details = yield select(getForm, 'login');
+  let result;
   try {
-    const details = yield select(getForm, 'login');
-    const result = yield call(sendDetails, 'signin', details.values);
-    localStorage.setItem('token', result.jwt);
-    yield put(loginSuccess(result.jwt));
-    toastr.success(result.message);
-    yield put(push(redirection));
+    // const result = yield call(sendDetails, 'signin', details.values);
+    result = yield call(sendDetails, 'signin', details.values);
+
+    // localStorage.setItem('token', result.jwt);
+    // yield put(loginSuccess(result.jwt));
+    // toastr.success(result.message);
+    // yield put(push(redirection));
   } catch (e) {
     const { message } = e;
+    console.log('+++++++++++++++++++++++++++++++++', e);
     yield put(loginFailure());
     toastr.error(message);
   }
+  yield put(loginSuccess(result.jwt));
+  yield put(push(redirection));
 }
 
 /**
