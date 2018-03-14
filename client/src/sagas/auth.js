@@ -67,7 +67,7 @@ function* signupUser(action) {
   try {
     const details = yield select(getForm, 'signup');
     const result = yield call(sendDetails, 'signup', details.values);
-    yield put(toastr.success(result.message));
+    toastr.success(result.message);
     localStorage.setItem('token', result.jwt);
     yield put(signupSuccess(result.jwt));
     yield put(push(redirection));

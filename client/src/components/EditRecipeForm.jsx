@@ -2,7 +2,14 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-import { BtnHome, BtnManageRecipes } from './Buttons';
+import {
+  BtnHome,
+  BtnAdd,
+  BtnManageRecipes,
+  BtnFavorites,
+  BtnProfile,
+  BtnCatalog
+} from './Buttons';
 
 /**
  *
@@ -19,7 +26,7 @@ class EditRecipeForm extends PureComponent {
    * @memberOf EditRecipeForm
    */
   componentDidMount() {
-    if (this.props.recipes.length < 1) {
+    if (!this.props.recipes) {
       this.props.redirectUser('/catalog');
     }
   }
@@ -43,7 +50,11 @@ class EditRecipeForm extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
+          <BtnAdd />
+          <BtnCatalog />
           <BtnManageRecipes />
+          <BtnFavorites />
+          <BtnProfile />
         </div>
         <div className="container add-recipe-page">
           <div className="col-md-12 latest-recipes">
@@ -135,7 +146,8 @@ EditRecipeForm.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { recipes, id } = ownProps;
-  const recipe = recipes.filter(recp => recp.id === parseInt(id, 10))[0];
+  const recipe = recipes.recipes
+    .filter(recp => recp.id === parseInt(id, 10))[0];
   return {
     initialValues: recipe,
   };

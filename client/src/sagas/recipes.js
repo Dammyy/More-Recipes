@@ -5,23 +5,26 @@ import { toastr } from 'react-redux-toastr';
 import * as recipeConstants from '../constants/recipes';
 import * as recipeActions from '../actions/recipes';
 
-/**
-   * @returns {Object} fetch recipes
-   */
-const fetchRecipes = () => fetch('/api/v1/recipes', {
 
+const fetchRecipes = page => fetch(`/api/v1/recipes?page=${page}`, {
   headers: new Headers({
     'Content-Type': 'application/json'
   })
 })
   .then(response => response.json());
 
-  /**
-   * @returns {Object} Get recipes
-   */
-function* getRecipes() {
+/**
+ *
+ * @returns {void}
+ * @param {any} action
+ */
+function* getRecipes(action) {
+  let { page } = action;
+  if (!page) {
+    page = 1;
+  }
   try {
-    const recipes = yield call(fetchRecipes);
+    const recipes = yield call(fetchRecipes, page);
     yield put(recipeActions.getRecipesSuccess(recipes));
   } catch (err) {
     yield put(recipeActions.getRecipesFailure());
@@ -73,7 +76,7 @@ function* getRecipe(action) {
     const { recipe } = recipes;
     const checkFav = yield call(checkFavorite, id, userId);
     recipe.fav = checkFav.message;
-    yield put(recipeActions.getRecipesSuccess([recipe]));
+    yield put(recipeActions.viewRecipeSuccess(recipe));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.viewRecipeFailure());
@@ -81,7 +84,6 @@ function* getRecipe(action) {
     yield put(push('/error'));
   }
 }
-
 
 /**
  * @returns {void}
@@ -93,7 +95,7 @@ function* getRecipeNoUserId(action) {
   try {
     const recipes = yield call(fetchSingleRecipe, id);
     const { recipe } = recipes;
-    yield put(recipeActions.getRecipesSuccess([recipe]));
+    yield put(recipeActions.viewRecipeSuccess(recipe));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.viewRecipeFailure());
@@ -178,10 +180,10 @@ function* deleteRecipe(action) {
   const recipes = yield select(selectedRecipe);
   try {
     const delRecipe = yield call(removeRecipe, id);
-    yield put(recipeActions.deleteRecipeSuccess(recipes.filter(recipe =>
-      recipe.id !== id)));
+    recipes.recipes = recipes.recipes.filter(recipe =>
+      recipe.id !== id);
+    yield put(recipeActions.deleteRecipeSuccess(recipes));
     toastr.success(delRecipe.message);
-    yield put(push('/catalog/manage'));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.deleteRecipeFailure());
@@ -219,13 +221,11 @@ function* updateRecipe(action) {
   const { id } = action;
   const image = yield select(selectedImage);
   const recipe = yield select(updateRecipeForm);
-  const recipes = yield select(selectedRecipe);
   const newRecipe = recipe.values;
   newRecipe.image = image;
   try {
     const updRecipe = yield call(editRecipe, id, newRecipe);
-    yield put(recipeActions.updateRecipeSuccess(recipes.filter(recip =>
-      recip.id !== id)));
+    yield put(recipeActions.updateRecipeSuccess());
     toastr.success(updRecipe.message);
     yield put(push('/catalog'));
   } catch (e) {
@@ -255,7 +255,6 @@ const favRecipe = (id) => {
     });
 };
 
-
 /**
  *@returns {void}
  *
@@ -269,8 +268,8 @@ function* favoriteRecipe(action) {
     if (favorite.message === 'Favorited') {
       recipe.fav = 'true';
     }
-    yield put(recipeActions.getRecipesSuccess([recipe]));
-    yield put(toastr.success(favorite.message));
+    yield put(recipeActions.viewRecipeSuccess(recipe));
+    toastr.success(favorite.message);
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.favoriteRecipeFailure());
@@ -305,7 +304,8 @@ function* usersFavorites(action) {
   try {
     const recipes = yield call(getFavRecipes, userId);
     const { favorites } = recipes;
-    yield put(recipeActions.getRecipesSuccess(favorites.map(fa => fa.recipe)));
+    yield put(recipeActions.getFavoritedRecipesSuccess(favorites.map(fa =>
+      fa.recipe)));
   } catch (e) {
     const { message } = e;
     yield put(recipeActions.getFavoritedRecipesFailure());
@@ -389,7 +389,6 @@ const vRecipe = (id, voteType) => {
     });
 };
 
-
 /**
  *@returns {void}
  *
@@ -407,14 +406,13 @@ function* voteRecipe(action) {
     if (vote.voteValue === 'false') {
       recipe.vote = 'false';
     }
-    yield put(recipeActions.voteRecipeSuccess([recipe]));
+    yield put(recipeActions.viewRecipeSuccess(recipe));
     toastr.success(vote.message);
   } catch (e) {
     const { message } = e;
     toastr.error(message);
   }
 }
-
 
 /**
    * @returns {Object} Watch Get recipes

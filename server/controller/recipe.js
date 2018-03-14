@@ -14,11 +14,27 @@ class Recipe {
    * @param {res} res
    */
   static getRecipe(req, res) {
-    return RecipeModel.all({
-      order: [['createdAt', 'DESC']],
-    })
-      .then(recipe => res.status(200).send(recipe))
-      .catch(error => res.status(400).send(error));
+    const limit = 12;
+    let offset = 0;
+    RecipeModel.findAndCountAll()
+      .then((data) => {
+        const { page } = req.query;
+        const pages = Math.ceil(data.count / limit);
+        offset = limit * (page - 1);
+        RecipeModel.all({
+          limit,
+          offset,
+          order: [['createdAt', 'DESC']],
+        })
+          .then((recipes) => {
+            res.status(200).send({
+              recipes,
+              count: data.count,
+              pages
+            });
+          })
+          .catch(error => res.status(400).send(error));
+      });
   }
   /**
    * @returns {Object} createRecipe

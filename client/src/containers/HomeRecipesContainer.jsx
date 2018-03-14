@@ -30,7 +30,7 @@ class HomeRecipesContainer extends Component {
    * @memberOf HomeRecipes
    */
   getRecipes() {
-    this.props.recipesActions.getRecipes();
+    this.props.recipesActions.getRecipes(1);
   }
   /**
    *
@@ -87,7 +87,7 @@ function mapDispatchToProps(dispatch) {
 
 HomeRecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default connect(

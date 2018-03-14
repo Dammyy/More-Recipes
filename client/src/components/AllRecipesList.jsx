@@ -39,16 +39,15 @@ class AllRecipesList extends PureComponent {
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
-          recipes
-            .map((recipe) => {
-              return (
-                <RecipeHome
-                  {...recipe}
-                  key={recipe.id}
-                />
-              );
-            })
-        }
+              recipes && recipes.map((recipe) => {
+                return (
+                  <RecipeHome
+                    {...recipe}
+                    key={recipe.id}
+                  />
+                );
+              })
+            }
           </div>
         </div>
       </div>
@@ -56,7 +55,7 @@ class AllRecipesList extends PureComponent {
   }
 }
 AllRecipesList.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
 export default AllRecipesList;

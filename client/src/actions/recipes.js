@@ -1,8 +1,9 @@
 import * as recipeConstants from '../constants/recipes';
 
-const getRecipes = () => {
+const getRecipes = (page) => {
   return {
-    type: recipeConstants.GET_RECIPES
+    type: recipeConstants.GET_RECIPES,
+    page
   };
 };
 
@@ -31,6 +32,7 @@ const viewRecipe = (recipe) => {
     recipe
   };
 };
+
 const getRecipe = (id, userId) => {
   return {
     type: recipeConstants.VIEW_RECIPE,
@@ -46,11 +48,13 @@ const getRecipeNoUserId = (id) => {
   };
 };
 
-const viewRecipeSuccess = () => {
+const viewRecipeSuccess = (recipe) => {
   return {
-    type: recipeConstants.VIEW_RECIPE_SUCCESS
+    type: recipeConstants.VIEW_RECIPE_SUCCESS,
+    recipe
   };
 };
+
 const viewRecipeFailure = () => {
   return {
     type: recipeConstants.VIEW_RECIPE_FAILURE
@@ -105,10 +109,9 @@ const updateRecipe = (id) => {
     id
   };
 };
-const updateRecipeSuccess = (recipes) => {
+const updateRecipeSuccess = () => {
   return {
     type: recipeConstants.UPDATE_RECIPE_SUCCESS,
-    recipes
   };
 };
 
@@ -142,9 +145,10 @@ const getFavoritedRecipes = (userId) => {
   };
 };
 
-const getFavoritedRecipesSuccess = () => {
+const getFavoritedRecipesSuccess = (favorites) => {
   return {
     type: recipeConstants.RETRIEVE_FAVORITE_RECIPES_SUCCESS,
+    favorites
   };
 };
 

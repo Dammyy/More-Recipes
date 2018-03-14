@@ -27,7 +27,7 @@ class RecipesListHome extends PureComponent {
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
-          recipes.slice(0, 6)
+            recipes.recipes && recipes.recipes.slice(0, 6)
             .map((recipe) => {
               return (
                 <RecipeHome
@@ -44,7 +44,7 @@ class RecipesListHome extends PureComponent {
   }
 }
 RecipesListHome.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default RecipesListHome;

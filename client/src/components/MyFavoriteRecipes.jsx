@@ -39,6 +39,7 @@ class MyFavoriteRecipes extends PureComponent {
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
+              recipes &&
               recipes.map(recipe => (
                 <RecipeHome
                   {...recipe}

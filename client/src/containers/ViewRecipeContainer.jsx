@@ -54,7 +54,7 @@ class ViewRecipeContainer extends Component {
   }
 
   /**
-   *@returns {void}
+   * @returns {void}
    * @param {any} id
    *
    * @memberOf ViewRecipeContainer
@@ -87,7 +87,7 @@ class ViewRecipeContainer extends Component {
     return (
       <div>
         <ViewRecipe
-          recipes={this.props.recipes}
+          recipe={this.props.recipe}
           id={id}
           favoriteRecipe={this.favoriteRecipe}
           userId={this.props.userId}
@@ -113,7 +113,7 @@ const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
     userId: state.getIn(['auth', 'userId']),
-    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+    recipe: state.getIn(['recipes', 'singleRecipe'], Immutable.List()).toJS(),
     reviews: state.getIn(['reviews', 'reviews'], Immutable.List()).toJS(),
   };
 };
@@ -132,7 +132,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 ViewRecipeContainer.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
   params: PropTypes.objectOf(PropTypes.any).isRequired,

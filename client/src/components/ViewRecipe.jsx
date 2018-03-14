@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import UserIsAuthenticated from '../utils/authWrapper';
 import {
   BtnHome,
@@ -170,29 +169,15 @@ class ViewRecipe extends PureComponent {
   }
 }
 
-
 ViewRecipe.propTypes = {
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
   voteRecipe: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {
-    recipes, id, userId, favoriteRecipe
-  } = ownProps;
-  const recipe = recipes.filter(recp => recp.id === parseInt(id, 10))[0];
-  return {
-    id,
-    userId,
-    recipe,
-    favoriteRecipe
-  };
-};
-
-export default connect(mapStateToProps)(ViewRecipe);
+export default (ViewRecipe);

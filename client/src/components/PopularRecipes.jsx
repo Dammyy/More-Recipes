@@ -33,7 +33,7 @@ class PopularRecipes extends PureComponent {
     } = this.props;
     let img;
     if (image === '') {
-      img = 'img/recipe.png';
+      img = 'http://wyregate.com/wp-content/uploads/2018/03/recipe.jpg';
     } else {
       img = image;
     }

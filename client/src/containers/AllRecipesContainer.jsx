@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
+import ReactPaginate from 'react-paginate';
 import { AllRecipesList } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
 
 /**
  *
- *
- * @class Recipes
+ * @param {string} data
+ * @class AllRecipesContainer
  * @extends {Component}
  */
 class AllRecipesContainer extends Component {
@@ -23,38 +24,47 @@ class AllRecipesContainer extends Component {
     this.getRecipes();
   }
 
+
   /**
    *
-   *
    * @returns {void}
-   * @memberOf HomeRecipes
+   *
+   * @memberOf AllRecipesContainer
    */
   getRecipes() {
     this.props.recipesActions.getRecipes();
   }
-  /**
-   *
-   *
-   * @param {any} index
-   *@returns {void}
-   * @memberOf Recipes
-   */
+
+  handlePageClick = (data) => {
+    const selected = data.selected + 1;
+    this.props.recipesActions.getRecipes(selected);
+  };
+
 
   /**
    *
    *
    * @returns {void}
    *
-   * @memberOf HomeRecipes
+   * @memberOf AllRecipesContainer
    */
   render() {
-    const {
-      recipes
-    } = this.props;
     return (
       <div>
         <AllRecipesList
-          recipes={recipes}
+          recipes={this.props.recipes.recipes}
+        />
+        <ReactPaginate
+          previousLabel="previous"
+          nextLabel="next"
+          breakClassName="break-me"
+          pageCount={this.props.recipes.pages}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName="pagination"
+          subContainerClassName="pages pagination"
+          activeClassName="active"
         />
       </div>
     );
@@ -87,7 +97,7 @@ function mapDispatchToProps(dispatch) {
 
 AllRecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default connect(

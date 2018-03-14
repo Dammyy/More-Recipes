@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
+import ReactPaginate from 'react-paginate';
 import { RecipesList } from '../components/';
 import * as recipesActionCreators from '../actions/recipes';
 
+
 /**
+ *  @param {string} data
  *
- *
- * @class Recipes
+ * @class RecipesContainer
  * @extends {Component}
  */
 class RecipesContainer extends Component {
@@ -41,14 +43,11 @@ class RecipesContainer extends Component {
   getRecipes() {
     this.props.recipesActions.getRecipes();
   }
-  /**
-   *
-   *
-   * @param {any} index
-   *@returns {void}
-   * @memberOf Recipes
-   */
 
+  handlePageClick = (data) => {
+    const selected = data.selected + 1;
+    this.props.recipesActions.getRecipes(selected);
+  };
   /**
    *
    * @returns {void}
@@ -68,13 +67,25 @@ class RecipesContainer extends Component {
    * @memberOf Recipes
    */
   render() {
-    const { recipes, userId } = this.props;
+    const { userId } = this.props;
     return (
       <div>
         <RecipesList
-          recipes={recipes}
+          recipes={this.props.recipes.recipes}
           deleteRecipe={this.deleteRecipe}
           userId={userId}
+        />
+        <ReactPaginate
+          previousLabel="previous"
+          nextLabel="next"
+          breakClassName="break-me"
+          pageCount={this.props.recipes.pages}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName="pagination"
+          subContainerClassName="pages pagination"
+          activeClassName="active"
         />
       </div>
     );
@@ -105,7 +116,7 @@ function mapDispatchToProps(dispatch) {
 
 RecipesContainer.propTypes = {
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   userId: PropTypes.number.isRequired
 };
 

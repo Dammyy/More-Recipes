@@ -9,7 +9,6 @@ import {
   BtnProfile
 } from './Buttons';
 
-
 /**
  *
  *
@@ -40,7 +39,8 @@ class RecipesList extends PureComponent {
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
-                recipes.filter(recipe => recipe.userId === parseInt(userId, 10))
+              recipes &&
+              recipes.filter(recipe => recipe.userId === parseInt(userId, 10))
                 .map((recipe) => {
                   return (
                     <Recipe
@@ -59,7 +59,7 @@ class RecipesList extends PureComponent {
 }
 
 RecipesList.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired
 };

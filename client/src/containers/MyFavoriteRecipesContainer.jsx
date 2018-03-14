@@ -69,7 +69,10 @@ class MyFavoriteRecipesContainer extends Component {
  */
 function mapStateToProps(state) {
   return {
-    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
+    recipes: state.getIn(
+      ['recipes', 'favoriteRecipes'],
+      Immutable.List()
+    ).toJS(),
     userId: state.getIn(['auth', 'userId']),
   };
 }

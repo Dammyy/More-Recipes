@@ -15,10 +15,10 @@ import * as filestackActions from '../actions/filestack';
  */
 class EditRecipeContainer extends Component {
   /**
-   * Creates an instance of AddRecipe.
+   * Creates an instance of EditRecipeContainer.
    * @param {any} props
    *
-   * @memberOf AddRecipe
+   * @memberOf EditRecipeContainer
    */
   constructor(props) {
     super(props);
@@ -29,9 +29,9 @@ class EditRecipeContainer extends Component {
   /**
    *
    *
-   *  @param {any} event
-   * @returns {string} redirect
-   * @memberOf AddRecipe
+   * @param {any} event
+   * @returns {void}
+   * @memberOf EditRecipeContainer
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -56,13 +56,15 @@ class EditRecipeContainer extends Component {
    * @memberOf AddRecipe
    */
   render() {
-    const { image, recipes, params: { id } } = this.props;
+    const {
+      image, recipe, recipes, params: { id }
+    } = this.props;
     return (
       <EditRecipeForm
         handleSubmit={this.handleSubmit}
         image={image}
         uploadImage={this.uploadImage}
-        recipes={recipes}
+        recipes={recipes || recipe}
         id={id}
         redirectUser={this.props.router.push}
       />);
@@ -78,6 +80,7 @@ class EditRecipeContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
+    recipe: state.getIn(['recipes', 'singleRecipe'], Immutable.List()).toJS(),
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
   };
 };
@@ -98,6 +101,7 @@ EditRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
+  recipe: PropTypes.arrayOf(PropTypes.any).isRequired,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
   params: PropTypes.objectOf(PropTypes.any).isRequired,
   router: PropTypes.arrayOf(PropTypes.any).isRequired
