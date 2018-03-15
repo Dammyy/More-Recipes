@@ -82,19 +82,19 @@ const Vote = UserIsAuthenticated(options)((props) => {
   );
 });
 
+
 /**
  *
  *
- * @className ViewRecipe
+ * @class ViewRecipe
  * @extends {PureComponent}
  */
 class ViewRecipe extends PureComponent {
   /**
-   *
+   * @memberOf ViewRecipe
    *
    * @returns {void}
    *
-   * @memberOf ViewRecipe
    */
   render() {
     if (!this.props.recipe) {
@@ -170,14 +170,21 @@ class ViewRecipe extends PureComponent {
 }
 
 ViewRecipe.propTypes = {
-  title: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  details: PropTypes.string,
+  image: PropTypes.string,
   recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   favoriteRecipe: PropTypes.func.isRequired,
   voteRecipe: PropTypes.func.isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.number,
   id: PropTypes.string.isRequired,
+};
+
+ViewRecipe.defaultProps = {
+  title: undefined,
+  details: undefined,
+  image: undefined,
+  userId: undefined
 };
 
 export default (ViewRecipe);

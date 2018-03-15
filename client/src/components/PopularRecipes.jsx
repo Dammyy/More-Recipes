@@ -12,20 +12,20 @@ const BtnView = ((props) => {
       View
     </Link >);
 });
+
+
 /**
  *
  *
- * @export
- * @class RecipeHome
+ * @class PopularRecipes
  * @extends {PureComponent}
  */
 class PopularRecipes extends PureComponent {
   /**
    *
-   *
+   * @memberOf RecipeHome
    * @returns {void}
    *
-   * @memberOf RecipeHome
    */
   render() {
     const {

@@ -4,11 +4,12 @@ import jwtSecret from '../../config';
 
 const secret = jwtSecret.JWT_SECRET;
 /**
-   * @returns {Object} verifies token
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @param {Function} next - next function
+ *  @returns {Object} verified token
+*/
 const verifyToken = (req, res, next) => {
   const token =
   req.headers.auth || req.headers['x-access-token'] || req.body.token;

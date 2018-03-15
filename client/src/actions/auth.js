@@ -10,8 +10,8 @@ import {
 } from '../constants/auth';
 
 /**
-   * @param {Object} redirection
-   * @returns {Object} login
+   * @param {string} redirection
+   * @returns {Object} any
    */
 const loginUser = (redirection) => {
   return {
@@ -21,8 +21,8 @@ const loginUser = (redirection) => {
 };
 
 /**
-   * @param {Object} token
-   * @returns {Object} token
+   * @param {string} token
+   * @returns {object} any
    */
 const loginSuccess = (token) => {
   return {
@@ -31,7 +31,7 @@ const loginSuccess = (token) => {
   };
 };
 /**
-   * @returns {Object} failure
+   * @returns {object} any
    */
 const loginFailure = () => {
   return {
@@ -41,8 +41,8 @@ const loginFailure = () => {
 
 /**
  *
- * @param {Object} redirection
- * @returns {object} signup
+ * @param {string} redirection
+ * @returns {object} any
  */
 const signupUser = (redirection) => {
   return {
@@ -55,7 +55,7 @@ const signupUser = (redirection) => {
  *
  *
  * @param {any} token
- * @returns {object} token
+ * @returns {object} any
  */
 const signupSuccess = (token) => {
   return {
@@ -67,7 +67,7 @@ const signupSuccess = (token) => {
 /**
  *
  *
- * @returns {object} sign up faqilure
+ * @returns {object} any
  */
 const signupFailure = () => {
   return {
@@ -78,7 +78,7 @@ const signupFailure = () => {
 /**
  *
  *
- * @returns {object} logout
+ * @returns {object} any
  */
 const logout = () => {
   return {

@@ -48,9 +48,9 @@ class Search extends PureComponent {
   /**
    *
    *
+   * @memberOf Search
    * @returns {void}
    *
-   * @memberOf RecipeList
    */
   render() {
     const {

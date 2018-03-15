@@ -16,29 +16,33 @@ import * as recipesActionCreators from '../actions/recipes';
  */
 class RecipesContainer extends Component {
   /**
-   * Creates an instance of Recipes.
+   * Creates an instance of RecipesContainer.
    * @param {any} props
    *
-   * @memberOf Recipes
+   * @memberOf RecipesContainer
    */
   constructor(props) {
     super(props);
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
+
+
   /**
-  *
-  *@returns {void}
-  *
-  * @memberOf Recipes
-  */
+   * @memberOf RecipesContainer
+   *
+   *
+   * @returns {void}
+   */
   componentDidMount() {
     this.getRecipes();
   }
+
+
   /**
+   * @memberOf RecipesContainer
+   *
    *
    * @returns {void}
-   *
-   * @memberOf Recipes
    */
   getRecipes() {
     this.props.recipesActions.getRecipes();
@@ -49,22 +53,24 @@ class RecipesContainer extends Component {
     this.props.recipesActions.getRecipes(selected);
   };
   /**
+   * @memberOf RecipesContainer
    *
-   * @returns {void}
    * @param {any} id
+   * @returns {void}
    *
-   * @memberOf Recipes
    */
   deleteRecipe(id) {
     this.props.recipesActions.deleteRecipe(id);
   }
 
+
   /**
    *
    *
+   * @memberOf RecipesContainer
+   *
    * @returns {void}
    *
-   * @memberOf Recipes
    */
   render() {
     const { userId } = this.props;

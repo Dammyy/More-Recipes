@@ -13,7 +13,7 @@ const options = {
 const AddReviewForm = UserIsAuthenticated(options)(props => (
   <div id="recipe-display" className="col-md-12">
     <h2 className="panel-title text-center r-d-titles">
-              Leave a review
+    Leave a review
     </h2>
     <div className="panel-body">
       <form

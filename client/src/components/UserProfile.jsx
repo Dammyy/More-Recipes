@@ -18,9 +18,9 @@ import {
 class UserProfile extends PureComponent {
   /**
    *
-   *@returns {void}
+   * @memberOf UserProfile
+   * @returns {void}
    *
-   * @memberOf Reviews
    */
   render() {
     if (!this.props.user) {

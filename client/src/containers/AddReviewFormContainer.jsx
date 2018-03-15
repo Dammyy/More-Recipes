@@ -5,31 +5,33 @@ import { reset } from 'redux-form';
 import PropTypes from 'prop-types';
 import { AddReviewForm } from '../components';
 import * as reviewsActionCreators from '../actions/reviews';
+
+
 /**
  *
  *
- * @export
- * @class AddReview
+ * @class AddReviewFormContainer
  * @extends {Component}
  */
 class AddReviewFormContainer extends Component {
   /**
-   * Creates an instance of AddReview.
+   * Creates an instance of AddReviewFormContainer.
    * @param {any} props
    *
-   * @memberOf AddReview
+   * @memberOf AddReviewFormContainer
    */
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   /**
+   * @memberOf AddReviewFormContainer
    *
+   * @param {any} event
    *
-   *  @param {any} event
-   * @returns {string} redirect
-   * @memberOf AddReview
+   * @returns {void}
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -37,12 +39,12 @@ class AddReviewFormContainer extends Component {
     this.props.resetForm('review');
   }
 
+
   /**
    *
-   *
+   * @memberOf AddReviewFormContainer
    * @returns {void}
    *
-   * @memberOf AddReview
    */
   render() {
     return (
@@ -52,12 +54,6 @@ class AddReviewFormContainer extends Component {
   }
 }
 
-/**
- *
- *
- * @param {any} state
- * @returns {object} image
- */
 /**
  *
  *

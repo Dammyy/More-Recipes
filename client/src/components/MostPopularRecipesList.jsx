@@ -1,19 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import PopularRecipes from './PopularRecipes';
+
+
 /**
  *
  *
- * @class RecipeListHome
+ * @class MostPopularRecipesList
  * @extends {PureComponent}
  */
 class MostPopularRecipesList extends PureComponent {
   /**
    *
-   *
+   * @memberOf MostPopularRecipesList
    * @returns {void}
    *
-   * @memberOf RecipeList
    */
   render() {
     const {

@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 class Reviews extends PureComponent {
   /**
    *
-   *@returns {void}
-   *
    * @memberOf Reviews
+   * @returns {void}
+   *
    */
   render() {
     const { reviews } = this.props;

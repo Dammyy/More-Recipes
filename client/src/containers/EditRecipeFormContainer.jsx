@@ -6,11 +6,12 @@ import Immutable from 'immutable';
 import { EditRecipeForm } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
 import * as filestackActions from '../actions/filestack';
+
+
 /**
  *
  *
- * @export
- * @class AddRecipe
+ * @class EditRecipeContainer
  * @extends {Component}
  */
 class EditRecipeContainer extends Component {
@@ -40,9 +41,9 @@ class EditRecipeContainer extends Component {
 
   /**
    *
-   *
-   *@returns {void}
    * @memberOf AddRecipe
+   * @returns {void}
+   *
    */
   uploadImage() {
     this.props.filestackActions.uploadImage();
@@ -51,9 +52,10 @@ class EditRecipeContainer extends Component {
   /**
    *
    *
+   * @memberOf EditRecipeContainer
+   *
    * @returns {void}
    *
-   * @memberOf AddRecipe
    */
   render() {
     const {
@@ -101,10 +103,10 @@ EditRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
-  recipe: PropTypes.arrayOf(PropTypes.any).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   params: PropTypes.objectOf(PropTypes.any).isRequired,
-  router: PropTypes.arrayOf(PropTypes.any).isRequired
+  router: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default connect(

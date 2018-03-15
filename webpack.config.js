@@ -43,8 +43,14 @@ switch (process.env.NODE_ENV) {
     );
     break;
   default:
-    config = console.log('no value supplied');
-    console.log(process.env.NODE_ENV);
+    config = merge(
+      common,
+      { devtool: 'eval-source-map' },
+      loaders.devServer({
+        host: process.env.HOST,
+        port: process.env.PORT,
+      })
+    );
 }
 
 module.exports = config;

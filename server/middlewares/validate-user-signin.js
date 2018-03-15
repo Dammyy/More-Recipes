@@ -1,9 +1,11 @@
 import isEmail from 'validator/lib/isEmail';
 /**
-   * @returns {Object} validate Input
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Function} next - next function
+ * @returns {Object} validate Input
+ *
    */
 const validateUserSignIn = (req, res, next) => {
   if (!req.body.email) {

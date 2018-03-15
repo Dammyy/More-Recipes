@@ -1,0 +1,1920 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "More Recipes",
+    "description": "More Recipes: Share and discover awesome recipes"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/recipes": {
+      "get": {
+        "description": "route to get all published recipes",
+        "summary": "Get All Recipes",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "RecipesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetAllRecipes"
+            },
+            "examples": {
+              "application/json": {
+                "recipes": [
+                  {
+                    "id": 43,
+                    "title": "Cooked beans",
+                    "ingredients": "Nicely cooked",
+                    "details": "very nicely cooked",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T22:00:09.609Z",
+                    "updatedAt": "2018-03-15T08:02:09.142Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 42,
+                    "title": "crazy rice crazies",
+                    "ingredients": "rice",
+                    "details": "cook the rice",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T22:00:02.3Z",
+                    "updatedAt": "2018-03-15T08:02:35.377Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 41,
+                    "title": "extended sausage rolls",
+                    "ingredients": "sausage, flour",
+                    "details": "I really do not know",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:59:55.51Z",
+                    "updatedAt": "2018-03-15T08:03:07.25Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 40,
+                    "title": "Managed Banana's",
+                    "ingredients": "All the ingredients",
+                    "details": "yes",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:59:37.955Z",
+                    "updatedAt": "2018-03-15T08:03:30.652Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 39,
+                    "title": "egwrgwergq",
+                    "ingredients": "egwergqwerg",
+                    "details": "egswrgwergweg",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:59:25.257Z",
+                    "updatedAt": "2018-03-14T21:59:25.257Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 38,
+                    "title": "ewegweg",
+                    "ingredients": "ewgwegewgwe",
+                    "details": "wegwegweg",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:59:16.494Z",
+                    "updatedAt": "2018-03-14T21:59:16.494Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 37,
+                    "title": "efgwegfwe",
+                    "ingredients": "egwegweg",
+                    "details": "egwegwegwe",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:59:09.085Z",
+                    "updatedAt": "2018-03-14T21:59:09.085Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 36,
+                    "title": "wegegweg",
+                    "ingredients": "egwegweg",
+                    "details": "ewgwegweg",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:58:59.996Z",
+                    "updatedAt": "2018-03-14T21:58:59.996Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 35,
+                    "title": "egwegwe",
+                    "ingredients": "egwegwe",
+                    "details": "egwegeg",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:58:52.265Z",
+                    "updatedAt": "2018-03-14T21:58:52.265Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 34,
+                    "title": "egewgew",
+                    "ingredients": "egewgwe",
+                    "details": "egwegwegwe",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:58:44.249Z",
+                    "updatedAt": "2018-03-14T21:58:44.249Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 33,
+                    "title": "Amala and Okro soup",
+                    "ingredients": "sxcvwrqg",
+                    "details": "eqwgewg",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T21:58:35.837Z",
+                    "updatedAt": "2018-03-14T21:58:35.837Z",
+                    "userId": 27
+                  },
+                  {
+                    "id": 32,
+                    "title": "my stuff",
+                    "ingredients": "pty9goih",
+                    "details": "iuofg8yfigu",
+                    "image": "",
+                    "reviews": 0,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "favorited": 0,
+                    "createdAt": "2018-03-14T12:35:27.2Z",
+                    "updatedAt": "2018-03-14T12:35:37.878Z",
+                    "userId": 27
+                  }
+                ],
+                "count": 13,
+                "pages": 2
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/recipes?page=1"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Access-Control-Allow-Headers": "Content-Type, Origin, X-Requested-With, Authorization, x-access-token",
+                "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
+                "Access-Control-Allow-Origin": "*",
+                "Connection": "keep-alive",
+                "Content-Length": "2873",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Thu, 15 Mar 2018 08:03:34 GMT",
+                "ETag": "W/\"b39-MNe17zI3XpowHdgCFp82wH0UMpw\"",
+                "X-Powered-By": "Express"
+              },
+              "body": "{\"recipes\":[{\"id\":43,\"title\":\"Cooked beans\",\"ingredients\":\"Nicely cooked\",\"details\":\"very nicely cooked\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T22:00:09.609Z\",\"updatedAt\":\"2018-03-15T08:02:09.142Z\",\"userId\":27},{\"id\":42,\"title\":\"crazy rice crazies\",\"ingredients\":\"rice\",\"details\":\"cook the rice\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T22:00:02.300Z\",\"updatedAt\":\"2018-03-15T08:02:35.377Z\",\"userId\":27},{\"id\":41,\"title\":\"extended sausage rolls\",\"ingredients\":\"sausage, flour\",\"details\":\"I really do not know\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:59:55.510Z\",\"updatedAt\":\"2018-03-15T08:03:07.250Z\",\"userId\":27},{\"id\":40,\"title\":\"Managed Banana's\",\"ingredients\":\"All the ingredients\",\"details\":\"yes\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:59:37.955Z\",\"updatedAt\":\"2018-03-15T08:03:30.652Z\",\"userId\":27},{\"id\":39,\"title\":\"egwrgwergq\",\"ingredients\":\"egwergqwerg\",\"details\":\"egswrgwergweg\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:59:25.257Z\",\"updatedAt\":\"2018-03-14T21:59:25.257Z\",\"userId\":27},{\"id\":38,\"title\":\"ewegweg\",\"ingredients\":\"ewgwegewgwe\",\"details\":\"wegwegweg\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:59:16.494Z\",\"updatedAt\":\"2018-03-14T21:59:16.494Z\",\"userId\":27},{\"id\":37,\"title\":\"efgwegfwe\",\"ingredients\":\"egwegweg\",\"details\":\"egwegwegwe\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:59:09.085Z\",\"updatedAt\":\"2018-03-14T21:59:09.085Z\",\"userId\":27},{\"id\":36,\"title\":\"wegegweg\",\"ingredients\":\"egwegweg\",\"details\":\"ewgwegweg\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:58:59.996Z\",\"updatedAt\":\"2018-03-14T21:58:59.996Z\",\"userId\":27},{\"id\":35,\"title\":\"egwegwe\",\"ingredients\":\"egwegwe\",\"details\":\"egwegeg\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:58:52.265Z\",\"updatedAt\":\"2018-03-14T21:58:52.265Z\",\"userId\":27},{\"id\":34,\"title\":\"egewgew\",\"ingredients\":\"egewgwe\",\"details\":\"egwegwegwe\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:58:44.249Z\",\"updatedAt\":\"2018-03-14T21:58:44.249Z\",\"userId\":27},{\"id\":33,\"title\":\"Amala and Okro soup\",\"ingredients\":\"sxcvwrqg\",\"details\":\"eqwgewg\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T21:58:35.837Z\",\"updatedAt\":\"2018-03-14T21:58:35.837Z\",\"userId\":27},{\"id\":32,\"title\":\"my stuff\",\"ingredients\":\"pty9goih\",\"details\":\"iuofg8yfigu\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T12:35:27.200Z\",\"updatedAt\":\"2018-03-14T12:35:37.878Z\",\"userId\":27}],\"count\":13,\"pages\":2}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Get All Recipes",
+            "x-testDescription": "route to get all published recipes"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "description": "Route to add a recipe",
+        "summary": "Add a recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "RecipesPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "ingredients",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "details",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/recipes",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              },
+              "body": "title=A new recipe&ingredients=rice, garri&details=just cook it"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Add a recipe",
+            "x-testDescription": "Route to add a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/43": {
+      "get": {
+        "description": "route to retrieve a single recipe using the id of the recipe",
+        "summary": "Get Single recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes43Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetSingleRecipe"
+            },
+            "examples": {
+              "application/json": {
+                "statusCode": "200",
+                "recipe": {
+                  "id": 43,
+                  "title": "Cooked beans",
+                  "ingredients": "Nicely cooked",
+                  "details": "very nicely cooked",
+                  "image": "",
+                  "reviews": 0,
+                  "upvotes": 0,
+                  "downvotes": 0,
+                  "favorited": 0,
+                  "createdAt": "2018-03-14T22:00:09.609Z",
+                  "updatedAt": "2018-03-15T08:02:09.142Z",
+                  "userId": 27
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/recipes/43"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Access-Control-Allow-Headers": "Content-Type, Origin, X-Requested-With, Authorization, x-access-token",
+                "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
+                "Access-Control-Allow-Origin": "*",
+                "Connection": "keep-alive",
+                "Content-Length": "276",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Thu, 15 Mar 2018 08:05:24 GMT",
+                "ETag": "W/\"114-t8Bh+Uq7o22PZt9s42EJkEF4LzM\"",
+                "X-Powered-By": "Express"
+              },
+              "body": "{\"statusCode\":\"200\",\"recipe\":{\"id\":43,\"title\":\"Cooked beans\",\"ingredients\":\"Nicely cooked\",\"details\":\"very nicely cooked\",\"image\":\"\",\"reviews\":0,\"upvotes\":0,\"downvotes\":0,\"favorited\":0,\"createdAt\":\"2018-03-14T22:00:09.609Z\",\"updatedAt\":\"2018-03-15T08:02:09.142Z\",\"userId\":27}}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Get Single recipe",
+            "x-testDescription": "route to retrieve a single recipe using the id of the recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/signup": {
+      "post": {
+        "description": "User signup route",
+        "summary": "User Signup",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "UsersSignupPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "firstName",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "lastName",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password2",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserSignup"
+            },
+            "examples": {
+              "application/json": {
+                "message": "Registration Successful",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEYW1pbGFyZSIsImxhc3ROYW1lIjoiT2xhdHVib3N1biIsImVtYWlsIjoiZGFtaWxhcmUub2xhdHVib3N1bkBhbmRlbGEuY29tIiwiaWQiOjQzLCJpYXQiOjE1MjExMDE2MTF9.a9YqgTZhcixFlJVL8hcTkVW5X9d6T0SWOUEADJ7I8Pg"
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/users/signup",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "firstName=Damilare&lastName=Olatubosun&email=damilare.olatubosun@andela.com&password=password123&password2=password123"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Access-Control-Allow-Headers": "Content-Type, Origin, X-Requested-With, Authorization, x-access-token",
+                "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
+                "Access-Control-Allow-Origin": "*",
+                "Connection": "keep-alive",
+                "Content-Length": "279",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Thu, 15 Mar 2018 08:13:31 GMT",
+                "ETag": "W/\"117-e3a5osgka+z1ynx/uff7NLt6efs\"",
+                "X-Powered-By": "Express"
+              },
+              "body": "{\"message\":\"Registration Successful\",\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEYW1pbGFyZSIsImxhc3ROYW1lIjoiT2xhdHVib3N1biIsImVtYWlsIjoiZGFtaWxhcmUub2xhdHVib3N1bkBhbmRlbGEuY29tIiwiaWQiOjQzLCJpYXQiOjE1MjExMDE2MTF9.a9YqgTZhcixFlJVL8hcTkVW5X9d6T0SWOUEADJ7I8Pg\"}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "User Signup",
+            "x-testDescription": "User signup route"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/signin": {
+      "post": {
+        "description": "Route to signin",
+        "summary": "User Signin",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "UsersSigninPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SampleUserSigninResponse"
+            },
+            "examples": {
+              "application/json": {
+                "message": "Login Successful",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo",
+                "email": "damilare.olatubosun@andela.com",
+                "id": 43
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/users/signin",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "email=damilare.olatubosun@andela.com&password=password123"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {
+                "Access-Control-Allow-Headers": "Content-Type, Origin, X-Requested-With, Authorization, x-access-token",
+                "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
+                "Access-Control-Allow-Origin": "*",
+                "Connection": "keep-alive",
+                "Content-Length": "321",
+                "Content-Type": "application/json; charset=utf-8",
+                "Date": "Thu, 15 Mar 2018 08:16:10 GMT",
+                "ETag": "W/\"141-CUTNGpT+/m7dfAAG3JFC2mO8vAc\"",
+                "X-Powered-By": "Express"
+              },
+              "body": "{\"message\":\"Login Successful\",\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo\",\"email\":\"damilare.olatubosun@andela.com\",\"id\":43}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "User Signin",
+            "x-testDescription": "Route to signin"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/44": {
+      "put": {
+        "description": "Route to update a recipe",
+        "summary": "Update a recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes44Put",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "ingredients",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "details",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "PUT",
+              "uri": "/recipes/44",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              },
+              "body": "title=A different title&ingredients=garri, cassava, palm oil&details=cook and stir"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Update a recipe",
+            "x-testDescription": "Route to update a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "Route to delete a recipe",
+        "summary": "Delete Recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes44Delete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "DELETE",
+              "uri": "/recipes/44",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Delete Recipe",
+            "x-testDescription": "Route to delete a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/44/reviews": {
+      "post": {
+        "description": "Route to submit a review",
+        "summary": "Submit a review",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes44ReviewsPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "review",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/recipes/44/reviews",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              },
+              "body": "review=a new review"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Submit a review",
+            "x-testDescription": "Route to submit a review"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/search/beans": {
+      "get": {
+        "description": "Route to search recipes",
+        "summary": "Search recipes",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "RecipesSearchBeansGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/recipes/search/beans"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Search recipes",
+            "x-testDescription": "Route to search recipes"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/reviews/44": {
+      "get": {
+        "description": "Route to retrieve reviews for a recipe",
+        "summary": "Retrieve reviews",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Reviews44Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/reviews/44"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Retrieve reviews",
+            "x-testDescription": "Route to retrieve reviews for a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/popular": {
+      "get": {
+        "description": "Route to get the most favorited recipes",
+        "summary": "Most Popular recipes (Most favorited)",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "RecipesPopularGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/recipes/popular"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Most Popular recipes (Most favorited)",
+            "x-testDescription": "Route to get the most favorited recipes"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/43/vote/true": {
+      "post": {
+        "description": "Route to upvote a recipe",
+        "summary": "Upvote a recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes43VoteTruePost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/recipes/43/vote/true",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Upvote a recipe",
+            "x-testDescription": "Route to upvote a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/43/vote/false": {
+      "post": {
+        "description": "Route to downvote a recipe",
+        "summary": "Downvote a recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes43VoteFalsePost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/recipes/43/vote/false",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Downvote a recipe",
+            "x-testDescription": "Route to downvote a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/43/recipes": {
+      "get": {
+        "description": "Route to get a users favorite recipes",
+        "summary": "Get a users favorite recipes",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Users43RecipesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/users/43/recipes",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Get a users favorite recipes",
+            "x-testDescription": "Route to get a users favorite recipes"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/43/favorites": {
+      "post": {
+        "description": "Route to favorite a recipe",
+        "summary": "Favorite a recipe",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Recipes43FavoritesPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/recipes/43/favorites",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Favorite a recipe",
+            "x-testDescription": "Route to favorite a recipe"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/profile/43": {
+      "get": {
+        "description": "Route to get a users profile",
+        "summary": "User's profile",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "UsersProfile43Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/users/profile/43",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "User's profile",
+            "x-testDescription": "Route to get a users profile"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/popular/upvotes": {
+      "get": {
+        "description": "Route to retrive recipes witht the most upvotes",
+        "summary": "Recipes with the most upvotes",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "RecipesPopularUpvotesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "auth",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/recipes/popular/upvotes",
+              "headers": {
+                "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Recipes with the most upvotes",
+            "x-testDescription": "Route to retrive recipes witht the most upvotes"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetAllRecipes": {
+      "title": "Get All Recipes",
+      "example": {
+        "recipes": [
+          {
+            "id": 43,
+            "title": "Cooked beans",
+            "ingredients": "Nicely cooked",
+            "details": "very nicely cooked",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T22:00:09.609Z",
+            "updatedAt": "2018-03-15T08:02:09.142Z",
+            "userId": 27
+          },
+          {
+            "id": 42,
+            "title": "crazy rice crazies",
+            "ingredients": "rice",
+            "details": "cook the rice",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T22:00:02.3Z",
+            "updatedAt": "2018-03-15T08:02:35.377Z",
+            "userId": 27
+          },
+          {
+            "id": 41,
+            "title": "extended sausage rolls",
+            "ingredients": "sausage, flour",
+            "details": "I really do not know",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:59:55.51Z",
+            "updatedAt": "2018-03-15T08:03:07.25Z",
+            "userId": 27
+          },
+          {
+            "id": 40,
+            "title": "Managed Banana's",
+            "ingredients": "All the ingredients",
+            "details": "yes",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:59:37.955Z",
+            "updatedAt": "2018-03-15T08:03:30.652Z",
+            "userId": 27
+          },
+          {
+            "id": 39,
+            "title": "egwrgwergq",
+            "ingredients": "egwergqwerg",
+            "details": "egswrgwergweg",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:59:25.257Z",
+            "updatedAt": "2018-03-14T21:59:25.257Z",
+            "userId": 27
+          },
+          {
+            "id": 38,
+            "title": "ewegweg",
+            "ingredients": "ewgwegewgwe",
+            "details": "wegwegweg",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:59:16.494Z",
+            "updatedAt": "2018-03-14T21:59:16.494Z",
+            "userId": 27
+          },
+          {
+            "id": 37,
+            "title": "efgwegfwe",
+            "ingredients": "egwegweg",
+            "details": "egwegwegwe",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:59:09.085Z",
+            "updatedAt": "2018-03-14T21:59:09.085Z",
+            "userId": 27
+          },
+          {
+            "id": 36,
+            "title": "wegegweg",
+            "ingredients": "egwegweg",
+            "details": "ewgwegweg",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:58:59.996Z",
+            "updatedAt": "2018-03-14T21:58:59.996Z",
+            "userId": 27
+          },
+          {
+            "id": 35,
+            "title": "egwegwe",
+            "ingredients": "egwegwe",
+            "details": "egwegeg",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:58:52.265Z",
+            "updatedAt": "2018-03-14T21:58:52.265Z",
+            "userId": 27
+          },
+          {
+            "id": 34,
+            "title": "egewgew",
+            "ingredients": "egewgwe",
+            "details": "egwegwegwe",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:58:44.249Z",
+            "updatedAt": "2018-03-14T21:58:44.249Z",
+            "userId": 27
+          },
+          {
+            "id": 33,
+            "title": "Amala and Okro soup",
+            "ingredients": "sxcvwrqg",
+            "details": "eqwgewg",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T21:58:35.837Z",
+            "updatedAt": "2018-03-14T21:58:35.837Z",
+            "userId": 27
+          },
+          {
+            "id": 32,
+            "title": "my stuff",
+            "ingredients": "pty9goih",
+            "details": "iuofg8yfigu",
+            "image": "",
+            "reviews": 0,
+            "upvotes": 0,
+            "downvotes": 0,
+            "favorited": 0,
+            "createdAt": "2018-03-14T12:35:27.2Z",
+            "updatedAt": "2018-03-14T12:35:37.878Z",
+            "userId": 27
+          }
+        ],
+        "count": 13,
+        "pages": 2
+      },
+      "type": "object",
+      "properties": {
+        "recipes": {
+          "description": "",
+          "example": [
+            {
+              "id": 43,
+              "title": "Cooked beans",
+              "ingredients": "Nicely cooked",
+              "details": "very nicely cooked",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T22:00:09.609Z",
+              "updatedAt": "2018-03-15T08:02:09.142Z",
+              "userId": 27
+            },
+            {
+              "id": 42,
+              "title": "crazy rice crazies",
+              "ingredients": "rice",
+              "details": "cook the rice",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T22:00:02.3Z",
+              "updatedAt": "2018-03-15T08:02:35.377Z",
+              "userId": 27
+            },
+            {
+              "id": 41,
+              "title": "extended sausage rolls",
+              "ingredients": "sausage, flour",
+              "details": "I really do not know",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:59:55.51Z",
+              "updatedAt": "2018-03-15T08:03:07.25Z",
+              "userId": 27
+            },
+            {
+              "id": 40,
+              "title": "Managed Banana's",
+              "ingredients": "All the ingredients",
+              "details": "yes",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:59:37.955Z",
+              "updatedAt": "2018-03-15T08:03:30.652Z",
+              "userId": 27
+            },
+            {
+              "id": 39,
+              "title": "egwrgwergq",
+              "ingredients": "egwergqwerg",
+              "details": "egswrgwergweg",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:59:25.257Z",
+              "updatedAt": "2018-03-14T21:59:25.257Z",
+              "userId": 27
+            },
+            {
+              "id": 38,
+              "title": "ewegweg",
+              "ingredients": "ewgwegewgwe",
+              "details": "wegwegweg",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:59:16.494Z",
+              "updatedAt": "2018-03-14T21:59:16.494Z",
+              "userId": 27
+            },
+            {
+              "id": 37,
+              "title": "efgwegfwe",
+              "ingredients": "egwegweg",
+              "details": "egwegwegwe",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:59:09.085Z",
+              "updatedAt": "2018-03-14T21:59:09.085Z",
+              "userId": 27
+            },
+            {
+              "id": 36,
+              "title": "wegegweg",
+              "ingredients": "egwegweg",
+              "details": "ewgwegweg",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:58:59.996Z",
+              "updatedAt": "2018-03-14T21:58:59.996Z",
+              "userId": 27
+            },
+            {
+              "id": 35,
+              "title": "egwegwe",
+              "ingredients": "egwegwe",
+              "details": "egwegeg",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:58:52.265Z",
+              "updatedAt": "2018-03-14T21:58:52.265Z",
+              "userId": 27
+            },
+            {
+              "id": 34,
+              "title": "egewgew",
+              "ingredients": "egewgwe",
+              "details": "egwegwegwe",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:58:44.249Z",
+              "updatedAt": "2018-03-14T21:58:44.249Z",
+              "userId": 27
+            },
+            {
+              "id": 33,
+              "title": "Amala and Okro soup",
+              "ingredients": "sxcvwrqg",
+              "details": "eqwgewg",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T21:58:35.837Z",
+              "updatedAt": "2018-03-14T21:58:35.837Z",
+              "userId": 27
+            },
+            {
+              "id": 32,
+              "title": "my stuff",
+              "ingredients": "pty9goih",
+              "details": "iuofg8yfigu",
+              "image": "",
+              "reviews": 0,
+              "upvotes": 0,
+              "downvotes": 0,
+              "favorited": 0,
+              "createdAt": "2018-03-14T12:35:27.2Z",
+              "updatedAt": "2018-03-14T12:35:37.878Z",
+              "userId": 27
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Recipe"
+          }
+        },
+        "count": {
+          "description": "",
+          "example": 13,
+          "type": "integer",
+          "format": "int32"
+        },
+        "pages": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "recipes",
+        "count",
+        "pages"
+      ]
+    },
+    "Recipe": {
+      "title": "Recipe",
+      "example": {
+        "id": 43,
+        "title": "Cooked beans",
+        "ingredients": "Nicely cooked",
+        "details": "very nicely cooked",
+        "image": "",
+        "reviews": 0,
+        "upvotes": 0,
+        "downvotes": 0,
+        "favorited": 0,
+        "createdAt": "2018-03-14T22:00:09.609Z",
+        "updatedAt": "2018-03-15T08:02:09.142Z",
+        "userId": 27
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "",
+          "example": 43,
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "description": "",
+          "example": "Cooked beans",
+          "type": "string"
+        },
+        "ingredients": {
+          "description": "",
+          "example": "Nicely cooked",
+          "type": "string"
+        },
+        "details": {
+          "description": "",
+          "example": "very nicely cooked",
+          "type": "string"
+        },
+        "image": {
+          "description": "",
+          "type": "string"
+        },
+        "reviews": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "upvotes": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "downvotes": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "favorited": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "description": "",
+          "example": "3/14/2018 10:00:09 PM",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "",
+          "example": "3/15/2018 8:02:09 AM",
+          "type": "string"
+        },
+        "userId": {
+          "description": "",
+          "example": 27,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "ingredients",
+        "details",
+        "image",
+        "reviews",
+        "upvotes",
+        "downvotes",
+        "favorited",
+        "createdAt",
+        "updatedAt",
+        "userId"
+      ]
+    },
+    "GetSingleRecipe": {
+      "title": "Get Single recipe",
+      "example": {
+        "statusCode": "200",
+        "recipe": {
+          "id": 43,
+          "title": "Cooked beans",
+          "ingredients": "Nicely cooked",
+          "details": "very nicely cooked",
+          "image": "",
+          "reviews": 0,
+          "upvotes": 0,
+          "downvotes": 0,
+          "favorited": 0,
+          "createdAt": "2018-03-14T22:00:09.609Z",
+          "updatedAt": "2018-03-15T08:02:09.142Z",
+          "userId": 27
+        }
+      },
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "description": "",
+          "example": "200",
+          "type": "string"
+        },
+        "recipe": {
+          "$ref": "#/definitions/Recipe"
+        }
+      },
+      "required": [
+        "statusCode",
+        "recipe"
+      ]
+    },
+    "UserSignup": {
+      "title": "User Signup",
+      "example": {
+        "message": "Registration Successful",
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEYW1pbGFyZSIsImxhc3ROYW1lIjoiT2xhdHVib3N1biIsImVtYWlsIjoiZGFtaWxhcmUub2xhdHVib3N1bkBhbmRlbGEuY29tIiwiaWQiOjQzLCJpYXQiOjE1MjExMDE2MTF9.a9YqgTZhcixFlJVL8hcTkVW5X9d6T0SWOUEADJ7I8Pg"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "",
+          "example": "Registration Successful",
+          "type": "string"
+        },
+        "jwt": {
+          "description": "",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEYW1pbGFyZSIsImxhc3ROYW1lIjoiT2xhdHVib3N1biIsImVtYWlsIjoiZGFtaWxhcmUub2xhdHVib3N1bkBhbmRlbGEuY29tIiwiaWQiOjQzLCJpYXQiOjE1MjExMDE2MTF9.a9YqgTZhcixFlJVL8hcTkVW5X9d6T0SWOUEADJ7I8Pg",
+          "type": "string"
+        }
+      },
+      "required": [
+        "message",
+        "jwt"
+      ]
+    },
+    "SampleUserSigninResponse": {
+      "title": "Sample User Signin Response",
+      "example": {
+        "message": "Login Successful",
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo",
+        "email": "damilare.olatubosun@andela.com",
+        "id": 43
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "",
+          "example": "Login Successful",
+          "type": "string"
+        },
+        "jwt": {
+          "description": "",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImZpcnN0TmFtZSI6IkRhbWlsYXJlIiwibGFzdE5hbWUiOiJPbGF0dWJvc3VuIiwiZW1haWwiOiJkYW1pbGFyZS5vbGF0dWJvc3VuQGFuZGVsYS5jb20iLCJpYXQiOjE1MjExMDE3NzB9.uflIWCQ0fUzeFPli6qfxqHF8yEs9_TlU5LsIgiVHaXo",
+          "type": "string"
+        },
+        "email": {
+          "description": "",
+          "example": "damilare.olatubosun@andela.com",
+          "type": "string"
+        },
+        "id": {
+          "description": "",
+          "example": 43,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "message",
+        "jwt",
+        "email",
+        "id"
+      ]
+    }
+  }
+}

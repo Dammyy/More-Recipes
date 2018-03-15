@@ -7,18 +7,20 @@ import { ViewRecipe, Reviews } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
 import { AddReviewFormContainer } from '../containers';
 import * as reviewsActionCreators from '../actions/reviews';
+
+
 /**
  *
  *
- * @class Recipes
+ * @class ViewRecipeContainer
  * @extends {Component}
  */
 class ViewRecipeContainer extends Component {
   /**
-   *
+   * Creates an instance of ViewRecipeContainer.
    * @param {any} props
    *
-   * @memberOf Recipes
+   * @memberOf ViewRecipeContainer
    */
   constructor(props) {
     super(props);
@@ -29,9 +31,9 @@ class ViewRecipeContainer extends Component {
   /**
    *
    *
+   * @memberOf ViewRecipeContainer
    * @returns {void}
    *
-   * @memberOf ViewRecipeContainer
    */
   componentWillMount() {
     if (!this.props.userId) {
@@ -45,31 +47,32 @@ class ViewRecipeContainer extends Component {
   /**
    *
    *
-   * @returns {void}
    *
    * @memberOf Reviews
+   *
+   *  @returns {void}
    */
   componentDidMount() {
     this.props.reviewsActions.getReviews(this.props.params.id);
   }
 
   /**
-   * @returns {void}
-   * @param {any} id
-   *
    * @memberOf ViewRecipeContainer
+   * @param {any} id
+   * @returns {void}
+   *
    */
   favoriteRecipe(id) {
     this.props.recipesActions.favoriteRecipe(id);
   }
 
   /**
-   * @returns {void}
-   *
-   * @param {any} id
-   * @param {any} voteType
    *
    * @memberOf ViewRecipeContainer
+   * @param {any} id
+   * @param {any} voteType
+   * @returns {void}
+   *
    */
   voteRecipe(id, voteType) {
     this.props.recipesActions.voteRecipe(id, voteType);
@@ -78,9 +81,9 @@ class ViewRecipeContainer extends Component {
   /**
    *
    *
+   * @memberOf ViewRecipeContainer
    * @returns {void}
    *
-   * @memberOf Recipes
    */
   render() {
     const { reviews, params: { id } } = this.props;
@@ -134,11 +137,16 @@ function mapDispatchToProps(dispatch) {
 ViewRecipeContainer.propTypes = {
   recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  favoriteRecipe: PropTypes.func.isRequired,
+  favoriteRecipe: PropTypes.func,
   params: PropTypes.objectOf(PropTypes.any).isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.number,
   reviewsActions: PropTypes.objectOf(PropTypes.func).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
+ViewRecipeContainer.defaultProps = {
+  favoriteRecipe: undefined,
+  userId: undefined,
 };
 
 export default connect(

@@ -4,17 +4,16 @@ import Footer from './Footer';
 /**
  *
  *
- * @export
+ *
  * @class Home
  * @extends {PureComponent}
  */
 export default class Home extends PureComponent {
   /** html component to render
    *
-   *
-   * @returns {void}
-   *
    * @memberOf Home
+   *  @returns {void}
+   *
    */
   render() {
     return (

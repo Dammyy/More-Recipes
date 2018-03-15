@@ -21,11 +21,10 @@ const BtnView = ((props) => {
  */
 class RecipeHome extends PureComponent {
   /**
-   *
+   * @memberOf RecipeHome
    *
    * @returns {void}
    *
-   * @memberOf RecipeHome
    */
   render() {
     const {

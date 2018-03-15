@@ -13,10 +13,11 @@ import * as recipesActionCreators from '../actions/recipes';
  */
 class Navbar extends Component {
   /**
+   *
    * Creates an instance of Navbar.
+   * @memberOf Navbar
    * @param {any} props
    *
-   * @memberOf Navbar
    */
   constructor(props) {
     super(props);
@@ -25,10 +26,10 @@ class Navbar extends Component {
 
   /**
    *
-   *@returns {void}
+   * @memberOf Navbar
+   * @returns {void}
    * @param {any} event
    *
-   * @memberOf Navbar
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -37,10 +38,9 @@ class Navbar extends Component {
 
   /**
    *
-   *
+   * @memberOf Navbar
    * @returns {void}
    *
-   * @memberOf Navbar
    */
   render() {
     return (

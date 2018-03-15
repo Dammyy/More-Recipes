@@ -11,22 +11,23 @@ import * as usersActionCreator from '../actions/user';
  *
  * @class UserProfileContainer
  * @extends {Component}
+ *
  */
 class UserProfileContainer extends Component {
   /**
    *
-   *@returns {void}
-   *
    * @memberOf UserProfileContainer
+   * @returns {void}
+   *
    */
   componentWillMount() {
     this.getUserProfile();
   }
   /**
    *
-   * @returns {void}
+   * @memberOf UserProfileContainer
    *
-   * @memberOf Recipes
+   * @returns {void}
    */
   getUserProfile() {
     this.props.userActions.getUserDetails(this.props.userId);
@@ -34,10 +35,9 @@ class UserProfileContainer extends Component {
 
   /**
    *
-   *
+   * @memberOf UserProfileContainer
    * @returns {void}
    *
-   * @memberOf Recipes
    */
   render() {
     const { user } = this.props;
@@ -53,7 +53,8 @@ class UserProfileContainer extends Component {
 /**
  *
  * @param {any} state
- * @returns {void}
+ * @returns {object} user
+ * @returns {object} userId
  */
 function mapStateToProps(state) {
   return {

@@ -1,5 +1,9 @@
 import * as recipeConstants from '../constants/recipes';
 
+/**
+   * @param {number} page
+   * @returns {object} any
+   */
 const getRecipes = (page) => {
   return {
     type: recipeConstants.GET_RECIPES,
@@ -7,6 +11,10 @@ const getRecipes = (page) => {
   };
 };
 
+/**
+   * @param {any} recipes
+   * @returns {object} any
+   */
 const getRecipesSuccess = (recipes) => {
   return {
     type: recipeConstants.GET_RECIPES_SUCCESS,
@@ -14,6 +22,10 @@ const getRecipesSuccess = (recipes) => {
   };
 };
 
+/**
+   *
+   * @returns {object} any
+   */
 const getRecipesFailure = () => {
   return {
     type: recipeConstants.GET_RECIPES_FAILURE
@@ -24,7 +36,7 @@ const getRecipesFailure = () => {
  *
  *
  * @param {any} recipe
- * @returns {Object} recipes
+ * @returns {object} any
  */
 const viewRecipe = (recipe) => {
   return {
@@ -33,6 +45,11 @@ const viewRecipe = (recipe) => {
   };
 };
 
+/**
+ * @param {number} id
+ * @param {number} userId
+ * @returns {object} any
+ */
 const getRecipe = (id, userId) => {
   return {
     type: recipeConstants.VIEW_RECIPE,
@@ -41,6 +58,11 @@ const getRecipe = (id, userId) => {
   };
 };
 
+/**
+ * @param {number} id
+ *
+ * @returns {object} any
+ */
 const getRecipeNoUserId = (id) => {
   return {
     type: recipeConstants.VIEW_RECIPE_NO_USER_ID,
@@ -48,6 +70,11 @@ const getRecipeNoUserId = (id) => {
   };
 };
 
+/**
+ *
+ * @param {any} recipe
+ * @returns {object} any
+ */
 const viewRecipeSuccess = (recipe) => {
   return {
     type: recipeConstants.VIEW_RECIPE_SUCCESS,
@@ -55,17 +82,33 @@ const viewRecipeSuccess = (recipe) => {
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const viewRecipeFailure = () => {
   return {
     type: recipeConstants.VIEW_RECIPE_FAILURE
   };
 };
+
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const addRecipe = () => {
   return {
     type: recipeConstants.ADD_RECIPE
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const addRecipeSuccess = () => {
   return {
     type: recipeConstants.ADD_RECIPE_SUCCESS
@@ -75,7 +118,7 @@ const addRecipeSuccess = () => {
 /**
  *
  *
- * @returns {void}
+ * @returns {object} any
  */
 function addRecipeFailure() {
   return {
@@ -83,6 +126,11 @@ function addRecipeFailure() {
   };
 }
 
+/**
+ *
+ * @param {number} id
+ * @returns {object} any
+ */
 const deleteRecipe = (id) => {
   return {
     type: recipeConstants.DELETE_RECIPE,
@@ -90,6 +138,11 @@ const deleteRecipe = (id) => {
   };
 };
 
+/**
+ *
+ * @param {any} recipes
+ * @returns {object} any
+ */
 const deleteRecipeSuccess = (recipes) => {
   return {
     type: recipeConstants.DELETE_RECIPE_SUCCESS,
@@ -97,47 +150,90 @@ const deleteRecipeSuccess = (recipes) => {
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const deleteRecipeFailure = () => {
   return {
     type: recipeConstants.DELETE_RECIPE_FAILURE
   };
 };
 
+/**
+ *
+ * @param {any} id
+ * @returns {object} any
+ */
 const updateRecipe = (id) => {
   return {
     type: recipeConstants.UPDATE_RECIPE,
     id
   };
 };
+
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const updateRecipeSuccess = () => {
   return {
     type: recipeConstants.UPDATE_RECIPE_SUCCESS,
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const updateRecipeFailure = () => {
   return {
     type: recipeConstants.UPDATE_RECIPE_FAILURE
   };
 };
 
+/**
+ *
+ * @param {number} id
+ * @returns {object} any
+ */
 const favoriteRecipe = (id) => {
   return {
     type: recipeConstants.FAVORITE_RECIPE,
     id
   };
 };
+
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const favoriteRecipeSuccess = () => {
   return {
     type: recipeConstants.FAVORITE_RECIPE_SUCCESS
   };
 };
+
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const favoriteRecipeFailure = () => {
   return {
     type: recipeConstants.FAVORITE_RECIPE_FAILURE
   };
 };
 
+/**
+ *
+ * @param {number} userId
+ * @returns {object} any
+ */
 const getFavoritedRecipes = (userId) => {
   return {
     type: recipeConstants.RETRIEVE_FAVORITE_RECIPES,
@@ -145,6 +241,11 @@ const getFavoritedRecipes = (userId) => {
   };
 };
 
+/**
+ *
+ * @param {any} favorites
+ * @returns {object} any
+ */
 const getFavoritedRecipesSuccess = (favorites) => {
   return {
     type: recipeConstants.RETRIEVE_FAVORITE_RECIPES_SUCCESS,
@@ -152,17 +253,33 @@ const getFavoritedRecipesSuccess = (favorites) => {
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const getFavoritedRecipesFailure = () => {
   return {
     type: recipeConstants.RETRIEVE_FAVORITE_RECIPES_FAILURE,
   };
 };
 
+/**
+ *
+ *
+ * @returns {object} any
+ */
 const mostFavoritedRecipes = () => {
   return {
     type: recipeConstants.GET_MOST_FAVORITED
   };
 };
+
+/**
+ *
+ * @param {any} recipes
+ * @returns {object} any
+ */
 const getMostFavoritedRecipesSuccess = (recipes) => {
   return {
     type: recipeConstants.GET_MOST_FAVORITED_SUCCESS,
@@ -170,12 +287,21 @@ const getMostFavoritedRecipesSuccess = (recipes) => {
   };
 };
 
+/**
+ *
+ * @returns {object} any
+ */
 const searchRecipes = () => {
   return {
     type: recipeConstants.SEARCH_RECIPES
   };
 };
 
+/**
+ *
+ * @param {any} recipes
+ * @returns {object} any
+ */
 const searchRecipesSuccess = (recipes) => {
   return {
     type: recipeConstants.SEARCH_RECIPES_SUCCESS,
@@ -183,6 +309,12 @@ const searchRecipesSuccess = (recipes) => {
   };
 };
 
+/**
+ *
+ * @param {number} id
+ * @param {string} voteType
+ * @returns {object} any
+ */
 const voteRecipe = (id, voteType) => {
   return {
     type: recipeConstants.VOTE_RECIPE,
@@ -191,6 +323,11 @@ const voteRecipe = (id, voteType) => {
   };
 };
 
+/**
+ *
+ * @param {any} recipes
+ * @returns {object} any
+ */
 const voteRecipeSuccess = (recipes) => {
   return {
     type: recipeConstants.VOTE_RECIPE_SUCCESS,

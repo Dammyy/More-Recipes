@@ -15,10 +15,10 @@ import * as recipesActionCreators from '../actions/recipes';
  */
 class AllRecipesContainer extends Component {
   /**
-   *@returns {void}
-   *
    *
    * @memberOf Recipes
+   * @returns {void}
+   *
    */
   componentDidMount() {
     this.getRecipes();
@@ -27,9 +27,10 @@ class AllRecipesContainer extends Component {
 
   /**
    *
-   * @returns {void}
-   *
    * @memberOf AllRecipesContainer
+   *
+   *  @returns {void}
+   *
    */
   getRecipes() {
     this.props.recipesActions.getRecipes();
@@ -43,10 +44,10 @@ class AllRecipesContainer extends Component {
 
   /**
    *
+   * @memberOf AllRecipesContainer
    *
    * @returns {void}
    *
-   * @memberOf AllRecipesContainer
    */
   render() {
     return (

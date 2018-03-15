@@ -1,28 +1,27 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
-import { BtnHome, BtnManageRecipes } from './Buttons';
+import {
+  BtnHome,
+  BtnManageRecipes,
+  BtnFavorites,
+  BtnProfile,
+  BtnCatalog,
+  BtnCancel
+} from './Buttons';
+
+const BtnCurrent = (() => (
+  'Add new recipe'
+));
 /**
- *
- *
- * @export
  * @class AddRecipeForm
  * @extends {PureComponent}
  */
 class AddRecipeForm extends PureComponent {
-  /**
-   *
-   *
-   *  @param {any} event
-   * @returns {string} redirect
-   * @memberOf AddRecipe
-   */
   /** html component to render
    *
-   *
-   * @returns {void}
-   *
    * @memberOf AddRecipeForm
+   * @returns {void}
    */
   render() {
     const { image, uploadImage } = this.props;
@@ -30,15 +29,15 @@ class AddRecipeForm extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
+          <BtnCatalog />
           <BtnManageRecipes />
+          <BtnFavorites />
+          <BtnProfile />
+          <BtnCancel />
         </div>
+        <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="container add-recipe-page">
           <div className="col-md-12 latest-recipes">
-            <div className="panel-heading">
-              <h2 className="panel-title text-center">
-                Publish a new recipe!
-              </h2>
-            </div>
             <div className="panel-body">
               <form
                 name="form"

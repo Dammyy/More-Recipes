@@ -1,10 +1,12 @@
 import validator from 'validator';
 
 /**
-   * @returns {Object} validate Input
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Function} next - next function
+ * @returns {Object} validate Input
+ *
    */
 const validateUserInput = (req, res, next) => {
   if (!req.body.firstName) {

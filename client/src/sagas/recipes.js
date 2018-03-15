@@ -6,6 +6,10 @@ import * as recipeConstants from '../constants/recipes';
 import * as recipeActions from '../actions/recipes';
 
 
+/**
+ * @param {number} page
+ * @returns {Object} response from server
+ */
 const fetchRecipes = page => fetch(`/api/v1/recipes?page=${page}`, {
   headers: new Headers({
     'Content-Type': 'application/json'
@@ -15,8 +19,9 @@ const fetchRecipes = page => fetch(`/api/v1/recipes?page=${page}`, {
 
 /**
  *
- * @returns {void}
- * @param {any} action
+ * @param {any} action action type and payload
+ * @returns {object} result
+ *
  */
 function* getRecipes(action) {
   let { page } = action;
@@ -31,6 +36,10 @@ function* getRecipes(action) {
   }
 }
 
+/**
+ * @param {number} id
+ * @returns {Object} response from server
+ */
 const fetchSingleRecipe = id =>
   fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
@@ -65,9 +74,10 @@ const checkFavorite = (id, userId) =>
     });
 
 /**
- * @returns {void}
  *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
+ *
  */
 function* getRecipe(action) {
   const { id, userId } = action;
@@ -86,9 +96,10 @@ function* getRecipe(action) {
 }
 
 /**
- * @returns {void}
  *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
+ *
  */
 function* getRecipeNoUserId(action) {
   const { id } = action;
@@ -103,14 +114,27 @@ function* getRecipeNoUserId(action) {
     yield put(push('/error'));
   }
 }
+
+/**
+   * @param {any} state
+   * @returns {object} image url
+   */
 const selectedImage = (state) => {
   return state.getIn(['filestack', 'url'], '');
 };
 
+/**
+   * @param {any} state
+   * @returns {object} recipe details
+   */
 const addRecipeForm = (state) => {
   return state.getIn(['form', 'recipe']).toJS();
 };
 
+/**
+ * @param {object} recipe
+ * @returns {Object} response from server
+ */
 const publishRecipe = (recipe) => {
   return fetch('/api/v1/recipes', {
     headers: new Headers({
@@ -131,7 +155,7 @@ const publishRecipe = (recipe) => {
 
 /**
  *
- *@returns {void}
+ * @returns {object} result
  */
 function* addRecipe() {
   const image = yield select(selectedImage);
@@ -149,10 +173,18 @@ function* addRecipe() {
     toastr.error(message);
   }
 }
+/**
+   * @param {any} state
+   * @returns {object} recipe details
+   */
 const selectedRecipe = (state) => {
   return state.getIn(['recipes', 'list']).toJS();
 };
 
+/**
+ * @param {number} id
+ * @returns {Object} response from server
+ */
 const removeRecipe = (id) => {
   return fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
@@ -171,9 +203,10 @@ const removeRecipe = (id) => {
 };
 
 /**
- * @returns {void}
  *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
+ *
  */
 function* deleteRecipe(action) {
   const { id } = action;
@@ -191,10 +224,21 @@ function* deleteRecipe(action) {
   }
 }
 
+/**
+ *
+   * @param {any} state
+   * @returns {object} recipe details
+   *
+   */
 const updateRecipeForm = (state) => {
   return state.getIn(['form', 'updateRecipe']).toJS();
 };
 
+/**
+ * @param {number} id
+ * @param {object} recipe
+ * @returns {Object} response from server
+ */
 const editRecipe = (id, recipe) => {
   return fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
@@ -214,8 +258,8 @@ const editRecipe = (id, recipe) => {
 };
 
 /**
- * @param {any} action
- * @returns {void}
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* updateRecipe(action) {
   const { id } = action;
@@ -235,6 +279,11 @@ function* updateRecipe(action) {
   }
 }
 
+/**
+ *
+ * @param {number} id
+ * @returns {Object} response from server
+ */
 const favRecipe = (id) => {
   return fetch(`/api/v1/recipes/${id}/favorites/`, {
     headers: new Headers({
@@ -256,9 +305,9 @@ const favRecipe = (id) => {
 };
 
 /**
- *@returns {void}
  *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* favoriteRecipe(action) {
   const { id } = action;
@@ -277,6 +326,11 @@ function* favoriteRecipe(action) {
   }
 }
 
+/**
+ *
+ * @param {number} userId
+ * @returns {Object} response from server
+ */
 const getFavRecipes = (userId) => {
   return fetch(`/api/v1/users/${userId}/recipes/`, {
     headers: new Headers({
@@ -295,9 +349,8 @@ const getFavRecipes = (userId) => {
 };
 
 /**
- * @returns {void}
- *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* usersFavorites(action) {
   const { userId } = action;
@@ -314,7 +367,7 @@ function* usersFavorites(action) {
 }
 
 /**
-   * @returns {Object} fetch most favorited recipes
+   * @returns {Object} response from server
    */
 const
   fetchMostFavoritedRecipes = () =>
@@ -325,7 +378,7 @@ const
       });
 
 /**
-     * @returns {Object} Get Most Favorited recipes
+     * @returns {Object} Most Favorited recipes
      */
 function* getMostFavoritedRecipes() {
   try {
@@ -336,10 +389,19 @@ function* getMostFavoritedRecipes() {
   }
 }
 
+/**
+   * @param {any} state
+   * @returns {object} search query
+   */
 const searchForm = (state) => {
   return state.getIn(['form', 'search']).toJS();
 };
 
+/**
+ *
+ * @param {string} searchQuery
+ * @returns {Object} response from server
+ */
 const searchRecipes = searchQuery =>
   fetch(`/api/v1/recipes/search/${searchQuery}`)
     .then(response => response.json())
@@ -368,7 +430,11 @@ function* getSearchResults() {
   }
 }
 
-
+/**
+ * @param {number} id
+ * @param {string} voteType
+ * @returns {Object} response from server
+ */
 const vRecipe = (id, voteType) => {
   return fetch(`/api/v1/recipes/${id}/vote/${voteType}`, {
     headers: new Headers({
@@ -390,9 +456,8 @@ const vRecipe = (id, voteType) => {
 };
 
 /**
- *@returns {void}
- *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* voteRecipe(action) {
   const { id } = action;
@@ -415,21 +480,21 @@ function* voteRecipe(action) {
 }
 
 /**
-   * @returns {Object} Watch Get recipes
+   * @returns {any} Watch Get recipes
    */
 function* watchGetRecipes() {
   yield takeLatest(recipeConstants.GET_RECIPES, getRecipes);
 }
 
 /**
-   * @returns {Object} Watch Get recipe
+   * @returns {any} Watch Get recipe
    */
 function* watchGetRecipe() {
   yield takeLatest(recipeConstants.VIEW_RECIPE, getRecipe);
 }
 
 /**
- *@returns {Object} Watch Get recipe no use id
+ * @returns {any} Watch Get recipe no user Id
  *
  */
 function* watchGetRecipeNoUserId() {
@@ -437,14 +502,14 @@ function* watchGetRecipeNoUserId() {
 }
 /**
  *
- *@return {void}
+ * @return {any} watch Add Recipes
  */
 function* watchAddRecipe() {
   yield takeLatest(recipeConstants.ADD_RECIPE, addRecipe);
 }
 
 /**
- * @returns {void}
+ * @return {any} watch Delete Recipes
  *
  */
 function* watchDeleteRecipe() {
@@ -452,34 +517,34 @@ function* watchDeleteRecipe() {
 }
 
 /**
-   * @returns {Object} Watch Update recipe
+   * @returns {any} Watch Update Recipe
    */
 function* watchUpdateRecipe() {
   yield takeLatest(recipeConstants.UPDATE_RECIPE, updateRecipe);
 }
 /**
-   * @returns {Object} Watch favorite recipe
+   * @returns {any} Watch favorite recipe
    */
 function* watchFavoriteRecipe() {
   yield takeLatest(recipeConstants.FAVORITE_RECIPE, favoriteRecipe);
 }
 
 /**
-   * @returns {Object} Watch Get Users favorite recipes
+   * @returns {any} Watch Get Users favorite recipes
    */
 function* watchGetUsersFavorites() {
   yield takeLatest(recipeConstants.RETRIEVE_FAVORITE_RECIPES, usersFavorites);
 }
 
 /**
-   * @returns {Object} Watch Get Most Favorited recipes
+   * @returns {any} Watch Get Most Favorited recipes
    */
 function* watchGetMostFavoritedRecipes() {
   yield takeLatest(recipeConstants.GET_MOST_FAVORITED, getMostFavoritedRecipes);
 }
 
 /**
- *@returns {void}
+ * @returns {any} Watch Search Recipes
  *
  */
 function* watchSearchRecipes() {
@@ -489,7 +554,7 @@ function* watchSearchRecipes() {
 
 /**
  *
- *@returns {void}
+ * @returns {any} Watch Vote Recipes
  */
 function* watchVoteRecipe() {
   yield takeLatest(recipeConstants.VOTE_RECIPE, voteRecipe);
