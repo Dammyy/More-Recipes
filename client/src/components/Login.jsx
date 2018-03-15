@@ -13,12 +13,11 @@ import * as authActionCreators from '../actions/auth';
  * @extends {PureComponent}
  */
 class Login extends PureComponent {
-  /** redirect
-   *
-   *
+  /**
+   * @memberOf Login
    * @param {any} event
    * @returns {string} redirect
-   * @memberOf Login
+   *
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -27,10 +26,9 @@ class Login extends PureComponent {
   }
   /**
    *
-   *
+   * @memberOf Login
    * @returns {void}
    *
-   * @memberOf Login
    */
   render() {
     return (

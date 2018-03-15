@@ -27,9 +27,8 @@ const pick = () => {
   });
 };
 
-
 /**
- * @returns {void}
+ * @returns {any} result
  */
 function* uploadImage() {
   try {
@@ -43,7 +42,7 @@ function* uploadImage() {
 /**
  *
  *
- * @returns {void}
+ * @returns {any} dispatched action
  */
 function* watchUploadImage() {
   yield takeLatest(UPLOAD_IMAGE, uploadImage);

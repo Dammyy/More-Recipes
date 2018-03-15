@@ -73,6 +73,16 @@ const BtnEdit = UserIsAuthenticated(options)((props) => {
     </Link >);
 });
 
+const BtnCancel = (() => (
+  <Link
+    to="/catalog/manage"
+    className="btn btn-danger btn-manage"
+  >
+    <i className="fa fa-times" aria-hidden="true" /> Cancel
+  </Link>
+));
+
+
 export {
   BtnAdd,
   BtnManageRecipes,
@@ -80,5 +90,6 @@ export {
   BtnCatalog,
   BtnFavorites,
   BtnProfile,
-  BtnEdit
+  BtnEdit,
+  BtnCancel
 };

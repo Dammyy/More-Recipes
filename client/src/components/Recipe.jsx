@@ -14,7 +14,7 @@ const options = {
 
 
 const alert = (callback) => {
-  return swal('Are you sure?', {
+  return swal('Are you sure you want to delete this recipe?', {
     buttons: {
       cancel: 'No',
       delete: {
@@ -64,17 +64,16 @@ const BtnView = ((props) => {
 /**
  *
  *
- * @export
+ *
  * @class Recipe
  * @extends {PureComponent}
  */
 class Recipe extends PureComponent {
   /**
    *
-   *
+   * @memberOf Recipe
    * @returns {void}
    *
-   * @memberOf Recipe
    */
   render() {
     const {

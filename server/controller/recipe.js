@@ -8,11 +8,13 @@ const votesModel = models.votes;
  * @class Recipe
  */
 class Recipe {
-  /**
-   * @returns {Object} recipes
-   * @param {req} req
-   * @param {res} res
-   */
+/**
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} recipes
+ *
+*/
   static getRecipe(req, res) {
     const limit = 12;
     let offset = 0;
@@ -37,10 +39,12 @@ class Recipe {
       });
   }
   /**
-   * @returns {Object} createRecipe
-   * @param {req} req
-   * @param {res} res
-   */
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} Created recipe
+ *
+*/
   static createRecipes(req, res) {
     RecipeModel.create({
       title: req.body.title,
@@ -63,9 +67,11 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} updateRecipes
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} updated recipe
+ *
    */
   static updateRecipes(req, res) {
     RecipeModel.findOne({
@@ -103,9 +109,11 @@ class Recipe {
       .catch(error => res.status(400).send(error));
   }
   /**
-   * @returns {Object} deleteRecipes
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} recipes
+ *
    */
   static deleteRecipes(req, res) {
     RecipeModel.findOne({
@@ -138,9 +146,11 @@ class Recipe {
       .catch(error => res.status(400).send(error));
   }
   /**
-   * @returns {Object} retrieveRecipes
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} single recipe
+ *
    */
   static retrieveRecipes(req, res) {
     RecipeModel.findOne({
@@ -162,9 +172,11 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} postReview
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} review added
+ *
    */
   static postReview(req, res) {
     ReviewsModel.create({
@@ -199,13 +211,11 @@ class Recipe {
 
 
   /**
-   *
-   *@return {obj} reviews
-   * @static
-   * @param {any} req
-   * @param {any} res
-   *
-   * @memberOf Recipe
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} Recipes reviews
+ *
    */
   static getReviews(req, res) {
     ReviewsModel.findAll({
@@ -222,10 +232,12 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} favoriteRecipe
-   * @param {req} req
-   * @param {res} res
-   */
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} favorited recipe
+ *
+ */
   static favoriteRecipe(req, res) {
     FavoritesModel.find({
       where: {
@@ -284,9 +296,11 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} favoriteRecipe
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} result
+ *
    */
   static getFavoriteRecipe(req, res) {
     FavoritesModel.find({
@@ -309,9 +323,11 @@ class Recipe {
   }
 
   /**
-   * @returns {Object} vote
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} voted recipe
+ *
    */
   static voteRecipe(req, res) {
     votesModel.find({
@@ -383,7 +399,7 @@ class Recipe {
                     .then(() => {
                       return res.status(200).send({
                         statusCode: '200',
-                        message: 'Donvote removed',
+                        message: 'Downvote removed',
                         recipe
                       });
                     });
@@ -410,7 +426,7 @@ class Recipe {
                       return res.status(201).send({
                         statusCode: '201',
                         voteValue: 'true',
-                        message: 'Recipe Upvoted',
+                        message: 'Recipe upvoted',
                         recipe
                       });
                     });
@@ -421,7 +437,7 @@ class Recipe {
                       return res.status(201).send({
                         statusCode: '201',
                         voteValue: 'false',
-                        message: 'Recipe Downvoted',
+                        message: 'Recipe downvoted',
                         recipe
                       });
                     });
@@ -432,34 +448,27 @@ class Recipe {
     });
   }
   /**
-   * @returns {Object} get most upvotes
-   * @param {req} req
-   * @param {res} res
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} most upvoted recipes
+ *
    */
   static getMostUpvotes(req, res) {
-    if (req.query.sort && req.query.order) {
-      RecipeModel.Recipes.findAll({
-        group: 'id',
-        order:
-        RecipeModel.sequelize
-          .literal(`max(${req.query.sort}) ${req.query.order.toUpperCase()}`)
-      })
-        .then(recipes => res.status(200).send(recipes))
-        .catch(error => res.status(400).send(error));
-    }
+    return RecipeModel.all({
+      order: [['upvotes', 'DESC']]
+    })
+      .then(recipes => res.status(200).send(recipes))
+      .catch(error => res.status(400).send(error));
   }
 
-
   /**
-   *
-   *
-   * @static
-   * @param {any} req
-   * @param {any} res
-   * @returns {Obj} Most Favorited
-   *
-   * @memberOf Recipe
-   */
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} Moat faforited recipes
+ *
+  */
   static getMostFavorited(req, res) {
     return RecipeModel.all({
       order: [['favorited', 'DESC']]
@@ -471,14 +480,11 @@ class Recipe {
   }
 
   /**
-   *
-   *@returns {void}
-   * @static
-   * @param {any} req
-   * @param {any} res
-   *
-   * @memberOf Recipe
-   */
+*
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} Search result
+*/
   static searchRecipes(req, res) {
     const query = req.params.query.trim();
     const op = models.Sequelize.Op;

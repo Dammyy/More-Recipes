@@ -4,6 +4,10 @@ import { toastr } from 'react-redux-toastr';
 import { GET_USER_DETAILS } from '../constants/user';
 import { getUserDetailsSuccess, getUserDetailsFailure } from '../actions/user';
 
+/**
+ * @param {number} userId
+ * @returns {Object} response from server
+ */
 const getUserInfo = (userId) => {
   return fetch(`/api/v1/users/profile/${userId}`, {
     headers: new Headers({
@@ -22,8 +26,9 @@ const getUserInfo = (userId) => {
 };
 
 /**
- * @param {any} action
- * @returns {void}
+ *
+ * @param {object} action action type and payload
+ * @returns {object} result
  *
  */
 function* usersDetails(action) {
@@ -42,7 +47,7 @@ function* usersDetails(action) {
 }
 
 /**
- *@returns {void}
+ * @returns {any} Watch get reviews
  *
  */
 function* watchUsersDetails() {

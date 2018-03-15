@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RecipeHome from './RecipeHome';
 
-
 /**
  *
  *
@@ -13,9 +12,9 @@ class RecipesListHome extends PureComponent {
   /**
    *
    *
+   * @memberOf RecipeList
    * @returns {void}
    *
-   * @memberOf RecipeList
    */
   render() {
     const {

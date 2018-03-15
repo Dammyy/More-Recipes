@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import {
@@ -8,41 +9,39 @@ import {
   BtnManageRecipes,
   BtnFavorites,
   BtnProfile,
-  BtnCatalog
+  BtnCatalog,
+  BtnCancel
 } from './Buttons';
 
+const BtnCurrent = (() => (
+  'UPDATE RECIPE'
+));
 /**
  *
  *
- * @export
+ *
  * @class EditRecipeForm
  * @extends {PureComponent}
  */
 class EditRecipeForm extends PureComponent {
   /**
    *
+   * @memberOf EditRecipeForm
    * @returns {void}
    *
-   * @memberOf EditRecipeForm
    */
   componentDidMount() {
     if (!this.props.recipes) {
       this.props.redirectUser('/catalog');
     }
   }
+
+
   /**
    *
    *
-   *  @param {any} event
-   * @returns {string} redirect
-   * @memberOf AddRecipe
-   */
-  /** html component to render
-   *
-   *
+   * @memberOf EditRecipeForm
    * @returns {void}
-   *
-   * @memberOf AddRecipeForm
    */
   render() {
     const { image, uploadImage } = this.props;
@@ -55,14 +54,18 @@ class EditRecipeForm extends PureComponent {
           <BtnManageRecipes />
           <BtnFavorites />
           <BtnProfile />
+          <Link
+            className="btn btn-primary"
+            to={`view/${this.props.id}`}
+            params={{ id: this.props.id }}
+          >
+          View
+          </Link >
+          <BtnCancel />
         </div>
+        <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="container add-recipe-page">
           <div className="col-md-12 latest-recipes">
-            <div className="panel-heading">
-              <h2 className="panel-title text-center">
-                Edit Recipe
-              </h2>
-            </div>
             <div className="panel-body">
               <form
                 name="form"
@@ -138,6 +141,7 @@ class EditRecipeForm extends PureComponent {
 
 EditRecipeForm.propTypes = {
   uploadImage: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,

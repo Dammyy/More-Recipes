@@ -4,7 +4,7 @@ import { UPLOAD_IMAGE, UPLOAD_IMAGE_SUCCESS,
 /**
  *
  *
- * @returns {void}
+ * @returns {object} any
  */
 function uploadImage() {
   return {
@@ -15,8 +15,8 @@ function uploadImage() {
 /**
  *
  *
- * @param {any} url
- * @returns {void}
+ * @param {string} url
+ * @returns {object} any
  */
 function uploadImageSuccess(url) {
   return {
@@ -28,7 +28,7 @@ function uploadImageSuccess(url) {
 /**
  *
  *
- * @returns {void}
+ * @returns {object} any
  */
 function uploadImageFailure() {
   return {

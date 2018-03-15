@@ -9,10 +9,20 @@ import {
   addReviewSuccess
 } from '../actions/reviews';
 
+/**
+   * @param {any} state
+   * @returns {object} review details
+   *
+   */
 const addReviewForm = (state) => {
   return state.getIn(['form', 'review']).toJS();
 };
 
+/**
+ * @param {number} id
+ * @param {object} newReview
+ * @returns {Object} response from server
+ */
 const publishReview = (id, newReview) => {
   return fetch(`/api/v1/recipes/${id}/reviews`, {
     headers: new Headers({
@@ -33,9 +43,8 @@ const publishReview = (id, newReview) => {
 
 
 /**
- *@returns {void}
- *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* addReview(action) {
   const { id } = action;
@@ -53,6 +62,10 @@ function* addReview(action) {
   }
 }
 
+/**
+ * @param {number} id
+ * @returns {Object} response from server
+ */
 const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   headers: new Headers({
     'Content-Type': 'application/json'
@@ -61,9 +74,8 @@ const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   .then(response => response.json());
 
 /**
- *@returns {void}
- *
- * @param {any} action
+ * @param {object} action action type and payload
+ * @returns {object} result
  */
 function* getReviews(action) {
   const { id } = action;
@@ -77,14 +89,14 @@ function* getReviews(action) {
 }
 
 /**
- *@returns {void}
+ * @returns {any} Watch get reviews
  *
  */
 function* watchGetReviews() {
   yield takeLatest(GET_REVIEWS, getReviews);
 }
 /**
-   * @returns {Object} Watch ADD REVIEW
+   * @returns {any} Watch Add review
    */
 function* watchAddReview() {
   yield takeLatest(ADD_REVIEW, addReview);

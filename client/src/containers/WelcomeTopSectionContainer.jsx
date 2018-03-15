@@ -6,28 +6,31 @@ import PropTypes from 'prop-types';
 import WelcomeTopSection from '../components/WelcomeTopSection';
 import * as authActionCreators from '../actions/auth';
 
+
 /**
  *
  *
- * @class Recipes
+ * @class WelcomeTopSectionContainer
  * @extends {Component}
  */
 class WelcomeTopSectionContainer extends Component {
   /**
-   * Creates an instance
+   * Creates an instance of WelcomeTopSectionContainer.
    * @param {any} props
    *
-   * @memberOf Recipes
+   * @memberOf WelcomeTopSectionContainer
    */
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
   }
+
+
   /**
    *
+   * @memberOf WelcomeTopSectionContainer
    *
    * @returns {void}
-   * @memberOf HomeRecipes
    */
   logout() {
     this.props.authActions.logout();
@@ -35,12 +38,12 @@ class WelcomeTopSectionContainer extends Component {
     localStorage.removeItem('token');
   }
 
+
   /**
-   *
+   * @memberOf WelcomeTopSectionContainer
    *
    * @returns {void}
    *
-   * @memberOf HomeRecipes
    */
   render() {
     const {

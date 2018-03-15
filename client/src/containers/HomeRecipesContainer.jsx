@@ -6,45 +6,42 @@ import PropTypes from 'prop-types';
 import RecipesListHome from '../components/RecipesListHome';
 import * as recipesActionCreators from '../actions/recipes';
 
+
 /**
  *
  *
- * @class Recipes
+ * @class HomeRecipesContainer
  * @extends {Component}
+ *
  */
 class HomeRecipesContainer extends Component {
   /**
-   *@returns {void}
    *
+   * @memberOf HomeRecipesContainer
+   * @returns {void}
    *
-   * @memberOf Recipes
    */
   componentDidMount() {
     this.getRecipes();
   }
 
+
   /**
    *
+   * @memberOf HomeRecipesContainer
    *
    * @returns {void}
-   * @memberOf HomeRecipes
    */
   getRecipes() {
     this.props.recipesActions.getRecipes(1);
   }
+
+
   /**
    *
-   *
-   * @param {any} index
-   *@returns {void}
-   * @memberOf Recipes
-   */
-  /**
-   *
-   *
+   * @memberOf HomeRecipesContainer
    * @returns {void}
    *
-   * @memberOf HomeRecipes
    */
   render() {
     const {

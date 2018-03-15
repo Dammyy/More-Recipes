@@ -6,28 +6,31 @@ import PropTypes from 'prop-types';
 import { MostPopularRecipesList } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
 
+
 /**
  *
  *
- * @class Recipes
+ * @class MostPopularRecipesContainer
  * @extends {Component}
  */
 class MostPopularRecipesContainer extends Component {
   /**
-   *@returns {void}
    *
+   * @memberOf MostPopularRecipesContainer
+   * @returns {void}
    *
-   * @memberOf Recipes
    */
   componentDidMount() {
     this.props.recipesActions.mostFavoritedRecipes();
   }
+
+
   /**
    *
    *
    * @returns {void}
    *
-   * @memberOf HomeRecipes
+   * @memberOf MostPopularRecipesContainer
    */
   render() {
     const {

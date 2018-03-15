@@ -8,14 +8,15 @@ const usersModel = models.users;
 const FavoritesModel = models.favorites;
 const RecipeModel = models.recipes;
 let password = '';
+
 /**
  * @class User
  */
 class User {
 /**
- * @returns {Object} signUp
- * @param {param} req
- * @param {param} res
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} signed up user details
  */
   static signUp(req, res) {
     usersModel.findOne({
@@ -48,10 +49,10 @@ class User {
     });
   }
   /**
-   * @returns {Object} signIn
-   * @param {param} req
-   * @param {param} res
-   */
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} user details and jwt token
+ */
   static signIn(req, res) {
     usersModel.findOne({
       where: {
@@ -85,10 +86,10 @@ class User {
       .catch(error => res.status(401).send(error));
   }
   /**
-   * @returns {Object} getFavorites
-   * @param {req} req
-   * @param {res} res
-   */
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} users favorite recipes
+  */
   static getFavorites(req, res) {
     FavoritesModel.findAll({
       where: {
@@ -104,14 +105,12 @@ class User {
   }
 
   /**
-   *
-   * @returns {void}
-   * @static
-   * @param {any} req
-   * @param {any} res
-   *
-   * @memberOf User
-   */
+  *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ *  @returns {Object} users details
+ *
+*/
   static userDetails(req, res) {
     usersModel.findOne({
       where: {

@@ -12,10 +12,9 @@ import ActionButtons from './HomeActionButtons';
 class WelcomeTopSetion extends PureComponent {
   /**
    *
-   *
+   * @memberOf WelcomeTopSection
    * @returns {void}
    *
-   * @memberOf WelcomeTopSection
    */
   render() {
     const {

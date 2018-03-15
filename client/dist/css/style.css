@@ -9,7 +9,6 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .upload-image img{width:300px;height:300px;}
 .text-left-buttons {padding: 10px 20px;background:#A8A8A8;padding-top: 15px;}
 .btn-manage{margin-right:10px;}
-.btn-buttons{margin-bottom:10px;}
 .favorited{color:red;}
 .welcome-video{padding:0px;margin:0px;min-height:150px;height:600px;overflow:hidden;z-index:0;}
 .welcome-section{overflow: hidden;height:600px;position:relative;}
@@ -78,7 +77,10 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 #popular-votes {height:30px;padding:5px;}
 #popular-votes  li{list-style-type:none;float:left;margin-right:10px;}
 .header-links{float:right;}
-
+.pagination li {margin:10px;}
+.pagination {width:300px;margin:0 auto;margin-top:20px;margin-bottom:10px;}
+.active a {background:#ccc!important;}
+.pagination a {color:#fff;background:#808080;padding:10px;border-radius:2px;};
 /*Recipe Display Page*/
 #recipe-display .panel-title {border-top: 2px solid #666;}
 .wrapper .col-md-12 {padding:0px;margin:0px;}
@@ -131,8 +133,9 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .panel-title{font-size:30px;font-weight:bold;padding:10px 0px;}
 .panel-body{font-size:20px;font-weight:bold;letter-spacing:1px;}
 .panel-body label{margin-top:10px;}
-.btn-search{background:#A8A8A8;color:#fff;font-weight:bold;}
-
+.btn-search{background:rgb(161, 127, 127);color:#fff;font-weight:bold;}
+.btn-primary {margin-right:10px;}
+.current-page {padding:10px 0px;font-size:30px;background:#808080;color:#fff;padding-left:20px;text-align:center;text-transform:uppercase;letter-spacing:1px;}
 /*Profile page*/
 .profile-display{min-width:350px;max-width:450px;margin:0 auto;padding:30px 20px;width:auto;font-size:17px;text-align:center;border-radius:5px;box-shadow: 0px 1px 5px #ccc;margin-top:20px;}
 .profile-heading{text-transform:capitalize;font-weight:bold;text-align:center;margin:20px 0px;padding:10px 0px;background:#A8A8A8;color:#fff;border-radius:5px;}

@@ -12,10 +12,9 @@ import AuthCheck from '../utils/authWrapper';
 class HomeActionButtons extends PureComponent {
   /**
    *
-   *
+   * @memberOf HomeActionButtons
    * @returns {void}
    *
-   * @memberOf ActionButtons
    */
   render() {
     const { firstName, logout } = this.props;

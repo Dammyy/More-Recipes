@@ -14,6 +14,7 @@ const ReviewModel = models.reviews;
 const VotesModel = models.votes;
 
 const { expect } = chai;
+const should = chai.should();
 let auth = '';
 chai.use(chaiHttp);
 const testUser = {};
@@ -79,20 +80,23 @@ describe('Recipe controller', () => {
         });
     });
     // Test protected routes
-    it('Protected routes should return please sign in if user not logged in', (done) => {
-      request
-        .post('/api/v1/recipes')
-        .send({
-          title: 'Rice and beans',
-          details: 'boil for one hour.',
-          ingredients: 'rice and water',
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(401);
-          expect(res.body.error).to.equal('Access Denied! Login required');
-          done();
-        });
-    });
+    it(
+      'Protected routes should return Access Denied if user not logged in',
+      (done) => {
+        request
+          .post('/api/v1/recipes')
+          .send({
+            title: 'Rice and beans',
+            details: 'boil for one hour.',
+            ingredients: 'rice and water',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(401);
+            expect(res.body.message).to.equal('Access Denied! Login required');
+            done();
+          });
+      }
+    );
     // Test expired or invalid token
     it('Should return  if token is invalid', (done) => {
       request
@@ -109,7 +113,7 @@ describe('Recipe controller', () => {
             .set('auth', fakeAuth)
             .end((err, res) => {
               expect(res.status).to.equal(401);
-              expect(res.body.error).to.equal('Token has expired. Please sign in');
+              expect(res.body.message).to.equal('Token has expired. Please sign in');
               done();
             });
         });
@@ -117,9 +121,10 @@ describe('Recipe controller', () => {
     // Test Get Recipes
     it('Retrieving recipes should return 200', (done) => {
       request
-        .get('/api/v1/recipes')
+        .get('/api/v1/recipes?page=1')
         .end((err, res) => {
           expect(res).to.have.status(200);
+          should.not.exist(err);
           done();
         });
     });
@@ -144,6 +149,7 @@ describe('Recipe controller', () => {
             })
             .end((err, res) => {
               expect(res.status).to.equal(201);
+              should.not.exist(err);
               done();
             });
         });
@@ -515,26 +521,7 @@ describe('Recipe controller', () => {
             });
         });
     });
-    // Test get recipes with most upvotes
-    it('Should return recipes with most upvotes', (done) => {
-      request
-        .post('/api/v1/users/signin')
-        .send({
-          email: 'damilareolatubosun@yahoo.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          auth = res.body.jwt;
-          request
-            .get('/api/v1/recipes?sort=upvotes&order=desc')
-            .set('auth', auth)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              done();
-            });
-        });
-    });
+
     // Test upvote a recipe
     it('Should upvote a recipe', (done) => {
       request
@@ -550,32 +537,13 @@ describe('Recipe controller', () => {
             .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
             .set('auth', auth)
             .end((err, res) => {
-              expect(res.status).to.equal(200);
+              expect(res.status).to.equal(201);
+              expect(res.body.message).to.equal('Recipe upvoted');
               done();
             });
         });
     });
-    // Test upvote a recipe that has already been upvoted
-    it('Should return recipe already upvoted', (done) => {
-      request
-        .post('/api/v1/users/signin')
-        .send({
-          email: 'damilareolatubosun@yahoo.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          auth = res.body.jwt;
-          request
-            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
-            .set('auth', auth)
-            .end((err, res) => {
-              expect(res.status).to.equal(400);
-              expect(res.body.message).to.equal('Recipe Already Upvoted');
-              done();
-            });
-        });
-    });
+
     // Test downvote a recipe that was previously upvoted
     it('Should downvote a recipe that was previously upvoted', (done) => {
       request
@@ -592,32 +560,12 @@ describe('Recipe controller', () => {
             .set('auth', auth)
             .end((err, res) => {
               expect(res.status).to.equal(201);
-              expect(res.body.message).to.equal('Recipe Downvoted');
+              expect(res.body.message).to.equal('Recipe downvoted');
               done();
             });
         });
     });
-    // Test downvote recipe that has already been downvoted
-    it('Should return recipe already downvoted', (done) => {
-      request
-        .post('/api/v1/users/signin')
-        .send({
-          email: 'damilareolatubosun@yahoo.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          auth = res.body.jwt;
-          request
-            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/false`)
-            .set('auth', auth)
-            .end((err, res) => {
-              expect(res.status).to.equal(400);
-              expect(res.body.message).to.equal('Recipe Already Downvoted');
-              done();
-            });
-        });
-    });
+
     // Test downvote recipe
     it('Should downvote a recipe', (done) => {
       request
@@ -633,7 +581,7 @@ describe('Recipe controller', () => {
             .post(`/api/v1/recipes/${testUser.recipe3.id}/vote/false`)
             .set('auth', auth)
             .end((err, res) => {
-              expect(res.status).to.equal(200);
+              expect(res.status).to.equal(201);
               done();
             });
         });

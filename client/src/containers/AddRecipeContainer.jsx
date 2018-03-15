@@ -8,16 +8,18 @@ import * as filestackActions from '../actions/filestack';
 /**
  *
  *
- * @export
+ *
  * @class AddRecipe
  * @extends {Component}
+ *
  */
 class AddRecipeContainer extends Component {
   /**
    * Creates an instance of AddRecipe.
-   * @param {any} props
    *
    * @memberOf AddRecipe
+   * @param {any} props
+   *
    */
   constructor(props) {
     super(props);
@@ -25,34 +27,36 @@ class AddRecipeContainer extends Component {
     this.uploadImage = this.uploadImage.bind(this);
   }
 
+
   /**
    *
    *
-   *  @param {any} event
-   * @returns {string} redirect
-   * @memberOf AddRecipe
+   * @param {any} event
+   * @returns {any} any
+   * @memberOf AddRecipeContainer
    */
   handleSubmit(event) {
     event.preventDefault();
     this.props.recipesActions.addRecipe();
   }
 
+
   /**
+   * @memberOf AddRecipeContainer
    *
    *
-   *@returns {void}
-   * @memberOf AddRecipe
+   * @returns {void}
    */
   uploadImage() {
     this.props.filestackActions.uploadImage();
   }
 
+
   /**
    *
-   *
+   * @memberOf AddRecipeContainer
    * @returns {void}
    *
-   * @memberOf AddRecipe
    */
   render() {
     const { image } = this.props;

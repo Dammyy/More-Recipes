@@ -6,18 +6,19 @@ import PropTypes from 'prop-types';
 import { MyFavoriteRecipes } from '../components';
 import * as recipesActionCreators from '../actions/recipes';
 
+
 /**
  *
  *
- * @class Recipes
+ * @class MyFavoriteRecipesContainer
  * @extends {Component}
  */
 class MyFavoriteRecipesContainer extends Component {
   /**
-   *@returns {void}
    *
+   * @memberOf MyFavoriteRecipesContainer
+   * @returns {void}
    *
-   * @memberOf Recipes
    */
   componentDidMount() {
     this.getMyFavorites();
@@ -25,27 +26,20 @@ class MyFavoriteRecipesContainer extends Component {
 
   /**
    *
-   *
-   * @returns {void}
    * @memberOf HomeRecipes
+   * @returns {void}
+   *
    */
   getMyFavorites() {
     this.props.recipesActions.getFavoritedRecipes(this.props.userId);
   }
-  /**
-   *
-   *
-   * @param {any} index
-   *@returns {void}
-   * @memberOf Recipes
-   */
+
 
   /**
    *
-   *
+   * @memberOf MyFavoriteRecipesContainer
    * @returns {void}
    *
-   * @memberOf HomeRecipes
    */
   render() {
     const {

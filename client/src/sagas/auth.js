@@ -10,17 +10,18 @@ import {
   signupFailure
 } from '../actions/auth';
 /**
-   * @param {*} state
-   * @param {*} form
-   * @returns {*} state
+   * @param {any} state
+   * @param {object} form
+   * @returns {object} form details
    */
 const getForm = (state, form) => {
   return state.getIn(['form', form]).toJS();
 };
+
 /**
-   * @param {*} route
-   * @param {*} details
-   * @returns {*} response
+   * @param {string} route
+   * @param {object} details
+   * @returns {object} response from server
    */
 const sendDetails = (route, details) => {
   return fetch(`/api/v1/users/${route}`, {
@@ -39,8 +40,8 @@ const sendDetails = (route, details) => {
     });
 };
 /**
-   * @param {*} action
-   * @returns {*} res
+   * @param {object} action
+   * @returns {object} result
    */
 function* loginUser(action) {
   const { redirection } = action;
@@ -59,8 +60,8 @@ function* loginUser(action) {
 }
 
 /**
-   * @param {*} action
-   * @returns {*} res
+   * @param {object} action
+   * @returns {object} result
    */
 function* signupUser(action) {
   const { redirection } = action;
@@ -80,14 +81,14 @@ function* signupUser(action) {
 
 /**
    *
-   * @returns {*} res
+   * @returns {any} dispatched action
    */
 export function* watchLoginUser() {
   yield takeLatest(LOGIN, loginUser);
 }
 /**
    *
-   * @returns {void}
+   * @returns {any} dispatched action
    */
 export function* watchSignupUser() {
   yield takeLatest(SIGNUP, signupUser);

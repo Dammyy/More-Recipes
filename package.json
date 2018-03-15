@@ -63,6 +63,7 @@
     "sequelize": "^4.20.1",
     "sequelize-cli": "^3.0.0",
     "supertest": "^3.0.0",
+    "swagger-ui-express": "^2.0.15",
     "sweetalert": "^2.1.0",
     "validator": "^9.2.0",
     "webpack": "^3.8.1",

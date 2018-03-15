@@ -9,19 +9,20 @@ import {
   BtnProfile
 } from './Buttons';
 
+const BtnCurrent = (() => (
+  'Recipes Catalog'
+));
+
 /**
  *
  *
- * @class RecipeListHome
+ * @class AllRecipesList
  * @extends {PureComponent}
  */
 class AllRecipesList extends PureComponent {
   /**
-   *
-   *
+   * @memberOf AllRecipesList
    * @returns {void}
-   *
-   * @memberOf RecipeList
    */
   render() {
     const {
@@ -36,6 +37,7 @@ class AllRecipesList extends PureComponent {
           <BtnFavorites />
           <BtnProfile />
         </div>
+        <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="col-md-12 latest-recipes">
           <div className="row">
             {
