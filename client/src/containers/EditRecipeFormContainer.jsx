@@ -103,10 +103,10 @@ EditRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
   image: PropTypes.string.isRequired,
-  recipe: PropTypes.arrayOf(PropTypes.any).isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  recipe: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   params: PropTypes.objectOf(PropTypes.any).isRequired,
-  router: PropTypes.arrayOf(PropTypes.any).isRequired
+  router: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default connect(

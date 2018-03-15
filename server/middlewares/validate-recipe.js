@@ -4,7 +4,7 @@
  * @param {Object} res - response object
  * @param {Function} next - next function
  * @returns {Object} validate Input
- * 
+ *
   */
 const validateInput = (req, res, next) => {
   if (!req.body.title) {
