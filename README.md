@@ -51,7 +51,7 @@ The full API documentation can be viewed here https://more-recipes-dammyy.heroku
 + Webpack: a static module bundler for modern JavaScript applications
 
 ## Contributions
-To learn about how to contribute please click here https://github.com/Dammyy/More-Recipes/blob/feature/155881525/implement-feedback/contributing.md
+To learn about how to contribute please click [here] (https://github.com/Dammyy/More-Recipes/blob/feature/155881525/implement-feedback/contributing.md)
 
 ## Run Test
 ```bash
