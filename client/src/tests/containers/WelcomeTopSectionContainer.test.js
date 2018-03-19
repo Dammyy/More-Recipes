@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WelcomeTopSectionContainer, mapStateToProps } from
-  '../../../containers/WelcomeTopSectionContainer';
+  '../../containers/WelcomeTopSectionContainer';
 
 
 describe('WelcomeTopSectionContainer', () => {

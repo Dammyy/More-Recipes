@@ -187,4 +187,4 @@ ViewRecipe.defaultProps = {
   userId: undefined
 };
 
-export default (ViewRecipe);
+export default ViewRecipe;

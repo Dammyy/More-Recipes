@@ -13,7 +13,7 @@ import * as filestackActions from '../actions/filestack';
  * @extends {Component}
  *
  */
-class AddRecipeContainer extends Component {
+export class AddRecipeContainer extends Component {
   /**
    * Creates an instance of AddRecipe.
    *
@@ -40,7 +40,6 @@ class AddRecipeContainer extends Component {
     this.props.recipesActions.addRecipe();
   }
 
-
   /**
    * @memberOf AddRecipeContainer
    *
@@ -50,7 +49,6 @@ class AddRecipeContainer extends Component {
   uploadImage() {
     this.props.filestackActions.uploadImage();
   }
-
 
   /**
    *
@@ -75,7 +73,7 @@ class AddRecipeContainer extends Component {
  * @param {any} state
  * @returns {object} image
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     image: state.getIn(['filestack', 'url'], '')
   };

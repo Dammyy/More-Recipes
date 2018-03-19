@@ -14,7 +14,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class RecipesContainer
  * @extends {Component}
  */
-class RecipesContainer extends Component {
+export class RecipesContainer extends Component {
   /**
    * Creates an instance of RecipesContainer.
    * @param {any} props
@@ -36,7 +36,6 @@ class RecipesContainer extends Component {
   componentDidMount() {
     this.getRecipes();
   }
-
 
   /**
    * @memberOf RecipesContainer
@@ -102,7 +101,7 @@ class RecipesContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
     userId: state.getIn(['auth', 'userId']),

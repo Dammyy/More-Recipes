@@ -13,7 +13,7 @@ import * as reviewsActionCreators from '../actions/reviews';
  * @class AddReviewFormContainer
  * @extends {Component}
  */
-class AddReviewFormContainer extends Component {
+export class AddReviewFormContainer extends Component {
   /**
    * Creates an instance of AddReviewFormContainer.
    * @param {any} props

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ViewRecipeContainer, mapStateToProps } from
-  '../../../containers/ViewRecipeContainer';
+  '../../containers/ViewRecipeContainer';
 
 describe('ViewRecipeContainer', () => {
   describe('Snapshot', () => {
@@ -35,7 +35,7 @@ describe('ViewRecipeContainer', () => {
   });
 
   describe('Instance methods', () => {
-    describe('logout', () => {
+    describe('View recipe Container instance methods', () => {
       test('', () => {
         const props = {
           reviewsActions: { getReviews: jest.fn(), },
@@ -43,12 +43,14 @@ describe('ViewRecipeContainer', () => {
             getRecipe: jest.fn(),
             getRecipeNoUserId: jest.fn(),
             favoriteRecipe: jest.fn(),
+            voteRecipe: jest.fn(),
           },
           favoriteRecipe: jest.fn(),
           params: { id: 1 },
         };
         const component = shallow(<ViewRecipeContainer {...props} />);
         component.instance().favoriteRecipe();
+        component.instance().voteRecipe();
         expect(props.reviewsActions.getReviews).toHaveBeenCalled();
         expect(props.reviewsActions.getReviews).toBeCalled();
       });

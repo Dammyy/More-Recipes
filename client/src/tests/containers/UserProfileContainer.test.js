@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { UserProfileContainer, mapStateToProps } from
-  '../../../containers/UserProfileContainer';
+  '../../containers/UserProfileContainer';
 
 describe('UserProfileContainer', () => {
   describe('Snapshot', () => {

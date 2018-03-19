@@ -13,7 +13,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class MostPopularRecipesContainer
  * @extends {Component}
  */
-class MostPopularRecipesContainer extends Component {
+export class MostPopularRecipesContainer extends Component {
   /**
    *
    * @memberOf MostPopularRecipesContainer
@@ -21,9 +21,18 @@ class MostPopularRecipesContainer extends Component {
    *
    */
   componentDidMount() {
-    this.props.recipesActions.mostFavoritedRecipes();
+    this.getMostFavoritedRecipes();
   }
 
+  /**
+   *
+   * @memberOf MostPopularRecipesContainer
+   * @returns {void}
+   *
+   */
+  getMostFavoritedRecipes() {
+    this.props.recipesActions.mostFavoritedRecipes();
+  }
 
   /**
    *
@@ -52,7 +61,7 @@ class MostPopularRecipesContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'popular'], Immutable.List()).toJS()
   };

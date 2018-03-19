@@ -63,4 +63,4 @@ UserProfile.propTypes = {
   user: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
-export default (UserProfile);
+export default UserProfile;

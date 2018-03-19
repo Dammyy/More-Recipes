@@ -44,7 +44,7 @@ const BtnFavorites = UserIsAuthenticated(options)(() => (
  * @class RecipeListHome
  * @extends {PureComponent}
  */
-class Search extends PureComponent {
+export class Search extends PureComponent {
   /**
    *
    *
@@ -94,7 +94,7 @@ class Search extends PureComponent {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
   };
