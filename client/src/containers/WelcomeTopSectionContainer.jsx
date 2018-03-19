@@ -13,7 +13,7 @@ import * as authActionCreators from '../actions/auth';
  * @class WelcomeTopSectionContainer
  * @extends {Component}
  */
-class WelcomeTopSectionContainer extends Component {
+export class WelcomeTopSectionContainer extends Component {
   /**
    * Creates an instance of WelcomeTopSectionContainer.
    * @param {any} props
@@ -66,7 +66,7 @@ class WelcomeTopSectionContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     firstName: state.getIn(['auth', 'firstName'])
   };
@@ -78,7 +78,7 @@ function mapStateToProps(state) {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     authActions: bindActionCreators(authActionCreators, dispatch)
   };

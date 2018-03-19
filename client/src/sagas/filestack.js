@@ -6,7 +6,7 @@ import {
   uploadImageFailure
 } from '../actions/filestack';
 
-const pick = () => {
+export const pick = () => {
   return new Promise((resolve, reject) => {
     filepicker.pick(
       {
@@ -30,9 +30,9 @@ const pick = () => {
 /**
  * @returns {any} result
  */
-function* uploadImage() {
+export function* uploadImage() {
   try {
-    const url = yield call(pick); // call the pick function
+    const url = yield call(pick);
     yield put(uploadImageSuccess(url));
   } catch (error) {
     yield put(uploadImageFailure());
@@ -45,6 +45,7 @@ function* uploadImage() {
  * @returns {any} dispatched action
  */
 function* watchUploadImage() {
-  yield takeLatest(UPLOAD_IMAGE, uploadImage);
+  yield call(takeLatest, UPLOAD_IMAGE, uploadImage);
 }
+
 export default watchUploadImage;

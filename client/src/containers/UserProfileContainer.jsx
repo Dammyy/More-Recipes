@@ -13,7 +13,7 @@ import * as usersActionCreator from '../actions/user';
  * @extends {Component}
  *
  */
-class UserProfileContainer extends Component {
+export class UserProfileContainer extends Component {
   /**
    *
    * @memberOf UserProfileContainer
@@ -56,7 +56,7 @@ class UserProfileContainer extends Component {
  * @returns {object} user
  * @returns {object} userId
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     user: state.getIn(['user', 'user'], Immutable.List()).toJS(),
     userId: state.getIn(['auth', 'userId']),

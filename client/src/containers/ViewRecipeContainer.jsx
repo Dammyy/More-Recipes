@@ -8,14 +8,13 @@ import * as recipesActionCreators from '../actions/recipes';
 import { AddReviewFormContainer } from '../containers';
 import * as reviewsActionCreators from '../actions/reviews';
 
-
 /**
  *
  *
  * @class ViewRecipeContainer
  * @extends {Component}
  */
-class ViewRecipeContainer extends Component {
+export class ViewRecipeContainer extends Component {
   /**
    * Creates an instance of ViewRecipeContainer.
    * @param {any} props
@@ -112,7 +111,7 @@ class ViewRecipeContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
     userId: state.getIn(['auth', 'userId']),

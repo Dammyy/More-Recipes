@@ -45,31 +45,25 @@ export const sendDetails = (route, details) => {
    */
 export function* loginUser(action) {
   const { redirection } = action;
-  const details = yield select(getForm, 'login');
-  let result;
   try {
-    // const result = yield call(sendDetails, 'signin', details.values);
-    result = yield call(sendDetails, 'signin', details.values);
-
-    // localStorage.setItem('token', result.jwt);
-    // yield put(loginSuccess(result.jwt));
-    // toastr.success(result.message);
-    // yield put(push(redirection));
+    const details = yield select(getForm, 'login');
+    const result = yield call(sendDetails, 'signin', details.values);
+    localStorage.setItem('token', result.jwt);
+    yield put(loginSuccess(result.jwt));
+    toastr.success(result.message);
+    yield put(push(redirection));
   } catch (e) {
     const { message } = e;
-    console.log('+++++++++++++++++++++++++++++++++', e);
     yield put(loginFailure());
     toastr.error(message);
   }
-  yield put(loginSuccess(result.jwt));
-  yield put(push(redirection));
 }
 
 /**
    * @param {object} action
    * @returns {object} result
    */
-function* signupUser(action) {
+export function* signupUser(action) {
   const { redirection } = action;
   try {
     const details = yield select(getForm, 'signup');
@@ -90,12 +84,12 @@ function* signupUser(action) {
    * @returns {any} dispatched action
    */
 export function* watchLoginUser() {
-  yield takeLatest(LOGIN, loginUser);
+  yield call(takeLatest, LOGIN, loginUser);
 }
 /**
    *
    * @returns {any} dispatched action
    */
 export function* watchSignupUser() {
-  yield takeLatest(SIGNUP, signupUser);
+  yield call(takeLatest, SIGNUP, signupUser);
 }

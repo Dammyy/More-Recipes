@@ -8,7 +8,7 @@ import { getUserDetailsSuccess, getUserDetailsFailure } from '../actions/user';
  * @param {number} userId
  * @returns {Object} response from server
  */
-const getUserInfo = (userId) => {
+export const getUserInfo = (userId) => {
   return fetch(`/api/v1/users/profile/${userId}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const getUserInfo = (userId) => {
  * @returns {object} result
  *
  */
-function* usersDetails(action) {
+export function* usersDetails(action) {
   const { userId } = action;
   try {
     const userInfo = yield call(getUserInfo, userId);
@@ -51,7 +51,7 @@ function* usersDetails(action) {
  *
  */
 function* watchUsersDetails() {
-  yield takeLatest(GET_USER_DETAILS, usersDetails);
+  yield call(takeLatest, GET_USER_DETAILS, usersDetails);
 }
 
 export default watchUsersDetails;
