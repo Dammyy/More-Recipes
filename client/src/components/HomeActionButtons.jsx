@@ -9,7 +9,7 @@ import AuthCheck from '../utils/authWrapper';
  * @class HomeActionButtons
  * @extends {PureComponent}
  */
-class HomeActionButtons extends PureComponent {
+export class HomeActionButtons extends PureComponent {
   /**
    *
    * @memberOf HomeActionButtons

@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { push } from 'react-router-redux';
 import { takeLatest } from 'redux-saga';
+import fetchMock from 'fetch-mock';
 import { put, call, select } from 'redux-saga/effects';
 import { LOGIN, SIGNUP } from '../../constants/auth';
 
@@ -80,6 +81,34 @@ describe('Testing auth saga', () => {
       put(push(action.redirection))
     );
     assert.deepEqual(gen.next().done, true);
+  });
+
+  it('should send details', async () => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = { headers };
+    fetchMock.postOnce('/api/v1/users/signin', {
+      body: {
+        message: 'fuck you',
+        jwt: 'shit',
+        id: 36,
+        email: ''
+      }
+    }, options);
+
+    const response = {
+      message: 'fuck you',
+      jwt: 'shit',
+      id: 36,
+      email: ''
+    };
+
+    const res = await sendDetails(
+      'signin',
+      { email: 'email@mail.com', password: 'cool' }
+    );
+
+    expect(res).toBeTruthy();
+    expect(res).toEqual(response);
   });
 
   it('Should create an account for a user', () => {

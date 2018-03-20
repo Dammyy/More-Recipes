@@ -9,7 +9,7 @@ import {
   AuthenticatedBtnProfile
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'My Favorite Recipes'
 ));
 /**

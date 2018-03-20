@@ -1,29 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RecipesListHome component Snapshot component should fully render 1`] = `
+exports[`Reviews component Snapshot component should fully render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RecipesListHome
+  Symbol(enzyme.__unrendered__): <MostPopularRecipesList
     recipes={
-      Object {
-        "recipes": Array [
-          Object {
-            "createdAt": "2018-03-17T13:19:08.125Z",
-            "details": "rgergergreg",
-            "downvotes": 0,
-            "favorited": 0,
-            "id": 47,
-            "image": "https://cdn.filestackcontent.com/fP7AK7PSNWpcFQJojqTU",
-            "ingredients": "sdgewrgreg",
-            "reviews": 0,
-            "title": "fgrgrgr",
-            "updatedAt": "2018-03-17T13:19:08.125Z",
-            "upvotes": 0,
-            "userId": 27,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "createdAt": "2018-03-17T13:19:08.125Z",
+          "details": "rgergergreg",
+          "downvotes": 0,
+          "favorited": 0,
+          "id": 47,
+          "image": "https://cdn.filestackcontent.com/fP7AK7PSNWpcFQJojqTU",
+          "ingredients": "sdgewrgreg",
+          "reviews": 0,
+          "title": "fgrgrgr",
+          "updatedAt": "2018-03-17T13:19:08.125Z",
+          "upvotes": 0,
+          "userId": 1,
+        },
+      ]
     }
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -42,7 +40,7 @@ ShallowWrapper {
         <h3
           className="latest-h3"
         >
-          Latest Recipes
+          Most Popular Recipes
         </h3>,
         <div
           className="col-md-12 latest-recipes"
@@ -50,7 +48,7 @@ ShallowWrapper {
           <div
             className="row"
           >
-            <RecipeHome
+            <PopularRecipes
               createdAt="2018-03-17T13:19:08.125Z"
               details="rgergergreg"
               downvotes={0}
@@ -62,7 +60,7 @@ ShallowWrapper {
               title="fgrgrgr"
               updatedAt="2018-03-17T13:19:08.125Z"
               upvotes={0}
-              userId={27}
+              userId={1}
             />
           </div>
         </div>,
@@ -75,11 +73,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Latest Recipes",
+          "children": "Most Popular Recipes",
           "className": "latest-h3",
         },
         "ref": null,
-        "rendered": "Latest Recipes",
+        "rendered": "Most Popular Recipes",
         "type": "h3",
       },
       Object {
@@ -90,7 +88,7 @@ ShallowWrapper {
           "children": <div
             className="row"
           >
-            <RecipeHome
+            <PopularRecipes
               createdAt="2018-03-17T13:19:08.125Z"
               details="rgergergreg"
               downvotes={0}
@@ -102,7 +100,7 @@ ShallowWrapper {
               title="fgrgrgr"
               updatedAt="2018-03-17T13:19:08.125Z"
               upvotes={0}
-              userId={27}
+              userId={1}
             />
           </div>,
           "className": "col-md-12 latest-recipes",
@@ -114,7 +112,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <RecipeHome
+              <PopularRecipes
                 createdAt="2018-03-17T13:19:08.125Z"
                 details="rgergergreg"
                 downvotes={0}
@@ -126,7 +124,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />,
             ],
             "className": "row",
@@ -149,7 +147,7 @@ ShallowWrapper {
                 "title": "fgrgrgr",
                 "updatedAt": "2018-03-17T13:19:08.125Z",
                 "upvotes": 0,
-                "userId": 27,
+                "userId": 1,
               },
               "ref": null,
               "rendered": null,
@@ -173,7 +171,7 @@ ShallowWrapper {
           <h3
             className="latest-h3"
           >
-            Latest Recipes
+            Most Popular Recipes
           </h3>,
           <div
             className="col-md-12 latest-recipes"
@@ -181,7 +179,7 @@ ShallowWrapper {
             <div
               className="row"
             >
-              <RecipeHome
+              <PopularRecipes
                 createdAt="2018-03-17T13:19:08.125Z"
                 details="rgergergreg"
                 downvotes={0}
@@ -193,7 +191,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />
             </div>
           </div>,
@@ -206,11 +204,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Latest Recipes",
+            "children": "Most Popular Recipes",
             "className": "latest-h3",
           },
           "ref": null,
-          "rendered": "Latest Recipes",
+          "rendered": "Most Popular Recipes",
           "type": "h3",
         },
         Object {
@@ -221,7 +219,7 @@ ShallowWrapper {
             "children": <div
               className="row"
             >
-              <RecipeHome
+              <PopularRecipes
                 createdAt="2018-03-17T13:19:08.125Z"
                 details="rgergergreg"
                 downvotes={0}
@@ -233,7 +231,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />
             </div>,
             "className": "col-md-12 latest-recipes",
@@ -245,7 +243,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <RecipeHome
+                <PopularRecipes
                   createdAt="2018-03-17T13:19:08.125Z"
                   details="rgergergreg"
                   downvotes={0}
@@ -257,7 +255,7 @@ ShallowWrapper {
                   title="fgrgrgr"
                   updatedAt="2018-03-17T13:19:08.125Z"
                   upvotes={0}
-                  userId={27}
+                  userId={1}
                 />,
               ],
               "className": "row",
@@ -280,7 +278,7 @@ ShallowWrapper {
                   "title": "fgrgrgr",
                   "updatedAt": "2018-03-17T13:19:08.125Z",
                   "upvotes": 0,
-                  "userId": 27,
+                  "userId": 1,
                 },
                 "ref": null,
                 "rendered": null,

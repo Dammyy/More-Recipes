@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import RecipesListHome from '../../components/RecipesListHome';
 
-describe('Reviews component', () => {
+describe('RecipesListHome component', () => {
   describe('Snapshot', () => {
     test('component should fully render', () => {
       const props = {

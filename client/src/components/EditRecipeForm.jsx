@@ -13,7 +13,7 @@ import {
   BtnCancel
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'UPDATE RECIPE'
 ));
 /**
@@ -23,7 +23,7 @@ const BtnCurrent = (() => (
  * @class EditRecipeForm
  * @extends {PureComponent}
  */
-class EditRecipeForm extends PureComponent {
+export class EditRecipeForm extends PureComponent {
   /**
    *
    * @memberOf EditRecipeForm
@@ -148,7 +148,7 @@ EditRecipeForm.propTypes = {
   redirectUser: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   const { recipes, id } = ownProps;
   const recipe = recipes.recipes
     .filter(recp => recp.id === parseInt(id, 10))[0];

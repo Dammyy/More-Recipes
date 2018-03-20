@@ -1,29 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RecipesListHome component Snapshot component should fully render 1`] = `
+exports[`BtnCurrent Snapshot component should fully render 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RecipesListHome
+  Symbol(enzyme.__unrendered__): <BtnCurrent />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): "My Favorite Recipes",
+  Symbol(enzyme.__nodes__): Array [
+    "My Favorite Recipes",
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`MyFavoriteRecipes component Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <MyFavoriteRecipes
     recipes={
-      Object {
-        "recipes": Array [
-          Object {
-            "createdAt": "2018-03-17T13:19:08.125Z",
-            "details": "rgergergreg",
-            "downvotes": 0,
-            "favorited": 0,
-            "id": 47,
-            "image": "https://cdn.filestackcontent.com/fP7AK7PSNWpcFQJojqTU",
-            "ingredients": "sdgewrgreg",
-            "reviews": 0,
-            "title": "fgrgrgr",
-            "updatedAt": "2018-03-17T13:19:08.125Z",
-            "upvotes": 0,
-            "userId": 27,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "createdAt": "2018-03-17T13:19:08.125Z",
+          "details": "rgergergreg",
+          "downvotes": 0,
+          "favorited": 0,
+          "id": 47,
+          "image": "https://cdn.filestackcontent.com/fP7AK7PSNWpcFQJojqTU",
+          "ingredients": "sdgewrgreg",
+          "reviews": 0,
+          "title": "fgrgrgr",
+          "updatedAt": "2018-03-17T13:19:08.125Z",
+          "upvotes": 0,
+          "userId": 1,
+        },
+      ]
     }
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -39,11 +63,20 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <h3
-          className="latest-h3"
+        <div
+          className="text-left-buttons btn-buttons"
         >
-          Latest Recipes
-        </h3>,
+          <BtnHome />
+          <BtnCatalog />
+          <BtnAdd />
+          <Connect(authRecipeButtons(BtnManageRecipes)) />
+          <Connect(authRecipeButtons(BtnProfile)) />
+        </div>,
+        <div
+          className="current-page btn-buttons"
+        >
+          <BtnCurrent />
+        </div>,
         <div
           className="col-md-12 latest-recipes"
         >
@@ -62,7 +95,7 @@ ShallowWrapper {
               title="fgrgrgr"
               updatedAt="2018-03-17T13:19:08.125Z"
               upvotes={0}
-              userId={27}
+              userId={1}
             />
           </div>
         </div>,
@@ -75,12 +108,84 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Latest Recipes",
-          "className": "latest-h3",
+          "children": Array [
+            <BtnHome />,
+            <BtnCatalog />,
+            <BtnAdd />,
+            <Connect(authRecipeButtons(BtnManageRecipes)) />,
+            <Connect(authRecipeButtons(BtnProfile)) />,
+          ],
+          "className": "text-left-buttons btn-buttons",
         },
         "ref": null,
-        "rendered": "Latest Recipes",
-        "type": "h3",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <BtnCurrent />,
+          "className": "current-page btn-buttons",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
       },
       Object {
         "instance": null,
@@ -102,7 +207,7 @@ ShallowWrapper {
               title="fgrgrgr"
               updatedAt="2018-03-17T13:19:08.125Z"
               upvotes={0}
-              userId={27}
+              userId={1}
             />
           </div>,
           "className": "col-md-12 latest-recipes",
@@ -126,7 +231,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />,
             ],
             "className": "row",
@@ -135,7 +240,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": "47",
+              "key": undefined,
               "nodeType": "class",
               "props": Object {
                 "createdAt": "2018-03-17T13:19:08.125Z",
@@ -149,7 +254,7 @@ ShallowWrapper {
                 "title": "fgrgrgr",
                 "updatedAt": "2018-03-17T13:19:08.125Z",
                 "upvotes": 0,
-                "userId": 27,
+                "userId": 1,
               },
               "ref": null,
               "rendered": null,
@@ -170,11 +275,20 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <h3
-            className="latest-h3"
+          <div
+            className="text-left-buttons btn-buttons"
           >
-            Latest Recipes
-          </h3>,
+            <BtnHome />
+            <BtnCatalog />
+            <BtnAdd />
+            <Connect(authRecipeButtons(BtnManageRecipes)) />
+            <Connect(authRecipeButtons(BtnProfile)) />
+          </div>,
+          <div
+            className="current-page btn-buttons"
+          >
+            <BtnCurrent />
+          </div>,
           <div
             className="col-md-12 latest-recipes"
           >
@@ -193,7 +307,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />
             </div>
           </div>,
@@ -206,12 +320,84 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Latest Recipes",
-            "className": "latest-h3",
+            "children": Array [
+              <BtnHome />,
+              <BtnCatalog />,
+              <BtnAdd />,
+              <Connect(authRecipeButtons(BtnManageRecipes)) />,
+              <Connect(authRecipeButtons(BtnProfile)) />,
+            ],
+            "className": "text-left-buttons btn-buttons",
           },
           "ref": null,
-          "rendered": "Latest Recipes",
-          "type": "h3",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <BtnCurrent />,
+            "className": "current-page btn-buttons",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
         },
         Object {
           "instance": null,
@@ -233,7 +419,7 @@ ShallowWrapper {
                 title="fgrgrgr"
                 updatedAt="2018-03-17T13:19:08.125Z"
                 upvotes={0}
-                userId={27}
+                userId={1}
               />
             </div>,
             "className": "col-md-12 latest-recipes",
@@ -257,7 +443,7 @@ ShallowWrapper {
                   title="fgrgrgr"
                   updatedAt="2018-03-17T13:19:08.125Z"
                   upvotes={0}
-                  userId={27}
+                  userId={1}
                 />,
               ],
               "className": "row",
@@ -266,7 +452,7 @@ ShallowWrapper {
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": "47",
+                "key": undefined,
                 "nodeType": "class",
                 "props": Object {
                   "createdAt": "2018-03-17T13:19:08.125Z",
@@ -280,7 +466,7 @@ ShallowWrapper {
                   "title": "fgrgrgr",
                   "updatedAt": "2018-03-17T13:19:08.125Z",
                   "upvotes": 0,
-                  "userId": 27,
+                  "userId": 1,
                 },
                 "ref": null,
                 "rendered": null,

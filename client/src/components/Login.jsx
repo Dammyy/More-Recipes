@@ -5,14 +5,14 @@ import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import * as authActionCreators from '../actions/auth';
- 
+
 /**
  *
  *
  * @class Login
  * @extends {PureComponent}
  */
-class Login extends PureComponent {
+export class Login extends PureComponent {
   /**
    * @memberOf Login
    * @param {any} event

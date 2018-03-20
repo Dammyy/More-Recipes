@@ -34,3 +34,10 @@ describe('Testing filestack saga functions', () => {
     assert.deepEqual(gen.next().done, true);
   });
 });
+
+describe('Pick', () => {
+  it('returns a promise', () => {
+    const result = pick();
+    expect(result).toBeInstanceOf(Promise);
+  });
+});

@@ -127,9 +127,9 @@ export const selectedImage = (state) => {
    * @param {any} state
    * @returns {object} recipe details
    */
-export const addRecipeForm = (state) => {
-  return state.getIn(['form', 'recipe']).toJS();
-};
+export const addRecipeForm = state => (
+  state.getIn(['form', 'recipe']).toJS()
+);
 
 /**
  * @param {object} recipe
@@ -393,9 +393,9 @@ export function* getMostFavoritedRecipes() {
    * @param {any} state
    * @returns {object} search query
    */
-export const searchForm = (state) => {
-  return state.getIn(['form', 'search']).toJS();
-};
+export const searchForm = state => (
+  state.getIn(['form', 'search']).toJS()
+);
 
 /**
  *

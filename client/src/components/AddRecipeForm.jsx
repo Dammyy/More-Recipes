@@ -10,14 +10,14 @@ import {
   BtnCancel
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'Add new recipe'
 ));
 /**
  * @class AddRecipeForm
  * @extends {PureComponent}
  */
-class AddRecipeForm extends PureComponent {
+export class AddRecipeForm extends PureComponent {
   /** html component to render
    *
    * @memberOf AddRecipeForm
