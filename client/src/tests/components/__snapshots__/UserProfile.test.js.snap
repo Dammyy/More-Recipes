@@ -26,9 +26,9 @@ ShallowWrapper {
         >
           <BtnHome />
           <BtnCatalog />
-          <Connect(authRecipeButtons(Component)) />
-          <Connect(authRecipeButtons(Component)) />
-          <Connect(authRecipeButtons(Component)) />
+          <Connect(authRecipeButtons(BtnAdd)) />
+          <Connect(authRecipeButtons(BtnManageRecipes)) />
+          <Connect(authRecipeButtons(BtnFavorites)) />
         </div>,
         <div
           className="profile-display"
@@ -107,9 +107,9 @@ ShallowWrapper {
           "children": Array [
             <BtnHome />,
             <BtnCatalog />,
-            <Connect(authRecipeButtons(Component)) />,
-            <Connect(authRecipeButtons(Component)) />,
-            <Connect(authRecipeButtons(Component)) />,
+            <Connect(authRecipeButtons(BtnAdd)) />,
+            <Connect(authRecipeButtons(BtnManageRecipes)) />,
+            <Connect(authRecipeButtons(BtnFavorites)) />,
           ],
           "className": "text-left-buttons btn-buttons",
         },
@@ -496,9 +496,9 @@ ShallowWrapper {
           >
             <BtnHome />
             <BtnCatalog />
-            <Connect(authRecipeButtons(Component)) />
-            <Connect(authRecipeButtons(Component)) />
-            <Connect(authRecipeButtons(Component)) />
+            <Connect(authRecipeButtons(BtnAdd)) />
+            <Connect(authRecipeButtons(BtnManageRecipes)) />
+            <Connect(authRecipeButtons(BtnFavorites)) />
           </div>,
           <div
             className="profile-display"
@@ -577,9 +577,9 @@ ShallowWrapper {
             "children": Array [
               <BtnHome />,
               <BtnCatalog />,
-              <Connect(authRecipeButtons(Component)) />,
-              <Connect(authRecipeButtons(Component)) />,
-              <Connect(authRecipeButtons(Component)) />,
+              <Connect(authRecipeButtons(BtnAdd)) />,
+              <Connect(authRecipeButtons(BtnManageRecipes)) />,
+              <Connect(authRecipeButtons(BtnFavorites)) />,
             ],
             "className": "text-left-buttons btn-buttons",
           },

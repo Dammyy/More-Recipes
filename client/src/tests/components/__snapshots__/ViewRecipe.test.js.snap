@@ -1,5 +1,299 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ViewRecipe component FavoriteSnapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Favorite
+    downvotes={1}
+    fav=""
+    id={1}
+    upvotes={1}
+    userId={undefined}
+    vote={3}
+    voteRecipe={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        undefined,
+        " ",
+        <i
+          className="fa fa-heart"
+        />,
+      ],
+      "className": "btn btn-favorited",
+      "onClick": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      undefined,
+      " ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "fa fa-heart",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+    ],
+    "type": "button",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          " ",
+          <i
+            className="fa fa-heart"
+          />,
+        ],
+        "className": "btn btn-favorited",
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+        " ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "fa fa-heart",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+      ],
+      "type": "button",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`ViewRecipe component FavoriteSnapshot component should fully render if fav is fal;se 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Favorite
+    downvotes={1}
+    fav="false"
+    id={1}
+    upvotes={1}
+    userId={undefined}
+    vote={3}
+    voteRecipe={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        undefined,
+        " ",
+        <i
+          className="fa fa-heart"
+        />,
+      ],
+      "className": "btn btn-favorited",
+      "onClick": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      undefined,
+      " ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "fa fa-heart",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+    ],
+    "type": "button",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          " ",
+          <i
+            className="fa fa-heart"
+          />,
+        ],
+        "className": "btn btn-favorited",
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+        " ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "fa fa-heart",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+      ],
+      "type": "button",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`ViewRecipe component FavoriteSnapshot component should fully render if fav is true 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Favorite
+    downvotes={1}
+    fav="true"
+    id={1}
+    upvotes={1}
+    userId={undefined}
+    vote={3}
+    voteRecipe={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        undefined,
+        " ",
+        <i
+          className="fa fa-heart favorited"
+        />,
+      ],
+      "className": "btn btn-favorited",
+      "onClick": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      undefined,
+      " ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "fa fa-heart favorited",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+    ],
+    "type": "button",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          " ",
+          <i
+            className="fa fa-heart favorited"
+          />,
+        ],
+        "className": "btn btn-favorited",
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+        " ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "fa fa-heart favorited",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+      ],
+      "type": "button",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
 exports[`ViewRecipe component Snapshot ViewRecipe should fully render 1`] = `
 ShallowWrapper {
   "length": 1,
@@ -82,11 +376,11 @@ ShallowWrapper {
           className="text-left-buttons btn-buttons"
         >
           <BtnHome />
-          <Connect(authRecipeButtons(Component)) />
+          <Connect(authRecipeButtons(BtnAdd)) />
           <BtnCatalog />
-          <Connect(authRecipeButtons(Component)) />
-          <Connect(authRecipeButtons(Component)) />
-          <Connect(authRecipeButtons(Component)) />
+          <Connect(authRecipeButtons(BtnManageRecipes)) />
+          <Connect(authRecipeButtons(BtnFavorites)) />
+          <Connect(authRecipeButtons(BtnProfile)) />
         </div>,
         <div
           className="row"
@@ -136,7 +430,7 @@ ShallowWrapper {
                         id="popular-votes"
                       >
                         <li>
-                          <Connect(authDeleteRecipe(Component))
+                          <Connect(authDeleteRecipe(Favorite))
                             fav={undefined}
                             favoriteRecipe={[MockFunction]}
                             favorited={undefined}
@@ -183,11 +477,11 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <BtnHome />,
-            <Connect(authRecipeButtons(Component)) />,
+            <Connect(authRecipeButtons(BtnAdd)) />,
             <BtnCatalog />,
-            <Connect(authRecipeButtons(Component)) />,
-            <Connect(authRecipeButtons(Component)) />,
-            <Connect(authRecipeButtons(Component)) />,
+            <Connect(authRecipeButtons(BtnManageRecipes)) />,
+            <Connect(authRecipeButtons(BtnFavorites)) />,
+            <Connect(authRecipeButtons(BtnProfile)) />,
             false,
           ],
           "className": "text-left-buttons btn-buttons",
@@ -302,7 +596,7 @@ ShallowWrapper {
                         id="popular-votes"
                       >
                         <li>
-                          <Connect(authDeleteRecipe(Component))
+                          <Connect(authDeleteRecipe(Favorite))
                             fav={undefined}
                             favoriteRecipe={[MockFunction]}
                             favorited={undefined}
@@ -386,7 +680,7 @@ ShallowWrapper {
                         id="popular-votes"
                       >
                         <li>
-                          <Connect(authDeleteRecipe(Component))
+                          <Connect(authDeleteRecipe(Favorite))
                             fav={undefined}
                             favoriteRecipe={[MockFunction]}
                             favorited={undefined}
@@ -467,7 +761,7 @@ ShallowWrapper {
                           id="popular-votes"
                         >
                           <li>
-                            <Connect(authDeleteRecipe(Component))
+                            <Connect(authDeleteRecipe(Favorite))
                               fav={undefined}
                               favoriteRecipe={[MockFunction]}
                               favorited={undefined}
@@ -555,7 +849,7 @@ ShallowWrapper {
                             id="popular-votes"
                           >
                             <li>
-                              <Connect(authDeleteRecipe(Component))
+                              <Connect(authDeleteRecipe(Favorite))
                                 fav={undefined}
                                 favoriteRecipe={[MockFunction]}
                                 favorited={undefined}
@@ -626,7 +920,7 @@ ShallowWrapper {
                             id="popular-votes"
                           >
                             <li>
-                              <Connect(authDeleteRecipe(Component))
+                              <Connect(authDeleteRecipe(Favorite))
                                 fav={undefined}
                                 favoriteRecipe={[MockFunction]}
                                 favorited={undefined}
@@ -680,7 +974,7 @@ ShallowWrapper {
                               id="popular-votes"
                             >
                               <li>
-                                <Connect(authDeleteRecipe(Component))
+                                <Connect(authDeleteRecipe(Favorite))
                                   fav={undefined}
                                   favoriteRecipe={[MockFunction]}
                                   favorited={undefined}
@@ -750,7 +1044,7 @@ ShallowWrapper {
                                 id="popular-votes"
                               >
                                 <li>
-                                  <Connect(authDeleteRecipe(Component))
+                                  <Connect(authDeleteRecipe(Favorite))
                                     fav={undefined}
                                     favoriteRecipe={[MockFunction]}
                                     favorited={undefined}
@@ -824,7 +1118,7 @@ ShallowWrapper {
                               "props": Object {
                                 "children": Array [
                                   <li>
-                                    <Connect(authDeleteRecipe(Component))
+                                    <Connect(authDeleteRecipe(Favorite))
                                       fav={undefined}
                                       favoriteRecipe={[MockFunction]}
                                       favorited={undefined}
@@ -849,7 +1143,7 @@ ShallowWrapper {
                                   "key": undefined,
                                   "nodeType": "host",
                                   "props": Object {
-                                    "children": <Connect(authDeleteRecipe(Component))
+                                    "children": <Connect(authDeleteRecipe(Favorite))
                                       fav={undefined}
                                       favoriteRecipe={[MockFunction]}
                                       favorited={undefined}
@@ -982,11 +1276,11 @@ ShallowWrapper {
             className="text-left-buttons btn-buttons"
           >
             <BtnHome />
-            <Connect(authRecipeButtons(Component)) />
+            <Connect(authRecipeButtons(BtnAdd)) />
             <BtnCatalog />
-            <Connect(authRecipeButtons(Component)) />
-            <Connect(authRecipeButtons(Component)) />
-            <Connect(authRecipeButtons(Component)) />
+            <Connect(authRecipeButtons(BtnManageRecipes)) />
+            <Connect(authRecipeButtons(BtnFavorites)) />
+            <Connect(authRecipeButtons(BtnProfile)) />
           </div>,
           <div
             className="row"
@@ -1036,7 +1330,7 @@ ShallowWrapper {
                           id="popular-votes"
                         >
                           <li>
-                            <Connect(authDeleteRecipe(Component))
+                            <Connect(authDeleteRecipe(Favorite))
                               fav={undefined}
                               favoriteRecipe={[MockFunction]}
                               favorited={undefined}
@@ -1083,11 +1377,11 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <BtnHome />,
-              <Connect(authRecipeButtons(Component)) />,
+              <Connect(authRecipeButtons(BtnAdd)) />,
               <BtnCatalog />,
-              <Connect(authRecipeButtons(Component)) />,
-              <Connect(authRecipeButtons(Component)) />,
-              <Connect(authRecipeButtons(Component)) />,
+              <Connect(authRecipeButtons(BtnManageRecipes)) />,
+              <Connect(authRecipeButtons(BtnFavorites)) />,
+              <Connect(authRecipeButtons(BtnProfile)) />,
               false,
             ],
             "className": "text-left-buttons btn-buttons",
@@ -1202,7 +1496,7 @@ ShallowWrapper {
                           id="popular-votes"
                         >
                           <li>
-                            <Connect(authDeleteRecipe(Component))
+                            <Connect(authDeleteRecipe(Favorite))
                               fav={undefined}
                               favoriteRecipe={[MockFunction]}
                               favorited={undefined}
@@ -1286,7 +1580,7 @@ ShallowWrapper {
                           id="popular-votes"
                         >
                           <li>
-                            <Connect(authDeleteRecipe(Component))
+                            <Connect(authDeleteRecipe(Favorite))
                               fav={undefined}
                               favoriteRecipe={[MockFunction]}
                               favorited={undefined}
@@ -1367,7 +1661,7 @@ ShallowWrapper {
                             id="popular-votes"
                           >
                             <li>
-                              <Connect(authDeleteRecipe(Component))
+                              <Connect(authDeleteRecipe(Favorite))
                                 fav={undefined}
                                 favoriteRecipe={[MockFunction]}
                                 favorited={undefined}
@@ -1455,7 +1749,7 @@ ShallowWrapper {
                               id="popular-votes"
                             >
                               <li>
-                                <Connect(authDeleteRecipe(Component))
+                                <Connect(authDeleteRecipe(Favorite))
                                   fav={undefined}
                                   favoriteRecipe={[MockFunction]}
                                   favorited={undefined}
@@ -1526,7 +1820,7 @@ ShallowWrapper {
                               id="popular-votes"
                             >
                               <li>
-                                <Connect(authDeleteRecipe(Component))
+                                <Connect(authDeleteRecipe(Favorite))
                                   fav={undefined}
                                   favoriteRecipe={[MockFunction]}
                                   favorited={undefined}
@@ -1580,7 +1874,7 @@ ShallowWrapper {
                                 id="popular-votes"
                               >
                                 <li>
-                                  <Connect(authDeleteRecipe(Component))
+                                  <Connect(authDeleteRecipe(Favorite))
                                     fav={undefined}
                                     favoriteRecipe={[MockFunction]}
                                     favorited={undefined}
@@ -1650,7 +1944,7 @@ ShallowWrapper {
                                   id="popular-votes"
                                 >
                                   <li>
-                                    <Connect(authDeleteRecipe(Component))
+                                    <Connect(authDeleteRecipe(Favorite))
                                       fav={undefined}
                                       favoriteRecipe={[MockFunction]}
                                       favorited={undefined}
@@ -1724,7 +2018,7 @@ ShallowWrapper {
                                 "props": Object {
                                   "children": Array [
                                     <li>
-                                      <Connect(authDeleteRecipe(Component))
+                                      <Connect(authDeleteRecipe(Favorite))
                                         fav={undefined}
                                         favoriteRecipe={[MockFunction]}
                                         favorited={undefined}
@@ -1749,7 +2043,7 @@ ShallowWrapper {
                                     "key": undefined,
                                     "nodeType": "host",
                                     "props": Object {
-                                      "children": <Connect(authDeleteRecipe(Component))
+                                      "children": <Connect(authDeleteRecipe(Favorite))
                                         fav={undefined}
                                         favoriteRecipe={[MockFunction]}
                                         favorited={undefined}

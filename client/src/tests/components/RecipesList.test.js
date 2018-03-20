@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Search, mapStateToProps } from '../../components/Search';
+import RecipesList from '../../components/RecipesList';
 
-describe('Search component', () => {
+describe('Reviews component', () => {
   describe('Snapshot', () => {
     test('component should fully render', () => {
       const props = {
@@ -21,21 +21,12 @@ describe('Search component', () => {
             updatedAt: '2018-03-17T13:19:08.125Z',
             userId: 1
           }
-        ]
+        ],
+        deleteRecipe: jest.fn(),
+        userId: 1
       };
-      const component = shallow(<Search {...props} />);
+      const component = shallow(<RecipesList {...props} />);
       expect(component).toMatchSnapshot();
-    });
-  });
-});
-describe('Search component functions', () => {
-  describe('mapStateToProps', () => {
-    it('returns the expected properties', () => {
-      const state = {
-        getIn: () => ({ toJS: jest.fn() })
-      };
-      const mstp = mapStateToProps(state);
-      expect(mstp).toHaveProperty('recipes');
     });
   });
 });

@@ -8,7 +8,7 @@ import RecipeHome from './RecipeHome';
  * @class RecipeListHome
  * @extends {PureComponent}
  */
-class RecipesListHome extends PureComponent {
+export class RecipesListHome extends PureComponent {
   /**
    *
    *

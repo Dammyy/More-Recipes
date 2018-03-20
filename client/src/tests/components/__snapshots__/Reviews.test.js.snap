@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reviews component Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Reviews
+    reviews={
+      Array [
+        Object {
+          "createdAt": "2018-03-17T13:19:08.125Z",
+          "details": "rgergergreg",
+          "downvotes": 0,
+          "favorited": 0,
+          "id": 47,
+          "image": "https://cdn.filestackcontent.com/fP7AK7PSNWpcFQJojqTU",
+          "ingredients": "sdgewrgreg",
+          "reviews": 0,
+          "title": "fgrgrgr",
+          "updatedAt": "2018-03-17T13:19:08.125Z",
+          "upvotes": 0,
+          "userId": 1,
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Array [
+    <div
+      id="recipe-reviews"
+    >
+      <div
+        id="review"
+      />
+      <div
+        id="review-author"
+      >
+        <small>
+          By 
+        </small>
+      </div>
+    </div>,
+  ],
+  Symbol(enzyme.__nodes__): Array [
+    Array [
+      <div
+        id="recipe-reviews"
+      >
+        <div
+          id="review"
+        />
+        <div
+          id="review-author"
+        >
+          <small>
+            By 
+          </small>
+        </div>
+      </div>,
+    ],
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

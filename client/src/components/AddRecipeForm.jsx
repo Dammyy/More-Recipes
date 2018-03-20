@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import {
   BtnHome,
-  BtnManageRecipes,
-  BtnFavorites,
-  BtnProfile,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile,
   BtnCatalog,
   BtnCancel
 } from './Buttons';
@@ -30,9 +30,9 @@ class AddRecipeForm extends PureComponent {
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
           <BtnCatalog />
-          <BtnManageRecipes />
-          <BtnFavorites />
-          <BtnProfile />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
           <BtnCancel />
         </div>
         <div className="current-page btn-buttons"><BtnCurrent /></div>

@@ -1,0 +1,623 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Navbar />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="logo-link-wrap"
+        >
+          <Link
+            className="nav-link header-logo"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/"
+          >
+            <img
+              alt="logo"
+              className="navbar-brand"
+              height={50}
+              src="img/logo.jpg"
+              width={50}
+            />
+            More Recipes
+          </Link>
+        </div>,
+        <button
+          aria-controls="navbarsExampleDefault"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          data-target="#navbarsExampleDefault"
+          data-toggle="collapse"
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>,
+        <div
+          className="collapse navbar-collapse"
+          id="navbarsExampleDefault"
+        >
+          <ul
+            className="navbar-nav mr-auto"
+          />
+          <form
+            className="form-inline my-2 my-md-0"
+            onSubmit={[Function]}
+          >
+            <Field
+              className="form-control"
+              component="input"
+              name="search"
+              placeholder="Search"
+            />
+            <button
+              className="btn btn-search my-2 my-sm-0"
+              type="submit"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-search"
+              />
+               Search
+            </button>
+          </form>
+        </div>,
+      ],
+      "className": "navbar navbar-expand-md navbar-light",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Link
+            className="nav-link header-logo"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/"
+          >
+            <img
+              alt="logo"
+              className="navbar-brand"
+              height={50}
+              src="img/logo.jpg"
+              width={50}
+            />
+            More Recipes
+          </Link>,
+          "className": "logo-link-wrap",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <img
+                alt="logo"
+                className="navbar-brand"
+                height={50}
+                src="img/logo.jpg"
+                width={50}
+              />,
+              "More Recipes",
+            ],
+            "className": "nav-link header-logo",
+            "onlyActiveOnIndex": false,
+            "style": Object {},
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "logo",
+                "className": "navbar-brand",
+                "height": 50,
+                "src": "img/logo.jpg",
+                "width": 50,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "More Recipes",
+          ],
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-controls": "navbarsExampleDefault",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
+          "children": <span
+            className="navbar-toggler-icon"
+          />,
+          "className": "navbar-toggler",
+          "data-target": "#navbarsExampleDefault",
+          "data-toggle": "collapse",
+          "type": "button",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "navbar-toggler-icon",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "span",
+        },
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <ul
+              className="navbar-nav mr-auto"
+            />,
+            <form
+              className="form-inline my-2 my-md-0"
+              onSubmit={[Function]}
+            >
+              <Field
+                className="form-control"
+                component="input"
+                name="search"
+                placeholder="Search"
+              />
+              <button
+                className="btn btn-search my-2 my-sm-0"
+                type="submit"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-search"
+                />
+                 Search
+              </button>
+            </form>,
+          ],
+          "className": "collapse navbar-collapse",
+          "id": "navbarsExampleDefault",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "navbar-nav mr-auto",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "ul",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Field
+                  className="form-control"
+                  component="input"
+                  name="search"
+                  placeholder="Search"
+                />,
+                <button
+                  className="btn btn-search my-2 my-sm-0"
+                  type="submit"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-search"
+                  />
+                   Search
+                </button>,
+              ],
+              "className": "form-inline my-2 my-md-0",
+              "onSubmit": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "form-control",
+                  "component": "input",
+                  "name": "search",
+                  "placeholder": "Search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <i
+                      aria-hidden="true"
+                      className="fa fa-search"
+                    />,
+                    " Search",
+                  ],
+                  "className": "btn btn-search my-2 my-sm-0",
+                  "type": "submit",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "aria-hidden": "true",
+                      "className": "fa fa-search",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "i",
+                  },
+                  " Search",
+                ],
+                "type": "button",
+              },
+            ],
+            "type": "form",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="logo-link-wrap"
+          >
+            <Link
+              className="nav-link header-logo"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/"
+            >
+              <img
+                alt="logo"
+                className="navbar-brand"
+                height={50}
+                src="img/logo.jpg"
+                width={50}
+              />
+              More Recipes
+            </Link>
+          </div>,
+          <button
+            aria-controls="navbarsExampleDefault"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            className="navbar-toggler"
+            data-target="#navbarsExampleDefault"
+            data-toggle="collapse"
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>,
+          <div
+            className="collapse navbar-collapse"
+            id="navbarsExampleDefault"
+          >
+            <ul
+              className="navbar-nav mr-auto"
+            />
+            <form
+              className="form-inline my-2 my-md-0"
+              onSubmit={[Function]}
+            >
+              <Field
+                className="form-control"
+                component="input"
+                name="search"
+                placeholder="Search"
+              />
+              <button
+                className="btn btn-search my-2 my-sm-0"
+                type="submit"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-search"
+                />
+                 Search
+              </button>
+            </form>
+          </div>,
+        ],
+        "className": "navbar navbar-expand-md navbar-light",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Link
+              className="nav-link header-logo"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/"
+            >
+              <img
+                alt="logo"
+                className="navbar-brand"
+                height={50}
+                src="img/logo.jpg"
+                width={50}
+              />
+              More Recipes
+            </Link>,
+            "className": "logo-link-wrap",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt="logo"
+                  className="navbar-brand"
+                  height={50}
+                  src="img/logo.jpg"
+                  width={50}
+                />,
+                "More Recipes",
+              ],
+              "className": "nav-link header-logo",
+              "onlyActiveOnIndex": false,
+              "style": Object {},
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "logo",
+                  "className": "navbar-brand",
+                  "height": 50,
+                  "src": "img/logo.jpg",
+                  "width": 50,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              "More Recipes",
+            ],
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-controls": "navbarsExampleDefault",
+            "aria-expanded": "false",
+            "aria-label": "Toggle navigation",
+            "children": <span
+              className="navbar-toggler-icon"
+            />,
+            "className": "navbar-toggler",
+            "data-target": "#navbarsExampleDefault",
+            "data-toggle": "collapse",
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "navbar-toggler-icon",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "span",
+          },
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <ul
+                className="navbar-nav mr-auto"
+              />,
+              <form
+                className="form-inline my-2 my-md-0"
+                onSubmit={[Function]}
+              >
+                <Field
+                  className="form-control"
+                  component="input"
+                  name="search"
+                  placeholder="Search"
+                />
+                <button
+                  className="btn btn-search my-2 my-sm-0"
+                  type="submit"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-search"
+                  />
+                   Search
+                </button>
+              </form>,
+            ],
+            "className": "collapse navbar-collapse",
+            "id": "navbarsExampleDefault",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "navbar-nav mr-auto",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "ul",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <Field
+                    className="form-control"
+                    component="input"
+                    name="search"
+                    placeholder="Search"
+                  />,
+                  <button
+                    className="btn btn-search my-2 my-sm-0"
+                    type="submit"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="fa fa-search"
+                    />
+                     Search
+                  </button>,
+                ],
+                "className": "form-inline my-2 my-md-0",
+                "onSubmit": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "form-control",
+                    "component": "input",
+                    "name": "search",
+                    "placeholder": "Search",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <i
+                        aria-hidden="true"
+                        className="fa fa-search"
+                      />,
+                      " Search",
+                    ],
+                    "className": "btn btn-search my-2 my-sm-0",
+                    "type": "submit",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "aria-hidden": "true",
+                        "className": "fa fa-search",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "i",
+                    },
+                    " Search",
+                  ],
+                  "type": "button",
+                },
+              ],
+              "type": "form",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "nav",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

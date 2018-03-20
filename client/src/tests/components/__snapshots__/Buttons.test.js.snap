@@ -1,0 +1,739 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BtnAdd Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnAdd />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-pencil-square-o"
+        />,
+        " Add Recipe",
+      ],
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/catalog/add",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-pencil-square-o",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Add Recipe",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-pencil-square-o"
+          />,
+          " Add Recipe",
+        ],
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/catalog/add",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-pencil-square-o",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Add Recipe",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnCancel Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnCancel />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-times"
+        />,
+        " Cancel",
+      ],
+      "className": "btn btn-danger btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/catalog/manage",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-times",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Cancel",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-times"
+          />,
+          " Cancel",
+        ],
+        "className": "btn btn-danger btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/catalog/manage",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-times",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Cancel",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnCatalog Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnCatalog />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-list-alt"
+        />,
+        " Catalog",
+      ],
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/catalog",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-list-alt",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Catalog",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-list-alt"
+          />,
+          " Catalog",
+        ],
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/catalog",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-list-alt",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Catalog",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnCurrent Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnCurrent />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): "My Recipes",
+  Symbol(enzyme.__nodes__): Array [
+    "My Recipes",
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnEdit Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnEdit
+    id={1}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": "Edit",
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "params": Object {
+        "id": 1,
+      },
+      "style": Object {},
+      "to": "edit/1",
+    },
+    "ref": null,
+    "rendered": "Edit",
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "Edit",
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "params": Object {
+          "id": 1,
+        },
+        "style": Object {},
+        "to": "edit/1",
+      },
+      "ref": null,
+      "rendered": "Edit",
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnFavorites Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnFavorites />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          className="fa fa-heart"
+        />,
+        " My Favorites",
+      ],
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/catalog/favorites",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "fa fa-heart",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " My Favorites",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            className="fa fa-heart"
+          />,
+          " My Favorites",
+        ],
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/catalog/favorites",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "fa fa-heart",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " My Favorites",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnHome Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnHome />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          className="fa fa-home"
+        />,
+        " Home",
+      ],
+      "className": "btn btn-info btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "fa fa-home",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Home",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            className="fa fa-home"
+          />,
+          " Home",
+        ],
+        "className": "btn btn-info btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "fa fa-home",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Home",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnManageRecipes Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnManageRecipes />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-list-alt"
+        />,
+        " Manage Recipes",
+      ],
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/catalog/manage",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-list-alt",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Manage Recipes",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-list-alt"
+          />,
+          " Manage Recipes",
+        ],
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/catalog/manage",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-list-alt",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Manage Recipes",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`BtnProfile Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BtnProfile />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-user-o"
+        />,
+        " My Profile",
+      ],
+      "className": "btn btn-publish btn-manage",
+      "onlyActiveOnIndex": false,
+      "style": Object {},
+      "to": "/profile",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-user-o",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " My Profile",
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-user-o"
+          />,
+          " My Profile",
+        ],
+        "className": "btn btn-publish btn-manage",
+        "onlyActiveOnIndex": false,
+        "style": Object {},
+        "to": "/profile",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-user-o",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " My Profile",
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

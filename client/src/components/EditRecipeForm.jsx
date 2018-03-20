@@ -5,10 +5,10 @@ import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import {
   BtnHome,
-  BtnAdd,
-  BtnManageRecipes,
-  BtnFavorites,
-  BtnProfile,
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile,
   BtnCatalog,
   BtnCancel
 } from './Buttons';
@@ -49,11 +49,11 @@ class EditRecipeForm extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
-          <BtnAdd />
+          <AuthenticatedBtnAdd />
           <BtnCatalog />
-          <BtnManageRecipes />
-          <BtnFavorites />
-          <BtnProfile />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
           <Link
             className="btn btn-primary"
             to={`view/${this.props.id}`}
