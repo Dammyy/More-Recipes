@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Navbar } from '../../components/Navbar';
+import { Navbar, mapDispatchToProps } from '../../components/Navbar';
 
 describe('Navbar component', () => {
   describe('Snapshot', () => {
@@ -22,5 +22,12 @@ describe('Instance methods', () => {
       component.instance().handleSubmit({ preventDefault: () => {} });
       expect(props.recipesActions.searchRecipes).toBeCalled();
     });
+  });
+});
+describe('mapDispatchToProps', () => {
+  it('', () => {
+    const dispatch = jest.fn();
+    const mdtp = mapDispatchToProps(dispatch);
+    expect(mdtp).toHaveProperty('recipesActions');
   });
 });

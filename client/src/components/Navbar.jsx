@@ -99,7 +99,7 @@ export class Navbar extends Component {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
   };

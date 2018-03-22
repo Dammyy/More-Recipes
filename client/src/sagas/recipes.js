@@ -40,7 +40,7 @@ export function* getRecipes(action) {
  * @param {number} id
  * @returns {Object} response from server
  */
-const fetchSingleRecipe = id =>
+export const fetchSingleRecipe = id =>
   fetch(`/api/v1/recipes/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const fetchSingleRecipe = id =>
       throw response;
     });
 
-const checkFavorite = (id, userId) =>
+export const checkFavorite = (id, userId) =>
   fetch(`/api/v1/recipes/${userId}/favorites/${id}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
@@ -263,11 +263,11 @@ export const editRecipe = (id, recipe) => {
  */
 export function* updateRecipe(action) {
   const { id } = action;
-  const image = yield select(selectedImage);
-  const recipe = yield select(updateRecipeForm);
-  const newRecipe = recipe.values;
-  newRecipe.image = image;
   try {
+    const image = yield select(selectedImage);
+    const recipe = yield select(updateRecipeForm);
+    const newRecipe = recipe.values;
+    newRecipe.image = image;
     const updRecipe = yield call(editRecipe, id, newRecipe);
     yield put(recipeActions.updateRecipeSuccess());
     toastr.success(updRecipe.message);
@@ -435,7 +435,7 @@ export function* getSearchResults() {
  * @param {string} voteType
  * @returns {Object} response from server
  */
-const vRecipe = (id, voteType) => {
+export const vRecipe = (id, voteType) => {
   return fetch(`/api/v1/recipes/${id}/vote/${voteType}`, {
     headers: new Headers({
       'Content-Type': 'application/json',

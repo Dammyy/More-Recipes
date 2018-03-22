@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddReviewFormContainer }
+import { AddReviewFormContainer, mapDispatchToProps }
   from '../../containers/AddReviewFormContainer';
 
 describe('AddReviewFormContainer', () => {
@@ -28,6 +28,14 @@ describe('AddReviewFormContainer', () => {
         component.instance().handleSubmit({ preventDefault: () => {} });
         expect(props.reviewsActions.addReview).toBeCalled();
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('reviewsActions');
+      expect(mdtp).toHaveProperty('resetForm');
     });
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MostPopularRecipesContainer, mapStateToProps } from
+import { MostPopularRecipesContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/MostPopularRecipesContainer';
 
 describe('MostPopularRecipesContainer', () => {
@@ -38,6 +38,13 @@ describe('MostPopularRecipesContainer', () => {
         component.instance().getMostFavoritedRecipes();
         expect(props.recipesActions.mostFavoritedRecipes).toHaveBeenCalled();
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('recipesActions');
     });
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WelcomeTopSectionContainer, mapStateToProps } from
+import { WelcomeTopSectionContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/WelcomeTopSectionContainer';
 
 
@@ -36,6 +36,13 @@ describe('WelcomeTopSectionContainer', () => {
         const mstp = mapStateToProps(state);
         expect(mstp).toHaveProperty('firstName');
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('authActions');
     });
   });
 });

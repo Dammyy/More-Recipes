@@ -189,7 +189,7 @@ Signup.propTypes = {
  * @param {any} dispatch
  * @returns {object}  object
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     authActions: bindActionCreators(authActionCreators, dispatch)
   };

@@ -30,13 +30,6 @@ export class EditRecipeForm extends PureComponent {
    * @returns {void}
    *
    */
-  componentDidMount() {
-    if (!this.props.recipes) {
-      this.props.redirectUser('/catalog');
-    }
-  }
-
-
   /**
    *
    *
@@ -144,8 +137,6 @@ EditRecipeForm.propTypes = {
   id: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
-  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  redirectUser: PropTypes.func.isRequired
 };
 
 export const mapStateToProps = (state, ownProps) => {

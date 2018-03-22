@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { EditRecipeContainer, mapStateToProps } from
+import { EditRecipeContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/EditRecipeFormContainer';
 
 describe('EditRecipeContainer', () => {
@@ -51,6 +51,14 @@ describe('EditRecipeContainer', () => {
         expect(props.recipesActions.updateRecipe).toBeCalled();
         expect(props.filestackActions.uploadImage).toBeCalled();
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('recipesActions');
+      expect(mdtp).toHaveProperty('filestackActions');
     });
   });
 });

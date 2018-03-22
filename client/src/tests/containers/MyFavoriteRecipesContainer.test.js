@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyFavoriteRecipesContainer, mapStateToProps } from
+import { MyFavoriteRecipesContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/MyFavoriteRecipesContainer';
 
 describe('MyFavoriteRecipesContainer', () => {
@@ -41,6 +41,13 @@ describe('MyFavoriteRecipesContainer', () => {
         component.instance().getMyFavorites();
         expect(props.recipesActions.getFavoritedRecipes).toHaveBeenCalled();
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('recipesActions');
     });
   });
 });

@@ -11,7 +11,7 @@ import ViewRecipe from './ViewRecipe';
 import NotFoundPage from './NotFoundPage';
 import AllRecipesList from './AllRecipesList';
 import MyFavoriteRecipes from './MyFavoriteRecipes';
-import AddReviewForm from './AddReviewForm';
+import AuthenticatedAddReviewForm from './AddReviewForm';
 import Reviews from './Reviews';
 import MostPopularRecipesList from './MostPopularRecipesList';
 import Search from './Search';
@@ -20,4 +20,5 @@ import UserProfile from './UserProfile';
 export { Home, Welcome, AddRecipeForm, Recipe,
   RecipesList, Archive, Login, Signup, EditRecipeForm,
   ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes,
-  AddReviewForm, Reviews, MostPopularRecipesList, Search, UserProfile };
+  AuthenticatedAddReviewForm, Reviews
+  , MostPopularRecipesList, Search, UserProfile };

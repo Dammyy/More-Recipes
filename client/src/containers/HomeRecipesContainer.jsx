@@ -76,7 +76,7 @@ export function mapStateToProps(state) {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch),
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddRecipeContainer }
+import { AddRecipeContainer, mapDispatchToProps, mapStateToProps }
   from '../../containers/AddRecipeContainer';
 
 describe('AddRecipeContainer', () => {
@@ -30,5 +30,23 @@ describe('AddRecipeContainer', () => {
         expect(props.recipesActions.addRecipe).toBeCalled();
       });
     });
+  });
+});
+
+describe('mapStateToProps', () => {
+  it('returns the expected properties', () => {
+    const state = {
+      getIn: () => ({ toJS: jest.fn() })
+    };
+    const mstp = mapStateToProps(state);
+    expect(mstp).toHaveProperty('image');
+  });
+});
+
+describe('mapDispatchToProps', () => {
+  it('', () => {
+    const dispatch = jest.fn();
+    const mdtp = mapDispatchToProps(dispatch);
+    expect(mdtp).toHaveProperty('recipesActions');
   });
 });

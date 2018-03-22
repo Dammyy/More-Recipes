@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reset } from 'redux-form';
 import PropTypes from 'prop-types';
-import { AddReviewForm } from '../components';
+import { AuthenticatedAddReviewForm } from '../components';
 import * as reviewsActionCreators from '../actions/reviews';
 
 
@@ -48,7 +48,7 @@ export class AddReviewFormContainer extends Component {
    */
   render() {
     return (
-      <AddReviewForm
+      <AuthenticatedAddReviewForm
         handleSubmit={this.handleSubmit}
       />);
   }
@@ -60,7 +60,7 @@ export class AddReviewFormContainer extends Component {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     reviewsActions: bindActionCreators(reviewsActionCreators, dispatch),
     resetForm: bindActionCreators(reset, dispatch),

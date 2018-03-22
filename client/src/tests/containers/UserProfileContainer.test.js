@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { UserProfileContainer, mapStateToProps } from
+import { UserProfileContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/UserProfileContainer';
 
 describe('UserProfileContainer', () => {
@@ -40,6 +40,13 @@ describe('UserProfileContainer', () => {
         expect(mstp).toHaveProperty('userId');
         expect(mstp).toHaveProperty('user');
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('userActions');
     });
   });
 });

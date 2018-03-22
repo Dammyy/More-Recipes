@@ -12,12 +12,17 @@ describe('BtnView Snapshot', () => {
   });
 });
 describe('BtnDelete Snapshot', () => {
+  const props = {
+    id: 1,
+    deleteRecipe: jest.fn()
+  };
   test('component should fully render', () => {
-    const props = {
-      id: 1
-    };
     const component = shallow(<BtnDelete {...props} />);
     expect(component).toMatchSnapshot();
+  });
+  test('simulates click', () => {
+    const component = shallow(<BtnDelete {...props} />);
+    component.find('.btn-del').simulate('click');
   });
 });
 describe('BtnEdit Snapshot', () => {

@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { takeLatest } from 'redux-saga';
+import fetchMock from 'fetch-mock';
 import { put, call } from 'redux-saga/effects';
 import { GET_USER_DETAILS } from '../../constants/user';
 
@@ -53,4 +54,41 @@ describe('Testing reviews saga functions', () => {
     );
     assert.deepEqual(gen.next().done, true);
   });
+  it('should getUserInfo', async () => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = { headers };
+    fetchMock.getOnce('/api/v1/users/profile/27', {
+      body: {
+        statusCode: '200',
+        recipeCount: 13,
+        favsCount: 1,
+        user: {
+          id: 27,
+          firstName: 'Damilare',
+          lastName: 'Olatubosun',
+          email: 'damilareolatubosun@yahoo.com',
+          createdAt: '2018-02-05T10:44:15.456Z',
+          updatedAt: '2018-02-05T10:44:15.456Z'
+        }
+      }
+    }, options);
+
+    const response = {
+      statusCode: '200',
+      recipeCount: 13,
+      favsCount: 1,
+      user: {
+        id: 27,
+        firstName: 'Damilare',
+        lastName: 'Olatubosun',
+        email: 'damilareolatubosun@yahoo.com',
+        createdAt: '2018-02-05T10:44:15.456Z',
+        updatedAt: '2018-02-05T10:44:15.456Z'
+      }
+    };
+    const res = await getUserInfo(27);
+    expect(res).toBeTruthy();
+    expect(res).toEqual(response);
+  });
 });
+

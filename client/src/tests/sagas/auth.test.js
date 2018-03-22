@@ -88,16 +88,16 @@ describe('Testing auth saga', () => {
     const options = { headers };
     fetchMock.postOnce('/api/v1/users/signin', {
       body: {
-        message: 'fuck you',
-        jwt: 'shit',
+        message: 'Registration successful',
+        jwt: 'kbjkjkbhbj',
         id: 36,
         email: ''
       }
     }, options);
 
     const response = {
-      message: 'fuck you',
-      jwt: 'shit',
+      message: 'Registration successful',
+      jwt: 'kbjkjkbhbj',
       id: 36,
       email: ''
     };

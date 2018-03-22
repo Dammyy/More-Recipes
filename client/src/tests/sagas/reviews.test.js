@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { takeLatest } from 'redux-saga';
+import fetchMock from 'fetch-mock';
 import { put, call, select } from 'redux-saga/effects';
 import { ADD_REVIEW, GET_REVIEWS } from '../../constants/reviews';
 
@@ -102,5 +103,79 @@ describe('Testing reviews saga functions', () => {
       gen.next(fetchedReviews).value,
       put(getReviewsSuccess(fetchedReviews.reviews))
     );
+  });
+  it('should publish a review', async () => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = { headers };
+    fetchMock.postOnce('/api/v1/recipes/1/reviews', {
+      body: {
+        message: 'Review added successfully',
+        statusCode: '201',
+        review: {
+          id: 120,
+          review: 'a new review',
+          userId: 27,
+          recipeId: 47,
+          updatedAt: '2018-03-21T10:32:25.204Z',
+          createdAt: '2018-03-21T10:32:25.204Z'
+        }
+      }
+    }, options);
+
+    const response = {
+      message: 'Review added successfully',
+      statusCode: '201',
+      review: {
+        id: 120,
+        review: 'a new review',
+        userId: 27,
+        recipeId: 47,
+        updatedAt: '2018-03-21T10:32:25.204Z',
+        createdAt: '2018-03-21T10:32:25.204Z'
+      }
+    };
+
+    const res = await publishReview(
+      1,
+      { review: 'fsvgwgrgrwfgr' }
+    );
+    expect(res).toBeTruthy();
+    expect(res).toEqual(response);
+  });
+  it('should fetch reviews for a recipe', async () => {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = { headers };
+    fetchMock.getOnce('/api/v1/reviews/10', {
+      body: {
+        statusCode: '200',
+        reviews: [
+          {
+            id: 103,
+            review: 'sdshshdsdjgha',
+            createdAt: '2018-03-12T01:35:18.705Z',
+            updatedAt: '2018-03-12T01:35:18.705Z',
+            userId: 27,
+            recipeId: 17
+          }
+        ]
+      }
+    }, options);
+
+    const response = {
+      statusCode: '200',
+      reviews: [
+        {
+          id: 103,
+          review: 'sdshshdsdjgha',
+          createdAt: '2018-03-12T01:35:18.705Z',
+          updatedAt: '2018-03-12T01:35:18.705Z',
+          userId: 27,
+          recipeId: 17
+        }
+      ]
+    };
+    const res = await fetchReviews(10);
+    expect(res).toBeTruthy();
+    expect(res).toEqual(response);
   });
 });

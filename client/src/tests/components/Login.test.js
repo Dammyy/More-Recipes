@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Login } from '../../components/Login';
+import { Login, mapDispatchToProps } from '../../components/Login';
 
 describe('Login component', () => {
   describe('Snapshot', () => {
@@ -22,6 +22,13 @@ describe('Instance methods', () => {
       const component = shallow(<Login {...props} />);
       component.instance().handleSubmit({ preventDefault: () => {} });
       expect(props.authActions.loginUser).toBeCalled();
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('authActions');
     });
   });
 });

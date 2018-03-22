@@ -55,11 +55,12 @@ export const Favorite = (props) => {
 
 const AuthenticatedFavorite = UserIsAuthenticated(options)(Favorite);
 
-const Vote = UserIsAuthenticated(options)((props) => {
+export const Vote = ((props) => {
   return (
     <div>
       <button
         className="btn btn-favorited"
+        id="btn-thumbs-up"
         onClick={() => props.voteRecipe(props.id, 'true')}
       >
         <li>
@@ -71,6 +72,7 @@ const Vote = UserIsAuthenticated(options)((props) => {
       </button >
       <button
         className="btn btn-favorited"
+        id="btn-thumbs-down"
         onClick={() => props.voteRecipe(props.id, 'false')}
       >
         <li>
@@ -83,7 +85,7 @@ const Vote = UserIsAuthenticated(options)((props) => {
     </div>
   );
 });
-
+const AuthenticatedVote = UserIsAuthenticated(options)(Vote);
 
 /**
  *
@@ -145,7 +147,7 @@ class ViewRecipe extends PureComponent {
                             favorited={favorited}
                           />
                         </li>
-                        <Vote
+                        <AuthenticatedVote
                           id={this.props.id}
                           voteRecipe={this.props.voteRecipe}
                           vote={this.props.recipe.vote}
@@ -198,5 +200,16 @@ ViewRecipe.defaultProps = {
   image: undefined,
   userId: undefined
 };
-
+Vote.propTypes = {
+  voteRecipe: PropTypes.func,
+  downvotes: PropTypes.number,
+  upvotes: PropTypes.number,
+  id: PropTypes.number,
+};
+Vote.defaultProps = {
+  voteRecipe: undefined,
+  downvotes: undefined,
+  upvotes: undefined,
+  id: undefined,
+};
 export default ViewRecipe;

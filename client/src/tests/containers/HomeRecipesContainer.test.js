@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { HomeRecipesContainer, mapStateToProps } from
+import { HomeRecipesContainer, mapStateToProps, mapDispatchToProps } from
   '../../containers/HomeRecipesContainer';
 
 describe('HomeRecipesContainer', () => {
@@ -40,6 +40,13 @@ describe('HomeRecipesContainer', () => {
         component.instance().getRecipes();
         expect(props.recipesActions.getRecipes).toHaveBeenCalled();
       });
+    });
+  });
+  describe('mapDispatchToProps', () => {
+    it('', () => {
+      const dispatch = jest.fn();
+      const mdtp = mapDispatchToProps(dispatch);
+      expect(mdtp).toHaveProperty('recipesActions');
     });
   });
 });
