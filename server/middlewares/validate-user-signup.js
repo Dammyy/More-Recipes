@@ -1,4 +1,5 @@
-import isEmail from 'validator/lib/isEmail';
+import validator from 'validator';
+
 /**
    * @returns {Object} validate Input
    * @param {*} req
@@ -6,27 +7,12 @@ import isEmail from 'validator/lib/isEmail';
    * @param {*} next
    */
 const validateUserInput = (req, res, next) => {
-  if (!req.body.email) {
-    return res.status(400).send({
-      message: 'Email is required',
-    });
-  }
-  if (!isEmail(req.body.email)) {
-    return res.status(400).send({
-      message: 'Email Invalid',
-    });
-  }
-  if (!req.body.password) {
-    return res.status(400).send({
-      message: 'Password is required',
-    });
-  }
   if (!req.body.firstName) {
     return res.status(400).send({
       message: 'First name is required',
     });
   }
-  if (!req.body.firstName.match('[a-zA-Z]+$')) {
+  if (!validator.isAlpha(req.body.firstName)) {
     return res.status(400).send({
       message: 'Only alphabets allowed in first name',
     });
@@ -36,9 +22,30 @@ const validateUserInput = (req, res, next) => {
       message: 'Last name is required',
     });
   }
-  if (!req.body.lastName.match('[a-zA-Z]+$')) {
+  if (!validator.isAlpha(req.body.lastName)) {
     return res.status(400).send({
       message: 'Only alphabets allowed in last name',
+    });
+  }
+
+  if (!req.body.email) {
+    return res.status(400).send({
+      message: 'Email is required',
+    });
+  }
+  if (!validator.isEmail(req.body.email)) {
+    return res.status(400).send({
+      message: 'Email Invalid',
+    });
+  }
+  if (!req.body.password) {
+    return res.status(400).send({
+      message: 'Password is required',
+    });
+  }
+  if (!validator.equals(req.body.password, req.body.password2)) {
+    return res.status(400).send({
+      message: 'Passwords do not match',
     });
   }
   next();

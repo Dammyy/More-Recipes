@@ -13,7 +13,7 @@ const common = {
   output: {
     path: PATHS.dist,
     filename: 'bundle.js',
-    publicPath: '/client/dist/'
+    publicPath: '/'
   },
   module: {
     rules: [

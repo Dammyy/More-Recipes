@@ -62,10 +62,11 @@ export default class AddRecipe extends Component {
       });
   }
 
+
   /**
-   *
-   * @returns {void}
-   *
+   * 
+   * 
+   * 
    * @memberOf AddRecipe
    */
   uploadPicture() {

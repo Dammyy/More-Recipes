@@ -38,7 +38,6 @@ class Recipe {
       .catch(error => res.status(400).send(error));
   }
 
-
   /**
    * @returns {Object} updateRecipes
    * @param {req} req

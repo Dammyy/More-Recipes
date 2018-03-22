@@ -28,6 +28,7 @@ class Recipes extends Component {
     this.setSearchBar = this.setSearchBar.bind(this);
   }
 
+
   /**
    * 
    * 
@@ -38,6 +39,14 @@ class Recipes extends Component {
     this.getRecipes();
   }
 
+
+  /**
+   *
+   *
+   * @param {any} index
+   *
+   * @memberOf Recipes
+   */
   toggleModal(index) {
     this.setState({ selectedRecipe: this.state.recipes[index] });
     $('#recipe-modal').modal();
@@ -46,6 +55,14 @@ class Recipes extends Component {
     this.props.recipesActions.getRecipes();
   }
 
+
+  /**
+   *
+   *
+   * @param {any} id
+   *
+   * @memberOf Recipes
+   */
   deleteRecipe(id) {
     fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
       headers: new Headers({
@@ -60,14 +77,28 @@ class Recipes extends Component {
       });
   }
 
+
+  /**
+   *
+   *
+   * @param {any} event
+   *
+   * @memberOf Recipes
+   */
   setSearchBar(event) {
     this.setState({ searchBar: event.target.value.toLowerCase() });
   }
 
+  /**
+   *
+   *
+   * @returns
+   *
+   * @memberOf Recipes
+   */
   render() {
     const { selectedRecipe, searchBar } = this.state;
     const { recipes } = this.props;
-    console.log(recipes);
     return (
       <div>
         <RecipeModal recipe={selectedRecipe} />
