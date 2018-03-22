@@ -52,7 +52,7 @@ export class EditRecipeForm extends PureComponent {
             to={`view/${this.props.id}`}
             params={{ id: this.props.id }}
           >
-          View
+            <i className="fa fa-eye" aria-hidden="true" /> View
           </Link >
           <BtnCancel />
         </div>

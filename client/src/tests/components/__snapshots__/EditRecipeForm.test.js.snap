@@ -88,7 +88,11 @@ ShallowWrapper {
             style={Object {}}
             to="view/1"
           >
-            View
+            <i
+              aria-hidden="true"
+              className="fa fa-eye"
+            />
+             View
           </Link>
           <BtnCancel />
         </div>,
@@ -231,7 +235,11 @@ ShallowWrapper {
               style={Object {}}
               to="view/1"
             >
-              View
+              <i
+                aria-hidden="true"
+                className="fa fa-eye"
+              />
+               View
             </Link>,
             <BtnCancel />,
           ],
@@ -298,7 +306,13 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": "View",
+              "children": Array [
+                <i
+                  aria-hidden="true"
+                  className="fa fa-eye"
+                />,
+                " View",
+              ],
               "className": "btn btn-primary",
               "onlyActiveOnIndex": false,
               "params": Object {
@@ -308,7 +322,21 @@ ShallowWrapper {
               "to": "view/1",
             },
             "ref": null,
-            "rendered": "View",
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-hidden": "true",
+                  "className": "fa fa-eye",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              " View",
+            ],
             "type": [Function],
           },
           Object {
@@ -1107,7 +1135,11 @@ ShallowWrapper {
               style={Object {}}
               to="view/1"
             >
-              View
+              <i
+                aria-hidden="true"
+                className="fa fa-eye"
+              />
+               View
             </Link>
             <BtnCancel />
           </div>,
@@ -1250,7 +1282,11 @@ ShallowWrapper {
                 style={Object {}}
                 to="view/1"
               >
-                View
+                <i
+                  aria-hidden="true"
+                  className="fa fa-eye"
+                />
+                 View
               </Link>,
               <BtnCancel />,
             ],
@@ -1317,7 +1353,13 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": "View",
+                "children": Array [
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-eye"
+                  />,
+                  " View",
+                ],
                 "className": "btn btn-primary",
                 "onlyActiveOnIndex": false,
                 "params": Object {
@@ -1327,7 +1369,21 @@ ShallowWrapper {
                 "to": "view/1",
               },
               "ref": null,
-              "rendered": "View",
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-hidden": "true",
+                    "className": "fa fa-eye",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+                " View",
+              ],
               "type": [Function],
             },
             Object {

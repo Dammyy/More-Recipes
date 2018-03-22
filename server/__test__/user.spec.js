@@ -1,14 +1,16 @@
 import chaiHttp from 'chai-http';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import chai from 'chai';
 import supertest from 'supertest';
 import app from '../app';
 import models from '../models';
+import config from '../../config';
 
 const request = supertest.agent(app);
 
 const UserModel = models.users;
-
+const testUser = {};
 const { expect } = chai;
 chai.use(chaiHttp);
 describe('User controller', () => {
@@ -22,6 +24,21 @@ describe('User controller', () => {
       email: 'damilare@yahoo.com',
       hashPassword: bcrypt.hashSync('password', 10),
     });
+    testUser.user1 = await UserModel.create({
+      firstName: 'Damilare',
+      lastName: 'Olatubosun',
+      email: 'damilareolatubosun@gmail.com',
+      hashPassword: bcrypt.hashSync('password2', 10),
+    });
+    testUser.user1.auth2 = jwt.sign(
+      {
+        id: testUser.user1.id,
+        firstName: testUser.user1.firstName,
+        lastName: testUser.user1.lastName,
+        email: testUser.user1.email
+      }, config.JWT_SECRET,
+      { expiresIn: 60 * 60 }
+    );
   });
   describe('User Sign up', () => {
     // Test Sign up - email not provided
@@ -267,6 +284,15 @@ describe('User controller', () => {
         .end((err, res) => {
           expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Email is required');
+          done();
+        });
+    });
+    it('should return a users details', (done) => {
+      request
+        .get(`/api/v1/users/profile/${testUser.id}`)
+        .set('auth', testUser.user1.auth2)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
           done();
         });
     });

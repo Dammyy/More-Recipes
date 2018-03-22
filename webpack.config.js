@@ -1,7 +1,9 @@
 require('dotenv').config();
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const PATHS = require('./webpack-paths');
 const loaders = require('./webpack-loaders');
+
 
 const common = {
   entry: {
@@ -24,12 +26,19 @@ const common = {
   }
 };
 
+const webpackDefinePlugin = new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify('production')
+});
+
 let config;
 switch (process.env.NODE_ENV) {
-  case 'build':
+  case 'production':
     config = merge(
       common,
-      { devtool: 'source-map' }
+      {
+        devtool: 'source-map',
+        plugins: [webpackDefinePlugin],
+      },
     );
     break;
   case 'development':
