@@ -21,7 +21,7 @@ const history = syncHistoryWithStore(hashHistory, store, {
 const routes = (
   <Provider store={store}>
     <div className="wrapper">
-      <Router history={hashHistory}>
+      <Router history={history}>
         <Route path="/" component={Home}>
           <IndexRoute component={Welcome} />
           <Route path="/login" component={Login} />

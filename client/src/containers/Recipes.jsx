@@ -83,12 +83,21 @@ class Recipes extends Component {
   }
 }
 
+<<<<<<< HEAD:client/src/containers/Recipes.jsx
 function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
   };
 }
 function mapDispatchToProps(dispatch) {
+=======
+function mapStateToProps (state) {
+  return { 
+    recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
+  }
+}
+function mapDispatchToProps (dispatch) {
+>>>>>>> 83ae0b41a0de9f5dd56db059bae21730e416a6db:client/src/containers/RecipesContainer.jsx
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
   };

@@ -5,7 +5,10 @@ import {
   put,
   call
 } from 'redux-saga/effects';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83ae0b41a0de9f5dd56db059bae21730e416a6db
 import {
   GET_RECIPES
 } from '../constants/recipes';
@@ -20,7 +23,10 @@ const fetchRecipes = () => fetch('http://localhost:3000/api/v1/recipes', {
   })
 })
   .then(response => response.json());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83ae0b41a0de9f5dd56db059bae21730e416a6db
   /**
    * @returns {Object} Get recipes
    */

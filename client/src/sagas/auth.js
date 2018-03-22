@@ -2,10 +2,10 @@ import { push } from 'react-router-redux';
 import { takeLatest } from 'redux-saga';
 import { put, call, select } from 'redux-saga/effects';
 import { actions as toastrActions } from 'react-redux-toastr';
-import { LOGIN_USER } from '../constants/auth';
+import { LOGIN } from '../constants/auth';
 import {
-  loginUserSuccess,
-  loginUserFailure
+  loginSuccess,
+  loginFailure
 } from '../actions/auth';
 /**
    * @param {*} state
@@ -18,16 +18,16 @@ const getForm = (state, form) => {
 
 /**
    * @param {*} route
-   * @param {*} credentials
+   * @param {*} details
    * @returns {*} response
    */
-const sendCredentials = (route, credentials) => {
+const sendDetails = (route, details) => {
   return fetch(`http://localhost:3000/api/v1/users/${route}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
     }),
     method: 'POST',
-    body: JSON.stringify(credentials)
+    body: JSON.stringify(details)
   })
     .then((response) => {
       if (response.status === 200) {
@@ -40,18 +40,22 @@ const sendCredentials = (route, credentials) => {
    * @param {*} action
    * @returns {*} res
    */
+<<<<<<< HEAD
 function* loginUser(action) {
+=======
+function* login(action) {
+>>>>>>> 83ae0b41a0de9f5dd56db059bae21730e416a6db
   const { redirection } = action;
   try {
-    const credentials = yield select(getForm, 'login');
-    const result = yield call(sendCredentials, 'signin', credentials.values);
+    const details = yield select(getForm, 'login');
+    const result = yield call(sendDetails, 'signin', details.values);
     yield put(toastrActions.add({
       type: 'success',
       title: 'More Recipes',
       message: result.message
     }));
     localStorage.setItem('token', result.jwt);
-    yield put(loginUserSuccess(result.jwt));
+    yield put(loginSuccess(result.jwt));
     yield put(push(redirection));
   } catch (e) {
     let message = '';
@@ -60,7 +64,7 @@ function* loginUser(action) {
     } else {
       message = 'Sorry, an error occured!';
     }
-    yield put(loginUserFailure());
+    yield put(loginFailure());
     yield put(toastrActions.add({
       type: 'error',
       title: 'More Recipes',
@@ -72,6 +76,6 @@ function* loginUser(action) {
    * @param {*} object
    * @returns {*} res
    */
-export function* watchLoginUser() {
-  yield takeLatest(LOGIN_USER, loginUser);
+export function* watchlogin() {
+  yield takeLatest(LOGIN, login);
 }
