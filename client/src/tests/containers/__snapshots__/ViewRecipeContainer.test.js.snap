@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewRecipeContainer Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ViewRecipeContainer
+    favoriteRecipe={[MockFunction]}
+    params={Object {}}
+    recipe={Object {}}
+    recipesActions={
+      Object {
+        "getRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              1,
+            ],
+          ],
+        },
+      }
+    }
+    reviews={Array []}
+    reviewsActions={
+      Object {
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+          ],
+        },
+      }
+    }
+    userId={1}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <ViewRecipe
+          details={undefined}
+          favoriteRecipe={[Function]}
+          id={undefined}
+          image={undefined}
+          recipe={Object {}}
+          title={undefined}
+          userId={1}
+          voteRecipe={[Function]}
+        />,
+        <div
+          id="reviews-form"
+        >
+          <Connect(AddReviewFormContainer)
+            id={undefined}
+          />
+        </div>,
+        <div
+          className="reviews"
+        >
+          <Reviews
+            id={undefined}
+            reviews={Array []}
+          />
+        </div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "details": undefined,
+          "favoriteRecipe": [Function],
+          "id": undefined,
+          "image": undefined,
+          "recipe": Object {},
+          "title": undefined,
+          "userId": 1,
+          "voteRecipe": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Connect(AddReviewFormContainer)
+            id={undefined}
+          />,
+          "id": "reviews-form",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "id": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Reviews
+            id={undefined}
+            reviews={Array []}
+          />,
+          "className": "reviews",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "id": undefined,
+            "reviews": Array [],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <ViewRecipe
+            details={undefined}
+            favoriteRecipe={[Function]}
+            id={undefined}
+            image={undefined}
+            recipe={Object {}}
+            title={undefined}
+            userId={1}
+            voteRecipe={[Function]}
+          />,
+          <div
+            id="reviews-form"
+          >
+            <Connect(AddReviewFormContainer)
+              id={undefined}
+            />
+          </div>,
+          <div
+            className="reviews"
+          >
+            <Reviews
+              id={undefined}
+              reviews={Array []}
+            />
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "details": undefined,
+            "favoriteRecipe": [Function],
+            "id": undefined,
+            "image": undefined,
+            "recipe": Object {},
+            "title": undefined,
+            "userId": 1,
+            "voteRecipe": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Connect(AddReviewFormContainer)
+              id={undefined}
+            />,
+            "id": "reviews-form",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "id": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Reviews
+              id={undefined}
+              reviews={Array []}
+            />,
+            "className": "reviews",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "id": undefined,
+              "reviews": Array [],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

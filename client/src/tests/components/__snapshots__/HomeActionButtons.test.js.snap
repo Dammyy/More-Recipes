@@ -1,0 +1,470 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <HomeActionButtons
+    firstName=""
+    logout={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h2>
+          You are logged in as 
+          
+        </h2>,
+        <p>
+          <Link
+            className="btn btn-post-recipe"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/catalog"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-eye"
+            />
+             Browse
+          </Link>
+          <Link
+            className="btn btn-post-recipe"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/catalog/add"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-pencil-square-o"
+            />
+             New Recipe
+          </Link>
+          <button
+            className="btn btn-logout"
+            onClick={[MockFunction]}
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-power-off"
+            />
+             Logout
+          </button>
+        </p>,
+      ],
+      "className": "publish-recipe",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "You are logged in as ",
+            "",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "You are logged in as ",
+          "",
+        ],
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Link
+              className="btn btn-post-recipe"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/catalog"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-eye"
+              />
+               Browse
+            </Link>,
+            <Link
+              className="btn btn-post-recipe"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/catalog/add"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-pencil-square-o"
+              />
+               New Recipe
+            </Link>,
+            <button
+              className="btn btn-logout"
+              onClick={[MockFunction]}
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-power-off"
+              />
+               Logout
+            </button>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <i
+                  aria-hidden="true"
+                  className="fa fa-eye"
+                />,
+                " Browse",
+              ],
+              "className": "btn btn-post-recipe",
+              "onlyActiveOnIndex": false,
+              "style": Object {},
+              "to": "/catalog",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-hidden": "true",
+                  "className": "fa fa-eye",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              " Browse",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <i
+                  aria-hidden="true"
+                  className="fa fa-pencil-square-o"
+                />,
+                " New Recipe",
+              ],
+              "className": "btn btn-post-recipe",
+              "onlyActiveOnIndex": false,
+              "style": Object {},
+              "to": "/catalog/add",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-hidden": "true",
+                  "className": "fa fa-pencil-square-o",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              " New Recipe",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <i
+                  aria-hidden="true"
+                  className="fa fa-power-off"
+                />,
+                " Logout",
+              ],
+              "className": "btn btn-logout",
+              "onClick": [MockFunction],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-hidden": "true",
+                  "className": "fa fa-power-off",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              " Logout",
+            ],
+            "type": "button",
+          },
+        ],
+        "type": "p",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2>
+            You are logged in as 
+            
+          </h2>,
+          <p>
+            <Link
+              className="btn btn-post-recipe"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/catalog"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-eye"
+              />
+               Browse
+            </Link>
+            <Link
+              className="btn btn-post-recipe"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/catalog/add"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-pencil-square-o"
+              />
+               New Recipe
+            </Link>
+            <button
+              className="btn btn-logout"
+              onClick={[MockFunction]}
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-power-off"
+              />
+               Logout
+            </button>
+          </p>,
+        ],
+        "className": "publish-recipe",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "You are logged in as ",
+              "",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "You are logged in as ",
+            "",
+          ],
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Link
+                className="btn btn-post-recipe"
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/catalog"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-eye"
+                />
+                 Browse
+              </Link>,
+              <Link
+                className="btn btn-post-recipe"
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/catalog/add"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-pencil-square-o"
+                />
+                 New Recipe
+              </Link>,
+              <button
+                className="btn btn-logout"
+                onClick={[MockFunction]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-power-off"
+                />
+                 Logout
+              </button>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-eye"
+                  />,
+                  " Browse",
+                ],
+                "className": "btn btn-post-recipe",
+                "onlyActiveOnIndex": false,
+                "style": Object {},
+                "to": "/catalog",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-hidden": "true",
+                    "className": "fa fa-eye",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+                " Browse",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-pencil-square-o"
+                  />,
+                  " New Recipe",
+                ],
+                "className": "btn btn-post-recipe",
+                "onlyActiveOnIndex": false,
+                "style": Object {},
+                "to": "/catalog/add",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-hidden": "true",
+                    "className": "fa fa-pencil-square-o",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+                " New Recipe",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-power-off"
+                  />,
+                  " Logout",
+                ],
+                "className": "btn btn-logout",
+                "onClick": [MockFunction],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "aria-hidden": "true",
+                    "className": "fa fa-power-off",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+                " Logout",
+              ],
+              "type": "button",
+            },
+          ],
+          "type": "p",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

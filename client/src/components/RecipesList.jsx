@@ -2,23 +2,21 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Recipe from './Recipe';
 import {
-  BtnAdd,
+  AuthenticatedBtnAdd,
   BtnHome,
   BtnCatalog,
-  BtnFavorites,
-  BtnProfile
+  BtnCurrent,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile
 } from './Buttons';
 
-const BtnCurrent = (() => (
-  'My Recipes'
-));
 /**
  *
  *
  * @class RecipeList
  * @extends {PureComponent}
  */
-class RecipesList extends PureComponent {
+export class RecipesList extends PureComponent {
   /**
    *
    *
@@ -35,9 +33,9 @@ class RecipesList extends PureComponent {
         <div className="text-left-buttons">
           <BtnHome />
           <BtnCatalog />
-          <BtnAdd />
-          <BtnFavorites />
-          <BtnProfile />
+          <AuthenticatedBtnAdd />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
         </div>
         <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="col-md-12 latest-recipes">

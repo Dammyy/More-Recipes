@@ -9,7 +9,7 @@ import PopularRecipes from './PopularRecipes';
  * @class MostPopularRecipesList
  * @extends {PureComponent}
  */
-class MostPopularRecipesList extends PureComponent {
+export class MostPopularRecipesList extends PureComponent {
   /**
    *
    * @memberOf MostPopularRecipesList

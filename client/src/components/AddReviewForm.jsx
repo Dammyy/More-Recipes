@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reset, reduxForm } from 'redux-form/immutable';
+import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import UserIsAuthenticated from '../utils/authWrapper';
 
@@ -10,7 +10,7 @@ const options = {
   FailureComponent: null
 };
 
-const AddReviewForm = UserIsAuthenticated(options)(props => (
+export const AddReviewForm = (props => (
   <div id="recipe-display" className="col-md-12">
     <h2 className="panel-title text-center r-d-titles">
     Leave a review
@@ -43,14 +43,10 @@ const AddReviewForm = UserIsAuthenticated(options)(props => (
   </div>
 ));
 
+const AuthenticatedAddReviewForm = UserIsAuthenticated(options)(AddReviewForm);
+
 AddReviewForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-const afterSubmit = (result, dispatch) =>
-  dispatch(reset('review'));
-
-export default reduxForm({
-  form: 'review',
-  onSubmit: afterSubmit,
-})(AddReviewForm);
+export default reduxForm({ form: 'review' })(AuthenticatedAddReviewForm);

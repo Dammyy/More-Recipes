@@ -9,7 +9,7 @@ import AuthCheck from '../utils/authWrapper';
  * @class HomeActionButtons
  * @extends {PureComponent}
  */
-class HomeActionButtons extends PureComponent {
+export class HomeActionButtons extends PureComponent {
   /**
    *
    * @memberOf HomeActionButtons
@@ -69,7 +69,12 @@ const options = {
             aria-hidden="true"
           /> Browse
         </Link>
-        <Link to="/signup" className="btn btn-signup">Sign Up</Link>
+        <Link
+          to="/signup"
+          id="signup"
+          className="btn btn-signup"
+        >Sign Up
+        </Link>
         <Link to="/login" className="btn btn-signin">Login</Link>
       </div>
     );

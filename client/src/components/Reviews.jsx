@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @class Reviews
  * @extends {PureComponent}
  */
-class Reviews extends PureComponent {
+export class Reviews extends PureComponent {
   /**
    *
    * @memberOf Reviews
@@ -23,7 +23,7 @@ class Reviews extends PureComponent {
               <div id="review">
                 {review.review}
               </div>
-              <div id="review-author"><small>By </small></div>
+              <div id="review-author"><small>By {review.username}</small></div>
             </div>
           );
         })
@@ -35,4 +35,4 @@ Reviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default (Reviews);
+export default Reviews;

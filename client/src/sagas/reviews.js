@@ -14,7 +14,7 @@ import {
    * @returns {object} review details
    *
    */
-const addReviewForm = (state) => {
+export const addReviewForm = (state) => {
   return state.getIn(['form', 'review']).toJS();
 };
 
@@ -23,7 +23,7 @@ const addReviewForm = (state) => {
  * @param {object} newReview
  * @returns {Object} response from server
  */
-const publishReview = (id, newReview) => {
+export const publishReview = (id, newReview) => {
   return fetch(`/api/v1/recipes/${id}/reviews`, {
     headers: new Headers({
       'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const publishReview = (id, newReview) => {
  * @param {object} action action type and payload
  * @returns {object} result
  */
-function* addReview(action) {
+export function* addReview(action) {
   const { id } = action;
   const reviewDetails = yield select(addReviewForm);
   const newReview = reviewDetails.values;
@@ -66,7 +66,7 @@ function* addReview(action) {
  * @param {number} id
  * @returns {Object} response from server
  */
-const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
+export const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   headers: new Headers({
     'Content-Type': 'application/json'
   })
@@ -77,7 +77,7 @@ const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
  * @param {object} action action type and payload
  * @returns {object} result
  */
-function* getReviews(action) {
+export function* getReviews(action) {
   const { id } = action;
   try {
     const fetchedReviews = yield call(fetchReviews, id);
@@ -93,13 +93,13 @@ function* getReviews(action) {
  *
  */
 function* watchGetReviews() {
-  yield takeLatest(GET_REVIEWS, getReviews);
+  yield call(takeLatest, GET_REVIEWS, getReviews);
 }
 /**
    * @returns {any} Watch Add review
    */
 function* watchAddReview() {
-  yield takeLatest(ADD_REVIEW, addReview);
+  yield call(takeLatest, ADD_REVIEW, addReview);
 }
 
 export {

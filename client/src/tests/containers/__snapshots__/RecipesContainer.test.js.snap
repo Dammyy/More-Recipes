@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipesContainer Snapshot component should fully render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RecipesContainer
+    recipes={Array []}
+    recipesActions={
+      Object {
+        "getRecipes": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        },
+      }
+    }
+    userId={1}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <RecipesList
+          deleteRecipe={[Function]}
+          recipes={undefined}
+          userId={1}
+        />,
+        <PaginationBoxView
+          activeClassName="active"
+          breakClassName="break-me"
+          breakLabel="..."
+          containerClassName="pagination"
+          disableInitialCallback={false}
+          disabledClassName="disabled"
+          marginPagesDisplayed={2}
+          nextClassName="next"
+          nextLabel="next"
+          onPageChange={[Function]}
+          pageCount={10}
+          pageRangeDisplayed={5}
+          previousClassName="previous"
+          previousLabel="previous"
+          subContainerClassName="pages pagination"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "deleteRecipe": [Function],
+          "recipes": undefined,
+          "userId": 1,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeClassName": "active",
+          "breakClassName": "break-me",
+          "breakLabel": "...",
+          "containerClassName": "pagination",
+          "disableInitialCallback": false,
+          "disabledClassName": "disabled",
+          "marginPagesDisplayed": 2,
+          "nextClassName": "next",
+          "nextLabel": "next",
+          "onPageChange": [Function],
+          "pageCount": 10,
+          "pageRangeDisplayed": 5,
+          "previousClassName": "previous",
+          "previousLabel": "previous",
+          "subContainerClassName": "pages pagination",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <RecipesList
+            deleteRecipe={[Function]}
+            recipes={undefined}
+            userId={1}
+          />,
+          <PaginationBoxView
+            activeClassName="active"
+            breakClassName="break-me"
+            breakLabel="..."
+            containerClassName="pagination"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="next"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageCount={10}
+            pageRangeDisplayed={5}
+            previousClassName="previous"
+            previousLabel="previous"
+            subContainerClassName="pages pagination"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "deleteRecipe": [Function],
+            "recipes": undefined,
+            "userId": 1,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "activeClassName": "active",
+            "breakClassName": "break-me",
+            "breakLabel": "...",
+            "containerClassName": "pagination",
+            "disableInitialCallback": false,
+            "disabledClassName": "disabled",
+            "marginPagesDisplayed": 2,
+            "nextClassName": "next",
+            "nextLabel": "next",
+            "onPageChange": [Function],
+            "pageCount": 10,
+            "pageRangeDisplayed": 5,
+            "previousClassName": "previous",
+            "previousLabel": "previous",
+            "subContainerClassName": "pages pagination",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

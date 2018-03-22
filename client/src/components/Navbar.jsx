@@ -11,7 +11,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class Navbar
  * @extends {Component}
  */
-class Navbar extends Component {
+export class Navbar extends Component {
   /**
    *
    * Creates an instance of Navbar.
@@ -72,7 +72,7 @@ class Navbar extends Component {
           <ul className="navbar-nav mr-auto" />
           <form
             className="form-inline my-2 my-md-0"
-            onSubmit={this.handleSubmit.bind(this)}
+            onSubmit={this.handleSubmit}
           >
             <Field
               name="search"
@@ -99,7 +99,7 @@ class Navbar extends Component {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)
   };

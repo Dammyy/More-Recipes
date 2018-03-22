@@ -12,7 +12,6 @@ const options = {
   FailureComponent: null
 };
 
-
 const alert = (callback) => {
   return swal('Are you sure you want to delete this recipe?', {
     buttons: {
@@ -29,18 +28,7 @@ const alert = (callback) => {
     }
   });
 };
-
-const BtnDelete = UserIsAuthenticated(options)((props) => {
-  return (
-    <button
-      className="btn btn-danger btn-del"
-      onClick={() => alert(() => props.deleteRecipe(props.id))}
-    >
-      Delete
-    </button>);
-});
-
-const BtnEdit = UserIsAuthenticated(options)((props) => {
+export const BtnEdit = ((props) => {
   return (
     <Link
       className="btn btn-primary btn-del"
@@ -50,8 +38,20 @@ const BtnEdit = UserIsAuthenticated(options)((props) => {
       Edit
     </Link >);
 });
+const AuthenticatedBtnEdit = UserIsAuthenticated(options)(BtnEdit);
 
-const BtnView = ((props) => {
+export const BtnDelete = ((props) => {
+  return (
+    <button
+      className="btn btn-danger btn-del"
+      onClick={() => alert(() => props.deleteRecipe(props.id))}
+    >
+      Delete
+    </button>);
+});
+const AuthenticatedBtnDelete = UserIsAuthenticated(options)(BtnDelete);
+
+export const BtnView = ((props) => {
   return (
     <Link
       className="btn btn-success btn-view"
@@ -102,8 +102,8 @@ class Recipe extends PureComponent {
               </i>
             </li>
           </div>
-          <BtnEdit id={id} />
-          <BtnDelete deleteRecipe={deleteRecipe} id={id} />
+          <AuthenticatedBtnEdit id={id} />
+          <AuthenticatedBtnDelete deleteRecipe={deleteRecipe} id={id} />
         </div>
         <div id="recipe-title"><h2>{title}</h2></div>
         <BtnView id={id} />
@@ -121,6 +121,14 @@ Recipe.propTypes = {
   favorited: PropTypes.number.isRequired
 };
 BtnView.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
+BtnDelete.propTypes = {
+  id: PropTypes.number.isRequired,
+  deleteRecipe: PropTypes.func.isRequired
+};
+BtnEdit.propTypes = {
   id: PropTypes.number.isRequired,
 };
 

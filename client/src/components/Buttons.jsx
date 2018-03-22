@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import UserIsAuthenticated from '../utils/authWrapper';
 
@@ -9,7 +10,7 @@ const options = {
   FailureComponent: null
 };
 
-const BtnAdd = UserIsAuthenticated(options)(() => (
+export const BtnAdd = (() => (
   <Link
     to="/catalog/add"
     className="btn btn-publish btn-manage"
@@ -17,7 +18,9 @@ const BtnAdd = UserIsAuthenticated(options)(() => (
     <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
   </Link>
 ));
-const BtnManageRecipes = UserIsAuthenticated(options)(() => (
+const AuthenticatedBtnAdd = UserIsAuthenticated(options)(BtnAdd);
+
+export const BtnManageRecipes = (() => (
   <Link
     to="/catalog/manage"
     className="btn btn-publish btn-manage"
@@ -25,8 +28,10 @@ const BtnManageRecipes = UserIsAuthenticated(options)(() => (
     <i className="fa fa-list-alt" aria-hidden="true" /> Manage Recipes
   </Link>
 ));
+const AuthenticatedBtnManageRecipes =
+UserIsAuthenticated(options)(BtnManageRecipes);
 
-const BtnFavorites = UserIsAuthenticated(options)(() => (
+export const BtnFavorites = (() => (
   <Link
     to="/catalog/favorites"
     className="btn btn-publish btn-manage"
@@ -34,6 +39,7 @@ const BtnFavorites = UserIsAuthenticated(options)(() => (
     <i className="fa fa-heart" /> My Favorites
   </Link>
 ));
+const AuthenticatedBtnFavorites = UserIsAuthenticated(options)(BtnFavorites);
 
 const BtnHome = (() => (
   <Link
@@ -53,7 +59,7 @@ const BtnCatalog = (() => (
   </Link>
 ));
 
-const BtnProfile = UserIsAuthenticated(options)(() => (
+export const BtnProfile = (() => (
   <Link
     to="/profile"
     className="btn btn-publish btn-manage"
@@ -61,8 +67,9 @@ const BtnProfile = UserIsAuthenticated(options)(() => (
     <i className="fa fa-user-o" aria-hidden="true" /> My Profile
   </Link>
 ));
+const AuthenticatedBtnProfile = UserIsAuthenticated(options)(BtnProfile);
 
-const BtnEdit = UserIsAuthenticated(options)((props) => {
+export const BtnEdit = ((props) => {
   return (
     <Link
       className="btn btn-publish btn-manage"
@@ -72,6 +79,7 @@ const BtnEdit = UserIsAuthenticated(options)((props) => {
       Edit
     </Link >);
 });
+const AuthenticatedBtnEdit = UserIsAuthenticated(options)(BtnEdit);
 
 const BtnCancel = (() => (
   <Link
@@ -82,14 +90,22 @@ const BtnCancel = (() => (
   </Link>
 ));
 
+const BtnCurrent = (() => (
+  'My Recipes'
+));
+
+BtnEdit.propTypes = {
+  id: PropTypes.number.isRequired
+};
 
 export {
-  BtnAdd,
-  BtnManageRecipes,
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
   BtnHome,
   BtnCatalog,
-  BtnFavorites,
-  BtnProfile,
-  BtnEdit,
-  BtnCancel
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile,
+  AuthenticatedBtnEdit,
+  BtnCancel,
+  BtnCurrent
 };

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import UserIsAuthenticated from '../utils/authWrapper';
 import {
   BtnHome,
-  BtnAdd,
-  BtnManageRecipes,
-  BtnFavorites,
-  BtnProfile,
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile,
   BtnCatalog,
-  BtnEdit
+  AuthenticatedBtnEdit
 } from './Buttons';
 
 const options = {
@@ -18,7 +18,7 @@ const options = {
   FailureComponent: null
 };
 
-const Favorite = UserIsAuthenticated(options)((props) => {
+export const Favorite = (props) => {
   if (props.fav === 'true') {
     return (
       <button
@@ -51,13 +51,16 @@ const Favorite = UserIsAuthenticated(options)((props) => {
       {props.favorited} <i className="fa fa-heart" />
     </button >
   );
-});
+};
 
-const Vote = UserIsAuthenticated(options)((props) => {
+const AuthenticatedFavorite = UserIsAuthenticated(options)(Favorite);
+
+export const Vote = ((props) => {
   return (
     <div>
       <button
         className="btn btn-favorited"
+        id="btn-thumbs-up"
         onClick={() => props.voteRecipe(props.id, 'true')}
       >
         <li>
@@ -69,6 +72,7 @@ const Vote = UserIsAuthenticated(options)((props) => {
       </button >
       <button
         className="btn btn-favorited"
+        id="btn-thumbs-down"
         onClick={() => props.voteRecipe(props.id, 'false')}
       >
         <li>
@@ -81,7 +85,7 @@ const Vote = UserIsAuthenticated(options)((props) => {
     </div>
   );
 });
-
+const AuthenticatedVote = UserIsAuthenticated(options)(Vote);
 
 /**
  *
@@ -107,12 +111,12 @@ class ViewRecipe extends PureComponent {
       <div className="container-fluid">
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
-          <BtnAdd />
+          <AuthenticatedBtnAdd />
           <BtnCatalog />
-          <BtnManageRecipes />
-          <BtnFavorites />
-          <BtnProfile />
-          {userId === this.props.userId && <BtnEdit
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
+          {userId === this.props.userId && <AuthenticatedBtnEdit
             id={this.props.id}
           />}
         </div>
@@ -135,7 +139,7 @@ class ViewRecipe extends PureComponent {
                       </div>
                       <div id="popular-votes">
                         <li>
-                          <Favorite
+                          <AuthenticatedFavorite
                             id={this.props.id}
                             favoriteRecipe={this.props.favoriteRecipe}
                             userId={this.props.userId}
@@ -143,7 +147,7 @@ class ViewRecipe extends PureComponent {
                             favorited={favorited}
                           />
                         </li>
-                        <Vote
+                        <AuthenticatedVote
                           id={this.props.id}
                           voteRecipe={this.props.voteRecipe}
                           vote={this.props.recipe.vote}
@@ -179,12 +183,33 @@ ViewRecipe.propTypes = {
   userId: PropTypes.number,
   id: PropTypes.string.isRequired,
 };
-
+Favorite.propTypes = {
+  favorited: PropTypes.string.isRequired,
+  favoriteRecipe: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  userId: PropTypes.number,
+  fav: PropTypes.string
+};
+Favorite.defaultProps = {
+  userId: undefined,
+  fav: undefined
+};
 ViewRecipe.defaultProps = {
   title: undefined,
   details: undefined,
   image: undefined,
   userId: undefined
 };
-
-export default (ViewRecipe);
+Vote.propTypes = {
+  voteRecipe: PropTypes.func,
+  downvotes: PropTypes.number,
+  upvotes: PropTypes.number,
+  id: PropTypes.number,
+};
+Vote.defaultProps = {
+  voteRecipe: undefined,
+  downvotes: undefined,
+  upvotes: undefined,
+  id: undefined,
+};
+export default ViewRecipe;

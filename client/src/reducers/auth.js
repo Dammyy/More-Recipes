@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
     case LOGIN_FAILURE:
     case SIGNUP_FAILURE:
     case LOGOUT:
-      state.clear();
       return state.merge(initialState);
     default: return state;
   }

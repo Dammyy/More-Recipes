@@ -14,7 +14,7 @@ import {
    * @param {object} form
    * @returns {object} form details
    */
-const getForm = (state, form) => {
+export const getForm = (state, form) => {
   return state.getIn(['form', form]).toJS();
 };
 
@@ -23,7 +23,7 @@ const getForm = (state, form) => {
    * @param {object} details
    * @returns {object} response from server
    */
-const sendDetails = (route, details) => {
+export const sendDetails = (route, details) => {
   return fetch(`/api/v1/users/${route}`, {
     headers: new Headers({
       'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const sendDetails = (route, details) => {
    * @param {object} action
    * @returns {object} result
    */
-function* loginUser(action) {
+export function* loginUser(action) {
   const { redirection } = action;
   try {
     const details = yield select(getForm, 'login');
@@ -63,7 +63,7 @@ function* loginUser(action) {
    * @param {object} action
    * @returns {object} result
    */
-function* signupUser(action) {
+export function* signupUser(action) {
   const { redirection } = action;
   try {
     const details = yield select(getForm, 'signup');
@@ -84,12 +84,12 @@ function* signupUser(action) {
    * @returns {any} dispatched action
    */
 export function* watchLoginUser() {
-  yield takeLatest(LOGIN, loginUser);
+  yield call(takeLatest, LOGIN, loginUser);
 }
 /**
    *
    * @returns {any} dispatched action
    */
 export function* watchSignupUser() {
-  yield takeLatest(SIGNUP, signupUser);
+  yield call(takeLatest, SIGNUP, signupUser);
 }

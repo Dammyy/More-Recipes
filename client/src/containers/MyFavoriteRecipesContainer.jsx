@@ -13,7 +13,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class MyFavoriteRecipesContainer
  * @extends {Component}
  */
-class MyFavoriteRecipesContainer extends Component {
+export class MyFavoriteRecipesContainer extends Component {
   /**
    *
    * @memberOf MyFavoriteRecipesContainer
@@ -61,7 +61,7 @@ class MyFavoriteRecipesContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     recipes: state.getIn(
       ['recipes', 'favoriteRecipes'],
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch),
   };

@@ -6,7 +6,8 @@
       "node": true,
       "browser": true,
       "es6": true,
-      "mocha": true
+      "mocha": true,
+      "jest": true
     },
     "globals": {
       "jest": true,
@@ -32,6 +33,8 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "curly": ["error", "multi-line"],
       "import/no-unresolved": [2, { "commonjs": true }],
+      "import/no-named-as-default": 0,
+      "import/no-extraneous-dependencies": 0,
       "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
       "valid-jsdoc": ["error", {
         "requireReturn": true,

@@ -13,7 +13,7 @@ import * as recipesActionCreators from '../actions/recipes';
  * @class AllRecipesContainer
  * @extends {Component}
  */
-class AllRecipesContainer extends Component {
+export class AllRecipesContainer extends Component {
   /**
    *
    * @memberOf Recipes
@@ -40,7 +40,6 @@ class AllRecipesContainer extends Component {
     const selected = data.selected + 1;
     this.props.recipesActions.getRecipes(selected);
   };
-
 
   /**
    *
@@ -78,7 +77,7 @@ class AllRecipesContainer extends Component {
  * @param {any} state
  * @returns {void}
  */
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS(),
   };
@@ -90,7 +89,7 @@ function mapStateToProps(state) {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch),
   };

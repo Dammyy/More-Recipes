@@ -9,7 +9,7 @@ import Footer from './Footer';
  * @class Home
  * @extends {PureComponent}
  */
-class Archive extends PureComponent {
+export class Archive extends PureComponent {
   /** html component to render
    *
    *

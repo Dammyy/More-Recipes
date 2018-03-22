@@ -12,7 +12,7 @@ import * as authActionCreators from '../actions/auth';
  * @class Login
  * @extends {PureComponent}
  */
-class Login extends PureComponent {
+export class Login extends PureComponent {
   /**
    * @memberOf Login
    * @param {any} event
@@ -108,7 +108,7 @@ Login.propTypes = {
  * @param {any} dispatch
  * @returns {object}  object
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     authActions: bindActionCreators(authActionCreators, dispatch)
   };

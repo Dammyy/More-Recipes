@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
-const BtnView = ((props) => {
+export const BtnView = ((props) => {
   return (
     <Link
       className="btn btn-success btn-view"
@@ -19,7 +19,7 @@ const BtnView = ((props) => {
  * @class RecipeHome
  * @extends {PureComponent}
  */
-class RecipeHome extends PureComponent {
+export class RecipeHome extends PureComponent {
   /**
    * @memberOf RecipeHome
    *

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import RecipeHome from './RecipeHome';
 import {
   BtnHome,
-  BtnAdd,
-  BtnManageRecipes,
-  BtnFavorites,
-  BtnProfile
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'Recipes Catalog'
 ));
 
@@ -32,10 +32,10 @@ class AllRecipesList extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
-          <BtnAdd />
-          <BtnManageRecipes />
-          <BtnFavorites />
-          <BtnProfile />
+          <AuthenticatedBtnAdd />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
         </div>
         <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="col-md-12 latest-recipes">

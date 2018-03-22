@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import RecipeHome from './RecipeHome';
 import {
   BtnAdd,
-  BtnManageRecipes,
+  AuthenticatedBtnManageRecipes,
   BtnHome,
   BtnCatalog,
-  BtnProfile
+  AuthenticatedBtnProfile
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'My Favorite Recipes'
 ));
 /**
@@ -36,8 +36,8 @@ class MyFavoriteRecipes extends PureComponent {
           <BtnHome />
           <BtnCatalog />
           <BtnAdd />
-          <BtnManageRecipes />
-          <BtnProfile />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnProfile />
         </div>
         <div className="current-page btn-buttons"><BtnCurrent /></div>
         <div className="col-md-12 latest-recipes">

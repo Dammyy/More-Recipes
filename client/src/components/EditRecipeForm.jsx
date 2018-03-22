@@ -5,15 +5,15 @@ import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import {
   BtnHome,
-  BtnAdd,
-  BtnManageRecipes,
-  BtnFavorites,
-  BtnProfile,
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
+  AuthenticatedBtnProfile,
   BtnCatalog,
   BtnCancel
 } from './Buttons';
 
-const BtnCurrent = (() => (
+export const BtnCurrent = (() => (
   'UPDATE RECIPE'
 ));
 /**
@@ -23,20 +23,13 @@ const BtnCurrent = (() => (
  * @class EditRecipeForm
  * @extends {PureComponent}
  */
-class EditRecipeForm extends PureComponent {
+export class EditRecipeForm extends PureComponent {
   /**
    *
    * @memberOf EditRecipeForm
    * @returns {void}
    *
    */
-  componentDidMount() {
-    if (!this.props.recipes) {
-      this.props.redirectUser('/catalog');
-    }
-  }
-
-
   /**
    *
    *
@@ -49,11 +42,11 @@ class EditRecipeForm extends PureComponent {
       <div>
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
-          <BtnAdd />
+          <AuthenticatedBtnAdd />
           <BtnCatalog />
-          <BtnManageRecipes />
-          <BtnFavorites />
-          <BtnProfile />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
+          <AuthenticatedBtnProfile />
           <Link
             className="btn btn-primary"
             to={`view/${this.props.id}`}
@@ -144,11 +137,9 @@ EditRecipeForm.propTypes = {
   id: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
-  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  redirectUser: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   const { recipes, id } = ownProps;
   const recipe = recipes.recipes
     .filter(recp => recp.id === parseInt(id, 10))[0];

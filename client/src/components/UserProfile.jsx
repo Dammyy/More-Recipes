@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import {
   BtnHome,
-  BtnAdd,
-  BtnManageRecipes,
-  BtnFavorites,
+  AuthenticatedBtnAdd,
+  AuthenticatedBtnManageRecipes,
+  AuthenticatedBtnFavorites,
   BtnCatalog
 } from './Buttons';
 
@@ -33,9 +33,9 @@ class UserProfile extends PureComponent {
         <div className="text-left-buttons btn-buttons">
           <BtnHome />
           <BtnCatalog />
-          <BtnAdd />
-          <BtnManageRecipes />
-          <BtnFavorites />
+          <AuthenticatedBtnAdd />
+          <AuthenticatedBtnManageRecipes />
+          <AuthenticatedBtnFavorites />
         </div>
         <div className="profile-display">
           <div className="profile-heading">
@@ -63,4 +63,4 @@ UserProfile.propTypes = {
   user: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
-export default (UserProfile);
+export default UserProfile;

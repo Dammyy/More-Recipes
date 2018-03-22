@@ -11,7 +11,17 @@ import * as authActionCreators from '../actions/auth';
  * @class Signup
  * @extends {PureComponent}
  */
-class Signup extends PureComponent {
+export class Signup extends PureComponent {
+  /**
+   * Creates an instance of Signup.
+   * @param {any} props
+   *
+   * @memberOf Signup
+   */
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   /**
    *
    * @memberOf Signup
@@ -40,7 +50,7 @@ class Signup extends PureComponent {
         </div>
         <form
           className="form-horizontal"
-          onSubmit={this.handleSubmit.bind(this)}
+          onSubmit={this.handleSubmit}
         >
           <div className="row">
             <div className="col-md-12">
@@ -179,7 +189,7 @@ Signup.propTypes = {
  * @param {any} dispatch
  * @returns {object}  object
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     authActions: bindActionCreators(authActionCreators, dispatch)
   };

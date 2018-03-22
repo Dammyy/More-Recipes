@@ -14,7 +14,7 @@ import * as filestackActions from '../actions/filestack';
  * @class EditRecipeContainer
  * @extends {Component}
  */
-class EditRecipeContainer extends Component {
+export class EditRecipeContainer extends Component {
   /**
    * Creates an instance of EditRecipeContainer.
    * @param {any} props
@@ -79,7 +79,7 @@ class EditRecipeContainer extends Component {
  * @param {any} state
  * @returns {object} image
  */
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     image: state.getIn(['filestack', 'url'], ''),
     recipe: state.getIn(['recipes', 'singleRecipe'], Immutable.List()).toJS(),
@@ -93,7 +93,7 @@ const mapStateToProps = (state) => {
  * @param {any} dispatch
  * @returns {void}
  */
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch),
     filestackActions: bindActionCreators(filestackActions, dispatch)
