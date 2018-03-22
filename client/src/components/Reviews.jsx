@@ -25,7 +25,7 @@ export class Reviews extends PureComponent {
               </div>
               <div id="review-author">
                 <small>
-                By <strong>{review.username}</strong>
+                By <strong>{review.username} </strong>
                 on {review.createdAt.split('T')[0]}
                 </small>
               </div>

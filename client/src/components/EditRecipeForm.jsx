@@ -81,6 +81,7 @@ export class EditRecipeForm extends PureComponent {
                   <label htmlFor="ingredients">Ingredients</label>
                   <Field
                     name="ingredients"
+                    id="ingredients"
                     component="input"
                     className="form-control"
                     placeholder="Ingredients e.g water, potato, rice"
@@ -91,6 +92,7 @@ export class EditRecipeForm extends PureComponent {
                   <Field
                     name="details"
                     component="textarea"
+                    id="details-text-area"
                     className="form-control"
                     rows="5"
                     placeholder="Recipe details"
@@ -119,6 +121,7 @@ export class EditRecipeForm extends PureComponent {
                 </div>
                 <button
                   type="submit"
+                  id="submit-recipe"
                   className="btn btn-primary btn-block"
                 >
                 Publish

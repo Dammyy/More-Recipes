@@ -34,9 +34,10 @@ export const AddReviewForm = (props => (
         </div>
         <button
           type="submit"
+          id="submit-review"
           className="btn btn-primary btn-block"
         >
-                Submit
+        Submit
         </button>
       </form>
     </div>

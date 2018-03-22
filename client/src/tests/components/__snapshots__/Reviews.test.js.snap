@@ -43,7 +43,9 @@ ShallowWrapper {
       >
         <small>
           By 
-          <strong />
+          <strong>
+             
+          </strong>
           on 
           2018-03-17
         </small>
@@ -63,7 +65,9 @@ ShallowWrapper {
         >
           <small>
             By 
-            <strong />
+            <strong>
+               
+            </strong>
             on 
             2018-03-17
           </small>

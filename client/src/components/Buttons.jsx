@@ -13,6 +13,7 @@ const options = {
 export const BtnAdd = (() => (
   <Link
     to="/catalog/add"
+    id="btn-add"
     className="btn btn-publish btn-manage"
   >
     <i className="fa fa-pencil-square-o" aria-hidden="true" /> Add Recipe
@@ -23,6 +24,7 @@ const AuthenticatedBtnAdd = UserIsAuthenticated(options)(BtnAdd);
 export const BtnManageRecipes = (() => (
   <Link
     to="/catalog/manage"
+    id="btn-manage"
     className="btn btn-publish btn-manage"
   >
     <i className="fa fa-list-alt" aria-hidden="true" /> My Recipes
@@ -34,6 +36,7 @@ UserIsAuthenticated(options)(BtnManageRecipes);
 export const BtnFavorites = (() => (
   <Link
     to="/catalog/favorites"
+    id="btn-my-favorites"
     className="btn btn-publish btn-manage"
   >
     <i className="fa fa-heart" /> My Favorites
@@ -53,6 +56,7 @@ const BtnHome = (() => (
 const BtnCatalog = (() => (
   <Link
     to="/catalog"
+    id="btn-catalog"
     className="btn btn-publish btn-manage"
   >
     <i className="fa fa-list-alt" aria-hidden="true" /> Recipes Catalog
@@ -73,6 +77,7 @@ export const BtnEdit = ((props) => {
   return (
     <Link
       className="btn btn-primary"
+      id="btn-edit"
       to={`edit/${props.id}`}
       params={{ id: props.id }}
     >

@@ -32,6 +32,7 @@ export const BtnEdit = ((props) => {
   return (
     <Link
       className="btn btn-primary btn-del"
+      id="btn-edit-recipe"
       to={`edit/${props.id}`}
       params={{ id: props.id }}
     >
@@ -44,6 +45,7 @@ export const BtnDelete = ((props) => {
   return (
     <button
       className="btn btn-danger btn-del"
+      id="btn-delete-recipe"
       onClick={() => alert(() => props.deleteRecipe(props.id))}
     >
       Delete

@@ -50,7 +50,7 @@ export class AddRecipeForm extends PureComponent {
                   <Field
                     name="title"
                     type="text"
-                    id="Title"
+                    id="title"
                     component="input"
                     className="form-control"
                     placeholder="Title"
@@ -60,6 +60,7 @@ export class AddRecipeForm extends PureComponent {
                   <label htmlFor="ingredients">Ingredients</label>
                   <Field
                     name="ingredients"
+                    id="ingredients"
                     component="input"
                     className="form-control"
                     placeholder="Ingredients e.g water, potato, rice"
@@ -99,6 +100,7 @@ export class AddRecipeForm extends PureComponent {
                 </div>
                 <button
                   type="submit"
+                  id="submit-recipe"
                   className="btn btn-primary btn-block"
                 >
                   Publish

@@ -22,6 +22,7 @@ ShallowWrapper {
     "props": Object {
       "children": "Delete",
       "className": "btn btn-danger btn-del",
+      "id": "btn-delete-recipe",
       "onClick": [Function],
     },
     "ref": null,
@@ -36,6 +37,7 @@ ShallowWrapper {
       "props": Object {
         "children": "Delete",
         "className": "btn btn-danger btn-del",
+        "id": "btn-delete-recipe",
         "onClick": [Function],
       },
       "ref": null,
@@ -74,6 +76,7 @@ ShallowWrapper {
     "props": Object {
       "children": "Edit",
       "className": "btn btn-primary btn-del",
+      "id": "btn-edit-recipe",
       "onlyActiveOnIndex": false,
       "params": Object {
         "id": 1,
@@ -93,6 +96,7 @@ ShallowWrapper {
       "props": Object {
         "children": "Edit",
         "className": "btn btn-primary btn-del",
+        "id": "btn-edit-recipe",
         "onlyActiveOnIndex": false,
         "params": Object {
           "id": 1,

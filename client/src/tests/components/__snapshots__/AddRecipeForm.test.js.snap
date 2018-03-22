@@ -63,7 +63,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
-                    id="Title"
+                    id="title"
                     name="title"
                     placeholder="Title"
                     type="text"
@@ -80,6 +80,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
+                    id="ingredients"
                     name="ingredients"
                     placeholder="Ingredients e.g water, potato, rice"
                   />
@@ -137,6 +138,7 @@ ShallowWrapper {
                 </div>
                 <button
                   className="btn btn-primary btn-block"
+                  id="submit-recipe"
                   type="submit"
                 >
                   Publish
@@ -271,7 +273,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
-                    id="Title"
+                    id="title"
                     name="title"
                     placeholder="Title"
                     type="text"
@@ -288,6 +290,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
+                    id="ingredients"
                     name="ingredients"
                     placeholder="Ingredients e.g water, potato, rice"
                   />
@@ -345,6 +348,7 @@ ShallowWrapper {
                 </div>
                 <button
                   className="btn btn-primary btn-block"
+                  id="submit-recipe"
                   type="submit"
                 >
                   Publish
@@ -380,7 +384,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
-                    id="Title"
+                    id="title"
                     name="title"
                     placeholder="Title"
                     type="text"
@@ -397,6 +401,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
+                    id="ingredients"
                     name="ingredients"
                     placeholder="Ingredients e.g water, potato, rice"
                   />
@@ -454,6 +459,7 @@ ShallowWrapper {
                 </div>
                 <button
                   className="btn btn-primary btn-block"
+                  id="submit-recipe"
                   type="submit"
                 >
                   Publish
@@ -485,7 +491,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
-                    id="Title"
+                    id="title"
                     name="title"
                     placeholder="Title"
                     type="text"
@@ -502,6 +508,7 @@ ShallowWrapper {
                   <Field
                     className="form-control"
                     component="input"
+                    id="ingredients"
                     name="ingredients"
                     placeholder="Ingredients e.g water, potato, rice"
                   />
@@ -559,6 +566,7 @@ ShallowWrapper {
                 </div>
                 <button
                   className="btn btn-primary btn-block"
+                  id="submit-recipe"
                   type="submit"
                 >
                   Publish
@@ -585,7 +593,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
-                      id="Title"
+                      id="title"
                       name="title"
                       placeholder="Title"
                       type="text"
@@ -602,6 +610,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
+                      id="ingredients"
                       name="ingredients"
                       placeholder="Ingredients e.g water, potato, rice"
                     />
@@ -659,6 +668,7 @@ ShallowWrapper {
                   </div>,
                   <button
                     className="btn btn-primary btn-block"
+                    id="submit-recipe"
                     type="submit"
                   >
                     Publish
@@ -684,7 +694,7 @@ ShallowWrapper {
                       <Field
                         className="form-control"
                         component="input"
-                        id="Title"
+                        id="title"
                         name="title"
                         placeholder="Title"
                         type="text"
@@ -713,7 +723,7 @@ ShallowWrapper {
                       "props": Object {
                         "className": "form-control",
                         "component": "input",
-                        "id": "Title",
+                        "id": "title",
                         "name": "title",
                         "placeholder": "Title",
                         "type": "text",
@@ -739,6 +749,7 @@ ShallowWrapper {
                       <Field
                         className="form-control"
                         component="input"
+                        id="ingredients"
                         name="ingredients"
                         placeholder="Ingredients e.g water, potato, rice"
                       />,
@@ -766,6 +777,7 @@ ShallowWrapper {
                       "props": Object {
                         "className": "form-control",
                         "component": "input",
+                        "id": "ingredients",
                         "name": "ingredients",
                         "placeholder": "Ingredients e.g water, potato, rice",
                       },
@@ -968,6 +980,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": "Publish",
                     "className": "btn btn-primary btn-block",
+                    "id": "submit-recipe",
                     "type": "submit",
                   },
                   "ref": null,
@@ -1034,7 +1047,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
-                      id="Title"
+                      id="title"
                       name="title"
                       placeholder="Title"
                       type="text"
@@ -1051,6 +1064,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
+                      id="ingredients"
                       name="ingredients"
                       placeholder="Ingredients e.g water, potato, rice"
                     />
@@ -1108,6 +1122,7 @@ ShallowWrapper {
                   </div>
                   <button
                     className="btn btn-primary btn-block"
+                    id="submit-recipe"
                     type="submit"
                   >
                     Publish
@@ -1242,7 +1257,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
-                      id="Title"
+                      id="title"
                       name="title"
                       placeholder="Title"
                       type="text"
@@ -1259,6 +1274,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
+                      id="ingredients"
                       name="ingredients"
                       placeholder="Ingredients e.g water, potato, rice"
                     />
@@ -1316,6 +1332,7 @@ ShallowWrapper {
                   </div>
                   <button
                     className="btn btn-primary btn-block"
+                    id="submit-recipe"
                     type="submit"
                   >
                     Publish
@@ -1351,7 +1368,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
-                      id="Title"
+                      id="title"
                       name="title"
                       placeholder="Title"
                       type="text"
@@ -1368,6 +1385,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
+                      id="ingredients"
                       name="ingredients"
                       placeholder="Ingredients e.g water, potato, rice"
                     />
@@ -1425,6 +1443,7 @@ ShallowWrapper {
                   </div>
                   <button
                     className="btn btn-primary btn-block"
+                    id="submit-recipe"
                     type="submit"
                   >
                     Publish
@@ -1456,7 +1475,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
-                      id="Title"
+                      id="title"
                       name="title"
                       placeholder="Title"
                       type="text"
@@ -1473,6 +1492,7 @@ ShallowWrapper {
                     <Field
                       className="form-control"
                       component="input"
+                      id="ingredients"
                       name="ingredients"
                       placeholder="Ingredients e.g water, potato, rice"
                     />
@@ -1530,6 +1550,7 @@ ShallowWrapper {
                   </div>
                   <button
                     className="btn btn-primary btn-block"
+                    id="submit-recipe"
                     type="submit"
                   >
                     Publish
@@ -1556,7 +1577,7 @@ ShallowWrapper {
                       <Field
                         className="form-control"
                         component="input"
-                        id="Title"
+                        id="title"
                         name="title"
                         placeholder="Title"
                         type="text"
@@ -1573,6 +1594,7 @@ ShallowWrapper {
                       <Field
                         className="form-control"
                         component="input"
+                        id="ingredients"
                         name="ingredients"
                         placeholder="Ingredients e.g water, potato, rice"
                       />
@@ -1630,6 +1652,7 @@ ShallowWrapper {
                     </div>,
                     <button
                       className="btn btn-primary btn-block"
+                      id="submit-recipe"
                       type="submit"
                     >
                       Publish
@@ -1655,7 +1678,7 @@ ShallowWrapper {
                         <Field
                           className="form-control"
                           component="input"
-                          id="Title"
+                          id="title"
                           name="title"
                           placeholder="Title"
                           type="text"
@@ -1684,7 +1707,7 @@ ShallowWrapper {
                         "props": Object {
                           "className": "form-control",
                           "component": "input",
-                          "id": "Title",
+                          "id": "title",
                           "name": "title",
                           "placeholder": "Title",
                           "type": "text",
@@ -1710,6 +1733,7 @@ ShallowWrapper {
                         <Field
                           className="form-control"
                           component="input"
+                          id="ingredients"
                           name="ingredients"
                           placeholder="Ingredients e.g water, potato, rice"
                         />,
@@ -1737,6 +1761,7 @@ ShallowWrapper {
                         "props": Object {
                           "className": "form-control",
                           "component": "input",
+                          "id": "ingredients",
                           "name": "ingredients",
                           "placeholder": "Ingredients e.g water, potato, rice",
                         },
@@ -1939,6 +1964,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": "Publish",
                       "className": "btn btn-primary btn-block",
+                      "id": "submit-recipe",
                       "type": "submit",
                     },
                     "ref": null,
