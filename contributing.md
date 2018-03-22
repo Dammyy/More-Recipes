@@ -5,6 +5,7 @@
 + Commit your changes - git commit -m “{commit_message_goes_here}“ or git commit for the interactive interface
 + Push to the remote branch - git push origin {your_branch_name_as_described_above}
 + Create a pull request
+
 ##PR Description Template (Markdown)
 + #### What does this PR do?
 + #### Description of Task to be completed?
