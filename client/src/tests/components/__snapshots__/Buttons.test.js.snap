@@ -210,7 +210,7 @@ ShallowWrapper {
           aria-hidden="true"
           className="fa fa-list-alt"
         />,
-        " Catalog",
+        " Recipes Catalog",
       ],
       "className": "btn btn-publish btn-manage",
       "onlyActiveOnIndex": false,
@@ -231,7 +231,7 @@ ShallowWrapper {
         "rendered": null,
         "type": "i",
       },
-      " Catalog",
+      " Recipes Catalog",
     ],
     "type": [Function],
   },
@@ -246,7 +246,7 @@ ShallowWrapper {
             aria-hidden="true"
             className="fa fa-list-alt"
           />,
-          " Catalog",
+          " Recipes Catalog",
         ],
         "className": "btn btn-publish btn-manage",
         "onlyActiveOnIndex": false,
@@ -267,7 +267,7 @@ ShallowWrapper {
           "rendered": null,
           "type": "i",
         },
-        " Catalog",
+        " Recipes Catalog",
       ],
       "type": [Function],
     },
@@ -327,8 +327,14 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": "Edit",
-      "className": "btn btn-publish btn-manage",
+      "children": Array [
+        <i
+          aria-hidden="true"
+          className="fa fa-pencil-square-o"
+        />,
+        " Edit",
+      ],
+      "className": "btn btn-primary",
       "onlyActiveOnIndex": false,
       "params": Object {
         "id": 1,
@@ -337,7 +343,21 @@ ShallowWrapper {
       "to": "edit/1",
     },
     "ref": null,
-    "rendered": "Edit",
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-hidden": "true",
+          "className": "fa fa-pencil-square-o",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "i",
+      },
+      " Edit",
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -346,8 +366,14 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": "Edit",
-        "className": "btn btn-publish btn-manage",
+        "children": Array [
+          <i
+            aria-hidden="true"
+            className="fa fa-pencil-square-o"
+          />,
+          " Edit",
+        ],
+        "className": "btn btn-primary",
         "onlyActiveOnIndex": false,
         "params": Object {
           "id": 1,
@@ -356,7 +382,21 @@ ShallowWrapper {
         "to": "edit/1",
       },
       "ref": null,
-      "rendered": "Edit",
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-hidden": "true",
+            "className": "fa fa-pencil-square-o",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "i",
+        },
+        " Edit",
+      ],
       "type": [Function],
     },
   ],
@@ -572,7 +612,7 @@ ShallowWrapper {
           aria-hidden="true"
           className="fa fa-list-alt"
         />,
-        " Manage Recipes",
+        " My Recipes",
       ],
       "className": "btn btn-publish btn-manage",
       "onlyActiveOnIndex": false,
@@ -593,7 +633,7 @@ ShallowWrapper {
         "rendered": null,
         "type": "i",
       },
-      " Manage Recipes",
+      " My Recipes",
     ],
     "type": [Function],
   },
@@ -608,7 +648,7 @@ ShallowWrapper {
             aria-hidden="true"
             className="fa fa-list-alt"
           />,
-          " Manage Recipes",
+          " My Recipes",
         ],
         "className": "btn btn-publish btn-manage",
         "onlyActiveOnIndex": false,
@@ -629,7 +669,7 @@ ShallowWrapper {
           "rendered": null,
           "type": "i",
         },
-        " Manage Recipes",
+        " My Recipes",
       ],
       "type": [Function],
     },

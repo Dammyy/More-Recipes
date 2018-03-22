@@ -113,7 +113,7 @@ describe('Recipe controller', () => {
             .set('auth', fakeAuth)
             .end((err, res) => {
               expect(res.status).to.equal(401);
-              expect(res.body.message).to.equal('Token has expired. Please sign in');
+              expect(res.body.message).to.equal('Token has expired. Please sign in');//eslint-disable-line
               done();
             });
         });
@@ -181,7 +181,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Create Recipe - details is not provided
-    it('Should return details is required if details is not provided', (done) => {
+    it('Should return details is required if details is not provided', (done) => {//eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -207,7 +207,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Create Recipe - ingredients is not provided
-    it('Should return details is required if details is not provided', (done) => {
+    it('Should return details is required if details is not provided', (done) => {//eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -284,7 +284,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Update Recipe - recipeID passed isnt a number
-    it('Should return invalid request if recipeid passed is not a number', (done) => {
+    it('Should return invalid request if recipeid passed is not a number', (done) => {//eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -310,7 +310,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Update recipe - user trying update recipe he did not create
-    it('Should return You are not authorised if user trying to update a recipe he did not create', (done) => {
+    it('Should return You are not authorised if user trying to update a recipe he did not create', (done) => { //eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -330,7 +330,8 @@ describe('Recipe controller', () => {
             })
             .end((err, res) => {
               expect(res.status).to.equal(403);
-              expect(res.body.message).to.equal('You are not authorised to edit this recipe');
+              expect(res.body.message).to
+                .equal('You are not authorised to edit this recipe');
               done();
             });
         });
@@ -351,7 +352,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Delete Recipe - Non existing recipeID provided
-    it('Should return 404 if non existing recipeID is provided to be deleted', (done) => {
+    it('Should return 404 if non existing recipeID is provided to be deleted', (done) => { //eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -377,7 +378,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Delete Recipe - invalid recipeID provided
-    it('Should return invalid request recipeID is provided to be deleted', (done) => {
+    it('Should return invalid request recipeID is provided to be deleted', (done) => { //eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -403,7 +404,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Delete Recipe - User Trying to delete recipe he did not create
-    it('Should return 403 if user Trying to delete recipe he did not create', (done) => {
+    it('Should return 403 if user Trying to delete recipe he did not create', (done) => { //eslint-disable-line
       request
         .post('/api/v1/users/signin')
         .send({
@@ -423,13 +424,14 @@ describe('Recipe controller', () => {
             })
             .end((err, res) => {
               expect(res.status).to.equal(403);
-              expect(res.body.message).to.equal('You are not authorised to delete this recipe');
+              expect(res.body.message).to
+                .equal('You are not authorised to delete this recipe');
               done();
             });
         });
     });
     // Test Delete Recipe - Successfully delete recipe
-    it('Should return 200 if user successfully deletes recipe user created', (done) => {
+    it('Should return 200 if user successfully deletes recipe user created', (done) => { //eslint-disable-line
       request
         .delete(`/api/v1/recipes/${testUser.recipe2.id}`)
         .set('auth', testUser.user1.auth2)
@@ -454,7 +456,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Retrieve single recipe - invalid recipeID provided
-    it('Should return invalid request if invalid recipeID is provided', (done) => {
+    it('Should return invalid request if invalid recipeID is provided', (done) => { //eslint-disable-line
       request
         .get('/api/v1/recipes/t')
         .end((err, res) => {
@@ -498,7 +500,7 @@ describe('Recipe controller', () => {
         });
     });
     // Test Posting recipe reviews
-    it('Should return 201', (done) => {
+    it('Should submit a review', (done) => {
       request
         .post('/api/v1/users/signin')
         .send({
@@ -543,7 +545,6 @@ describe('Recipe controller', () => {
             });
         });
     });
-
     // Test downvote a recipe that was previously upvoted
     it('Should downvote a recipe that was previously upvoted', (done) => {
       request
@@ -565,7 +566,26 @@ describe('Recipe controller', () => {
             });
         });
     });
-
+    it('Should remove downvote', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/false`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.message).to.equal('Downvote removed');
+              done();
+            });
+        });
+    });
     // Test downvote recipe
     it('Should downvote a recipe', (done) => {
       request
@@ -578,12 +598,107 @@ describe('Recipe controller', () => {
           expect(res).to.have.status(200);
           auth = res.body.jwt;
           request
-            .post(`/api/v1/recipes/${testUser.recipe3.id}/vote/false`)
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/false`)
             .set('auth', auth)
             .end((err, res) => {
               expect(res.status).to.equal(201);
+              expect(res.body.message).to.equal('Recipe downvoted');
               done();
             });
+        });
+    });
+
+    it('Should upvote a recipe that was previously downvote', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(201);
+              expect(res.body.message).to.equal('Recipe upvoted');
+              done();
+            });
+        });
+    });
+    it('Should remove upvote', (done) => {
+      request
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'damilareolatubosun@yahoo.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          auth = res.body.jwt;
+          request
+            .post(`/api/v1/recipes/${testUser.recipe1.id}/vote/true`)
+            .set('auth', auth)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.message).to.equal('Upvote removed');
+              done();
+            });
+        });
+    });
+    it('Should search for recipes', (done) => {
+      request
+        .get('/api/v1/recipes/search/beans')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('Should return recipes with the most upvotes', (done) => {
+      request
+        .get('/api/v1/recipes/popular/upvotes')
+        .set('auth', testUser.user1.auth2)
+        .end((err, res) => {
+          auth = res.body.jwt;
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('Should return the most favorited recipes', (done) => {
+      request
+        .get('/api/v1/recipes/popular')
+        .end((err, res) => {
+          auth = res.body.jwt;
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('should retrieve reviews for a recipe', (done) => {
+      request
+        .get(`/api/v1/reviews/${testUser.recipe1.id}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('should favorite a recipe', (done) => {
+      request
+        .post(`/api/v1/recipes/${testUser.recipe1.id}/favorites`)
+        .set('auth', testUser.user1.auth2)
+        .end((err, res) => {
+          expect(res).to.have.status(201);
+          done();
+        });
+    });
+    it('should remove a favorite recipe', (done) => {
+      request
+        .post(`/api/v1/recipes/${testUser.recipe1.id}/favorites`)
+        .set('auth', testUser.user1.auth2)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
         });
     });
   });

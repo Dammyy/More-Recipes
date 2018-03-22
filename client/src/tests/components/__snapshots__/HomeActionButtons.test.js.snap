@@ -42,13 +42,13 @@ ShallowWrapper {
             className="btn btn-post-recipe"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/catalog/add"
+            to="/catalog/manage"
           >
             <i
               aria-hidden="true"
-              className="fa fa-pencil-square-o"
+              className="fa fa-tachometer"
             />
-             New Recipe
+             Dashboard
           </Link>
           <button
             className="btn btn-logout"
@@ -105,13 +105,13 @@ ShallowWrapper {
               className="btn btn-post-recipe"
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="/catalog/add"
+              to="/catalog/manage"
             >
               <i
                 aria-hidden="true"
-                className="fa fa-pencil-square-o"
+                className="fa fa-tachometer"
               />
-               New Recipe
+               Dashboard
             </Link>,
             <button
               className="btn btn-logout"
@@ -170,14 +170,14 @@ ShallowWrapper {
               "children": Array [
                 <i
                   aria-hidden="true"
-                  className="fa fa-pencil-square-o"
+                  className="fa fa-tachometer"
                 />,
-                " New Recipe",
+                " Dashboard",
               ],
               "className": "btn btn-post-recipe",
               "onlyActiveOnIndex": false,
               "style": Object {},
-              "to": "/catalog/add",
+              "to": "/catalog/manage",
             },
             "ref": null,
             "rendered": Array [
@@ -187,13 +187,13 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "aria-hidden": "true",
-                  "className": "fa fa-pencil-square-o",
+                  "className": "fa fa-tachometer",
                 },
                 "ref": null,
                 "rendered": null,
                 "type": "i",
               },
-              " New Recipe",
+              " Dashboard",
             ],
             "type": [Function],
           },
@@ -264,13 +264,13 @@ ShallowWrapper {
               className="btn btn-post-recipe"
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="/catalog/add"
+              to="/catalog/manage"
             >
               <i
                 aria-hidden="true"
-                className="fa fa-pencil-square-o"
+                className="fa fa-tachometer"
               />
-               New Recipe
+               Dashboard
             </Link>
             <button
               className="btn btn-logout"
@@ -327,13 +327,13 @@ ShallowWrapper {
                 className="btn btn-post-recipe"
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="/catalog/add"
+                to="/catalog/manage"
               >
                 <i
                   aria-hidden="true"
-                  className="fa fa-pencil-square-o"
+                  className="fa fa-tachometer"
                 />
-                 New Recipe
+                 Dashboard
               </Link>,
               <button
                 className="btn btn-logout"
@@ -392,14 +392,14 @@ ShallowWrapper {
                 "children": Array [
                   <i
                     aria-hidden="true"
-                    className="fa fa-pencil-square-o"
+                    className="fa fa-tachometer"
                   />,
-                  " New Recipe",
+                  " Dashboard",
                 ],
                 "className": "btn btn-post-recipe",
                 "onlyActiveOnIndex": false,
                 "style": Object {},
-                "to": "/catalog/add",
+                "to": "/catalog/manage",
               },
               "ref": null,
               "rendered": Array [
@@ -409,13 +409,13 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "aria-hidden": "true",
-                    "className": "fa fa-pencil-square-o",
+                    "className": "fa fa-tachometer",
                   },
                   "ref": null,
                   "rendered": null,
                   "type": "i",
                 },
-                " New Recipe",
+                " Dashboard",
               ],
               "type": [Function],
             },

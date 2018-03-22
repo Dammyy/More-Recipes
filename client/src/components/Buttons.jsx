@@ -25,7 +25,7 @@ export const BtnManageRecipes = (() => (
     to="/catalog/manage"
     className="btn btn-publish btn-manage"
   >
-    <i className="fa fa-list-alt" aria-hidden="true" /> Manage Recipes
+    <i className="fa fa-list-alt" aria-hidden="true" /> My Recipes
   </Link>
 ));
 const AuthenticatedBtnManageRecipes =
@@ -55,7 +55,7 @@ const BtnCatalog = (() => (
     to="/catalog"
     className="btn btn-publish btn-manage"
   >
-    <i className="fa fa-list-alt" aria-hidden="true" /> Catalog
+    <i className="fa fa-list-alt" aria-hidden="true" /> Recipes Catalog
   </Link>
 ));
 
@@ -72,11 +72,11 @@ const AuthenticatedBtnProfile = UserIsAuthenticated(options)(BtnProfile);
 export const BtnEdit = ((props) => {
   return (
     <Link
-      className="btn btn-publish btn-manage"
+      className="btn btn-primary"
       to={`edit/${props.id}`}
       params={{ id: props.id }}
     >
-      Edit
+      <i className="fa fa-pencil-square-o" aria-hidden="true" /> Edit
     </Link >);
 });
 const AuthenticatedBtnEdit = UserIsAuthenticated(options)(BtnEdit);

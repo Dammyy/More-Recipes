@@ -32,13 +32,13 @@ export class HomeActionButtons extends PureComponent {
             /> Browse
           </Link>
           <Link
-            to="/catalog/add"
+            to="/catalog/manage"
             className="btn btn-post-recipe"
           >
             <i
-              className="fa fa-pencil-square-o"
+              className="fa fa-tachometer"
               aria-hidden="true"
-            /> New Recipe
+            /> Dashboard
           </Link>
           <button
             className="btn btn-logout"
