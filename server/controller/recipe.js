@@ -183,6 +183,7 @@ class Recipe {
       review: req.body.review,
       userId: req.decoded.id,
       recipeId: req.params.recipeId,
+      username: req.decoded.firstName.concat(' ').concat(req.decoded.lastName)
     })
       .then((review) => {
         res.status(201).send({
