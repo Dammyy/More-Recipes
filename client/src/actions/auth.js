@@ -13,7 +13,7 @@ import {
    * @param {Object} redirection
    * @returns {Object} login
    */
-function loginUser(redirection) {
+function login(redirection) {
   return {
     type: LOGIN,
     redirection
@@ -86,7 +86,7 @@ function logout() {
   };
 }
 export {
-  loginUser,
+  login,
   loginSuccess,
   loginFailure,
   signupUser,
