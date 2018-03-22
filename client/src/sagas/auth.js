@@ -40,7 +40,11 @@ const sendDetails = (route, details) => {
    * @param {*} action
    * @returns {*} res
    */
+<<<<<<< HEAD
+function* loginUser(action) {
+=======
 function* login(action) {
+>>>>>>> 83ae0b41a0de9f5dd56db059bae21730e416a6db
   const { redirection } = action;
   try {
     const details = yield select(getForm, 'login');

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const PATHS = require('./webpack-paths');
 
-exports.devServer = function (options) {
+exports.devServer = (options) => {
   return {
     devServer: {
       historyApiFallback: true,
@@ -12,14 +12,13 @@ exports.devServer = function (options) {
       port: options.port,
       contentBase: './client/dist',
     },
-    plugins: [ // Hot module
+    plugins: [
       new webpack.HotModuleReplacementPlugin({
         multistep: true
       })
     ]
   };
 };
-
 exports.css = {
   test: /\.css$/,
   use: ['style-loader', 'css-loader'],
@@ -36,3 +35,4 @@ exports.babel = {
   exclude: /node_modules/,
   use: ['babel-loader']
 };
+

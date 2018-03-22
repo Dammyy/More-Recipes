@@ -9,7 +9,7 @@ import rootSaga from './sagas';
 import reducer from './reducers';
 
 /**
-   * @returns {Object} fetch recipes
+   * @returns {Object} store
    */
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
