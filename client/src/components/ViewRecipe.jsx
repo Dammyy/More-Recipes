@@ -123,7 +123,7 @@ class ViewRecipe extends PureComponent {
         <div className="row">
           <div className="col-md-12 latest-recipes">
             <div id="recipe-display">
-              <h2 className="recipe-title r-d-titles">{title}</h2>
+              <div className="current-page btn-buttons">{title}</div>
               <div id="recipe-content">
                 <div id="img-ing">
                   <div className="row">

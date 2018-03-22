@@ -4,6 +4,8 @@ small, strike, strong, sub, sup, tt, var, dl, dt, dd, ul, li, fieldset, form, la
 tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 html{position:relative; min-height: 100%;}
 body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
+.error-msg{text-align:center;margin-top:50px;}
+.error-msg h1{padding:100px 0px;}
 .btn{margin-bottom:5px;}
 .add-recipe-page {height: 100%;margin-bottom: 150px;}
 .upload-image img{width:300px;height:300px;}
@@ -99,7 +101,7 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 #review{margin:5px 0px;}
 #recipe-content button {border:1px solid #ccc;color:#202020;}
 #recipe-content button:hover {background:#ccc;border:none;color:#202020;}
-#recipe-reviews {background:#A8A8A8;color:white;padding:10px;border-bottom:1px solid}
+#recipe-reviews {background:#f8f8f8;color:#000;padding:10px;border-bottom:1px solid #ccc;font-size:20px;text-transform:capitalize;};
 #popular-votes{display:block;width:100%;height:80px;margin:0 auto;font-size:14px;}
 #reviews-form{height:auto;}
 .profile-display img {width:100%;}
@@ -133,7 +135,7 @@ body{font-family: 'Montserrat', sans-serif;margin-bottom: 120px}
 .panel-title{font-size:30px;font-weight:bold;padding:10px 0px;}
 .panel-body{font-size:20px;font-weight:bold;letter-spacing:1px;}
 .panel-body label{margin-top:10px;}
-.btn-search{background:rgb(161, 127, 127);color:#fff;font-weight:bold;}
+.btn-search{background:#808080!important;color:#fff;font-weight:bold;border:none;}
 .btn-primary {margin-right:10px;}
 .current-page {padding:10px 0px;font-size:30px;background:#808080;color:#fff;padding-left:20px;text-align:center;text-transform:uppercase;letter-spacing:1px;}
 /*Profile page*/

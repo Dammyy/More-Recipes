@@ -97,9 +97,10 @@ export class ViewRecipeContainer extends Component {
         />
         <div id="reviews-form">
           <AddReviewFormContainer id={this.props.params.id} />
-        </div>
-        <div className="reviews">
-          <Reviews reviews={reviews} id={this.props.params.id} />
+          <div className="reviews">
+            <div className="current-page btn-buttons">Reviews</div>
+            <Reviews reviews={reviews} id={this.props.params.id} />
+          </div>
         </div>
       </div>
     );
