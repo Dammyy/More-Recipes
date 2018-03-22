@@ -35,7 +35,7 @@ class RecipesContainer extends Component {
     })
     .then(response => response.json())
     .then(response => {
-    this.setState({ recipes: this.state.recipes.filter(recipe => recipe._id !== id) });
+    this.setState({ recipes: this.state.recipes.filter(recipe => recipe.id !== id) });
     console.log(response.message);
     });
   }
@@ -64,11 +64,10 @@ class RecipesContainer extends Component {
 }
 
 function mapStateToProps (state) {
-  return {
+  return { 
     recipes: state.getIn(['recipes', 'list'], Immutable.List()).toJS()
   }
 }
-
 function mapDispatchToProps (dispatch) {
   return {
     recipesActions: bindActionCreators(recipesActionCreators, dispatch)

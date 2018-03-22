@@ -1,12 +1,14 @@
-
 import {
   watchGetRecipes
 } from './recipes';
+
+import { watchLogin } from './auth';
 /**
-   * @returns {Object} fetch recipes
+   * @returns {Object} root saga
    */
 export default function* rootSaga() {
   yield [
-    watchGetRecipes()
+    watchGetRecipes(),
+    watchLogin()
   ];
 }
