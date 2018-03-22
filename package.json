@@ -15,7 +15,7 @@
     "test": "cross-env NODE_ENV=test mocha server/__test__/*.spec.js --exit --require babel-register --reporter spec",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls",
     "start-client": "NODE_ENV=development webpack-dev-server",
-    "build-client": "NODE_ENV=production webpack",
+    "build-client": "NODE_ENV=production webpack -p",
     "test:fe": "jest ./client/src/tests",
     "nightwatch": "cross-env NODE_ENV=test ./node_modules/.bin/nightwatch",
     "jest": "npx jest --silent"

@@ -41,7 +41,6 @@ const routes = (
           <IndexRoute component={Welcome} />
           <Route path="login" component={Login} />
           <Route path="signup" component={Signup} />
-          <Route path="error" component={NotFoundPage} />
           <Route path="profile" component={AuthCheck(UserProfileContainer)} />
         </Route>
         <Route path="catalog" component={Archive}>
@@ -59,6 +58,7 @@ const routes = (
           />
           <Route path="/view/:id" component={ViewRecipeContainer} />
         </Route>
+        <Route path="*" component={NotFoundPage} />
       </Router>
       <ReduxToastr
         timeOut={2000}

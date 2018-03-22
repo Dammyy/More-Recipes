@@ -35,10 +35,8 @@ switch (process.env.NODE_ENV) {
   case 'production':
     config = merge(
       common,
-      {
-        devtool: 'source-map',
-        plugins: [webpackDefinePlugin],
-      },
+      { devtool: 'source-map' },
+      { plugins: [webpackDefinePlugin] }
     );
     break;
   case 'development':

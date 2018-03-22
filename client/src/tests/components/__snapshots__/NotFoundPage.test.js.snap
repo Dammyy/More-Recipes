@@ -18,23 +18,31 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <ReduxForm />,
         <div
-          className="col-md-12  welcome-msg error-msg"
+          className="current-page btn-buttons"
         >
-          <i>
-            <h1>
-              404! RECIPE NOT FOUND
-            </h1>
-          </i>
+          <BtnCurrent />
         </div>,
-        <Link
-          className="btn btn-primary btn-del"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/"
+        <div
+          className="col-md-12 error-msg"
         >
-          Go to homepage
-        </Link>,
+          <h1>
+            404! Page Not Found
+          </h1>
+          <Link
+            className="btn btn-primary btn-manage"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/"
+          >
+            <i
+              className="fa fa-home"
+            />
+             Homepage
+          </Link>
+        </div>,
+        <Footer />,
       ],
     },
     "ref": null,
@@ -42,54 +50,111 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <i>
-            <h1>
-              404! RECIPE NOT FOUND
-            </h1>
-          </i>,
-          "className": "col-md-12  welcome-msg error-msg",
+          "children": <BtnCurrent />,
+          "className": "current-page btn-buttons",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <h1>
-              404! RECIPE NOT FOUND
-            </h1>,
-          },
+          "nodeType": "function",
+          "props": Object {},
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "404! RECIPE NOT FOUND",
-            },
-            "ref": null,
-            "rendered": "404! RECIPE NOT FOUND",
-            "type": "h1",
-          },
-          "type": "i",
+          "rendered": null,
+          "type": [Function],
         },
         "type": "div",
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "host",
         "props": Object {
-          "children": "Go to homepage",
-          "className": "btn btn-primary btn-del",
-          "onlyActiveOnIndex": false,
-          "style": Object {},
-          "to": "/",
+          "children": Array [
+            <h1>
+              404! Page Not Found
+            </h1>,
+            <Link
+              className="btn btn-primary btn-manage"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/"
+            >
+              <i
+                className="fa fa-home"
+              />
+               Homepage
+            </Link>,
+          ],
+          "className": "col-md-12 error-msg",
         },
         "ref": null,
-        "rendered": "Go to homepage",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "404! Page Not Found",
+            },
+            "ref": null,
+            "rendered": "404! Page Not Found",
+            "type": "h1",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <i
+                  className="fa fa-home"
+                />,
+                " Homepage",
+              ],
+              "className": "btn btn-primary btn-manage",
+              "onlyActiveOnIndex": false,
+              "style": Object {},
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "fa fa-home",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              " Homepage",
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
         "type": [Function],
       },
     ],
@@ -102,23 +167,31 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <ReduxForm />,
           <div
-            className="col-md-12  welcome-msg error-msg"
+            className="current-page btn-buttons"
           >
-            <i>
-              <h1>
-                404! RECIPE NOT FOUND
-              </h1>
-            </i>
+            <BtnCurrent />
           </div>,
-          <Link
-            className="btn btn-primary btn-del"
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/"
+          <div
+            className="col-md-12 error-msg"
           >
-            Go to homepage
-          </Link>,
+            <h1>
+              404! Page Not Found
+            </h1>
+            <Link
+              className="btn btn-primary btn-manage"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/"
+            >
+              <i
+                className="fa fa-home"
+              />
+               Homepage
+            </Link>
+          </div>,
+          <Footer />,
         ],
       },
       "ref": null,
@@ -126,54 +199,111 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <i>
-              <h1>
-                404! RECIPE NOT FOUND
-              </h1>
-            </i>,
-            "className": "col-md-12  welcome-msg error-msg",
+            "children": <BtnCurrent />,
+            "className": "current-page btn-buttons",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": <h1>
-                404! RECIPE NOT FOUND
-              </h1>,
-            },
+            "nodeType": "function",
+            "props": Object {},
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "404! RECIPE NOT FOUND",
-              },
-              "ref": null,
-              "rendered": "404! RECIPE NOT FOUND",
-              "type": "h1",
-            },
-            "type": "i",
+            "rendered": null,
+            "type": [Function],
           },
           "type": "div",
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "host",
           "props": Object {
-            "children": "Go to homepage",
-            "className": "btn btn-primary btn-del",
-            "onlyActiveOnIndex": false,
-            "style": Object {},
-            "to": "/",
+            "children": Array [
+              <h1>
+                404! Page Not Found
+              </h1>,
+              <Link
+                className="btn btn-primary btn-manage"
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/"
+              >
+                <i
+                  className="fa fa-home"
+                />
+                 Homepage
+              </Link>,
+            ],
+            "className": "col-md-12 error-msg",
           },
           "ref": null,
-          "rendered": "Go to homepage",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "404! Page Not Found",
+              },
+              "ref": null,
+              "rendered": "404! Page Not Found",
+              "type": "h1",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <i
+                    className="fa fa-home"
+                  />,
+                  " Homepage",
+                ],
+                "className": "btn btn-primary btn-manage",
+                "onlyActiveOnIndex": false,
+                "style": Object {},
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "fa fa-home",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+                " Homepage",
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
       ],

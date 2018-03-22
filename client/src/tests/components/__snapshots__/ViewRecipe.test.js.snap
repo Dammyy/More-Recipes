@@ -391,8 +391,8 @@ ShallowWrapper {
             <div
               id="recipe-display"
             >
-              <h2
-                className="recipe-title r-d-titles"
+              <div
+                className="current-page btn-buttons"
               />
               <div
                 id="recipe-content"
@@ -557,8 +557,8 @@ ShallowWrapper {
             <div
               id="recipe-display"
             >
-              <h2
-                className="recipe-title r-d-titles"
+              <div
+                className="current-page btn-buttons"
               />
               <div
                 id="recipe-content"
@@ -641,8 +641,8 @@ ShallowWrapper {
             "children": <div
               id="recipe-display"
             >
-              <h2
-                className="recipe-title r-d-titles"
+              <div
+                className="current-page btn-buttons"
               />
               <div
                 id="recipe-content"
@@ -722,8 +722,8 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <h2
-                  className="recipe-title r-d-titles"
+                <div
+                  className="current-page btn-buttons"
                 />,
                 <div
                   id="recipe-content"
@@ -804,11 +804,11 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": undefined,
-                  "className": "recipe-title r-d-titles",
+                  "className": "current-page btn-buttons",
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "h2",
+                "type": "div",
               },
               Object {
                 "instance": null,
@@ -1291,8 +1291,8 @@ ShallowWrapper {
               <div
                 id="recipe-display"
               >
-                <h2
-                  className="recipe-title r-d-titles"
+                <div
+                  className="current-page btn-buttons"
                 />
                 <div
                   id="recipe-content"
@@ -1457,8 +1457,8 @@ ShallowWrapper {
               <div
                 id="recipe-display"
               >
-                <h2
-                  className="recipe-title r-d-titles"
+                <div
+                  className="current-page btn-buttons"
                 />
                 <div
                   id="recipe-content"
@@ -1541,8 +1541,8 @@ ShallowWrapper {
               "children": <div
                 id="recipe-display"
               >
-                <h2
-                  className="recipe-title r-d-titles"
+                <div
+                  className="current-page btn-buttons"
                 />
                 <div
                   id="recipe-content"
@@ -1622,8 +1622,8 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <h2
-                    className="recipe-title r-d-titles"
+                  <div
+                    className="current-page btn-buttons"
                   />,
                   <div
                     id="recipe-content"
@@ -1704,11 +1704,11 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": undefined,
-                    "className": "recipe-title r-d-titles",
+                    "className": "current-page btn-buttons",
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": "h2",
+                  "type": "div",
                 },
                 Object {
                   "instance": null,

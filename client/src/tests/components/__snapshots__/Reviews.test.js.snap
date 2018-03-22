@@ -43,6 +43,9 @@ ShallowWrapper {
       >
         <small>
           By 
+          <strong />
+          on 
+          2018-03-17
         </small>
       </div>
     </div>,
@@ -60,6 +63,9 @@ ShallowWrapper {
         >
           <small>
             By 
+            <strong />
+            on 
+            2018-03-17
           </small>
         </div>
       </div>,
