@@ -17,7 +17,7 @@ const initialState = Immutable.fromJS({
   auth: authChecker()
 });
 /**
-   * @returns {Object} store
+   * @returns  {Object} store
    */
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();

@@ -24,6 +24,7 @@ export class HomeActionButtons extends PureComponent {
         <p>
           <Link
             to="/catalog"
+            id="btn-browse"
             className="btn btn-post-recipe"
           >
             <i
@@ -42,6 +43,7 @@ export class HomeActionButtons extends PureComponent {
           </Link>
           <button
             className="btn btn-logout"
+            id="btn-logout"
             onClick={logout}
           >
             <i className="fa fa-power-off" aria-hidden="true" /> Logout
@@ -75,7 +77,13 @@ const options = {
           className="btn btn-signup"
         >Sign Up
         </Link>
-        <Link to="/login" className="btn btn-signin">Login</Link>
+        <Link
+          to="/login"
+          id="btn-login"
+          className="btn btn-signin"
+        >
+        Login
+        </Link>
       </div>
     );
   }

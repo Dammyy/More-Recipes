@@ -5,8 +5,9 @@ import { GET_USER_DETAILS } from '../constants/user';
 import { getUserDetailsSuccess, getUserDetailsFailure } from '../actions/user';
 
 /**
- * @param {number} userId
- * @returns {Object} response from server
+ * @param    {number} userId
+ *
+ * @returns  {Object} response from server
  */
 export const getUserInfo = (userId) => {
   return fetch(`/api/v1/users/profile/${userId}`, {
@@ -27,8 +28,9 @@ export const getUserInfo = (userId) => {
 
 /**
  *
- * @param {object} action action type and payload
- * @returns {object} result
+ * @param    {object} action action type and payload
+ *
+ * @returns  {object} result
  *
  */
 export function* usersDetails(action) {
@@ -47,8 +49,7 @@ export function* usersDetails(action) {
 }
 
 /**
- * @returns {any} Watch get reviews
- *
+ * @returns  {any} Watch get reviews
  */
 function* watchUsersDetails() {
   yield call(takeLatest, GET_USER_DETAILS, usersDetails);

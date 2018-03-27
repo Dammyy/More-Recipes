@@ -10,18 +10,20 @@ import {
   signupFailure
 } from '../actions/auth';
 /**
-   * @param {any} state
-   * @param {object} form
-   * @returns {object} form details
+   * @param    {object} state
+   * @param    {object} form
+   *
+   * @returns  {object} form details
    */
 export const getForm = (state, form) => {
   return state.getIn(['form', form]).toJS();
 };
 
 /**
-   * @param {string} route
-   * @param {object} details
-   * @returns {object} response from server
+   * @param    {string} route
+   * @param    {object} details
+   *
+   * @returns  {object} response from server
    */
 export const sendDetails = (route, details) => {
   return fetch(`/api/v1/users/${route}`, {
@@ -40,8 +42,9 @@ export const sendDetails = (route, details) => {
     });
 };
 /**
-   * @param {object} action
-   * @returns {object} result
+   * @param    {object} action
+   *
+   * @returns  {object} result
    */
 export function* loginUser(action) {
   const { redirection } = action;
@@ -60,8 +63,9 @@ export function* loginUser(action) {
 }
 
 /**
-   * @param {object} action
-   * @returns {object} result
+   * @param    {object} action
+   *
+   * @returns  {object} result
    */
 export function* signupUser(action) {
   const { redirection } = action;

@@ -9,7 +9,6 @@ import * as reviewsActionCreators from '../actions/reviews';
 
 /**
  *
- *
  * @class AddReviewFormContainer
  * @extends {Component}
  */
@@ -28,8 +27,8 @@ export class AddReviewFormContainer extends Component {
 
   /**
    * @memberOf AddReviewFormContainer
-   *
-   * @param {any} event
+   * dispatches actions on submit
+   * @param   {any} event
    *
    * @returns {void}
    */
@@ -43,7 +42,7 @@ export class AddReviewFormContainer extends Component {
   /**
    *
    * @memberOf AddReviewFormContainer
-   * @returns {void}
+   * @returns {any} AuthenticatedAddReviewForm component
    *
    */
   render() {
@@ -56,9 +55,9 @@ export class AddReviewFormContainer extends Component {
 
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

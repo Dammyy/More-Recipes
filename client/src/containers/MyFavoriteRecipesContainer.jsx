@@ -73,9 +73,9 @@ export function mapStateToProps(state) {
 
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

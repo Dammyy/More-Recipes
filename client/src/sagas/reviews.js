@@ -10,8 +10,10 @@ import {
 } from '../actions/reviews';
 
 /**
-   * @param {any} state
-   * @returns {object} review details
+   *
+   * @param    {any} state
+   *
+   * @returns  {object} review details
    *
    */
 export const addReviewForm = (state) => {
@@ -19,9 +21,10 @@ export const addReviewForm = (state) => {
 };
 
 /**
- * @param {number} id
- * @param {object} newReview
- * @returns {Object} response from server
+ * @param    {number} id
+ * @param    {object} newReview
+ *
+ * @returns  {Object} response from server
  */
 export const publishReview = (id, newReview) => {
   return fetch(`/api/v1/recipes/${id}/reviews`, {
@@ -43,8 +46,9 @@ export const publishReview = (id, newReview) => {
 
 
 /**
- * @param {object} action action type and payload
- * @returns {object} result
+ * @param    {object} action action type and payload
+ *
+ * @returns  {object} result
  */
 export function* addReview(action) {
   const { id } = action;
@@ -63,8 +67,9 @@ export function* addReview(action) {
 }
 
 /**
- * @param {number} id
- * @returns {Object} response from server
+ * @param    {number} id
+ *
+ * @returns  {Object} response from server
  */
 export const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   headers: new Headers({
@@ -74,8 +79,9 @@ export const fetchReviews = id => fetch(`/api/v1/reviews/${id}`, {
   .then(response => response.json());
 
 /**
- * @param {object} action action type and payload
- * @returns {object} result
+ * @param    {object} action action type and payload
+ *
+ * @returns  {object} result
  */
 export function* getReviews(action) {
   const { id } = action;
@@ -89,14 +95,13 @@ export function* getReviews(action) {
 }
 
 /**
- * @returns {any} Watch get reviews
- *
+ * @returns  {any} Watch get reviews
  */
 function* watchGetReviews() {
   yield call(takeLatest, GET_REVIEWS, getReviews);
 }
 /**
-   * @returns {any} Watch Add review
+   * @returns  {any} Watch Add review
    */
 function* watchAddReview() {
   yield call(takeLatest, ADD_REVIEW, addReview);

@@ -108,9 +108,13 @@ export class ViewRecipeContainer extends Component {
 }
 
 /**
+ * fetches uploaded image from store
+ * @param    {object} state the state
  *
- * @param {any} state
- * @returns {void}
+ * @returns  {object} image
+ * @returns  {string} userId
+ * @returns  {object} reviews
+ * @returns  {object} recipe
  */
 export const mapStateToProps = (state) => {
   return {
@@ -123,9 +127,9 @@ export const mapStateToProps = (state) => {
 
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

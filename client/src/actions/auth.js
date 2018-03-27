@@ -10,8 +10,10 @@ import {
 } from '../constants/auth';
 
 /**
-   * @param {string} redirection
-   * @returns {Object} any
+   * Returns an object containing action type and payload
+   * @param    {string} redirection the redirection route
+   *
+   * @returns  {Object} action type and payload
    */
 const loginUser = (redirection) => {
   return {
@@ -21,8 +23,10 @@ const loginUser = (redirection) => {
 };
 
 /**
-   * @param {string} token
-   * @returns {object} any
+   * Returns an object containing action type and payload
+   * @param    {string} token the token from the server
+   *
+   * @returns  {object} action type and payload
    */
 const loginSuccess = (token) => {
   return {
@@ -31,7 +35,9 @@ const loginSuccess = (token) => {
   };
 };
 /**
-   * @returns {object} any
+   * Returns an object containing action type
+   *
+   * @returns  {object} action type
    */
 const loginFailure = () => {
   return {
@@ -40,10 +46,11 @@ const loginFailure = () => {
 };
 
 /**
- *
- * @param {string} redirection
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {string} redirection the redirection route
+   *
+   * @returns  {Object} action type and payload
+   */
 const signupUser = (redirection) => {
   return {
     type: SIGNUP,
@@ -52,11 +59,11 @@ const signupUser = (redirection) => {
 };
 
 /**
- *
- *
- * @param {any} token
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {string} token the token from the server
+   *
+   * @returns  {object} action type and payload
+   */
 const signupSuccess = (token) => {
   return {
     type: SIGNUP_SUCCESS,
@@ -65,10 +72,10 @@ const signupSuccess = (token) => {
 };
 
 /**
- *
- *
- * @returns {object} any
- */
+   * Returns an object containing action type
+   *
+   * @returns  {object} action type
+   */
 const signupFailure = () => {
   return {
     type: SIGNUP_FAILURE
@@ -76,10 +83,10 @@ const signupFailure = () => {
 };
 
 /**
- *
- *
- * @returns {object} any
- */
+   * Returns an object containing action type
+   *
+   * @returns  {object} action type
+   */
 const logout = () => {
   return {
     type: LOGOUT

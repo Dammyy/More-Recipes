@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import * as authActionCreators from '../actions/auth';
 
 /**
- *
- *
  * @class Login
  * @extends {PureComponent}
  */
@@ -57,6 +55,7 @@ export class Login extends PureComponent {
                     name="email"
                     className="form-control"
                     value=""
+                    id="email"
                     component="input"
                     type="email"
                     placeholder="E-Mail Address"
@@ -79,6 +78,7 @@ export class Login extends PureComponent {
                     component="input"
                     type="password"
                     name="password"
+                    id="password"
                     className="form-control"
                     placeholder="Password"
                   />
@@ -104,9 +104,9 @@ Login.propTypes = {
 };
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {object}  object
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

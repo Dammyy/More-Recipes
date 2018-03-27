@@ -17,8 +17,23 @@ import MostPopularRecipesList from './MostPopularRecipesList';
 import Search from './Search';
 import UserProfile from './UserProfile';
 
-export { Home, Welcome, AddRecipeForm, Recipe,
-  RecipesList, Archive, Login, Signup, EditRecipeForm,
-  ViewRecipe, NotFoundPage, AllRecipesList, MyFavoriteRecipes,
-  AuthenticatedAddReviewForm, Reviews
-  , MostPopularRecipesList, Search, UserProfile };
+export {
+  Home,
+  Welcome,
+  AddRecipeForm,
+  Recipe,
+  RecipesList,
+  Archive,
+  Login,
+  Signup,
+  EditRecipeForm,
+  ViewRecipe,
+  NotFoundPage,
+  AllRecipesList,
+  MyFavoriteRecipes,
+  AuthenticatedAddReviewForm,
+  Reviews,
+  MostPopularRecipesList,
+  Search,
+  UserProfile
+};

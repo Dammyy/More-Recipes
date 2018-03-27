@@ -28,6 +28,7 @@ ShallowWrapper {
         <p>
           <Link
             className="btn btn-post-recipe"
+            id="btn-browse"
             onlyActiveOnIndex={false}
             style={Object {}}
             to="/catalog"
@@ -52,6 +53,7 @@ ShallowWrapper {
           </Link>
           <button
             className="btn btn-logout"
+            id="btn-logout"
             onClick={[MockFunction]}
           >
             <i
@@ -91,6 +93,7 @@ ShallowWrapper {
           "children": Array [
             <Link
               className="btn btn-post-recipe"
+              id="btn-browse"
               onlyActiveOnIndex={false}
               style={Object {}}
               to="/catalog"
@@ -115,6 +118,7 @@ ShallowWrapper {
             </Link>,
             <button
               className="btn btn-logout"
+              id="btn-logout"
               onClick={[MockFunction]}
             >
               <i
@@ -140,6 +144,7 @@ ShallowWrapper {
                 " Browse",
               ],
               "className": "btn btn-post-recipe",
+              "id": "btn-browse",
               "onlyActiveOnIndex": false,
               "style": Object {},
               "to": "/catalog",
@@ -210,6 +215,7 @@ ShallowWrapper {
                 " Logout",
               ],
               "className": "btn btn-logout",
+              "id": "btn-logout",
               "onClick": [MockFunction],
             },
             "ref": null,
@@ -250,6 +256,7 @@ ShallowWrapper {
           <p>
             <Link
               className="btn btn-post-recipe"
+              id="btn-browse"
               onlyActiveOnIndex={false}
               style={Object {}}
               to="/catalog"
@@ -274,6 +281,7 @@ ShallowWrapper {
             </Link>
             <button
               className="btn btn-logout"
+              id="btn-logout"
               onClick={[MockFunction]}
             >
               <i
@@ -313,6 +321,7 @@ ShallowWrapper {
             "children": Array [
               <Link
                 className="btn btn-post-recipe"
+                id="btn-browse"
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="/catalog"
@@ -337,6 +346,7 @@ ShallowWrapper {
               </Link>,
               <button
                 className="btn btn-logout"
+                id="btn-logout"
                 onClick={[MockFunction]}
               >
                 <i
@@ -362,6 +372,7 @@ ShallowWrapper {
                   " Browse",
                 ],
                 "className": "btn btn-post-recipe",
+                "id": "btn-browse",
                 "onlyActiveOnIndex": false,
                 "style": Object {},
                 "to": "/catalog",
@@ -432,6 +443,7 @@ ShallowWrapper {
                   " Logout",
                 ],
                 "className": "btn btn-logout",
+                "id": "btn-logout",
                 "onClick": [MockFunction],
               },
               "ref": null,

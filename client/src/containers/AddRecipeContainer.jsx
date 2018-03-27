@@ -29,10 +29,10 @@ export class AddRecipeContainer extends Component {
 
 
   /**
+   * dispatches addRecipe action
+   * @param   {any} event
    *
-   *
-   * @param {any} event
-   * @returns {any} any
+   * @returns {void}
    * @memberOf AddRecipeContainer
    */
   handleSubmit(event) {
@@ -41,8 +41,8 @@ export class AddRecipeContainer extends Component {
   }
 
   /**
+   * dispatches uploadImage action
    * @memberOf AddRecipeContainer
-   *
    *
    * @returns {void}
    */
@@ -68,9 +68,9 @@ export class AddRecipeContainer extends Component {
 }
 
 /**
+ * fetches uploaded image from store
+ * @param   {object} state the state
  *
- *
- * @param {any} state
  * @returns {object} image
  */
 export function mapStateToProps(state) {
@@ -81,9 +81,9 @@ export function mapStateToProps(state) {
 
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

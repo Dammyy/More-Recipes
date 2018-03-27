@@ -47,6 +47,7 @@ const AuthenticatedBtnFavorites = UserIsAuthenticated(options)(BtnFavorites);
 const BtnHome = (() => (
   <Link
     to="/"
+    id="btn-home"
     className="btn btn-info btn-manage"
   >
     <i className="fa fa-home" /> Home
@@ -66,6 +67,7 @@ const BtnCatalog = (() => (
 export const BtnProfile = (() => (
   <Link
     to="/profile"
+    id="btn-my-profile"
     className="btn btn-publish btn-manage"
   >
     <i className="fa fa-user-o" aria-hidden="true" /> My Profile

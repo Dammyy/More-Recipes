@@ -1,9 +1,10 @@
 /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @param {Function} next - next function
- *  @returns {Object} validate Input
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ * @param    {Function} next - next function
+ *
+ * @returns  {Object} response
   */
 const validateInput = (req, res, next) => {
   if (!req.params.recipeId) {

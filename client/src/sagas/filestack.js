@@ -28,7 +28,7 @@ export const pick = () => {
 };
 
 /**
- * @returns {any} result
+ * @returns {object} uploaded image url
  */
 export function* uploadImage() {
   try {

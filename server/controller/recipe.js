@@ -12,7 +12,8 @@ class Recipe {
  *
  * @param {Object} req - request object
  * @param {Object} res - response object
- *  @returns {Object} recipes
+ *
+ * @returns  {Object} recipes
  *
 */
   static getRecipe(req, res) {
@@ -35,15 +36,15 @@ class Recipe {
               pages
             });
           })
-          .catch(error => res.status(400).send(error));
+          .catch(error => res.status(500).send(error));
       });
   }
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} Created recipe
+ * @param  {Object} req - request object
+ * @param  {Object} res - response object
  *
+ * @returns {string} response message
 */
   static createRecipes(req, res) {
     RecipeModel.create({
@@ -63,16 +64,17 @@ class Recipe {
           statusCode: '201'
         });
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} updated recipe
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {string} response message
+ *
+*/
   static updateRecipes(req, res) {
     RecipeModel.findOne({
       where: {
@@ -106,15 +108,16 @@ class Recipe {
           });
         });
     })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} recipes
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {string} response message
+ *
+*/
   static deleteRecipes(req, res) {
     RecipeModel.findOne({
       where: {
@@ -140,16 +143,16 @@ class Recipe {
           message: 'Recipe deleted successfully',
           statusCode: '200'
         });
-      })
-        .catch(error => res.status(400).send(error));
+      });
     })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} single recipe
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} recipe
  *
    */
   static retrieveRecipes(req, res) {
@@ -168,16 +171,17 @@ class Recipe {
         recipe
       });
     })
-      .catch(error => res.status(404).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} review added
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {object} review
+ *
+*/
   static postReview(req, res) {
     ReviewsModel.create({
       review: req.body.review,
@@ -207,17 +211,18 @@ class Recipe {
           });
         });
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} Recipes reviews
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {object} reviews
+ *
+*/
   static getReviews(req, res) {
     ReviewsModel.findAll({
       where: {
@@ -229,14 +234,15 @@ class Recipe {
         reviews
       });
     })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} favorited recipe
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} favorited recipe
  *
  */
   static favoriteRecipe(req, res) {
@@ -291,16 +297,17 @@ class Recipe {
                 });
             });
           })
-          .catch(error => res.status(400).send(error));
+          .catch(error => res.status(500).send(error));
       }
     });
   }
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} result
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} result
  *
    */
   static getFavoriteRecipe(req, res) {
@@ -325,11 +332,12 @@ class Recipe {
 
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} voted recipe
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {Object} recipe
+ *
+*/
   static voteRecipe(req, res) {
     votesModel.find({
       where: {
@@ -450,17 +458,18 @@ class Recipe {
   }
   /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} most upvoted recipes
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
  *
-   */
+ * @returns  {Object} most upvoted recipes
+ *
+*/
   static getMostUpvotes(req, res) {
     return RecipeModel.all({
       order: [['upvotes', 'DESC']]
     })
       .then(recipes => res.status(200).send(recipes))
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
   /**
@@ -477,14 +486,15 @@ class Recipe {
       .then((recipe) => {
         return res.status(200).json(recipe);
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 
   /**
 *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} Search result
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} Search result
 */
   static searchRecipes(req, res) {
     const query = req.params.query.trim();
@@ -516,7 +526,7 @@ class Recipe {
           recipes
         });
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(500).send(error));
   }
 }
 export default Recipe;

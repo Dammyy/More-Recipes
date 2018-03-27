@@ -14,9 +14,10 @@ let password = '';
  */
 class User {
 /**
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} signed up user details
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} user details
  */
   static signUp(req, res) {
     usersModel.findOne({
@@ -45,13 +46,14 @@ class User {
             id: createdUser.id,
           }, config.JWT_SECRET),
         }))
-        .catch(error => res.status(400).send(error));
+        .catch(error => res.status(500).send(error));
     });
   }
   /**
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} user details and jwt token
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} user details and jwt token
  */
   static signIn(req, res) {
     usersModel.findOne({
@@ -83,12 +85,14 @@ class User {
         });
       }
     })
-      .catch(error => res.status(401).send(error));
+      .catch(error => res.status(500).send(error));
   }
   /**
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} users favorite recipes
+   *
+   * @param    {Object} req - request object
+   * @param    {Object} res - response object
+   *
+   * @returns  {Object} users favorite recipes
   */
   static getFavorites(req, res) {
     FavoritesModel.findAll({
@@ -105,10 +109,11 @@ class User {
   }
 
   /**
-  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @returns {Object} users details
+ *
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ *
+ * @returns  {Object} users details
  *
 */
   static userDetails(req, res) {

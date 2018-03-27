@@ -1,10 +1,11 @@
 import * as reviewsConstants from '../constants/reviews';
 
 /**
- *
- * @param {number} id
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {number} id the id of the recipe
+   *
+   * @returns  {object} action type and payload
+   */
 const addReview = (id) => {
   return {
     type: reviewsConstants.ADD_REVIEW,
@@ -13,10 +14,11 @@ const addReview = (id) => {
 };
 
 /**
- *
- * @param {any} review
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {object} review the submited review
+   *
+   * @returns  {object} action type and payload
+   */
 const addReviewSuccess = (review) => {
   return {
     type: reviewsConstants.ADD_REVIEW_SUCCESS,
@@ -25,10 +27,10 @@ const addReviewSuccess = (review) => {
 };
 
 /**
- *
- *
- * @returns {object} any
- */
+   * Returns an object containing action type
+   *
+   * @returns  {object} action type
+   */
 const addReviewFailure = () => {
   return {
     type: reviewsConstants.ADD_REVIEW_FAILURE
@@ -36,10 +38,11 @@ const addReviewFailure = () => {
 };
 
 /**
- *
- * @param {number} id
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {number} id the id of the recipe
+   *
+   * @returns  {object} action type and payload
+   */
 const getReviews = (id) => {
   return {
     type: reviewsConstants.GET_REVIEWS,
@@ -48,10 +51,11 @@ const getReviews = (id) => {
 };
 
 /**
- *
- * @param {any} reviews
- * @returns {object} any
- */
+   * Returns an object containing action type and payload
+   * @param    {object} reviews the retrieved reviews
+   *
+   * @returns  {object} action type and payload
+   */
 const getReviewsSuccess = (reviews) => {
   return {
     type: reviewsConstants.GET_REVIEWS_SUCCESS,
@@ -60,10 +64,10 @@ const getReviewsSuccess = (reviews) => {
 };
 
 /**
- *
- *
- * @returns {object} any
- */
+   * Returns an object containing action type
+   *
+   * @returns  {object} action type
+   */
 const getReviewsFailure = () => {
   return {
     type: reviewsConstants.GET_REVIEWS_FAILURE

@@ -51,10 +51,11 @@ export class UserProfileContainer extends Component {
   }
 }
 /**
+ * fetches data from state
+ * @param   {object} state the state
  *
- * @param {any} state
- * @returns {object} user
- * @returns {object} userId
+ * @returns  {object} user
+ * @returns  {object} userId
  */
 export function mapStateToProps(state) {
   return {
@@ -64,9 +65,9 @@ export function mapStateToProps(state) {
 }
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

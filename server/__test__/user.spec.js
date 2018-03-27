@@ -211,6 +211,7 @@ describe('User controller', () => {
       .end((err, res) => {
         expect(res.status).to.equal(201);
         expect(res.body.message).to.equal('Registration Successful');
+        expect(res.body).to.have.property('jwt');
         request
           .post('/api/v1/users/signin')
           .send({
@@ -220,6 +221,7 @@ describe('User controller', () => {
           .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.message).to.equal('Login Successful');
+            expect(res.body).to.have.property('jwt');
             done();
           });
       });

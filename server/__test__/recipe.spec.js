@@ -98,7 +98,7 @@ describe('Recipe controller', () => {
       }
     );
     // Test expired or invalid token
-    it('Should return  if token is invalid', (done) => {
+    it('Should return Token has expired if token is invalid', (done) => {
       request
         .post('/api/v1/users/signin')
         .send({
@@ -124,6 +124,8 @@ describe('Recipe controller', () => {
         .get('/api/v1/recipes?page=1')
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body.recipes).to.be.a('array');
           should.not.exist(err);
           done();
         });
@@ -149,6 +151,8 @@ describe('Recipe controller', () => {
             })
             .end((err, res) => {
               expect(res.status).to.equal(201);
+              expect(res.body.message)
+                .to.equal('Recipe published successfully');
               should.not.exist(err);
               done();
             });
@@ -348,6 +352,8 @@ describe('Recipe controller', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(200);
+          expect(res.body.message).to.equal('Recipe updated successfully');
+          expect(res.body.statusCode).to.equal('200');
           done();
         });
     });
@@ -452,6 +458,11 @@ describe('Recipe controller', () => {
         .get(`/api/v1/recipes/${testUser.recipe1.id}`)
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body.recipe).to.be.a('object');
+          expect(res.body.recipe).to.have.property('id');
+          expect(res.body.recipe).to.have.property('title');
+          expect(res.body.recipe).to.have.property('ingredients');
+          expect(res.body.recipe).to.have.property('details');
           done();
         });
     });
@@ -541,6 +552,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(201);
               expect(res.body.message).to.equal('Recipe upvoted');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -562,6 +574,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(201);
               expect(res.body.message).to.equal('Recipe downvoted');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -582,6 +595,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.message).to.equal('Downvote removed');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -603,6 +617,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(201);
               expect(res.body.message).to.equal('Recipe downvoted');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -624,6 +639,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(201);
               expect(res.body.message).to.equal('Recipe upvoted');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -644,6 +660,7 @@ describe('Recipe controller', () => {
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.message).to.equal('Upvote removed');
+              expect(res.body.recipe).to.be.a('object');
               done();
             });
         });
@@ -653,6 +670,7 @@ describe('Recipe controller', () => {
         .get('/api/v1/recipes/search/beans')
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body.recipes).to.be.a('array');
           done();
         });
     });
@@ -680,6 +698,7 @@ describe('Recipe controller', () => {
         .get(`/api/v1/reviews/${testUser.recipe1.id}`)
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body.reviews).to.be.a('array');
           done();
         });
     });
@@ -689,6 +708,7 @@ describe('Recipe controller', () => {
         .set('auth', testUser.user1.auth2)
         .end((err, res) => {
           expect(res).to.have.status(201);
+          expect(res.body.recipe).to.be.a('object');
           done();
         });
     });
@@ -698,6 +718,7 @@ describe('Recipe controller', () => {
         .set('auth', testUser.user1.auth2)
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body.recipe).to.be.a('object');
           done();
         });
     });

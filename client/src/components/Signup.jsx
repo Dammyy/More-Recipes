@@ -185,9 +185,9 @@ Signup.propTypes = {
 };
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {object}  object
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

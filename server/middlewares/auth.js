@@ -5,10 +5,11 @@ import jwtSecret from '../../config';
 const secret = jwtSecret.JWT_SECRET;
 /**
  *
- * @param {Object} req - request object
- * @param {Object} res - response object
- *  @param {Function} next - next function
- *  @returns {Object} verified token
+ * @param    {Object} req - request object
+ * @param    {Object} res - response object
+ * @param    {Function} next - next function
+ *
+ * @returns  {Object} verified token
 */
 const verifyToken = (req, res, next) => {
   const token =

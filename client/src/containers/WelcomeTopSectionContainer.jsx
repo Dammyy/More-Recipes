@@ -61,10 +61,9 @@ export class WelcomeTopSectionContainer extends Component {
 }
 
 /**
+ * @param {object} state
  *
- *
- * @param {any} state
- * @returns {void}
+ * @returns {string} firstName
  */
 export function mapStateToProps(state) {
   return {
@@ -74,9 +73,9 @@ export function mapStateToProps(state) {
 
 /**
  *
+ * @param   {function} dispatch
  *
- * @param {any} dispatch
- * @returns {void}
+ * @returns {function} action creators
  */
 export function mapDispatchToProps(dispatch) {
   return {

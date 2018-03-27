@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 /**
  *
- *
- *
  * @class Home
  * @extends {PureComponent}
  */
@@ -13,7 +11,6 @@ export default class Home extends PureComponent {
    *
    * @memberOf Home
    *  @returns {void}
-   *
    */
   render() {
     return (
