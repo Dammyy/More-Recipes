@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import * as authActionCreators from '../actions/auth';
 /**
  *
- *
  * @class Signup
  * @extends {PureComponent}
  */
@@ -27,7 +26,6 @@ export class Signup extends PureComponent {
    * @memberOf Signup
    * @param {any} event
    * @returns {string} redirect
-   *
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -35,11 +33,8 @@ export class Signup extends PureComponent {
     '/catalog');
   }
   /**
-   *
-   *
    * @memberOf Signup
    * @returns {void}
-   *
    */
   render() {
     return (

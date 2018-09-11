@@ -7,17 +7,14 @@ import { Field, reduxForm } from 'redux-form/immutable';
 import * as recipesActionCreators from '../actions/recipes';
 /**
  *
- *
  * @class Navbar
  * @extends {Component}
  */
 export class Navbar extends Component {
   /**
-   *
    * Creates an instance of Navbar.
    * @memberOf Navbar
    * @param {any} props
-   *
    */
   constructor(props) {
     super(props);
@@ -25,11 +22,9 @@ export class Navbar extends Component {
   }
 
   /**
-   *
    * @memberOf Navbar
    * @returns {void}
    * @param {any} event
-   *
    */
   handleSubmit(event) {
     event.preventDefault();
@@ -93,7 +88,6 @@ export class Navbar extends Component {
 }
 
 /**
- *
  *
  * @param {any} dispatch
  * @returns {void}

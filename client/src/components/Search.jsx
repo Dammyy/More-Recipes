@@ -14,17 +14,13 @@ import {
 
 /**
  *
- *
  * @class RecipeListHome
  * @extends {PureComponent}
  */
 export class Search extends PureComponent {
   /**
-   *
-   *
    * @memberOf Search
    * @returns {void}
-   *
    */
   render() {
     const {
