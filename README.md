@@ -48,6 +48,7 @@ The full API documentation can be viewed here https://more-recipes-dammyy.heroku
 + PostgreSQL: a powerful, open source object-relational database system.
 + React: a JavaScript library for building user interfaces
 + Redux: a predictable state container for JavaScript apps.
++ Redux-saga: a library that aims to make application side effects easier to manage, more efficient to execute, easy to test, and better at handling failures..
 + Webpack: a static module bundler for modern JavaScript applications
 
 ## Contributions

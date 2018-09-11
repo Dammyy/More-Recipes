@@ -11,18 +11,13 @@ import {
 } from './Buttons';
 
 /**
- *
- *
  * @class RecipeList
  * @extends {PureComponent}
  */
 export class RecipesList extends PureComponent {
   /**
-   *
-   *
    * @memberOf RecipeList
    * @returns {void}
-   *
    */
   render() {
     const {
@@ -50,9 +45,9 @@ export class RecipesList extends PureComponent {
                       key={recipe.id}
                       deleteRecipe={deleteRecipe}
                     />
-        );
-      })
-    }
+                  );
+                })
+            }
           </div>
         </div>
       </div>
