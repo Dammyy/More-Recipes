@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { AuthenticatedAddReviewForm } from '../components';
 import * as reviewsActionCreators from '../actions/reviews';
 
-
 /**
  *
  * @class AddReviewFormContainer
@@ -24,7 +23,6 @@ export class AddReviewFormContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   /**
    * @memberOf AddReviewFormContainer
    * dispatches actions on submit
@@ -38,7 +36,6 @@ export class AddReviewFormContainer extends Component {
     this.props.resetForm('review');
   }
 
-
   /**
    *
    * @memberOf AddReviewFormContainer
@@ -46,10 +43,7 @@ export class AddReviewFormContainer extends Component {
    *
    */
   render() {
-    return (
-      <AuthenticatedAddReviewForm
-        handleSubmit={this.handleSubmit}
-      />);
+    return <AuthenticatedAddReviewForm handleSubmit={this.handleSubmit} />;
   }
 }
 
@@ -62,13 +56,16 @@ export class AddReviewFormContainer extends Component {
 export function mapDispatchToProps(dispatch) {
   return {
     reviewsActions: bindActionCreators(reviewsActionCreators, dispatch),
-    resetForm: bindActionCreators(reset, dispatch),
+    resetForm: bindActionCreators(reset, dispatch)
   };
 }
 AddReviewFormContainer.propTypes = {
   reviewsActions: PropTypes.objectOf(PropTypes.func).isRequired,
   id: PropTypes.string.isRequired,
-  resetForm: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(AddReviewFormContainer);
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddReviewFormContainer);

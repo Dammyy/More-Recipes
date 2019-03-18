@@ -7,8 +7,6 @@ import * as recipesActionCreators from '../actions/recipes';
 import * as filestackActions from '../actions/filestack';
 /**
  *
- *
- *
  * @class AddRecipe
  * @extends {Component}
  *
@@ -26,7 +24,6 @@ export class AddRecipeContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
   }
-
 
   /**
    * dispatches addRecipe action
@@ -63,7 +60,8 @@ export class AddRecipeContainer extends Component {
         handleSubmit={this.handleSubmit}
         image={image}
         uploadImage={this.uploadImage}
-      />);
+      />
+    );
   }
 }
 
@@ -91,10 +89,14 @@ export function mapDispatchToProps(dispatch) {
     filestackActions: bindActionCreators(filestackActions, dispatch)
   };
 }
+
 AddRecipeContainer.propTypes = {
   filestackActions: PropTypes.objectOf(PropTypes.func).isRequired,
   recipesActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddRecipeContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddRecipeContainer);
