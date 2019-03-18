@@ -1,9 +1,6 @@
 # <h1>More Recipes App</h1>
-<div class="badges">
-<img src="https://travis-ci.org/Dammyy/More-Recipes.svg?branch=develop"></img>
-<a href='https://coveralls.io/github/Dammyy/More-Recipes?branch=develop'><img src='https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=develop' alt='Coverage Status' /></a>
-<a href="https://codeclimate.com/github/Dammyy/More-Recipes/maintainability"><img src="https://api.codeclimate.com/v1/badges/37905cc8d0d99859c45a/maintainability" /></a>
-</div>
+[![Build Status](https://travis-ci.org/Dammyy/More-Recipes.svg?branch=master)](https://travis-ci.org/Dammyy/More-Recipes)
+[![Coverage Status](https://coveralls.io/repos/github/Dammyy/More-Recipes/badge.svg?branch=master)](https://coveralls.io/github/Dammyy/More-Recipes?branch=master)
 
 More Recipe allows users to post amazing recipes online. Users can view, post, comment and even rate these recipes.
 

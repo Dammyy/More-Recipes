@@ -24,7 +24,6 @@ export class AllRecipesContainer extends Component {
     this.getRecipes();
   }
 
-
   /**
    *
    * @memberOf AllRecipesContainer
